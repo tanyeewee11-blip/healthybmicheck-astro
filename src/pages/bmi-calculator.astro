@@ -1,0 +1,332 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="BMI Calculator — Free Body Mass Index Calculator"
+  description="Calculate your BMI instantly. Free Body Mass Index calculator with weight category, ideal weight range, and health tips. Supports both Metric and Imperial."
+  canonical="https://healthybmicheck.com/bmi-calculator.html"
+  schemaJson={"{\"@context\": \"https://schema.org\", \"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"How is BMI calculated?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"BMI is calculated by dividing your weight in kilograms by the square of your height in meters (kg/m²). For example, a person weighing 70 kg at 1.75 m has a BMI of 70 ÷ (1.75 × 1.75) = 22.9.\"}}]}"}
+>
+
+<main>
+<div class="hero">
+    <div class="breadcrumb"><a href="index.html">Home</a> › BMI Calculator</div>
+  <h1>Free <em>BMI</em> Calculator</h1>
+  <p>Find out your Body Mass Index in seconds. Supports metric and imperial units with instant health insights.</p>
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <div class="unit-toggle">
+      <button class="active" onclick="setUnit('metric')">Metric (kg/cm)</button>
+      <button onclick="setUnit('imperial')">Imperial (lb/in)</button>
+    </div>
+
+    <div class="input-group" id="metric-inputs">
+      <label>Weight</label>
+      <div class="input-wrap">
+        <input type="number" id="weight-kg" aria-label="Weight (kg)" placeholder="70">
+        <span class="unit-badge">kg</span>
+      </div>
+    </div>
+
+    <div class="input-group" id="imperial-inputs" style="display:none">
+      <label>Weight</label>
+      <div class="input-wrap">
+        <input type="number" id="weight-lb" aria-label="Weight (lb)" placeholder="154">
+        <span class="unit-badge">lb</span>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Height</label>
+      <div id="metric-height">
+        <div class="input-wrap">
+          <input type="number" id="height-cm" aria-label="Height (cm)" placeholder="170">
+          <span class="unit-badge">cm</span>
+        </div>
+      </div>
+      <div id="imperial-height" style="display:none">
+        <div class="input-row">
+          <div class="input-wrap">
+            <input type="number" id="height-ft" aria-label="Height (feet)" placeholder="5">
+            <span class="unit-badge">ft</span>
+          </div>
+          <div class="input-wrap">
+            <input type="number" id="height-in" aria-label="Height (inches)" placeholder="7">
+            <span class="unit-badge">in</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">Calculate BMI →</button>
+  </div>
+
+  <div class="result-card" id="result-card">
+    <div class="bmi-number" id="bmi-number">—</div>
+    <div class="bmi-category" id="bmi-category"></div>
+
+    <div class="scale-wrap">
+      <div class="scale-bar">
+        <div class="scale-pointer" id="scale-pointer" style="left:0%"></div>
+      </div>
+      <div class="scale-labels">
+        <span>Underweight<br>&lt;18.5</span>
+        <span>Normal<br>18.5–24.9</span>
+        <span>Overweight<br>25–29.9</span>
+        <span>Obese<br>≥30</span>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-box">
+        <div class="label">Healthy range</div>
+        <div class="value" id="healthy-range">—</div>
+      </div>
+      <div class="info-box">
+        <div class="label">Ideal weight</div>
+        <div class="value" id="ideal-weight">—</div>
+      </div>
+    </div>
+
+    <div class="health-tip" id="health-tip"></div>
+  </div>
+
+  <div class="table-section" id="table">
+    <h2 class="section-title">BMI Categories & Health Risks</h2>
+    <p class="section-sub">Standard classification for adults based on WHO guidelines.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>BMI Range</th>
+          <th>Health Risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="dot" style="background:#3A7BBF"></span>Underweight</td><td>&lt; 18.5</td><td>Malnutrition risk</td></tr>
+        <tr><td><span class="dot" style="background:#2D6A4F"></span>Normal weight</td><td>18.5 – 24.9</td><td>Low risk</td></tr>
+        <tr><td><span class="dot" style="background:#C17B2A"></span>Overweight</td><td>25.0 – 29.9</td><td>Moderate risk</td></tr>
+        <tr><td><span class="dot" style="background:#B83232"></span>Obese</td><td>&gt; 30.0</td><td>High risk</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="faq-section" id="faq">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How is BMI calculated?</button>
+      <div class="faq-a">BMI is calculated by dividing your weight in kilograms by the square of your height in metres (kg/m²). For example, if you weigh 70 kg and are 1.75 m tall: BMI = 70 ÷ (1.75 × 1.75) = 22.9. In imperial units, the formula is: BMI = (weight in pounds × 703) ÷ (height in inches)².</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is a healthy BMI range for adults?</button>
+      <div class="faq-a">According to the World Health Organization (WHO), a healthy BMI for adults is between 18.5 and 24.9. A BMI below 18.5 is considered underweight, 25.0–29.9 is overweight, and 30.0 or above is classified as obese. Note that for people of Asian descent, health risks may begin at a lower threshold — some guidelines suggest overweight starts at BMI 23.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is BMI accurate for everyone?</button>
+      <div class="faq-a">BMI is a useful screening tool but has known limitations. It does not directly measure body fat — it cannot distinguish between muscle mass and fat. Athletes and very muscular people may have a high BMI despite low body fat. Conversely, older adults may have a "normal" BMI but still carry excess fat due to muscle loss. For a more complete picture of body composition, consider pairing BMI with a <a href="body-fat.html">Body Fat Calculator</a>.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Does BMI apply to children?</button>
+      <div class="faq-a">This calculator is designed for adults aged 18 and over. For children and teenagers, BMI is interpreted differently — it is compared against age- and sex-specific growth charts rather than fixed ranges. If you need to assess a child's weight status, please consult a paediatrician or use a child-specific BMI tool.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How can I lower my BMI if it is too high?</button>
+      <div class="faq-a">Lowering BMI sustainably involves a combination of dietary changes and regular physical activity. The most evidence-based approach is a moderate calorie deficit (around 500 kcal/day below your maintenance level), combined with at least 150 minutes of moderate aerobic exercise per week. Strength training is also valuable as it preserves muscle mass during weight loss. See our guide on <a href="how-to-lower-bmi.html">how to lower your BMI</a> for detailed strategies, or use our <a href="calorie-calculator.html">Calorie Calculator</a> to find your daily target.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What should I do if my BMI is in the underweight range?</button>
+      <div class="faq-a">A BMI below 18.5 may indicate insufficient calorie or nutrient intake, though it can also reflect natural body composition in some individuals. If your BMI is underweight, it is advisable to consult a doctor or registered dietitian to rule out any underlying health conditions and to get personalised guidance on safely increasing calorie and nutrient intake. Focus on nutrient-dense foods — our <a href="high-protein-foods.html">high-protein foods guide</a> can help with meal planning.</div>
+    </div>
+  </div>
+
+  <!-- ── Article: How to use this calculator & understand your results ── -->
+  <div class="article-section">
+    <h2>How to Use This BMI Calculator</h2>
+    <p>Using this calculator takes less than 30 seconds. Simply select your preferred unit system — metric (kg and cm) or imperial (pounds, feet, and inches) — then enter your current weight and height. Click <strong>Calculate BMI</strong> and your result will appear instantly, along with your weight category, a visual scale, your healthy weight range for your height, and a personalised health tip.</p>
+    <p>No personal data is stored or transmitted. All calculations happen locally in your browser.</p>
+
+    <h2>Understanding Your BMI Result</h2>
+    <p>Your BMI result places you into one of four categories defined by the World Health Organization (WHO):</p>
+    <ul>
+      <li><strong>Underweight (below 18.5):</strong> May indicate inadequate nutrition or an underlying health condition. Consider speaking with a healthcare provider.</li>
+      <li><strong>Normal weight (18.5–24.9):</strong> Associated with the lowest risk of weight-related health conditions. Maintaining this range through balanced diet and regular activity is recommended.</li>
+      <li><strong>Overweight (25.0–29.9):</strong> Moderately elevated risk of conditions such as type 2 diabetes, high blood pressure, and cardiovascular disease. Lifestyle changes can help bring BMI back into the normal range.</li>
+      <li><strong>Obese (30.0 and above):</strong> Significantly higher risk of serious health conditions. Consultation with a healthcare professional is strongly advised.</li>
+    </ul>
+
+    <div class="callout"><p>💡 <strong>Tip:</strong> A single BMI reading is a starting point, not a diagnosis. Your doctor can assess your full health picture — including waist circumference, blood pressure, and blood tests — to give you accurate guidance.</p></div>
+
+    <h2>The BMI Formula Explained</h2>
+    <p>BMI uses a simple mathematical formula that relates weight to height:</p>
+    <div class="formula-box">
+      <span>Metric:</span>   BMI = weight (kg) ÷ height (m)²<br>
+      <span>Imperial:</span> BMI = [weight (lb) ÷ height (in)²] × 703
+    </div>
+    <p>For example, a person who is 170 cm tall and weighs 68 kg has a BMI of: 68 ÷ (1.70 × 1.70) = <strong>23.5</strong> — which falls in the Normal weight range.</p>
+
+    <h2>Limitations of BMI</h2>
+    <p>BMI is a population-level screening tool, and there are several situations where it may not accurately reflect individual health:</p>
+    <ul>
+      <li><strong>Athletes and very muscular people</strong> may have a high BMI because muscle is denser than fat, despite having very low body fat levels.</li>
+      <li><strong>Older adults</strong> may lose muscle mass over time (a process called sarcopenia), which can lower their BMI even as body fat increases.</li>
+      <li><strong>Ethnic differences:</strong> People of Asian, South Asian, and some other ethnicities tend to carry higher health risks at lower BMI values. The WHO has noted that a BMI of 23 may represent overweight, and 27.5 may represent obesity, for some Asian populations.</li>
+      <li><strong>Pregnant women</strong> should not use standard BMI ranges during pregnancy, as healthy weight gain is expected and normal.</li>
+    </ul>
+    <div class="warn-callout"><p>⚠️ BMI does not replace professional medical advice. If you have concerns about your weight or health, please consult a qualified healthcare provider.</p></div>
+
+    <h2>What to Do After Getting Your Result</h2>
+    <p>Once you have your BMI, here are some useful next steps depending on your result:</p>
+    <ul>
+      <li>Use the <a href="calorie-calculator.html">Calorie Calculator</a> to find your daily energy needs based on your goals.</li>
+      <li>Check your <a href="ideal-weight.html">Ideal Weight</a> to see the target weight range for your height.</li>
+      <li>Use the <a href="body-fat.html">Body Fat Calculator</a> for a more detailed breakdown of your body composition.</li>
+      <li>Read our article on <a href="how-to-lower-bmi.html">how to lower your BMI</a> for practical, evidence-based strategies.</li>
+      <li>Track your daily water needs with the <a href="water-intake.html">Water Intake Calculator</a>.</li>
+    </ul>
+
+    <div class="sources">
+      <strong>References:</strong><br>
+      World Health Organization. <a href="https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" target="_blank" rel="noopener">Obesity and overweight fact sheet</a>. WHO, 2024.<br>
+      National Institutes of Health. <a href="https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmicalc.htm" target="_blank" rel="noopener">BMI calculator and guidelines</a>. NHLBI.<br>
+      WHO Expert Consultation. Appropriate body-mass index for Asian populations. <em>The Lancet</em>, 2004; 363(9403):157–163.
+    </div>
+  </div>
+
+    <div class="related">
+    <h3>Related Articles &amp; Tools</h3>
+    <div class="related-links">
+      <a href="asian-bmi-calculator.html">Asian BMI Calculator</a>
+      <a href="bmi-calculator-kids.html">BMI Calculator for Kids</a>
+      <a href="waist-to-height-ratio.html">Waist-to-Height Ratio Calculator</a>
+      <a href="what-is-bmi.html">What is BMI? — Full Explanation</a>
+      <a href="bmi-chart-by-age.html">BMI Chart by Age</a>
+      <a href="healthy-bmi-for-women.html">Healthy BMI for Women</a>
+      <a href="normal-bmi-for-men.html">Normal BMI for Men</a>
+      <a href="how-to-lower-bmi.html">How to Lower Your BMI</a>
+    
+        <a href="calorie-deficit-calculator.html">Calorie Deficit Calculator</a>
+      </div>
+  </div>
+
+
+
+<script>
+  let unit = 'metric';
+
+  function setUnit(u) {
+    unit = u;
+    document.querySelectorAll('.unit-toggle button').forEach((b,i) => {
+      b.classList.toggle('active', (u === 'metric' && i === 0) || (u === 'imperial' && i === 1));
+    });
+    document.getElementById('metric-inputs').style.display = u === 'metric' ? '' : 'none';
+    document.getElementById('imperial-inputs').style.display = u === 'imperial' ? '' : 'none';
+    document.getElementById('metric-height').style.display = u === 'metric' ? '' : 'none';
+    document.getElementById('imperial-height').style.display = u === 'imperial' ? '' : 'none';
+  }
+
+  function calculate() {
+    let w, h;
+    if (unit === 'metric') {
+      w = parseFloat(document.getElementById('weight-kg').value);
+      h = parseFloat(document.getElementById('height-cm').value) / 100;
+    } else {
+      let lb = parseFloat(document.getElementById('weight-lb').value);
+      let ft = parseFloat(document.getElementById('height-ft').value) || 0;
+      let inch = parseFloat(document.getElementById('height-in').value) || 0;
+      w = lb * 0.453592;
+      h = (ft * 12 + inch) * 0.0254;
+    }
+
+    if (!w || !h) return alert("Please enter valid numbers");
+
+    const bmi = w / (h * h);
+    const bmiRound = Math.round(bmi * 10) / 10;
+    
+    // UI Update logic (Simplified for brevity)
+    document.getElementById('bmi-number').textContent = bmiRound;
+    document.getElementById('result-card').classList.add('visible');
+    
+    // Scale pointer logic
+    const pct = Math.min(Math.max((bmi - 15) / (40 - 15) * 100, 2), 98);
+    document.getElementById('scale-pointer').style.left = pct + '%';
+    
+    // Category text
+    let cat = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Normal' : bmi < 30 ? 'Overweight' : 'Obese';
+    document.getElementById('bmi-category').textContent = cat;
+    const tips = {
+      Underweight: "Your BMI suggests you may be underweight. Consider speaking with a healthcare provider or dietitian about safely increasing calorie and nutrient intake. Our <a href='high-protein-foods.html'>high-protein foods guide</a> may also help.",
+      Normal: "Great — your BMI is in the healthy range. Keep it up with a balanced diet and at least 150 minutes of moderate exercise per week. Check your <a href='calorie-calculator.html'>daily calorie needs</a> to stay on track.",
+      Overweight: "Your BMI is in the overweight range. A moderate calorie deficit and regular exercise can help. Try our <a href='calorie-calculator.html'>Calorie Calculator</a> to find your target, or read our guide on <a href='how-to-lower-bmi.html'>how to lower your BMI</a>.",
+      Obese: "Your BMI is in the obese range, which is associated with higher health risks. Speaking with a healthcare provider is strongly recommended. Our guide on <a href='how-to-lower-bmi.html'>how to lower your BMI</a> covers practical steps you can start with."
+    };
+    document.getElementById('health-tip').innerHTML = tips[cat] || "";
+    // Healthy weight range
+    const lo = (18.5 * h * h).toFixed(1), hi = (24.9 * h * h).toFixed(1);
+    document.getElementById('healthy-range').textContent = unit === 'metric'
+      ? lo + '–' + hi + ' kg'
+      : (lo/0.453592).toFixed(1) + '–' + (hi/0.453592).toFixed(1) + ' lb';
+    // Ideal weight (Devine)
+    const inOver = (h / 0.0254) - 60;
+    const devine = gender === 'male' ? 50 + 2.3 * inOver : 45.5 + 2.3 * inOver;
+    document.getElementById('ideal-weight').textContent = unit === 'metric'
+      ? devine.toFixed(1) + ' kg (Devine)'
+      : (devine / 0.453592).toFixed(1) + ' lb (Devine)';
+  }
+
+  function toggleFaq(btn) {
+    btn.classList.toggle('open');
+    btn.nextElementSibling.classList.toggle('open');
+  }
+</script>
+
+
+  <!-- CTA Block -->
+  <div style="max-width:720px;margin:0 auto;padding:0 20px 48px;">
+    <div style="background:#1A1714;border-radius:20px;padding:32px 28px;text-align:center;">
+      <p style="font-size:.78rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Next step</p>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;line-height:1.2;">What's next after your BMI?</h2>
+      <p style="font-size:.875rem;color:rgba(255,255,255,.6);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto;">Get your full health picture — calories, macros, and ideal weight.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+      <a href="calorie-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;">🔥 Daily Calories →</a>
+      <a href="macro-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;">🥗 Macro Calculator →</a>
+      <a href="ideal-weight.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;">🎯 Ideal Weight →</a>
+      </div>
+    </div>
+  </div>
+
+
+<div class="card" style="padding:20px;margin:20px 0;overflow-x:auto;">
+  <p style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:14px;">BMI categories — standard WHO and Asian thresholds</p>
+  <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;display:block;font-family:'DM Sans',sans-serif;">
+    <rect x="10" y="20" width="90" height="30" rx="6" fill="#DCE9F8"/>
+    <text x="55" y="39" text-anchor="middle" font-size="10" fill="#3A7BBF" font-weight="600">Underweight</text>
+    <text x="55" y="60" text-anchor="middle" font-size="9" fill="#3A7BBF">&lt; 18.5</text>
+    <rect x="108" y="20" width="140" height="30" rx="6" fill="#D8EFE4"/>
+    <text x="178" y="39" text-anchor="middle" font-size="10" fill="#2D6A4F" font-weight="600">Normal (Global)</text>
+    <text x="178" y="60" text-anchor="middle" font-size="9" fill="#2D6A4F">18.5 – 24.9</text>
+    <rect x="108" y="52" width="96" height="16" rx="4" fill="#A8D5BE" opacity=".5"/>
+    <text x="156" y="63" text-anchor="middle" font-size="8" fill="#2D6A4F">Asian: 18.5–22.9</text>
+    <rect x="256" y="20" width="130" height="30" rx="6" fill="#FBF0DC"/>
+    <text x="321" y="39" text-anchor="middle" font-size="10" fill="#C17B2A" font-weight="600">Overweight</text>
+    <text x="321" y="60" text-anchor="middle" font-size="9" fill="#C17B2A">25 – 29.9 (23–27.4 Asian)</text>
+    <rect x="394" y="20" width="100" height="30" rx="6" fill="#FADFDF"/>
+    <text x="444" y="39" text-anchor="middle" font-size="10" fill="#B83232" font-weight="600">Obese I</text>
+    <text x="444" y="60" text-anchor="middle" font-size="9" fill="#B83232">30–34.9 (≥27.5 Asian)</text>
+    <rect x="502" y="20" width="110" height="30" rx="6" fill="#FADFDF" opacity=".8"/>
+    <text x="557" y="39" text-anchor="middle" font-size="10" fill="#B83232" font-weight="600">Obese II+</text>
+    <text x="557" y="60" text-anchor="middle" font-size="9" fill="#B83232">≥ 35</text>
+  </svg>
+</div>
+</main>
+
+</Base>

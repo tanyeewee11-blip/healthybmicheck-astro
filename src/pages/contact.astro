@@ -1,0 +1,168 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Contact Us — HealthyBMICheck.com"
+  description="Contact the HealthyBMICheck.com team. Send us a question, report an issue, or share feedback about our free health calculators."
+  canonical="https://healthybmicheck.com/contact.html"
+  schemaJson={"{\"@context\": \"https://schema.org\", \"@type\": \"ContactPage\", \"name\": \"Contact HealthyBMICheck\", \"url\": \"https://healthybmicheck.com/contact.html\"}"}
+>
+
+<main><div class="page-wrap">
+
+  <h1>Contact Us</h1>
+  <p class="subtitle">Have a question about one of our calculators, spotted an error, or want to share feedback? We read every message and aim to respond within 2 business days.</p>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="icon">📧</div>
+      <h3>General Enquiries</h3>
+      <p>Questions about our tools, how they work, or anything else.</p>
+      <a href="mailto:hello@healthybmicheck.com">hello@healthybmicheck.com</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon">🐛</div>
+      <h3>Report an Issue</h3>
+      <p>Found a calculation error or a broken feature? Let us know so we can fix it quickly.</p>
+      <a href="mailto:hello@healthybmicheck.com">Report a bug</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon">🌏</div>
+      <h3>Based In</h3>
+      <p>HealthyBMICheck.com is an independent project based in Malaysia, serving a global audience.</p>
+      <span style="color:var(--accent);font-size:.875rem;">Malaysia (UTC+8)</span>
+    </div>
+    <div class="contact-card">
+      <div class="icon">⏱️</div>
+      <h3>Response Time</h3>
+      <p>We read every message and aim to respond within 2 business days (Mon–Fri, UTC+8).</p>
+      <span style="color:var(--accent);font-size:.875rem;">Usually within 48 hours</span>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <h2>Send a Message</h2>
+    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="9639bd2b-67b7-4dd4-a43e-5dc234c50782">
+      <input type="hidden" name="subject" id="form-subject" value="New message from HealthyBMICheck.com">
+      <input type="hidden" name="from_name" value="HealthyBMICheck Contact Form">
+      <input type="checkbox" name="botcheck" style="display:none;">
+
+      <div class="input-row">
+        <div class="field">
+          <label for="fname">First name</label>
+          <input type="text" id="fname" name="first_name" placeholder="Alex" required>
+        </div>
+        <div class="field">
+          <label for="lname">Last name</label>
+          <input type="text" id="lname" name="last_name" placeholder="Smith">
+        </div>
+      </div>
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="field">
+        <label for="subject">Subject</label>
+        <select id="subject" name="topic">
+          <option value="">Select a topic…</option>
+          <option value="Question about a calculator">Question about a calculator</option>
+          <option value="Report a bug or error">Report a bug or error</option>
+          <option value="General feedback">General feedback</option>
+          <option value="Something else">Something else</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell us what's on your mind…" required></textarea>
+      </div>
+      <button class="submit-btn" type="submit" id="submit-btn">Send Message →</button>
+      <div class="success-msg" id="success-msg" style="display:none;">
+        ✅ Thanks for reaching out! We'll get back to you within 2 business days.
+      </div>
+      <div id="error-msg" style="display:none;margin-top:12px;padding:12px;background:#FADFDF;border-radius:8px;color:#B83232;font-size:.875rem;">
+        ❌ Something went wrong. Please try again or email us directly at <a href="mailto:hello@healthybmicheck.com" style="color:#B83232;">hello@healthybmicheck.com</a>
+      </div>
+    </form>
+  </div>
+
+  <div class="faq-block">
+    <h2>Common Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Are your calculators medically accurate?</button>
+      <div class="faq-a">Our calculators use established scientific formulas widely used in clinical and research settings — the Mifflin-St Jeor equation for calories, WHO BMI classifications, the U.S. Navy method for body fat, and multiple peer-reviewed ideal weight formulas. Results are estimates based on population averages and should be used as a general guide, not a medical diagnosis. For personalised health advice, please consult a qualified healthcare professional.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you store my data?</button>
+      <div class="faq-a">No. All calculations on this site run entirely in your browser — no data is sent to our servers. We do not collect, store, or share any health information you enter into our calculators. See our <a href="privacy.html">Privacy Policy</a> for full details.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I suggest a new calculator or article?</button>
+      <div class="faq-a">Absolutely — we love hearing what tools our readers find useful. Send us a message using the form above with your suggestion and we will consider it for a future update.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">I found a calculation error — what should I do?</button>
+      <div class="faq-a">Please let us know immediately using the form above or by emailing hello@healthybmicheck.com. Describe which calculator, what inputs you used, and what result you got. We take accuracy seriously and will investigate and correct any errors promptly.</div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<script>
+  // Web3Forms submission handler
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const successMsg = document.getElementById('success-msg');
+    const errorMsg = document.getElementById('error-msg');
+
+    // Update subject with selected topic
+    const topic = document.getElementById('subject').value;
+    if (topic) {
+      document.getElementById('form-subject').value = 'HealthyBMICheck: ' + topic;
+    }
+
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
+
+    try {
+      const formData = new FormData(this);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        successMsg.style.display = 'block';
+        this.reset();
+        btn.textContent = 'Send Message →';
+        btn.disabled = false;
+      } else {
+        throw new Error(data.message);
+      }
+    } catch (err) {
+      errorMsg.style.display = 'block';
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+    }
+  });
+
+  function toggleFaq(btn) {
+    btn.classList.toggle('open');
+    btn.nextElementSibling.classList.toggle('open');
+  }
+</script>
+
+<div style="padding-bottom: 20px;"></div></main>
+
+</Base>

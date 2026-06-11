@@ -1,0 +1,374 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Asian BMI Calculator — Country-Specific Cutoffs"
+  description="Free Asian BMI calculator with country-specific cutoffs for Malaysia, Singapore, India, China, Japan &amp; Korea. Results under your country's standard."
+  canonical="https://healthybmicheck.com/asian-bmi-calculator.html"
+  schemaJson={"{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Asian BMI Calculator\",\"url\":\"https://healthybmicheck.com/asian-bmi-calculator.html\",\"description\":\"BMI calculator using WHO Asian cutoffs and country-specific standards for Malaysia, Singapore, India, China, Japan and South Korea.\",\"applicationCategory\":\"HealthApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}"}
+>
+
+<main><div class="hero" style="padding-bottom: 16px;">
+  <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Asian BMI Calculator</div>
+  <h1>Free <em>Asian BMI</em> Calculator</h1>
+  <p>Uses WHO Asian cutoffs and your country's specific standard. Overweight starts at <strong>23.0</strong> for most Asian adults — not 25.</p>
+</div>
+
+<div class="notice-banner">
+  <div class="notice-inner">
+    🌏 <strong>Why a separate calculator?</strong> At the same BMI, Asian adults carry 3–5% more visceral fat than Western adults — raising diabetes and heart disease risk earlier. WHO Asian guidelines set overweight at <strong>BMI 23</strong> and obese at <strong>BMI 27.5</strong>.
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Country Selector -->
+  <div class="country-selector-wrap">
+    <span class="country-selector-label">Select your country / region</span>
+    <div class="country-grid">
+      <button class="country-btn active" onclick="setCountry('who')" id="btn-who">🌏 WHO Asian (General)</button>
+      <button class="country-btn" onclick="setCountry('my')" id="btn-my">🇲🇾 Malaysia</button>
+      <button class="country-btn" onclick="setCountry('sg')" id="btn-sg">🇸🇬 Singapore</button>
+      <button class="country-btn" onclick="setCountry('in')" id="btn-in">🇮🇳 India</button>
+      <button class="country-btn" onclick="setCountry('cn')" id="btn-cn">🇨🇳 China</button>
+      <button class="country-btn" onclick="setCountry('kr')" id="btn-kr">🇰🇷 South Korea</button>
+      <button class="country-btn" onclick="setCountry('jp')" id="btn-jp">🇯🇵 Japan</button>
+      <button class="country-btn" onclick="setCountry('tw')" id="btn-tw">🇹🇼 Taiwan</button>
+    </div>
+  </div>
+
+  <!-- Calculator Card -->
+  <div class="card">
+    <div class="unit-toggle">
+      <button class="active" onclick="setUnit('metric')">Metric (kg / cm)</button>
+      <button onclick="setUnit('imperial')">Imperial (lb / in)</button>
+    </div>
+
+    <div class="input-group" id="metric-inputs">
+      <label>Weight</label>
+      <div class="input-wrap">
+        <input type="number" id="weight-kg" placeholder="65" min="20" max="300">
+        <span class="unit-badge">kg</span>
+      </div>
+    </div>
+    <div class="input-group" id="imperial-inputs" style="display:none">
+      <label>Weight</label>
+      <div class="input-wrap">
+        <input type="number" id="weight-lb" placeholder="143" min="44" max="660">
+        <span class="unit-badge">lb</span>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Height</label>
+      <div id="metric-height">
+        <div class="input-wrap">
+          <input type="number" id="height-cm" placeholder="165" min="100" max="250">
+          <span class="unit-badge">cm</span>
+        </div>
+      </div>
+      <div id="imperial-height" style="display:none">
+        <div class="input-row">
+          <div class="input-wrap">
+            <input type="number" id="height-ft" placeholder="5" min="3" max="8">
+            <span class="unit-badge">ft</span>
+          </div>
+          <div class="input-wrap">
+            <input type="number" id="height-in" placeholder="5" min="0" max="11">
+            <span class="unit-badge">in</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">Calculate Asian BMI →</button>
+  </div>
+
+  <!-- Result Card -->
+  <div class="result-card" id="result-card">
+    <div class="bmi-number" id="bmi-number">—</div>
+    <div class="bmi-category" id="bmi-category"></div>
+
+    <div class="scale-wrap">
+      <div class="scale-bar">
+        <div class="scale-pointer" id="scale-pointer" style="left:0%"></div>
+      </div>
+      <div class="scale-labels">
+        <span>Underweight<br>&lt;18.5</span>
+        <span>Normal<br>18.5–<span id="label-normal-top">22.9</span></span>
+        <span>Overweight<br><span id="label-ow-start">23</span>–<span id="label-ow-end">27.4</span></span>
+        <span>Obese<br>≥<span id="label-ob-start">27.5</span></span>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-box">
+        <div class="label">Healthy weight range (your height)</div>
+        <div class="value" id="healthy-range">—</div>
+      </div>
+      <div class="info-box">
+        <div class="label">Standard WHO category</div>
+        <div class="value" id="standard-cat">—</div>
+      </div>
+      <div class="info-box">
+        <div class="label">Country standard used</div>
+        <div class="value" id="country-standard">WHO Asian</div>
+      </div>
+      <div class="info-box">
+        <div class="label">Overweight threshold</div>
+        <div class="value" id="ow-threshold">BMI ≥ 23.0</div>
+      </div>
+    </div>
+
+    <div class="health-tip" id="health-tip"></div>
+  </div>
+
+  <!-- Comparison Table (all countries) -->
+  <div class="compare-section" id="compare">
+    <h2 class="section-title">Asian BMI Standards by Country</h2>
+    <p class="section-sub">Most Asian health authorities use lower cutoffs than the standard WHO guidelines. Your selected country is highlighted.</p>
+    <!-- BMI Standards Comparison Chart -->
+    <div class="card" style="padding: 20px 20px 12px; margin-bottom: 14px; overflow-x: auto;">
+      <p style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:14px;">Overweight &amp; Obese thresholds by country vs WHO Global standard</p>
+      <svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart comparing BMI overweight and obese thresholds across Asian countries and WHO global standard" style="width:100%;max-width:640px;display:block;font-family:'DM Sans',sans-serif;">
+
+        <!-- Grid lines -->
+        <line x1="120" y1="20" x2="120" y2="220" stroke="#E5E0D8" stroke-width="1"/>
+        <line x1="220" y1="20" x2="220" y2="220" stroke="#E5E0D8" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="320" y1="20" x2="320" y2="220" stroke="#E5E0D8" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="420" y1="20" x2="420" y2="220" stroke="#E5E0D8" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="520" y1="20" x2="520" y2="220" stroke="#E5E0D8" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="600" y1="20" x2="600" y2="220" stroke="#E5E0D8" stroke-width="1" stroke-dasharray="4,3"/>
+
+        <!-- X axis labels (BMI values): scale 18–32, mapped to x 120–600 = 480px / 14 units -->
+        <text x="120" y="235" text-anchor="middle" font-size="10" fill="#A09A94">18</text>
+        <text x="154" y="235" text-anchor="middle" font-size="10" fill="#A09A94">20</text>
+        <text x="223" y="235" text-anchor="middle" font-size="10" fill="#A09A94">22</text>
+        <text x="257" y="235" text-anchor="middle" font-size="10" fill="#A09A94">23</text>
+        <text x="291" y="235" text-anchor="middle" font-size="10" fill="#A09A94">24</text>
+        <text x="325" y="235" text-anchor="middle" font-size="10" fill="#A09A94">25</text>
+        <text x="394" y="235" text-anchor="middle" font-size="10" fill="#A09A94">27</text>
+        <text x="428" y="235" text-anchor="middle" font-size="10" fill="#A09A94">28</text>
+        <text x="497" y="235" text-anchor="middle" font-size="10" fill="#A09A94">30</text>
+        <text x="600" y="235" text-anchor="middle" font-size="10" fill="#A09A94">32</text>
+        <text x="360" y="252" text-anchor="middle" font-size="10" fill="#6B6560">BMI →</text>
+
+        <!-- Helper: x = 120 + (bmi - 18) * (480/14) = 120 + (bmi-18)*34.3 -->
+        <!-- overweight start lines: WHO=25 x=325, Asian=23 x=257, India/KR=23 x=257 -->
+
+        <!-- WHO Global reference line -->
+        <line x1="325" y1="18" x2="325" y2="222" stroke="#9AA0A6" stroke-width="1.5" stroke-dasharray="6,3"/>
+        <text x="328" y="16" font-size="9" fill="#9AA0A6">WHO Global OW (25)</text>
+
+        <!-- Asian WHO line -->
+        <line x1="257" y1="18" x2="257" y2="222" stroke="#2D6A4F" stroke-width="1.5" stroke-dasharray="6,3"/>
+        <text x="260" y="16" font-size="9" fill="#2D6A4F">Asian OW (23)</text>
+
+        <!-- Rows: each row = label + normal bar (green) + overweight bar (orange) + obese dot (red) -->
+        <!-- Row height: 26px, starting y=30 -->
+
+        <!-- Helper macro (done manually for SVG):
+             normal bar: from x(normal_low) to x(normal_high) — green
+             overweight bar: from x(ow_low) to x(ow_high) — orange
+             obese marker: from x(ob) to end — red
+             x(bmi) = 120 + (bmi - 18) * 34.28
+             18 → 120, 18.5 → 137, 22.9 → 188, 23 → 191, 24 → 225, 25 → 259, 27.5 → 327, 28 → 344, 30 → 412
+        -->
+
+        <!-- WHO Asian / MY / SG: normal 18.5–22.9, OW 23–27.4, Ob ≥27.5 -->
+        <text x="4" y="46" font-size="10.5" fill="#1A1714" font-weight="600">WHO Asian</text>
+        <text x="4" y="57" font-size="9" fill="#A09A94">MY / SG</text>
+        <rect x="137" y="34" width="51" height="14" rx="3" fill="#D8EFE4"/>
+        <rect x="191" y="34" width="117" height="14" rx="3" fill="#FBF0DC"/>
+        <rect x="310" y="34" width="290" height="14" rx="3" fill="#FADFDF" opacity=".7"/>
+        <text x="163" y="44" text-anchor="middle" font-size="8.5" fill="#2D6A4F" font-weight="600">Normal</text>
+        <text x="248" y="44" text-anchor="middle" font-size="8.5" fill="#C17B2A" font-weight="600">Overweight</text>
+        <text x="400" y="44" text-anchor="middle" font-size="8.5" fill="#B83232" font-weight="600">Obese ≥27.5</text>
+
+        <!-- India / South Korea: normal 18.5–22.9, OW 23–24.9, Ob ≥25 -->
+        <text x="4" y="80" font-size="10.5" fill="#1A1714" font-weight="600">India / Korea</text>
+        <rect x="137" y="68" width="51" height="14" rx="3" fill="#D8EFE4"/>
+        <rect x="191" y="68" width="66" height="14" rx="3" fill="#FBF0DC"/>
+        <rect x="259" y="68" width="341" height="14" rx="3" fill="#FADFDF" opacity=".7"/>
+        <text x="163" y="78" text-anchor="middle" font-size="8.5" fill="#2D6A4F" font-weight="600">Normal</text>
+        <text x="224" y="78" text-anchor="middle" font-size="8.5" fill="#C17B2A" font-weight="600">OW</text>
+        <text x="380" y="78" text-anchor="middle" font-size="8.5" fill="#B83232" font-weight="600">Obese ≥25</text>
+
+        <!-- Taiwan: normal 18.5–23.9, OW 24–26.9, Ob ≥27 -->
+        <text x="4" y="114" font-size="10.5" fill="#1A1714" font-weight="600">Taiwan</text>
+        <rect x="137" y="102" width="85" height="14" rx="3" fill="#D8EFE4"/>
+        <rect x="225" y="102" width="98" height="14" rx="3" fill="#FBF0DC"/>
+        <rect x="325" y="102" width="275" height="14" rx="3" fill="#FADFDF" opacity=".7"/>
+        <text x="180" y="112" text-anchor="middle" font-size="8.5" fill="#2D6A4F" font-weight="600">Normal</text>
+        <text x="274" y="112" text-anchor="middle" font-size="8.5" fill="#C17B2A" font-weight="600">Overweight</text>
+        <text x="440" y="112" text-anchor="middle" font-size="8.5" fill="#B83232" font-weight="600">Obese ≥27</text>
+
+        <!-- China: normal 18.5–23.9, OW 24–27.9, Ob ≥28 -->
+        <text x="4" y="148" font-size="10.5" fill="#1A1714" font-weight="600">China</text>
+        <rect x="137" y="136" width="85" height="14" rx="3" fill="#D8EFE4"/>
+        <rect x="225" y="136" width="117" height="14" rx="3" fill="#FBF0DC"/>
+        <rect x="344" y="136" width="256" height="14" rx="3" fill="#FADFDF" opacity=".7"/>
+        <text x="180" y="146" text-anchor="middle" font-size="8.5" fill="#2D6A4F" font-weight="600">Normal</text>
+        <text x="283" y="146" text-anchor="middle" font-size="8.5" fill="#C17B2A" font-weight="600">Overweight</text>
+        <text x="450" y="146" text-anchor="middle" font-size="8.5" fill="#B83232" font-weight="600">Obese ≥28</text>
+
+        <!-- Japan / WHO Global: normal 18.5–24.9, OW 25–29.9, Ob ≥30 -->
+        <text x="4" y="182" font-size="10.5" fill="#1A1714" font-weight="600">Japan / WHO</text>
+        <text x="4" y="193" font-size="9" fill="#A09A94">Global</text>
+        <rect x="137" y="170" width="120" height="14" rx="3" fill="#D8EFE4"/>
+        <rect x="259" y="170" width="153" height="14" rx="3" fill="#FBF0DC"/>
+        <rect x="414" y="170" width="186" height="14" rx="3" fill="#FADFDF" opacity=".7"/>
+        <text x="198" y="180" text-anchor="middle" font-size="8.5" fill="#2D6A4F" font-weight="600">Normal</text>
+        <text x="336" y="180" text-anchor="middle" font-size="8.5" fill="#C17B2A" font-weight="600">Overweight</text>
+        <text x="490" y="180" text-anchor="middle" font-size="8.5" fill="#B83232" font-weight="600">Obese ≥30</text>
+
+        <!-- X axis line -->
+        <line x1="120" y1="220" x2="610" y2="220" stroke="#E5E0D8" stroke-width="1.5"/>
+
+      </svg>
+    </div>
+
+        <div class="card" style="padding:0;overflow:hidden;">
+      <table id="country-table">
+        <thead>
+          <tr>
+            <th>Country / Standard</th>
+            <th>Normal</th>
+            <th>Overweight</th>
+            <th>Obese</th>
+            <th>Authority</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="row-who"><td>🌏 WHO Asian (General)</td><td>18.5–22.9</td><td>23.0–27.4</td><td>≥ 27.5</td><td>WHO 2004</td></tr>
+          <tr id="row-my"><td>🇲🇾 Malaysia</td><td>18.5–22.9</td><td>23.0–27.4</td><td>≥ 27.5</td><td>MOH Malaysia</td></tr>
+          <tr id="row-sg"><td>🇸🇬 Singapore</td><td>18.5–22.9</td><td>23.0–27.4</td><td>≥ 27.5</td><td>HPB Singapore</td></tr>
+          <tr id="row-in"><td>🇮🇳 India</td><td>18.5–22.9</td><td>23.0–24.9</td><td>≥ 25.0</td><td>ICMR / JAPI 2009</td></tr>
+          <tr id="row-cn"><td>🇨🇳 China</td><td>18.5–23.9</td><td>24.0–27.9</td><td>≥ 28.0</td><td>NHC WS/T 428-2013</td></tr>
+          <tr id="row-kr"><td>🇰🇷 South Korea</td><td>18.5–22.9</td><td>23.0–24.9</td><td>≥ 25.0</td><td>KSSO 2022</td></tr>
+          <tr id="row-jp"><td>🇯🇵 Japan</td><td>18.5–24.9</td><td>25.0–29.9</td><td>≥ 30.0*</td><td>JASSO</td></tr>
+          <tr id="row-tw"><td>🇹🇼 Taiwan</td><td>18.5–23.9</td><td>24.0–26.9</td><td>≥ 27.0</td><td>MOHW Taiwan</td></tr>
+          <tr><td>📊 Standard WHO (Global)</td><td>18.5–24.9</td><td>25.0–29.9</td><td>≥ 30.0</td><td>WHO Global</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.78rem;color:var(--ink3);margin-top:8px;">* Japan uses standard WHO cutoffs officially but defines Class II obesity at BMI ≥ 25 for clinical risk management purposes.</p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is a healthy BMI for Asian adults?</button>
+      <div class="faq-a">For most Asian adults, the WHO recommends a healthy BMI of <strong>18.5 to 22.9</strong>. Overweight is BMI 23.0–27.4 and obese is BMI 27.5 or above. These are lower than Western cutoffs (25 and 30) because research shows Asian populations develop metabolic disease at lower BMI values due to higher visceral fat accumulation.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Why are BMI cutoffs different for Asians?</button>
+      <div class="faq-a">At the same BMI, people of Asian descent carry approximately 3–5% more <strong>visceral fat</strong> — fat stored around internal organs — compared to people of European descent. This metabolically active fat triggers insulin resistance and inflammation earlier. A 2004 WHO Expert Consultation in <em>The Lancet</em> confirmed this finding and recommended lower thresholds for Asian populations.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What BMI is overweight for Malaysians and Singaporeans?</button>
+      <div class="faq-a">Both Malaysia (Ministry of Health) and Singapore (Health Promotion Board) use the same WHO Asian cutoffs: overweight starts at BMI <strong>23.0</strong> and obese starts at BMI <strong>27.5</strong>. This is the same as the general WHO Asian guideline. A Malaysian or Singaporean adult with BMI 24 is considered overweight by local guidelines, even though the same BMI falls in the "normal" range by global WHO standards.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Does India use the same cutoffs as Malaysia and Singapore?</button>
+      <div class="faq-a">No. India's ICMR and the Joint Working Group (JAPI 2009 guidelines) define overweight as BMI <strong>23.0–24.9</strong> but set obesity at BMI <strong>≥ 25.0</strong> — lower than the standard 30. South Korea uses the same 23/25 split. Some Indian guidelines suggest even earlier intervention at BMI 22.9 for South Asians with abdominal obesity.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Why does China use different BMI cutoffs?</button>
+      <div class="faq-a">China's National Health Commission (NHC WS/T 428-2013) uses its own research-based thresholds: overweight starts at BMI <strong>24.0</strong> and obese at BMI <strong>28.0</strong>. These are slightly higher than the general WHO Asian guideline but still lower than the global WHO cutoffs of 25 and 30. China's cutoffs reflect the Working Group on Obesity in China (WGOC) findings specific to the Han Chinese population.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is BMI 23 overweight for Asians?</button>
+      <div class="faq-a">Yes — for most Asian countries including Malaysia, Singapore, India, South Korea, and the general WHO Asian guideline, BMI <strong>23.0</strong> marks the start of overweight. This does not mean you are unhealthy, but it does indicate elevated metabolic risk compared to someone with BMI below 23. Pair your BMI with a <a href="body-fat.html">body fat assessment</a> for a fuller picture.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Should I use Asian or standard BMI?</button>
+      <div class="faq-a">If you are of East or Southeast Asian, South Asian, or Malay descent, the Asian BMI cutoffs give a more accurate health risk picture. If you are of European, African, or Latin American descent, use the <a href="bmi-calculator.html">standard BMI calculator</a>. If you are of mixed ethnicity, discuss with your doctor which guideline to apply.</div>
+    </div>
+  </div>
+
+  <!-- Article -->
+  <div class="article-section">
+    <h2>Why Asian Adults Need Different BMI Thresholds</h2>
+    <p>The global BMI classification — "overweight" at 25, "obese" at 30 — was built on studies of European populations. When applied to Asian populations, it misses a critical reality: Asian adults develop type 2 diabetes, high blood pressure, and cardiovascular disease at BMI levels that Western guidelines classify as "normal."</p>
+    <p>The reason is body composition. For the same BMI, people of Asian descent accumulate significantly more <strong>visceral fat</strong> — fat packed around the liver, pancreas, and intestines. This metabolically active fat drives insulin resistance and inflammation even when total body weight looks unremarkable on a standard scale.</p>
+
+    <h2>The Science: Key Findings</h2>
+    <ul>
+      <li>At BMI 23, Asian adults carry equivalent metabolic risk to a European adult at BMI 25 (WHO Expert Consultation, <em>The Lancet</em>, 2004)</li>
+      <li>Risk of type 2 diabetes increases 3–5× for Asian populations once BMI exceeds 23</li>
+      <li>Body fat percentage at a given BMI is approximately 3–5% higher in Asian adults vs European adults</li>
+      <li>South Asian populations (Indian, Pakistani, Bangladeshi) show particularly elevated visceral fat and insulin resistance at low BMI</li>
+      <li>A 2025 study in <em>Frontiers in Nutrition</em> found that using Chinese standards (overweight ≥24) identified 37.4% of the study population as overweight, vs 31.8% using the global WHO standard of ≥25</li>
+    </ul>
+
+    <div class="callout">
+      <p>💡 <strong>Key insight:</strong> Two people with identical BMI values can have very different body fat percentages and health risks depending on their ethnicity. Asian-specific BMI cutoffs account for this difference — and that difference matters clinically.</p>
+    </div>
+
+    <h2>How to Use Your Result</h2>
+    <p>Your Asian BMI is a screening tool, not a diagnosis. Here is what to do with it:</p>
+    <ul>
+      <li><strong>Below 18.5 (Underweight):</strong> May indicate inadequate nutrition. Speak with a healthcare provider.</li>
+      <li><strong>18.5–22.9 (Normal):</strong> Lowest health risk for Asian adults. Maintain with a balanced diet and 150+ minutes of moderate exercise weekly.</li>
+      <li><strong>23.0 – country threshold (Overweight):</strong> Elevated metabolic risk. Dietary changes and regular activity are recommended. Try the <a href="calorie-calculator.html">Calorie Calculator</a>.</li>
+      <li><strong>Above obese threshold:</strong> Significantly elevated risk. A healthcare provider visit is advisable.</li>
+    </ul>
+
+    <div class="warn-callout" style="background:var(--warn-light);border-radius:10px;padding:14px 16px;margin:16px 0;font-size:.9rem;color:var(--ink);">
+      ⚠️ BMI does not account for muscle mass, bone density, or fat distribution. For a fuller picture, pair it with a <a href="body-fat.html">Body Fat Calculator</a> or waist circumference measurement.
+    </div>
+
+    <div class="sources">
+      <strong>References</strong><br>
+      WHO Expert Consultation. Appropriate body-mass index for Asian populations and its implications for policy and intervention strategies. <em>The Lancet</em>. 2004;363(9403):157–163.<br>
+      Health Promotion Board Singapore. BMI Guidelines for Asian Populations. HPB, 2023. <a href="https://www.hpb.gov.sg" target="_blank" rel="noopener">hpb.gov.sg</a><br>
+      Misra A et al. Consensus statement for diagnosis of obesity for Asian Indians. <em>JAPI</em>. 2009.<br>
+      Chinese NHC Standard WS/T 428—2013. Classification of overweight and obesity for Chinese adults.<br>
+      Korean Society for the Study of Obesity (KSSO). Obesity Fact Sheet 2022.<br>
+      Wen CP et al. Are Asians at greater mortality risks for being overweight? <em>Asia Pacific Journal of Clinical Nutrition</em>. 2009.
+    </div>
+
+    <div class="related" style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border);">
+      <h3 style="font-family:'DM Serif Display',serif;font-size:1.1rem;margin-bottom:14px;">Related Tools & Guides</h3>
+      <div class="related-links">
+        <a href="bmi-calculator.html">Standard BMI Calculator</a>
+        <a href="body-fat.html">Body Fat Calculator</a>
+        <a href="calorie-calculator.html">Calorie Calculator</a>
+        <a href="ideal-weight.html">Ideal Weight Calculator</a>
+        <a href="waist-to-height-ratio.html">Waist-to-Height Ratio</a>
+        <a href="healthy-bmi-asian-women.html">Healthy BMI for Asian Women</a>
+        <a href="what-is-bmi.html">What Is BMI?</a>
+        <a href="how-to-lower-bmi.html">How to Lower Your BMI</a>
+      
+        <a href="visceral-fat.html">Understanding Visceral Fat</a>
+        <a href="metabolism-facts.html">Metabolism Facts</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta-block">
+  <div class="cta-inner">
+    <p class="cta-label">Next step</p>
+    <h2>Get your full health picture</h2>
+    <p>Calculate your daily calories, body fat, and ideal weight range.</p>
+    <div class="cta-btns">
+      <a href="calorie-calculator.html" class="cta-btn-primary">🔥 Calorie Calculator →</a>
+      <a href="body-fat.html" class="cta-btn-secondary">📊 Body Fat Calculator →</a>
+      <a href="health-profile.html" class="cta-btn-secondary">👤 Full Health Profile →</a>
+    </div>
+  </div>
+</div></main>
+
+</Base>

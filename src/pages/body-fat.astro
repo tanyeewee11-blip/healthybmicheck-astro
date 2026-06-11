@@ -1,0 +1,388 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Body Fat Calculator — Estimate Your Body Fat Percentage"
+  description="Estimate your body fat percentage using the U.S. Navy method. Free calculator for men and women — just a tape measure, no gym equipment needed."
+  canonical="https://healthybmicheck.com/body-fat.html"
+  schemaJson={"{\"@context\": \"https://schema.org\", \"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"What is the U.S. Navy method?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"The U.S. Navy method estimates body fat percentage using simple circumference measurements — waist, neck, and hips (for women) — along with height. It was developed for practical use in military fitness assessments and is considered reasonably accurate for most adults, with a typical margin of error of 3–4%.\"}}, {\"@type\": \"Question\", \"name\": \"How do I measure correctly?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Use a flexible tape measure and measure directly on skin, not over clothing. For the waist, measure at the level of your navel while relaxed (not sucked in). For the neck, measure just below the larynx (Adam's apple), sloping slightly downward at the front. For hips (women), measure at the widest point. Take each measurement twice and use the average.\"}}, {\"@type\": \"Question\", \"name\": \"Is body fat percentage better than BMI?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Body fat percentage and BMI measure different things. BMI uses only height and weight, while body fat percentage directly estimates the proportion of fat in your body. Body fat percentage is generally more informative for athletes and those with high muscle mass, but BMI is easier to measure and useful for population-level screening. Using both together gives the most complete picture.\"}}, {\"@type\": \"Question\", \"name\": \"What is a healthy body fat percentage?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"For men, a healthy body fat range is generally considered to be 8–19%, with athletic individuals typically falling in the 6–13% range. For women, healthy ranges are approximately 21–33%, with athletes typically at 14–20%. These ranges vary with age — older adults tend to carry slightly more body fat as a natural part of ageing.\"}}, {\"@type\": \"Question\", \"name\": \"How can I reduce body fat?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Reducing body fat requires a combination of a moderate calorie deficit (eating slightly less than you burn) and regular physical activity, particularly strength training to preserve muscle mass. Crash diets tend to cause muscle loss alongside fat loss, which can worsen body composition over time. Slow, consistent progress — around 0.5 kg per week — typically gives the best long-term results.\"}}]}"}
+>
+
+<main><div class="hero">
+    <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Body Fat Calculator</div>
+  <h1>Body Fat <em>Percentage</em> Calculator</h1>
+  <p>Estimate your body fat percentage using the U.S. Navy method — just a tape measure, no gym equipment needed.</p>
+</div>
+<div class="container">
+  <div class="card">
+    <div class="unit-toggle">
+      <button class="active" onclick="setUnit('metric')">Metric (cm)</button>
+      <button onclick="setUnit('imperial')">Imperial (in)</button>
+    </div>
+    <div class="input-group">
+      <label>Sex</label>
+      <div class="gender-toggle">
+        <button class="gender-btn active" onclick="setGender('male',this)">Male</button>
+        <button class="gender-btn" onclick="setGender('female',this)">Female</button>
+      </div>
+    </div>
+
+    <!-- Weight (needed for fat/lean mass in kg) -->
+    <div class="input-group" id="metric-weight-wrap">
+      <label>Weight <span class="label-hint">used to calculate fat & lean mass</span></label>
+      <div class="input-wrap">
+        <input type="number" id="weight-kg" placeholder="70" min="20" max="300">
+        <span class="unit-badge">kg</span>
+      </div>
+    </div>
+    <div class="input-group" id="imperial-weight-wrap" style="display:none">
+      <label>Weight <span class="label-hint">optional — for fat & lean mass in lb</span></label>
+      <div class="input-wrap">
+        <input type="number" id="weight-lb" placeholder="154" min="44" max="660">
+        <span class="unit-badge">lb</span>
+      </div>
+    </div>
+
+    <!-- Height -->
+    <div class="input-group" id="metric-height">
+      <label>Height</label>
+      <div class="input-wrap">
+        <input type="number" id="height-cm" placeholder="175" min="100" max="250">
+        <span class="unit-badge">cm</span>
+      </div>
+    </div>
+    <div class="input-group" id="imperial-height" style="display:none">
+      <label>Height</label>
+      <div class="input-row">
+        <div class="input-wrap">
+          <input type="number" id="height-ft" placeholder="5" min="3" max="8">
+          <span class="unit-badge">ft</span>
+        </div>
+        <div class="input-wrap">
+          <input type="number" id="height-in" placeholder="9" min="0" max="11">
+          <span class="unit-badge">in</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Waist -->
+    <div class="input-group">
+      <label>Waist <span class="label-hint">measure at navel level</span></label>
+      <div class="input-wrap">
+        <input type="number" id="waist" placeholder="85">
+        <span class="unit-badge" id="waist-unit">cm</span>
+      </div>
+    </div>
+
+    <!-- Neck -->
+    <div class="input-group">
+      <label>Neck <span class="label-hint">below the larynx</span></label>
+      <div class="input-wrap">
+        <input type="number" id="neck" placeholder="38">
+        <span class="unit-badge" id="neck-unit">cm</span>
+      </div>
+    </div>
+
+    <!-- Hip (female only) -->
+    <div class="input-group" id="hip-group" style="display:none">
+      <label>Hips <span class="label-hint">widest point</span></label>
+      <div class="input-wrap">
+        <input type="number" id="hip" placeholder="95">
+        <span class="unit-badge" id="hip-unit">cm</span>
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">Calculate Body Fat →</button>
+  </div>
+
+  <div class="result-card" id="result-card">
+    <div class="bf-number" id="bf-number">—</div>
+    <div class="bf-category" id="bf-category"></div>
+    <div class="scale-wrap">
+      <div class="scale-bar">
+        <div class="scale-pointer" id="scale-pointer" style="left:0%"></div>
+      </div>
+      <div class="scale-labels">
+        <span>Essential</span>
+        <span>Athletic</span>
+        <span>Fitness</span>
+        <span>Obese</span>
+      </div>
+    </div>
+    <div class="info-grid">
+      <div class="info-box">
+        <div class="ilabel">Fat mass (enter weight)</div>
+        <div class="ivalue" id="fat-mass">—</div>
+      </div>
+      <div class="info-box">
+        <div class="ilabel">Lean mass (enter weight)</div>
+        <div class="ivalue" id="lean-mass">—</div>
+      </div>
+    </div>
+    <div class="tip-box" id="tip-box"></div>
+  </div>
+
+  <div class="table-section">
+    <h2 class="section-title">Body Fat Percentage Categories</h2>
+    <p class="section-sub">American Council on Exercise (ACE) body fat classification for adults.</p>
+    <table>
+      <thead><tr><th>Category</th><th>Men</th><th>Women</th></tr></thead>
+      <tbody>
+        <tr><td>Essential fat</td><td>2 – 5%</td><td>10 – 13%</td></tr>
+        <tr><td>Athletic</td><td>6 – 13%</td><td>14 – 20%</td></tr>
+        <tr><td>Fitness</td><td>14 – 17%</td><td>21 – 24%</td></tr>
+        <tr><td>Acceptable</td><td>18 – 24%</td><td>25 – 31%</td></tr>
+        <tr><td>Obese</td><td>25% and above</td><td>32% and above</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  
+<div class="card" style="padding:20px;margin:20px 0;overflow-x:auto;">
+  <p style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:14px;">Healthy body fat ranges by sex</p>
+  <svg viewBox="0 0 620 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;display:block;font-family:'DM Sans',sans-serif;">
+    <text x="10" y="30" font-size="10" font-weight="700" fill="#1A1714">Men:</text>
+    <rect x="60" y="17" width="60" height="20" rx="4" fill="#DCE9F8"/>
+    <text x="90" y="31" text-anchor="middle" font-size="9" fill="#3A7BBF">Essential 3–5%</text>
+    <rect x="128" y="17" width="100" height="20" rx="4" fill="#D8EFE4"/>
+    <text x="178" y="31" text-anchor="middle" font-size="9" fill="#2D6A4F" font-weight="600">Athletic 6–13%</text>
+    <rect x="236" y="17" width="100" height="20" rx="4" fill="#D8EFE4" opacity=".8"/>
+    <text x="286" y="31" text-anchor="middle" font-size="9" fill="#2D6A4F">Fit 14–17%</text>
+    <rect x="344" y="17" width="110" height="20" rx="4" fill="#FBF0DC"/>
+    <text x="399" y="31" text-anchor="middle" font-size="9" fill="#C17B2A">Average 18–24%</text>
+    <rect x="462" y="17" width="148" height="20" rx="4" fill="#FADFDF"/>
+    <text x="536" y="31" text-anchor="middle" font-size="9" fill="#B83232">Obese 25%+</text>
+    <text x="10" y="65" font-size="10" font-weight="700" fill="#1A1714">Women:</text>
+    <rect x="60" y="52" width="70" height="20" rx="4" fill="#DCE9F8"/>
+    <text x="95" y="66" text-anchor="middle" font-size="9" fill="#3A7BBF">Essential 10–13%</text>
+    <rect x="138" y="52" width="100" height="20" rx="4" fill="#D8EFE4"/>
+    <text x="188" y="66" text-anchor="middle" font-size="9" fill="#2D6A4F" font-weight="600">Athletic 14–20%</text>
+    <rect x="246" y="52" width="100" height="20" rx="4" fill="#D8EFE4" opacity=".8"/>
+    <text x="296" y="66" text-anchor="middle" font-size="9" fill="#2D6A4F">Fit 21–24%</text>
+    <rect x="354" y="52" width="110" height="20" rx="4" fill="#FBF0DC"/>
+    <text x="409" y="66" text-anchor="middle" font-size="9" fill="#C17B2A">Average 25–31%</text>
+    <rect x="472" y="52" width="138" height="20" rx="4" fill="#FADFDF"/>
+    <text x="541" y="66" text-anchor="middle" font-size="9" fill="#B83232">Obese 32%+</text>
+    <text x="310" y="92" text-anchor="middle" font-size="9" fill="#A09A94">ACE body composition guidelines</text>
+  </svg>
+</div>
+<div class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">About body fat percentage and how to measure it.</p>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the U.S. Navy method?</button>
+      <div class="faq-a">The U.S. Navy method estimates body fat percentage using simple circumference measurements — waist, neck, and hips (for women) — along with height. It was developed for practical use in military fitness assessments and is considered reasonably accurate for most adults, with a typical margin of error of 3–4%.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How do I measure correctly?</button>
+      <div class="faq-a">Use a flexible tape measure and measure directly on skin, not over clothing. For the waist, measure at the level of your navel while relaxed (not sucked in). For the neck, measure just below the larynx (Adam's apple), sloping slightly downward at the front. For hips (women), measure at the widest point. Take each measurement twice and use the average.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is body fat percentage better than BMI?</button>
+      <div class="faq-a">Body fat percentage and BMI measure different things. BMI uses only height and weight, while body fat percentage directly estimates the proportion of fat in your body. Body fat percentage is generally more informative for athletes and those with high muscle mass, but BMI is easier to measure and useful for population-level screening. Using both together gives the most complete picture.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is a healthy body fat percentage?</button>
+      <div class="faq-a">For men, a healthy body fat range is generally considered to be 8–19%, with athletic individuals typically falling in the 6–13% range. For women, healthy ranges are approximately 21–33%, with athletes typically at 14–20%. These ranges vary with age — older adults tend to carry slightly more body fat as a natural part of ageing.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How can I reduce body fat?</button>
+      <div class="faq-a">Reducing body fat requires a combination of a moderate calorie deficit (eating slightly less than you burn) and regular physical activity, particularly strength training to preserve muscle mass. Crash diets tend to cause muscle loss alongside fat loss, which can actually worsen your body composition over time. Slow, consistent progress — around 0.5 kg per week — typically gives the best long-term results.</div>
+    </div>
+  </div>
+  <div class="article-section">
+    <h2>How This Calculator Works: The U.S. Navy Method</h2>
+    <p>This calculator uses the <strong>U.S. Navy circumference method</strong>, developed for practical body composition assessment in military settings. Unlike DEXA scans or hydrostatic weighing, it requires only a flexible tape measure — no specialist equipment needed.</p>
+    <p>The method works by estimating body fat from body circumference measurements, which correlate with fat distribution patterns. The formulas used are:</p>
+    <div style="background:var(--ink);color:#fff;border-radius:12px;padding:18px 24px;margin:16px 0;font-family:monospace;font-size:0.9rem;line-height:2;">
+      <span style="color:#7EC8A4">Men:</span> BF% = 86.010 × log₁₀(waist − neck) − 70.041 × log₁₀(height) + 36.76<br>
+      <span style="color:#7EC8A4">Women:</span> BF% = 163.205 × log₁₀(waist + hip − neck) − 97.684 × log₁₀(height) − 78.387
+    </div>
+    <p>The typical margin of error is <strong>3–4 percentage points</strong> compared to laboratory methods such as DEXA. This means a result of 20% could reflect a true value of 16–24%. Use the result as a useful indicator of your general category, not as a precise measurement.</p>
+
+    <h2>How to Take Accurate Measurements</h2>
+    <p>Measurement technique significantly affects accuracy. Follow these guidelines for best results:</p>
+    <ul>
+      <li><strong>Use a flexible tape measure</strong> (cloth or plastic), not a rigid ruler. Measure directly on skin, not over clothing.</li>
+      <li><strong>Waist:</strong> Measure horizontally at the level of your navel (belly button), while relaxed — do not suck in your stomach. Take the measurement at the end of a normal exhale.</li>
+      <li><strong>Neck:</strong> Measure just below the larynx (Adam's apple), with the tape angled slightly downward at the front. Keep your head level.</li>
+      <li><strong>Hips (women only):</strong> Measure at the widest point of your hips and buttocks, standing with your feet together.</li>
+      <li><strong>Take each measurement twice</strong> and use the average. If the two readings differ by more than 0.5 cm, take a third and average the closest two.</li>
+      <li><strong>Measure at the same time of day</strong> for consistency — ideally in the morning before eating.</li>
+    </ul>
+    <div class="callout"><p>💡 <strong>Tip:</strong> For tracking progress over time, consistency of technique matters more than absolute accuracy. Even if the number is slightly off, measuring the same way each time will reliably show whether your body fat is going up, down, or staying the same.</p></div>
+
+    <h2>Body Fat vs BMI: What's the Difference?</h2>
+    <p><a href="bmi-calculator.html">BMI</a> and body fat percentage are related but distinct measures. BMI is calculated from height and weight alone and cannot distinguish between fat and muscle. Body fat percentage directly estimates the proportion of your body that is fat tissue.</p>
+    <p>In practice, this means:</p>
+    <ul>
+      <li>A muscular athlete may have a high BMI (classified as "overweight") but a very low body fat percentage — reflecting excellent health.</li>
+      <li>An older adult who has lost muscle may have a "normal" BMI but an elevated body fat percentage, representing a risk that BMI alone would miss.</li>
+      <li>For most healthy, non-athletic adults, BMI and body fat percentage tend to align reasonably well.</li>
+    </ul>
+    <p>Using both measurements together gives a more complete picture of body composition than either alone.</p>
+
+    <h2>How to Reduce Body Fat</h2>
+    <p>Sustainable body fat reduction requires two things working together: a moderate calorie deficit and resistance training to preserve muscle mass.</p>
+    <ul>
+      <li><strong>Calorie deficit:</strong> A deficit of 300–500 calories per day below your maintenance level results in gradual fat loss without excessive muscle loss. Use the <a href="calorie-calculator.html">Calorie Calculator</a> to find your starting point.</li>
+      <li><strong>Protein intake:</strong> Aim for 1.6–2.2 g of protein per kg of bodyweight per day during a deficit. This protects muscle tissue while losing fat. See our <a href="high-protein-foods.html">high-protein foods guide</a> for practical food choices.</li>
+      <li><strong>Resistance training:</strong> Strength training 2–4 times per week sends a signal to preserve muscle during weight loss. Without it, a significant portion of weight lost comes from muscle, worsening body composition.</li>
+      <li><strong>Cardiovascular exercise:</strong> Cardio increases overall calorie burn and improves cardiovascular health. HIIT (high-intensity interval training) has been shown to be particularly effective for reducing visceral fat. See our guide on <a href="best-exercises-to-lose-weight.html">best exercises to lose weight</a>.</li>
+      <li><strong>Sleep and stress:</strong> Poor sleep raises cortisol, which promotes fat storage, particularly around the abdomen. Prioritising 7–9 hours of sleep per night supports fat loss.</li>
+    </ul>
+    <div class="warn-callout"><p>⚠️ Crash diets that severely restrict calories tend to cause muscle loss alongside fat loss, which can actually increase body fat percentage over time even as scale weight drops. Aim for slow, consistent progress.</p></div>
+
+    <div class="sources">
+      <strong>References:</strong><br>
+      Hodgdon JA, Beckett MB. Prediction of percent body fat for U.S. Navy men and women from body circumferences and height. <em>Naval Health Research Center Report</em>, 1984.<br>
+      American Council on Exercise. <a href="https://www.acefitness.org/education-and-resources/lifestyle/tools-calculators/percent-body-fat-calculator/" target="_blank" rel="noopener">Body fat classifications</a>. ACE Fitness.<br>
+      Wilmore JH, et al. Body composition and body fat distribution in relation to health. <em>Int J Obes Relat Metab Disord.</em> 1996.
+    </div>
+  </div>
+
+  </div>
+
+  <div class="related">
+    <h3>Related Articles &amp; Tools</h3>
+    <div class="related-links">
+      <a href="how-much-water-per-day.html">How Much Water Per Day?</a>
+      <a href="bmi-calculator.html">BMI Calculator</a>
+      <a href="calorie-calculator.html">Calorie Calculator</a>
+      <a href="ideal-weight.html">Ideal Weight Calculator</a>
+      <a href="what-is-bmi.html">What is BMI?</a>
+      <a href="water-intake.html">Water Intake Calculator</a>
+      <a href="asian-bmi-calculator.html">Asian BMI Calculator</a>
+      <a href="bmi-calculator-kids.html">Kids BMI Calculator</a>
+    
+        <a href="calorie-deficit-calculator.html">Calorie Deficit Calculator</a>
+        <a href="visceral-fat.html">Understanding Visceral Fat</a>
+        <a href="sleep-and-weight-loss.html">Sleep & Weight Loss</a>
+        <a href="stress-and-weight-gain.html">Stress & Weight Gain</a>
+      </div>
+  </div>
+
+
+<script>
+  let unit = 'metric', gender = 'male';
+
+  function setUnit(u) {
+    unit = u;
+    document.querySelectorAll('.unit-toggle button').forEach((b,i) => b.classList.toggle('active',(u==='metric'&&i===0)||(u==='imperial'&&i===1)));
+    document.getElementById('metric-height').style.display = u==='metric'?'':'none';
+    document.getElementById('imperial-height').style.display = u==='imperial'?'':'none';
+    document.getElementById('metric-weight-wrap').style.display = u==='metric'?'':'none';
+    document.getElementById('imperial-weight-wrap').style.display = u==='imperial'?'':'none';
+    const badge = u==='metric'?'cm':'in';
+    ['waist-unit','neck-unit','hip-unit'].forEach(id => document.getElementById(id).textContent = badge);
+  }
+
+  function setGender(g, btn) {
+    gender = g;
+    document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('hip-group').style.display = g==='female'?'':'none';
+  }
+
+  function toInches(val) {
+    return unit==='metric' ? val / 2.54 : val;
+  }
+
+  function calculate() {
+    let heightIn;
+    if(unit==='metric') {
+      const cm = parseFloat(document.getElementById('height-cm').value);
+      if(!cm) { alert('Please enter your height.'); return; }
+      heightIn = cm / 2.54;
+    } else {
+      const ft = parseFloat(document.getElementById('height-ft').value)||0;
+      const ins = parseFloat(document.getElementById('height-in').value)||0;
+      heightIn = ft*12 + ins;
+    }
+
+    const waistIn = toInches(parseFloat(document.getElementById('waist').value));
+    const neckIn  = toInches(parseFloat(document.getElementById('neck').value));
+
+    if(!waistIn || !neckIn || !heightIn) { alert('Please fill in all measurements.'); return; }
+    if(gender === 'male' && waistIn <= neckIn) { alert('Waist measurement must be larger than neck. Please check your measurements.'); return; }
+
+    let bf;
+    if(gender==='male') {
+      bf = 86.010 * Math.log10(waistIn - neckIn) - 70.041 * Math.log10(heightIn) + 36.76;
+    } else {
+      const hipIn = toInches(parseFloat(document.getElementById('hip').value));
+      if(!hipIn) { alert('Please enter your hip measurement.'); return; }
+      if((waistIn + hipIn) <= neckIn) { alert('Measurement error: waist + hip must be larger than neck.'); return; }
+      bf = 163.205 * Math.log10(waistIn + hipIn - neckIn) - 97.684 * Math.log10(heightIn) - 78.387;
+    }
+    bf = Math.max(2, Math.min(60, bf));
+    const bfRound = Math.round(bf * 10) / 10;
+
+    // Category
+    let cat, catClass, tip;
+    if(gender==='male') {
+      if(bf < 6)       { cat='Essential Fat'; catClass='cat-low';      tip='Your body fat is in the essential fat range. This is the minimum needed for basic physiological functions. Athletes training at this level should be monitored by a professional.'; }
+      else if(bf < 14) { cat='Athletic';      catClass='cat-normal';   tip='Excellent — your body fat is in the athletic range. Focus on maintaining your muscle mass through consistent strength training and adequate protein intake.'; }
+      else if(bf < 18) { cat='Fitness';       catClass='cat-normal';   tip='Your body fat is in a healthy fitness range. You have a good balance of muscle and fat. Maintain your current routine with regular exercise and balanced nutrition.'; }
+      else if(bf < 25) { cat='Acceptable';    catClass='cat-high';     tip='Your body fat is within an acceptable range, though closer to the higher end. A moderate increase in activity and small dietary adjustments can improve your composition over time.'; }
+      else             { cat='Obese';         catClass='cat-veryhigh'; tip='Your body fat percentage suggests a higher health risk. A combination of calorie control and regular exercise — especially strength training — can help reduce fat while preserving muscle.'; }
+    } else {
+      if(bf < 14)      { cat='Essential Fat'; catClass='cat-low';      tip='Your body fat is in the essential fat range. For women, this level can affect hormonal health. Consult a healthcare professional if you are at this level unintentionally.'; }
+      else if(bf < 21) { cat='Athletic';      catClass='cat-normal';   tip='Excellent — your body fat is in the athletic range. Ensure you are eating enough to support your activity levels and hormonal health.'; }
+      else if(bf < 25) { cat='Fitness';       catClass='cat-normal';   tip='Your body fat is in a healthy fitness range. You have a good balance of muscle and fat for long-term health and energy.'; }
+      else if(bf < 32) { cat='Acceptable';    catClass='cat-high';     tip='Your body fat is within an acceptable range. Regular exercise and mindful eating can gradually improve your body composition.'; }
+      else             { cat='Obese';         catClass='cat-veryhigh'; tip='Your body fat percentage suggests a higher health risk. Consulting a dietitian or healthcare professional can help you create a safe, sustainable plan.'; }
+    }
+
+    document.getElementById('bf-number').textContent = bfRound.toFixed(1) + '%';
+    const catEl = document.getElementById('bf-category');
+    catEl.textContent = cat; catEl.className = 'bf-category ' + catClass;
+
+    // Fat / lean mass in kg or lb if weight entered
+    let weightKg = unit === 'metric'
+      ? parseFloat(document.getElementById('weight-kg').value)
+      : (parseFloat(document.getElementById('weight-lb').value) || 0) * 0.453592;
+    if (weightKg > 0) {
+      const fatKg  = (bf / 100 * weightKg).toFixed(1);
+      const leanKg = (weightKg - fatKg).toFixed(1);
+      if (unit === 'metric') {
+        document.getElementById('fat-mass').textContent  = fatKg + ' kg fat';
+        document.getElementById('lean-mass').textContent = leanKg + ' kg lean';
+      } else {
+        document.getElementById('fat-mass').textContent  = (fatKg / 0.453592).toFixed(1) + ' lb fat';
+        document.getElementById('lean-mass').textContent = (leanKg / 0.453592).toFixed(1) + ' lb lean';
+      }
+    } else {
+      document.getElementById('fat-mass').textContent  = '—';
+      document.getElementById('lean-mass').textContent = '—';
+    }
+    document.getElementById('tip-box').textContent = tip;
+
+    // Pointer: map 0–50% BF to 0–100% bar
+    const pct = Math.min(Math.max(bf / 50 * 100, 2), 98);
+    document.getElementById('result-card').classList.add('visible');
+    setTimeout(() => { document.getElementById('scale-pointer').style.left = pct + '%'; }, 50);
+    document.getElementById('result-card').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  function toggleFaq(btn) { btn.nextElementSibling.classList.toggle('open'); btn.classList.toggle('open'); }
+  document.addEventListener('keydown', e => { if(e.key==='Enter') calculate(); });
+</script>
+
+
+  <!-- CTA Block -->
+  <div style="max-width:720px;margin:0 auto;padding:0 20px 48px;">
+    <div style="background:#1A1714;border-radius:20px;padding:32px 28px;text-align:center;">
+      <p style="font-size:.78rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Next step</p>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;line-height:1.2;">Get the full picture</h2>
+      <p style="font-size:.875rem;color:rgba(255,255,255,.6);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto;">Pair your body fat result with your BMI and calorie needs.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+      <a href="bmi-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;">⚖️ BMI Calculator →</a>
+      <a href="waist-to-height-ratio.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;">📏 Waist-to-Height Ratio →</a>
+      <a href="health-profile.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;">👤 Full Health Profile →</a>
+      </div>
+    </div>
+  </div></main>
+
+</Base>

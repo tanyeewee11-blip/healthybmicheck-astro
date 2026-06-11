@@ -1,0 +1,105 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  schemaJson?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogTitle,
+  ogDescription,
+  schemaJson,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon_192x192.png">
+  <link rel="apple-touch-icon" href="/favicon_512x512.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-7723301737736770">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HNT40MVZPK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HNT40MVZPK');
+  </script>
+
+  <title>{title}</title>
+  <link rel="canonical" href={canonical}>
+  <meta name="description" content={description}>
+
+  {schemaJson && <script type="application/ld+json" set:html={schemaJson} />}
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={canonical}>
+  <meta property="og:title" content={ogTitle ?? title}>
+  <meta property="og:description" content={ogDescription ?? description}>
+  <meta property="og:image" content="https://healthybmicheck.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={ogTitle ?? title}>
+  <meta name="twitter:description" content={ogDescription ?? description}>
+  <meta name="twitter:image" content="https://healthybmicheck.com/og-image.png">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7723301737736770" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo"><a href="/">healthy<span>bmicheck</span>.com</a></div>
+  <nav>
+    <a href="/bmi-calculator">BMI</a>
+    <a href="/calorie-calculator">Calories</a>
+    <a href="/">All Tools</a>
+    <a href="/guides">Guides</a>
+    <a href="/about">About</a>
+  </nav>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<slot />
+
+<footer>
+  <div>© 2026 healthybmicheck.com — Free Health Calculators</div>
+  <div style="margin-top:8px">
+    <a href="/">All Calculators</a>
+    <a href="/bmi-calculator">BMI Calculator</a>
+    <a href="/guides">Guides</a>
+    <a href="/about">About</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/contact">Contact</a>
+  </div>
+  <div style="margin-top:12px; font-size:0.75rem; opacity:0.7; line-height:1.7;">
+    For informational purposes only. Not a substitute for professional medical advice,
+    diagnosis, or treatment.<br>
+    Formulas sourced from WHO, CDC, and peer-reviewed research. Always consult a
+    qualified healthcare provider for personalised guidance.
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('nav');
+  toggle?.addEventListener('click', () => nav?.classList.toggle('open'));
+</script>
+
+</body>
+</html>

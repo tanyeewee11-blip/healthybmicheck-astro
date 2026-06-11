@@ -1,0 +1,268 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Water Intake Calculator — How Much Water Per Day?"
+  description="Find out exactly how much water you should drink per day based on your weight, activity level, and climate. Free daily water intake calculator."
+  canonical="https://healthybmicheck.com/water-intake.html"
+  schemaJson={"{\"@context\": \"https://schema.org\", \"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Does the \\\"8 glasses a day\\\" rule apply to everyone?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"The popular \\\"8 glasses a day\\\" rule is a rough guideline, not a universal requirement. Actual water needs vary significantly based on body weight, activity level, climate, diet, and health status. Larger individuals, athletes, and people in hot climates typically need considerably more than 8 glasses.\"}}, {\"@type\": \"Question\", \"name\": \"Does coffee or tea count towards my daily water intake?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Yes, to a degree. Coffee and tea do contribute to your daily fluid intake. While caffeine has a mild diuretic effect, research shows that moderate consumption of caffeinated beverages still results in a net positive fluid contribution. However, plain water remains the best source of hydration.\"}}, {\"@type\": \"Question\", \"name\": \"How do I know if I am drinking enough water?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"The simplest indicator is urine colour. Pale yellow (like lemonade) indicates good hydration. Dark yellow or amber suggests you need to drink more. Other signs of dehydration include dry mouth, fatigue, headaches, and reduced urine output.\"}}, {\"@type\": \"Question\", \"name\": \"Should I drink more water in Malaysia's climate?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Yes. Malaysia's hot and humid tropical climate increases sweat loss significantly, raising your daily fluid requirements. People living in tropical climates typically need 0.5–1 litre more per day compared to those in cooler climates, especially if spending time outdoors.\"}}, {\"@type\": \"Question\", \"name\": \"Can you drink too much water?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Yes, though it is rare in healthy adults. Drinking extremely large amounts in a short period can cause hyponatraemia (low blood sodium), which is a medical emergency. This is most commonly seen in endurance athletes who over-hydrate. For most people, following the recommendations from this calculator is safe.\"}}]}"}
+>
+
+<main><div class="hero">
+    <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Water Intake Calculator</div>
+  <h1>Daily <em>Water</em> Intake Calculator</h1>
+  <p>Find out exactly how much water you should drink every day based on your weight, activity, and climate.</p>
+</div>
+<div class="container">
+  <div class="card">
+    <div class="unit-toggle">
+      <button class="active" onclick="setUnit('metric')">Metric (kg)</button>
+      <button onclick="setUnit('imperial')">Imperial (lb)</button>
+    </div>
+    <div class="input-group">
+      <label>Weight</label>
+      <div class="input-wrap" id="metric-w">
+        <input type="number" id="weight-kg" placeholder="70" min="1" max="500">
+        <span class="unit-badge">kg</span>
+      </div>
+      <div class="input-wrap" id="imperial-w" style="display:none">
+        <input type="number" id="weight-lb" placeholder="154" min="1" max="1100">
+        <span class="unit-badge">lb</span>
+      </div>
+    </div>
+    <div class="input-group">
+      <label>Activity Level</label>
+      <select id="activity">
+        <option value="0">Sedentary (desk job, little exercise)</option>
+        <option value="0.35" selected>Moderately active (exercise 3–5x/week)</option>
+        <option value="0.7">Very active (intense exercise daily)</option>
+        <option value="1.05">Athlete / physical job</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label>Climate</label>
+      <select id="climate">
+        <option value="0">Cool / temperate</option>
+        <option value="0.35" selected>Warm / humid (tropical)</option>
+        <option value="0.7">Hot / very humid</option>
+      </select>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Calculate Water Intake →</button>
+  </div>
+
+  <div class="result-card" id="result-card">
+    <div class="water-main" id="water-main">—</div>
+    <div class="water-label" id="water-label">litres per day recommended</div>
+    <div class="cups-row" id="cups-row"></div>
+    <div class="info-grid">
+      <div class="info-box"><div class="ilabel">In millilitres</div><div class="ivalue" id="ml-val">—</div></div>
+      <div class="info-box"><div class="ilabel">In fl oz (US)</div><div class="ivalue" id="oz-val">—</div></div>
+      <div class="info-box"><div class="ilabel">250ml glasses</div><div class="ivalue" id="glasses-val">—</div></div>
+      <div class="info-box"><div class="ilabel">500ml bottles</div><div class="ivalue" id="bottles-val">—</div></div>
+    </div>
+    <div class="tip-box" id="tip-box"></div>
+  </div>
+
+  <div class="table-section">
+    <h2 class="section-title">General Daily Water Guidelines</h2>
+    <p class="section-sub">Based on weight and activity level for adults in a warm climate.</p>
+    <table>
+      <thead><tr><th>Body Weight</th><th>Sedentary</th><th>Moderately Active</th><th>Very Active</th></tr></thead>
+      <tbody>
+        <tr><td>50 kg (110 lb)</td><td>1.5 L</td><td>1.9 L</td><td>2.3 L</td></tr>
+        <tr><td>60 kg (132 lb)</td><td>1.8 L</td><td>2.2 L</td><td>2.6 L</td></tr>
+        <tr><td>70 kg (154 lb)</td><td>2.1 L</td><td>2.5 L</td><td>3.0 L</td></tr>
+        <tr><td>80 kg (176 lb)</td><td>2.4 L</td><td>2.9 L</td><td>3.4 L</td></tr>
+        <tr><td>90 kg (198 lb)</td><td>2.7 L</td><td>3.2 L</td><td>3.8 L</td></tr>
+        <tr><td>100 kg (220 lb)</td><td>3.0 L</td><td>3.6 L</td><td>4.2 L</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  
+<div class="card" style="padding:20px;margin:20px 0;overflow-x:auto;">
+  <p style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:14px;">Urine colour hydration guide</p>
+  <svg viewBox="0 0 620 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;display:block;font-family:'DM Sans',sans-serif;">
+    <rect x="10" y="15" width="72" height="35" rx="8" fill="#FEFDE8" stroke="#E5E0D8" stroke-width="1"/>
+    <text x="46" y="38" text-anchor="middle" font-size="9" fill="#6B6560">Over-hydrated</text>
+    <rect x="92" y="15" width="72" height="35" rx="8" fill="#FFFACD" stroke="#E5E0D8" stroke-width="1"/>
+    <text x="128" y="34" text-anchor="middle" font-size="9" fill="#2D6A4F" font-weight="600">✓ Ideal</text>
+    <text x="128" y="46" text-anchor="middle" font-size="9" fill="#2D6A4F">Pale yellow</text>
+    <rect x="174" y="15" width="72" height="35" rx="8" fill="#FFE87C" stroke="#E5E0D8" stroke-width="1"/>
+    <text x="210" y="34" text-anchor="middle" font-size="9" fill="#2D6A4F" font-weight="600">✓ Good</text>
+    <text x="210" y="46" text-anchor="middle" font-size="9" fill="#2D6A4F">Yellow</text>
+    <rect x="256" y="15" width="72" height="35" rx="8" fill="#FFD700" stroke="#E5E0D8" stroke-width="1"/>
+    <text x="292" y="34" text-anchor="middle" font-size="9" fill="#C17B2A" font-weight="600">⚠ Drink</text>
+    <text x="292" y="46" text-anchor="middle" font-size="9" fill="#C17B2A">more water</text>
+    <rect x="338" y="15" width="72" height="35" rx="8" fill="#DAA520" stroke="#E5E0D8" stroke-width="1"/>
+    <text x="374" y="34" text-anchor="middle" font-size="9" fill="#C17B2A" font-weight="600">⚠ Low</text>
+    <text x="374" y="46" text-anchor="middle" font-size="9" fill="#C17B2A">Dehydrated</text>
+    <rect x="420" y="15" width="80" height="35" rx="8" fill="#B8860B" stroke="#E5E0D8" stroke-width="1"/>
+    <text x="460" y="34" text-anchor="middle" font-size="9" fill="#fff" font-weight="600">❌ Severe</text>
+    <text x="460" y="46" text-anchor="middle" font-size="9" fill="#fff">See doctor</text>
+    <rect x="510" y="15" width="100" height="35" rx="8" fill="#8B4513" stroke="#E5E0D8" stroke-width="1"/>
+    <text x="560" y="34" text-anchor="middle" font-size="9" fill="#fff" font-weight="600">❌ Critical</text>
+    <text x="560" y="46" text-anchor="middle" font-size="9" fill="#fff">Seek help now</text>
+    <text x="310" y="78" text-anchor="middle" font-size="9" fill="#A09A94">Check urine colour first thing in morning for most accurate reading</text>
+  </svg>
+</div>
+
+<div style="max-width:720px;margin:0 auto;padding:0 20px;">
+  <div class="article-section">
+    <h2>Factors That Increase Your Water Needs</h2>
+    <p>Your baseline water requirement assumes a temperate climate and sedentary lifestyle. Several common factors significantly raise your needs above the general guideline:</p>
+    <ul>
+      <li><strong>Hot and humid climates (Malaysia, Singapore):</strong> You can lose 0.5–1.5 litres per hour through sweat in tropical heat. Add at least 500ml–1L above baseline on hot days, and significantly more if you are outdoors or exercising.</li>
+      <li><strong>Exercise:</strong> Aim to drink 400–600ml of water in the 2 hours before exercise, 150–250ml every 15–20 minutes during exercise, and 500ml for every 0.5kg of body weight lost during the session.</li>
+      <li><strong>High-protein or high-fibre diet:</strong> Protein metabolism produces urea which requires water to excrete; fibre absorbs water in the gut. Both increase fluid requirements by approximately 200–400ml/day.</li>
+      <li><strong>Illness with fever, vomiting, or diarrhoea:</strong> Fluid losses increase dramatically. An oral rehydration solution (water with salt and sugar) replaces lost electrolytes more effectively than plain water alone.</li>
+      <li><strong>Pregnancy and breastfeeding:</strong> Pregnant women need approximately 300ml extra per day; breastfeeding women need approximately 700ml extra to produce breast milk.</li>
+      <li><strong>Altitude:</strong> Above 2,500m, increased breathing rate and urination raises daily needs by 500ml–1L.</li>
+    </ul>
+
+    <h2>Signs You Are Not Drinking Enough Water</h2>
+    <p>Many people are chronically mildly dehydrated without realising it. The classic signs of inadequate hydration include:</p>
+    <ul>
+      <li><strong>Dark yellow or amber urine</strong> — the most reliable indicator; aim for pale straw yellow</li>
+      <li><strong>Infrequent urination</strong> — healthy adults urinate 6–8 times per day; fewer than 4 suggests inadequate intake</li>
+      <li><strong>Headaches</strong> — one of the earliest symptoms of mild dehydration (1–2% body weight loss)</li>
+      <li><strong>Poor concentration and fatigue</strong> — even mild dehydration (1%) impairs cognitive performance and mood in research studies</li>
+      <li><strong>Constipation</strong> — the large intestine absorbs water from stool when intake is low, hardening stools</li>
+      <li><strong>Muscle cramps</strong> — particularly during or after exercise; dehydration disrupts electrolyte balance needed for muscle contraction</li>
+    </ul>
+
+    <div class="callout">💡 <strong>Practical tip for Malaysia and Singapore:</strong> If your office or home is air-conditioned all day, you may feel less thirsty than in the heat — but the dry air still increases respiratory water loss. Keep a 1.5L bottle visible at your desk and aim to finish it before 5pm.</div>
+
+    <h2>Does Coffee and Tea Count Towards Hydration?</h2>
+    <p>Yes — despite the common myth, moderate caffeine consumption does not cause net dehydration. Both coffee and tea provide a positive fluid balance: the water in the beverage more than compensates for any mild diuretic effect from caffeine. Studies show you would need to consume approximately 500mg of caffeine (5+ cups of coffee) in a short period to see meaningful diuresis.</p>
+    <p>Plain sparkling water, herbal teas, and diluted fruit juices also count. Foods with high water content — cucumber (96% water), watermelon (92%), oranges (86%), and most cooked vegetables — contribute meaningfully to daily fluid intake and are often overlooked.</p>
+
+    <div class="sources">
+      <strong>References</strong><br>
+      European Food Safety Authority. Dietary Reference Values for water. <em>EFSA Journal.</em> 2010;8(3):1459.<br>
+      Maughan RJ, Griffin J. Caffeine ingestion and fluid balance: a review. <em>J Hum Nutr Diet.</em> 2003;16(6):411–420.<br>
+      Armstrong LE. Hydration assessment techniques. <em>Nutr Rev.</em> 2005;63(S1):S40–S54.
+    </div>
+  </div>
+</div>
+
+<div class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Everything you need to know about daily hydration.</p>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Does the "8 glasses a day" rule apply to everyone?</button>
+      <div class="faq-a">The popular "8 glasses a day" rule is a rough guideline, not a universal requirement. Actual water needs vary significantly based on body weight, activity level, climate, diet, and health status. Larger individuals, athletes, and people in hot climates typically need considerably more than 8 glasses.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Does coffee or tea count towards my daily water intake?</button>
+      <div class="faq-a">Yes, to a degree. Coffee and tea do contribute to your daily fluid intake. While caffeine has a mild diuretic effect, research shows that moderate consumption of caffeinated beverages still results in a net positive fluid contribution. However, plain water remains the best source of hydration.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How do I know if I am drinking enough water?</button>
+      <div class="faq-a">The simplest indicator is urine colour. Pale yellow (like lemonade) indicates good hydration. Dark yellow or amber suggests you need to drink more. Other signs of dehydration include dry mouth, fatigue, headaches, and reduced urine output.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Should I drink more water in Malaysia's climate?</button>
+      <div class="faq-a">Yes. Malaysia's hot and humid tropical climate increases sweat loss significantly, raising your daily fluid requirements. People living in tropical climates typically need 0.5–1 litre more per day compared to those in cooler climates, especially if spending time outdoors.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can you drink too much water?</button>
+      <div class="faq-a">Yes, though it is rare in healthy adults. Drinking extremely large amounts in a short period can cause hyponatraemia (low blood sodium), which is a medical emergency. This is most commonly seen in endurance athletes who over-hydrate. For most people, following the recommendations from this calculator is safe.</div>
+    </div>
+  </div>
+    
+
+  <div class="sources" style="margin: 32px 0 8px; padding: 20px 0; border-top: 1px solid #E5E0D8; font-size: 0.82rem; color: #A09A94; line-height: 1.8;">
+    <strong style="color:#6B6560">References:</strong><br>
+    Popkin BM, D'Anci KE, Rosenberg IH. Water, hydration and health. <em>Nutr Rev.</em> 2010;68(8):439–458.<br>
+    National Academies of Sciences, Engineering, and Medicine. Dietary Reference Intakes for Water. <em>The National Academies Press.</em> 2005.<br>
+    Manz F. Hydration and disease. <em>J Am Coll Nutr.</em> 2007;26(5 Suppl):535S–541S.
+  </div>
+
+  <div class="related">
+    <h3>Related Articles &amp; Tools</h3>
+    <div class="related-links">
+      <a href="how-much-water-per-day.html">How Much Water Per Day? — Complete Guide</a>
+      <a href="calorie-calculator.html">Calorie Calculator</a>
+      <a href="ideal-weight.html">Ideal Weight Calculator</a>
+      <a href="bmi-calculator.html">BMI Calculator</a>
+      <a href="body-fat.html">Body Fat Calculator</a>
+      <a href="asian-bmi-calculator.html">Asian BMI Calculator</a>
+      <a href="bmi-calculator-kids.html">Kids BMI Calculator</a>
+      <a href="waist-to-height-ratio.html">Waist-to-Height Ratio</a>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  let unit = 'metric';
+  function setUnit(u) {
+    unit = u;
+    document.querySelectorAll('.unit-toggle button').forEach((b,i)=>b.classList.toggle('active',(u==='metric'&&i===0)||(u==='imperial'&&i===1)));
+    document.getElementById('metric-w').style.display = u==='metric'?'':'none';
+    document.getElementById('imperial-w').style.display = u==='imperial'?'':'none';
+  }
+  function calculate() {
+    let weightKg;
+    if(unit==='metric') weightKg = parseFloat(document.getElementById('weight-kg').value);
+    else weightKg = parseFloat(document.getElementById('weight-lb').value) * 0.453592;
+    if(!weightKg||weightKg<10) { alert('Please enter a valid weight.'); return; }
+    const activity = parseFloat(document.getElementById('activity').value);
+    const climate  = parseFloat(document.getElementById('climate').value);
+    // Base: 35ml per kg, adjusted for activity and climate
+    const baseMl = weightKg * 35;
+    const actMl  = weightKg * activity * 10;
+    const climMl = weightKg * climate * 10;
+    const totalMl = Math.round((baseMl + actMl + climMl) / 50) * 50;
+    const totalL  = (totalMl / 1000).toFixed(1);
+    const totalOz = (totalMl / 29.5735).toFixed(0);
+    const glasses = Math.ceil(totalMl / 250);
+    const bottles = Math.ceil(totalMl / 500);
+    document.getElementById('water-main').textContent = totalL + ' L';
+    document.getElementById('ml-val').textContent = totalMl.toLocaleString() + ' ml';
+    document.getElementById('oz-val').textContent = totalOz + ' fl oz';
+    document.getElementById('glasses-val').textContent = glasses + ' glasses';
+    document.getElementById('bottles-val').textContent = bottles + ' bottles';
+    // Cups visual
+    const cupsRow = document.getElementById('cups-row');
+    cupsRow.innerHTML = '';
+    for(let i=0;i<glasses;i++) {
+      const cup = document.createElement('span');
+      cup.className = 'cup';
+      cup.textContent = '🥛';
+      cupsRow.appendChild(cup);
+    }
+    // Tip
+    const tips = [
+      'Start your day with a glass of water before coffee or tea — it helps kickstart your metabolism.',
+      'Carry a reusable water bottle and aim to refill it based on your bottle count above.',
+      'Set hourly reminders on your phone to drink water throughout the day.',
+      'Eat water-rich foods like cucumber, watermelon, and leafy greens to supplement your intake.'
+    ];
+    document.getElementById('tip-box').textContent = tips[Math.floor(Math.random()*tips.length)];
+    document.getElementById('result-card').classList.add('visible');
+    
+    document.getElementById('result-card').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  function toggleFaq(btn) { btn.nextElementSibling.classList.toggle('open'); btn.classList.toggle('open'); }
+  document.addEventListener('keydown', e=>{ if(e.key==='Enter') calculate(); });
+</script>
+
+
+  <!-- CTA Block -->
+  <div style="max-width:720px;margin:0 auto;padding:0 20px 48px;">
+    <div style="background:#1A1714;border-radius:20px;padding:32px 28px;text-align:center;">
+      <p style="font-size:.78rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Next step</p>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;line-height:1.2;">Check your other health metrics</h2>
+      <p style="font-size:.875rem;color:rgba(255,255,255,.6);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto;">Get your BMI, calorie needs, and full health profile.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+      <a href="health-profile.html" style="display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;">👤 Full Health Profile →</a>
+      <a href="bmi-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;">⚖️ BMI Calculator →</a>
+      <a href="calorie-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;">🔥 Calorie Calculator →</a>
+      </div>
+    </div>
+  </div></main>
+
+</Base>
