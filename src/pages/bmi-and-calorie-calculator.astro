@@ -1,0 +1,195 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="BMI and Calorie Calculator — How They Work Together"
+  description="How BMI and calorie calculators work together to help you reach a healthy weight. Includes formulas, examples, and how to use both to set realistic goals."
+  canonical="https://healthybmicheck.com/bmi-and-calorie-calculator.html"
+>
+<div class="hero">
+  <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › BMI and Calorie Calculator</div>
+  <h1>BMI and <em>Calorie Calculator</em><br>— How They Work Together</h1>
+  <p>BMI tells you where you are. A calorie calculator tells you what to eat to get where you want to be. Here's how to use both together.</p>
+</div>
+
+<div class="container">
+
+  <div class="info-grid">
+    <div class="info-box">
+      <div class="lbl">BMI Calculator</div>
+      <div class="val">Where you are now</div>
+    </div>
+    <div class="info-box">
+      <div class="lbl">Calorie Calculator</div>
+      <div class="val">How to get to your goal</div>
+    </div>
+    <div class="info-box">
+      <div class="lbl">Safe weekly loss</div>
+      <div class="val">0.5 – 1 kg / week</div>
+    </div>
+    <div class="info-box">
+      <div class="lbl">Calorie deficit needed</div>
+      <div class="val">~500 kcal/day</div>
+    </div>
+  </div>
+
+  <div class="article-section">
+
+    <h2>Step 1 — Check Your BMI First</h2>
+    <p>Before working out calories, you need a clear picture of where you stand. BMI (Body Mass Index) gives you a quick read on whether your current weight is in a healthy range for your height.</p>
+
+    <table>
+      <thead>
+        <tr><th>BMI Range</th><th>Category</th><th>What it means for calories</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Below 18.5</td><td>Underweight</td><td>Calorie surplus needed — aim for slow weight gain</td></tr>
+        <tr><td>18.5 – 24.9</td><td>Normal weight</td><td>Maintenance calories — focus on body composition</td></tr>
+        <tr><td>25.0 – 29.9</td><td>Overweight</td><td>Moderate deficit — 300 to 500 kcal below TDEE</td></tr>
+        <tr><td>30.0+</td><td>Obese</td><td>Structured deficit — 500 to 750 kcal below TDEE</td></tr>
+      </tbody>
+    </table>
+
+    <p>For people of Asian descent, the overweight threshold starts at BMI 23 rather than 25. Check your number using our <a href="bmi-calculator.html">BMI Calculator</a> or the <a href="asian-bmi-calculator.html">Asian BMI Calculator</a> if applicable.</p>
+
+    <h2>Step 2 — Calculate Your TDEE</h2>
+    <p>TDEE stands for Total Daily Energy Expenditure — the number of calories your body burns in a day including all activity. This is your baseline. To lose weight you eat below it. To gain weight you eat above it. To maintain, you match it.</p>
+
+    <p>TDEE is calculated in two steps. First, your BMR (Basal Metabolic Rate) — the calories burned at rest — is estimated using the Mifflin-St Jeor formula:</p>
+
+    <div class="formula-box">
+      <span>Men:</span> BMR = (10 × weight kg) + (6.25 × height cm) − (5 × age) + 5<br>
+      <span>Women:</span> BMR = (10 × weight kg) + (6.25 × height cm) − (5 × age) − 161
+    </div>
+
+    <p>BMR is then multiplied by an activity factor to get TDEE:</p>
+
+    <table>
+      <thead>
+        <tr><th>Activity Level</th><th>Multiplier</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sedentary (desk job, little exercise)</td><td>× 1.2</td></tr>
+        <tr><td>Lightly active (exercise 1–3 days/week)</td><td>× 1.375</td></tr>
+        <tr><td>Moderately active (exercise 3–5 days/week)</td><td>× 1.55</td></tr>
+        <tr><td>Very active (hard exercise 6–7 days/week)</td><td>× 1.725</td></tr>
+      </tbody>
+    </table>
+
+    <p>Skip the manual calculation — use our <a href="calorie-calculator.html">Calorie Calculator</a> to get your TDEE instantly.</p>
+
+    <h2>Step 3 — Set Your Calorie Target Based on BMI Goal</h2>
+    <p>Once you know your TDEE and your BMI, you can set a realistic calorie target. The relationship between calorie deficit and weight loss is well established: a deficit of approximately 7,700 calories produces 1 kg of fat loss.</p>
+
+    <table>
+      <thead>
+        <tr><th>Goal</th><th>Calorie Target</th><th>Expected rate</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Slow loss (safer for older adults)</td><td>TDEE − 300 kcal</td><td>~0.3 kg/week</td></tr>
+        <tr><td>Standard loss</td><td>TDEE − 500 kcal</td><td>~0.5 kg/week</td></tr>
+        <tr><td>Faster loss (BMI over 30)</td><td>TDEE − 750 kcal</td><td>~0.75 kg/week</td></tr>
+        <tr><td>Maintenance</td><td>= TDEE</td><td>No change</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout"><p>💡 Never go below 1,200 kcal/day for women or 1,500 kcal/day for men. Eating too little slows metabolism, causes muscle loss, and makes the deficit unsustainable.</p></div>
+
+    <h2>Worked Example — From BMI to Calorie Target</h2>
+    <p>Here's a full worked example to show how BMI and calorie calculation connect in practice.</p>
+
+    <table>
+      <thead>
+        <tr><th>Detail</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Person</td><td>Female, 42 years old</td></tr>
+        <tr><td>Height</td><td>163 cm (5'4")</td></tr>
+        <tr><td>Current weight</td><td>78 kg</td></tr>
+        <tr><td>Current BMI</td><td>29.3 (overweight)</td></tr>
+        <tr><td>Goal BMI</td><td>23.0 (upper normal)</td></tr>
+        <tr><td>Goal weight</td><td>61 kg</td></tr>
+        <tr><td>Weight to lose</td><td>17 kg</td></tr>
+        <tr><td>BMR (Mifflin-St Jeor)</td><td>1,512 kcal</td></tr>
+        <tr><td>TDEE (lightly active × 1.375)</td><td>2,079 kcal</td></tr>
+        <tr><td>Target calories (−500 deficit)</td><td>1,579 kcal/day</td></tr>
+        <tr><td>Expected timeline at 0.5 kg/week</td><td>~34 weeks (8 months)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>How Many Calories to Drop One BMI Point?</h2>
+    <p>A useful way to think about this: each BMI point corresponds to roughly 2.5 to 3 kg for most adults (depending on height). At a deficit of 500 kcal/day losing 0.5 kg/week, dropping one BMI point takes approximately 5 to 6 weeks.</p>
+
+    <p>For reference at common heights:</p>
+
+    <table>
+      <thead>
+        <tr><th>Height</th><th>Weight per 1 BMI point</th><th>Time to drop 1 BMI point (at −500 kcal/day)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>155 cm</td><td>~2.4 kg</td><td>~5 weeks</td></tr>
+        <tr><td>163 cm</td><td>~2.7 kg</td><td>~5–6 weeks</td></tr>
+        <tr><td>170 cm</td><td>~2.9 kg</td><td>~6 weeks</td></tr>
+        <tr><td>178 cm</td><td>~3.2 kg</td><td>~6–7 weeks</td></tr>
+      </tbody>
+    </table>
+
+    <h2>BMI and Calories for Asian Populations</h2>
+    <p>If you are of Asian descent, your healthy BMI ceiling is 22.9 rather than 24.9. This means the calorie deficit needed to reach a healthy BMI is somewhat larger than the standard chart suggests. A person of Chinese, Malay, or Indian descent with a BMI of 26 is two full BMI points into the overweight range under Asian guidelines, not just one.</p>
+    <p>Use the <a href="asian-bmi-calculator.html">Asian BMI Calculator</a> to find your correct target weight first, then plug that into the calorie calculation.</p>
+
+    <h2>Beyond Calories — What Else Affects BMI</h2>
+    <p>Calories in versus calories out is the primary driver of weight change, but several other factors affect how quickly BMI responds.</p>
+    <ul>
+      <li>Sleep — poor sleep increases hunger hormones (ghrelin) and reduces satiety hormones (leptin), making deficit harder to maintain</li>
+      <li>Stress — chronic stress elevates cortisol, which promotes fat storage particularly around the abdomen</li>
+      <li>Muscle mass — building muscle raises BMR, meaning you burn more calories at rest over time</li>
+      <li>Protein intake — higher protein diets preserve muscle during a deficit and increase satiety</li>
+    </ul>
+
+    <div class="warn-callout"><p>⚠️ BMI and calorie calculators provide estimates based on population averages. Individual metabolism varies. If you have a medical condition affecting weight or metabolism, consult a doctor or registered dietitian before making significant dietary changes.</p></div>
+
+    <div class="sources">
+      <strong>References:</strong><br>
+      Mifflin MD et al. A new predictive equation for resting energy expenditure in healthy individuals. American Journal of Clinical Nutrition, 1990.<br>
+      Hall KD et al. Quantification of the effect of energy imbalance on bodyweight. The Lancet, 2011.<br>
+      WHO Expert Consultation. Appropriate BMI for Asian Populations. The Lancet, 2004.
+    </div>
+
+    <div class="related">
+      <h3>Related Tools & Guides</h3>
+      <div class="related-links">
+        <a href="bmi-calculator.html">BMI Calculator</a>
+        <a href="calorie-calculator.html">Calorie Calculator</a>
+        <a href="calorie-deficit-calculator.html">Calorie Deficit Calculator</a>
+        <a href="asian-bmi-calculator.html">Asian BMI Calculator</a>
+        <a href="macro-calculator.html">Macro Calculator</a>
+        <a href="ideal-weight.html">Ideal Weight Calculator</a>
+        <a href="what-is-tdee.html">What is TDEE?</a>
+        <a href="how-to-lower-bmi.html">How to Lower Your BMI</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cta-block">
+    <p style="font-size:.8rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Start here</p>
+    <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;line-height:1.2;">Calculate your BMI and daily calories</h2>
+    <p style="font-size:.9rem;color:rgba(255,255,255,.6);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto;">Get your BMI, TDEE, and calorie target for your goal in under a minute.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+      <a href="bmi-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">⚖️ BMI Calculator →</a>
+      <a href="calorie-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">🔥 Calorie Calculator →</a>
+    </div>
+  </div>
+
+</div>
+
+<div style="max-width:720px;margin:0 auto 0;padding:0 20px 40px;">
+  <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;">
+    <strong style="display:block;margin-bottom:8px;font-size:0.85rem;">📚 Sources & Editorial Standards</strong>
+    Based on Mifflin-St Jeor equations, WHO BMI guidelines, and peer-reviewed nutrition research. For informational purposes only — not medical advice.
+  </div>
+</div>
+
+</Base>
