@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-const main = "<div class=\"article-wrap\">\n  <div class=\"breadcrumb\" style=\"font-size:.8rem;color:var(--ink3);margin-bottom:16px;\"><a href=\"index.html\" style=\"color:var(--ink3);text-decoration:none;\">Home</a> › What Is TDEE? Total Daily Energy Expenditure Ex...</div>\n  <span class=\"article-tag\">Calories</span>\n  <h1>What Is TDEE? Total Daily Energy Expenditure Explained</h1>\n  <div class=\"article-meta\">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>\n\n  <div class=\"article-section\">\n    <p>TDEE — Total Daily Energy Expenditure — is the total number of calories your body burns in 24 hours. It's the single most important number for anyone trying to lose fat, gain muscle, or maintain their weight. Everything else — calorie targets, deficits, surplus — flows from this number.</p>\n    <div class=\"highlight-box\"><strong>The simple rule:</strong> Eat below your TDEE to lose weight. Eat at your TDEE to maintain. Eat above to gain muscle. The difference between these states is typically 300–600 kcal/day.</div>\n  </div>\n\n  <div class=\"article-section\">\n    <h2>The Four Components of TDEE</h2>\n<div class=\"callout\">💡 <strong>Key insight:</strong> Your BMR accounts for 60–75% of your total calorie burn. Even on a rest day with no exercise, your body burns the majority of its calories just keeping you alive — which is why crash diets that cut calories too aggressively trigger metabolic adaptation.</div>\n\n    <table>\n      <thead><tr><th>Component</th><th>Abbreviation</th><th>% of TDEE</th><th>Description</th></tr></thead>\n      <tbody>\n        <tr><td>Basal Metabolic Rate</td><td>BMR</td><td>60–70%</td><td>Calories burned at complete rest — breathing, organ function, cell repair</td></tr>\n        <tr><td>Thermic Effect of Food</td><td>TEF</td><td>8–10%</td><td>Energy used to digest, absorb, and process food</td></tr>\n        <tr><td>Exercise Activity Thermogenesis</td><td>EAT</td><td>5–15%</td><td>Calories burned during planned exercise</td></tr>\n        <tr><td>Non-Exercise Activity Thermogenesis</td><td>NEAT</td><td>15–30%</td><td>All movement outside formal exercise: walking, fidgeting, housework</td></tr>\n      </tbody>\n    </table>\n    <p>NEAT is the most variable component — it can differ by up to 2,000 kcal/day between two people of the same weight. This is why some people seem to \"eat anything\" without gaining weight: they unconsciously move more throughout the day.</p>\n  </div>\n\n  <div class=\"article-section\">\n    \n<div class=\"card\" style=\"padding:20px;margin:20px 0;overflow-x:auto;\">\n  <p style=\"font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:14px;\">TDEE breakdown for a moderately active adult (TDEE ~2,500 kcal)</p>\n  <svg viewBox=\"0 0 620 160\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Stacked bar showing TDEE components: BMR, physical activity, NEAT, and TEF\" style=\"width:100%;max-width:620px;display:block;font-family:'DM Sans',sans-serif;\">\n    <!-- Stacked horizontal bar: total width 520px (60 offset), each segment proportional -->\n    <!-- BMR 65%: 338px | PA 15%: 78px | NEAT 10%: 52px | TEF 10%: 52px -->\n    <rect x=\"60\" y=\"40\" width=\"338\" height=\"40\" rx=\"0\" fill=\"#2D6A4F\"/>\n    <rect x=\"398\" y=\"40\" width=\"78\" height=\"40\" rx=\"0\" fill=\"#3A7BBF\"/>\n    <rect x=\"476\" y=\"40\" width=\"52\" height=\"40\" rx=\"0\" fill=\"#C17B2A\"/>\n    <rect x=\"528\" y=\"40\" width=\"52\" height=\"40\" rx=\"8\" fill=\"#7C4DFF\" opacity=\".8\"/>\n    <!-- Segment labels inside bars -->\n    <text x=\"229\" y=\"65\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"600\">BMR ~65%</text>\n    <text x=\"437\" y=\"65\" text-anchor=\"middle\" font-size=\"10\" fill=\"#fff\" font-weight=\"600\">PA 15%</text>\n    <text x=\"502\" y=\"65\" text-anchor=\"middle\" font-size=\"10\" fill=\"#fff\" font-weight=\"600\">NEAT</text>\n    <text x=\"554\" y=\"65\" text-anchor=\"middle\" font-size=\"10\" fill=\"#fff\" font-weight=\"600\">TEF</text>\n    <!-- Callouts below -->\n    <text x=\"229\" y=\"100\" text-anchor=\"middle\" font-size=\"10\" fill=\"#2D6A4F\" font-weight=\"600\">~1,625 kcal</text>\n    <text x=\"229\" y=\"112\" text-anchor=\"middle\" font-size=\"9\" fill=\"#6B6560\">Basal Metabolic Rate</text>\n    <text x=\"229\" y=\"122\" text-anchor=\"middle\" font-size=\"9\" fill=\"#6B6560\">(rest, sleep, organ function)</text>\n    <text x=\"437\" y=\"100\" text-anchor=\"middle\" font-size=\"10\" fill=\"#3A7BBF\" font-weight=\"600\">~375 kcal</text>\n    <text x=\"437\" y=\"112\" text-anchor=\"middle\" font-size=\"9\" fill=\"#6B6560\">Exercise activity</text>\n    <text x=\"502\" y=\"100\" text-anchor=\"middle\" font-size=\"10\" fill=\"#C17B2A\" font-weight=\"600\">~250</text>\n    <text x=\"502\" y=\"112\" text-anchor=\"middle\" font-size=\"9\" fill=\"#6B6560\">Daily movement</text>\n    <text x=\"502\" y=\"122\" text-anchor=\"middle\" font-size=\"9\" fill=\"#6B6560\">(fidgeting, walking)</text>\n    <text x=\"554\" y=\"100\" text-anchor=\"middle\" font-size=\"10\" fill=\"#7C4DFF\" font-weight=\"600\">~250</text>\n    <text x=\"554\" y=\"112\" text-anchor=\"middle\" font-size=\"9\" fill=\"#6B6560\">Digesting food</text>\n    <!-- Total label -->\n    <text x=\"8\" y=\"65\" font-size=\"11\" fill=\"#1A1714\" font-weight=\"700\">TDEE</text>\n    <text x=\"8\" y=\"78\" font-size=\"10\" fill=\"#6B6560\">2,500</text>\n    <text x=\"8\" y=\"90\" font-size=\"10\" fill=\"#6B6560\">kcal</text>\n  </svg>\n</div>\n\n<h2>How to Calculate Your TDEE</h2>\n    <p>The most widely validated formula is the <strong>Mifflin-St Jeor equation</strong>, which estimates BMR and then multiplies by an activity factor:</p>\n    <h3>Step 1: Calculate BMR</h3>\n    <p><strong>Women:</strong> BMR = (10 × weight kg) + (6.25 × height cm) − (5 × age) − 161<br>\n    <strong>Men:</strong> BMR = (10 × weight kg) + (6.25 × height cm) − (5 × age) + 5</p>\n    <h3>Step 2: Multiply by activity factor</h3>\n    <table>\n      <thead><tr><th>Activity Level</th><th>Multiplier</th><th>Description</th></tr></thead>\n      <tbody>\n        <tr><td>Sedentary</td><td>× 1.2</td><td>Desk job, little or no exercise</td></tr>\n        <tr><td>Lightly active</td><td>× 1.375</td><td>Light exercise 1–3 days/week</td></tr>\n        <tr><td>Moderately active</td><td>× 1.55</td><td>Moderate exercise 3–5 days/week</td></tr>\n        <tr><td>Very active</td><td>× 1.725</td><td>Hard exercise 6–7 days/week</td></tr>\n        <tr><td>Extremely active</td><td>× 1.9</td><td>Physical job + hard exercise daily</td></tr>\n      </tbody>\n    </table>\n    <p>The result is your estimated TDEE — the number of calories to eat to maintain your current weight. Use our <a href=\"calorie-calculator.html\" style=\"color:var(--accent);\">Calorie Calculator</a> to get this number instantly.</p>\n  </div>\n\n  <div class=\"article-section\">\n    <h2>How to Use TDEE for Weight Loss</h2>\n    <p>Once you know your TDEE, setting a calorie target is straightforward:</p>\n    <ul>\n      <li><strong>Fat loss:</strong> TDEE − 400 to 600 kcal = daily calorie target</li>\n      <li><strong>Aggressive fat loss:</strong> TDEE − 700 to 1,000 kcal (higher muscle loss risk)</li>\n      <li><strong>Maintenance:</strong> Eat at TDEE</li>\n      <li><strong>Muscle gain:</strong> TDEE + 200 to 400 kcal (lean bulk)</li>\n    </ul>\n    <p>Your TDEE changes as you lose weight — a lighter body needs fewer calories. Recalculate every 4–6 weeks or after every 3–5kg of weight change to keep your targets accurate.</p>\n    <div class=\"warn-callout\"><p>⚠️ TDEE calculators provide estimates, not exact measurements. Individual variation of ±10–15% is normal. Use your initial calculation as a starting point, then adjust based on actual results after 2–3 weeks.</p></div>\n  </div>\n\n  <div class=\"faq-section\">\n  <h2 class=\"section-title\">Frequently Asked Questions</h2>\n  <div class=\"faq-item\">\n    <button class=\"faq-q\" onclick=\"toggleFaq(this)\">What is TDEE and how is it calculated?</button>\n    <div class=\"faq-a\">TDEE (Total Daily Energy Expenditure) is the total calories your body burns in a day. It is calculated by multiplying your BMR (Basal Metabolic Rate — calories burned at rest) by an activity factor ranging from 1.2 (sedentary) to 1.9 (very active). Eating at your TDEE maintains your weight; eating below it creates a deficit for fat loss.</div>\n  </div>\n  <div class=\"faq-item\">\n    <button class=\"faq-q\" onclick=\"toggleFaq(this)\">What is the difference between TDEE and BMR?</button>\n    <div class=\"faq-a\">BMR is the calories your body burns at complete rest — just to breathe, maintain organ function, and circulate blood. It typically accounts for 60–75% of TDEE. TDEE adds your physical activity on top of BMR. If you did nothing but lie still all day, you would still burn your BMR in calories.</div>\n  </div>\n  <div class=\"faq-item\">\n    <button class=\"faq-q\" onclick=\"toggleFaq(this)\">How accurate are TDEE calculators?</button>\n    <div class=\"faq-a\">TDEE calculators using the Mifflin-St Jeor equation are accurate to within 10–15% for most healthy adults. Individual variation exists due to genetics, gut microbiome, thyroid function, and medication effects. The calculated TDEE is best treated as a starting point — adjust based on 2–4 weeks of real-world results.</div>\n  </div>\n  <div class=\"faq-item\">\n    <button class=\"faq-q\" onclick=\"toggleFaq(this)\">Does TDEE change when you lose weight?</button>\n    <div class=\"faq-a\">Yes — as you lose weight, your BMR decreases (a lighter body requires fewer calories at rest) and your activity-related calorie burn also decreases (moving a lighter body uses less energy). This is why recalculating your TDEE every 5–10 kg lost is important — the deficit that worked early on may become maintenance or even a surplus later.</div>\n  </div>\n  <div class=\"faq-item\">\n    <button class=\"faq-q\" onclick=\"toggleFaq(this)\">How do I use TDEE to lose fat and maintain muscle?</button>\n    <div class=\"faq-a\">Subtract 300–500 kcal from your TDEE to create a fat loss deficit. Eat at least 1.6–2g of protein per kg of body weight to preserve muscle. Include resistance training 2–4 times per week. Recalculate TDEE every 4–8 weeks at your new body weight. Avoid deficits larger than 750 kcal/day, which accelerate muscle loss.</div>\n  </div>\n</div>\n\n<div class=\"related\">\n    <h3>Related Articles &amp; Tools</h3>\n    <div class=\"related-links\">\n      <a href=\"calorie-calculator.html\">Calorie Calculator</a>\n      <a href=\"calorie-deficit-calculator.html\">Calorie Deficit Calculator</a>\n      <a href=\"how-to-count-calories.html\">How to Count Calories</a>\n      <a href=\"metabolism-facts.html\">Metabolism Facts & Myths</a>\n      <a href=\"how-many-calories-per-day.html\">How Many Calories Per Day?</a>\n    </div>\n  </div>\n</div>\n\n<!-- CTA Block -->\n<div style=\"max-width:720px;margin:0 auto;padding:0 20px 48px;\">\n  <div style=\"background:#1A1714;border-radius:20px;padding:32px 28px;text-align:center;\">\n    <p style=\"font-size:.78rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;\">Next step</p>\n    <h2 style=\"font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;\">Use our free calculators</h2>\n    <p style=\"font-size:.875rem;color:rgba(255,255,255,.6);margin-bottom:20px;\">Get personalised results — instant, no sign-up required.</p>\n    <div style=\"display:flex;flex-wrap:wrap;gap:10px;justify-content:center;\">\n      <a href=\"calorie-calculator.html\" style=\"display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;\">🔥 Calculate My TDEE →</a>\n      <a href=\"calorie-deficit-calculator.html\" style=\"display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;\">📉 Deficit Calculator →</a>\n    </div>\n  </div>\n</div>\n\n<!-- E-E-A-T Sources -->\n<div style=\"max-width:720px;margin:0 auto 0;padding:0 20px 40px;\">\n  <div style=\"background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;\">\n    <strong style=\"display:block;margin-bottom:8px;\">📚 Sources &amp; Editorial Standards</strong>\n    <ul style=\"margin:8px 0 8px 18px;padding:0;\">\n      <li>Mifflin MD et al. — <em>A new predictive equation for resting energy expenditure in healthy individuals</em>, American Journal of Clinical Nutrition, 1990</li>\n      <li>Levine JA — <em>Non-exercise activity thermogenesis</em>, Best Practice & Research Clinical Endocrinology & Metabolism, 2002</li>\n      <li>Hall KD — <em>Modeling metabolic adaptations and energy regulation in humans</em>, Annual Review of Nutrition, 2012</li>\n    </ul>\n    Content is for informational purposes only and does not constitute medical advice.\n  </div>\n</div>";
 ---
 
 <Base
@@ -8,5 +7,158 @@ const main = "<div class=\"article-wrap\">\n  <div class=\"breadcrumb\" style=\"
   description="TDEE is the total number of calories you burn each day. Understanding it is the foundation of any weight loss or muscle-building goal. Here's how it works and how to calculate yours."
   canonical="https://healthybmicheck.com/what-is-tdee.html"
 >
-  <Fragment set:html={main} />
+<div class="article-wrap">
+  <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › What Is TDEE? Total Daily Energy Expenditure Ex...</div>
+  <span class="article-tag">Calories</span>
+  <h1>What Is TDEE? Total Daily Energy Expenditure Explained</h1>
+  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+
+  <div class="article-section">
+    <p>TDEE — Total Daily Energy Expenditure — is the total number of calories your body burns in 24 hours. It's the single most important number for anyone trying to lose fat, gain muscle, or maintain their weight. Everything else — calorie targets, deficits, surplus — flows from this number.</p>
+    <div class="highlight-box"><strong>The simple rule:</strong> Eat below your TDEE to lose weight. Eat at your TDEE to maintain. Eat above to gain muscle. The difference between these states is typically 300–600 kcal/day.</div>
+  </div>
+
+  <div class="article-section">
+    <h2>The Four Components of TDEE</h2>
+<div class="callout">💡 <strong>Key insight:</strong> Your BMR accounts for 60–75% of your total calorie burn. Even on a rest day with no exercise, your body burns the majority of its calories just keeping you alive — which is why crash diets that cut calories too aggressively trigger metabolic adaptation.</div>
+
+    <table>
+      <thead><tr><th>Component</th><th>Abbreviation</th><th>% of TDEE</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Basal Metabolic Rate</td><td>BMR</td><td>60–70%</td><td>Calories burned at complete rest — breathing, organ function, cell repair</td></tr>
+        <tr><td>Thermic Effect of Food</td><td>TEF</td><td>8–10%</td><td>Energy used to digest, absorb, and process food</td></tr>
+        <tr><td>Exercise Activity Thermogenesis</td><td>EAT</td><td>5–15%</td><td>Calories burned during planned exercise</td></tr>
+        <tr><td>Non-Exercise Activity Thermogenesis</td><td>NEAT</td><td>15–30%</td><td>All movement outside formal exercise: walking, fidgeting, housework</td></tr>
+      </tbody>
+    </table>
+    <p>NEAT is the most variable component — it can differ by up to 2,000 kcal/day between two people of the same weight. This is why some people seem to "eat anything" without gaining weight: they unconsciously move more throughout the day.</p>
+  </div>
+
+  <div class="article-section">
+    
+<div class="card" style="padding:20px;margin:20px 0;overflow-x:auto;">
+  <p style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:14px;">TDEE breakdown for a moderately active adult (TDEE ~2,500 kcal)</p>
+  <svg viewBox="0 0 620 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stacked bar showing TDEE components: BMR, physical activity, NEAT, and TEF" style="width:100%;max-width:620px;display:block;font-family:'DM Sans',sans-serif;">
+    <!-- Stacked horizontal bar: total width 520px (60 offset), each segment proportional -->
+    <!-- BMR 65%: 338px | PA 15%: 78px | NEAT 10%: 52px | TEF 10%: 52px -->
+    <rect x="60" y="40" width="338" height="40" rx="0" fill="#2D6A4F"/>
+    <rect x="398" y="40" width="78" height="40" rx="0" fill="#3A7BBF"/>
+    <rect x="476" y="40" width="52" height="40" rx="0" fill="#C17B2A"/>
+    <rect x="528" y="40" width="52" height="40" rx="8" fill="#7C4DFF" opacity=".8"/>
+    <!-- Segment labels inside bars -->
+    <text x="229" y="65" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">BMR ~65%</text>
+    <text x="437" y="65" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">PA 15%</text>
+    <text x="502" y="65" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">NEAT</text>
+    <text x="554" y="65" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">TEF</text>
+    <!-- Callouts below -->
+    <text x="229" y="100" text-anchor="middle" font-size="10" fill="#2D6A4F" font-weight="600">~1,625 kcal</text>
+    <text x="229" y="112" text-anchor="middle" font-size="9" fill="#6B6560">Basal Metabolic Rate</text>
+    <text x="229" y="122" text-anchor="middle" font-size="9" fill="#6B6560">(rest, sleep, organ function)</text>
+    <text x="437" y="100" text-anchor="middle" font-size="10" fill="#3A7BBF" font-weight="600">~375 kcal</text>
+    <text x="437" y="112" text-anchor="middle" font-size="9" fill="#6B6560">Exercise activity</text>
+    <text x="502" y="100" text-anchor="middle" font-size="10" fill="#C17B2A" font-weight="600">~250</text>
+    <text x="502" y="112" text-anchor="middle" font-size="9" fill="#6B6560">Daily movement</text>
+    <text x="502" y="122" text-anchor="middle" font-size="9" fill="#6B6560">(fidgeting, walking)</text>
+    <text x="554" y="100" text-anchor="middle" font-size="10" fill="#7C4DFF" font-weight="600">~250</text>
+    <text x="554" y="112" text-anchor="middle" font-size="9" fill="#6B6560">Digesting food</text>
+    <!-- Total label -->
+    <text x="8" y="65" font-size="11" fill="#1A1714" font-weight="700">TDEE</text>
+    <text x="8" y="78" font-size="10" fill="#6B6560">2,500</text>
+    <text x="8" y="90" font-size="10" fill="#6B6560">kcal</text>
+  </svg>
+</div>
+
+<h2>How to Calculate Your TDEE</h2>
+    <p>The most widely validated formula is the <strong>Mifflin-St Jeor equation</strong>, which estimates BMR and then multiplies by an activity factor:</p>
+    <h3>Step 1: Calculate BMR</h3>
+    <p><strong>Women:</strong> BMR = (10 × weight kg) + (6.25 × height cm) − (5 × age) − 161<br>
+    <strong>Men:</strong> BMR = (10 × weight kg) + (6.25 × height cm) − (5 × age) + 5</p>
+    <h3>Step 2: Multiply by activity factor</h3>
+    <table>
+      <thead><tr><th>Activity Level</th><th>Multiplier</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Sedentary</td><td>× 1.2</td><td>Desk job, little or no exercise</td></tr>
+        <tr><td>Lightly active</td><td>× 1.375</td><td>Light exercise 1–3 days/week</td></tr>
+        <tr><td>Moderately active</td><td>× 1.55</td><td>Moderate exercise 3–5 days/week</td></tr>
+        <tr><td>Very active</td><td>× 1.725</td><td>Hard exercise 6–7 days/week</td></tr>
+        <tr><td>Extremely active</td><td>× 1.9</td><td>Physical job + hard exercise daily</td></tr>
+      </tbody>
+    </table>
+    <p>The result is your estimated TDEE — the number of calories to eat to maintain your current weight. Use our <a href="calorie-calculator.html" style="color:var(--accent);">Calorie Calculator</a> to get this number instantly.</p>
+  </div>
+
+  <div class="article-section">
+    <h2>How to Use TDEE for Weight Loss</h2>
+    <p>Once you know your TDEE, setting a calorie target is straightforward:</p>
+    <ul>
+      <li><strong>Fat loss:</strong> TDEE − 400 to 600 kcal = daily calorie target</li>
+      <li><strong>Aggressive fat loss:</strong> TDEE − 700 to 1,000 kcal (higher muscle loss risk)</li>
+      <li><strong>Maintenance:</strong> Eat at TDEE</li>
+      <li><strong>Muscle gain:</strong> TDEE + 200 to 400 kcal (lean bulk)</li>
+    </ul>
+    <p>Your TDEE changes as you lose weight — a lighter body needs fewer calories. Recalculate every 4–6 weeks or after every 3–5kg of weight change to keep your targets accurate.</p>
+    <div class="warn-callout"><p>⚠️ TDEE calculators provide estimates, not exact measurements. Individual variation of ±10–15% is normal. Use your initial calculation as a starting point, then adjust based on actual results after 2–3 weeks.</p></div>
+  </div>
+
+  <div class="faq-section">
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">What is TDEE and how is it calculated?</button>
+    <div class="faq-a">TDEE (Total Daily Energy Expenditure) is the total calories your body burns in a day. It is calculated by multiplying your BMR (Basal Metabolic Rate — calories burned at rest) by an activity factor ranging from 1.2 (sedentary) to 1.9 (very active). Eating at your TDEE maintains your weight; eating below it creates a deficit for fat loss.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">What is the difference between TDEE and BMR?</button>
+    <div class="faq-a">BMR is the calories your body burns at complete rest — just to breathe, maintain organ function, and circulate blood. It typically accounts for 60–75% of TDEE. TDEE adds your physical activity on top of BMR. If you did nothing but lie still all day, you would still burn your BMR in calories.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">How accurate are TDEE calculators?</button>
+    <div class="faq-a">TDEE calculators using the Mifflin-St Jeor equation are accurate to within 10–15% for most healthy adults. Individual variation exists due to genetics, gut microbiome, thyroid function, and medication effects. The calculated TDEE is best treated as a starting point — adjust based on 2–4 weeks of real-world results.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">Does TDEE change when you lose weight?</button>
+    <div class="faq-a">Yes — as you lose weight, your BMR decreases (a lighter body requires fewer calories at rest) and your activity-related calorie burn also decreases (moving a lighter body uses less energy). This is why recalculating your TDEE every 5–10 kg lost is important — the deficit that worked early on may become maintenance or even a surplus later.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">How do I use TDEE to lose fat and maintain muscle?</button>
+    <div class="faq-a">Subtract 300–500 kcal from your TDEE to create a fat loss deficit. Eat at least 1.6–2g of protein per kg of body weight to preserve muscle. Include resistance training 2–4 times per week. Recalculate TDEE every 4–8 weeks at your new body weight. Avoid deficits larger than 750 kcal/day, which accelerate muscle loss.</div>
+  </div>
+</div>
+
+<div class="related">
+    <h3>Related Articles &amp; Tools</h3>
+    <div class="related-links">
+      <a href="calorie-calculator.html">Calorie Calculator</a>
+      <a href="calorie-deficit-calculator.html">Calorie Deficit Calculator</a>
+      <a href="how-to-count-calories.html">How to Count Calories</a>
+      <a href="metabolism-facts.html">Metabolism Facts & Myths</a>
+      <a href="how-many-calories-per-day.html">How Many Calories Per Day?</a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA Block -->
+<div style="max-width:720px;margin:0 auto;padding:0 20px 48px;">
+  <div style="background:#1A1714;border-radius:20px;padding:32px 28px;text-align:center;">
+    <p style="font-size:.78rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Next step</p>
+    <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;">Use our free calculators</h2>
+    <p style="font-size:.875rem;color:rgba(255,255,255,.6);margin-bottom:20px;">Get personalised results — instant, no sign-up required.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+      <a href="calorie-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;">🔥 Calculate My TDEE →</a>
+      <a href="calorie-deficit-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;">📉 Deficit Calculator →</a>
+    </div>
+  </div>
+</div>
+
+<!-- E-E-A-T Sources -->
+<div style="max-width:720px;margin:0 auto 0;padding:0 20px 40px;">
+  <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;">
+    <strong style="display:block;margin-bottom:8px;">📚 Sources &amp; Editorial Standards</strong>
+    <ul style="margin:8px 0 8px 18px;padding:0;">
+      <li>Mifflin MD et al. — <em>A new predictive equation for resting energy expenditure in healthy individuals</em>, American Journal of Clinical Nutrition, 1990</li>
+      <li>Levine JA — <em>Non-exercise activity thermogenesis</em>, Best Practice & Research Clinical Endocrinology & Metabolism, 2002</li>
+      <li>Hall KD — <em>Modeling metabolic adaptations and energy regulation in humans</em>, Annual Review of Nutrition, 2012</li>
+    </ul>
+    Content is for informational purposes only and does not constitute medical advice.
+  </div>
+</div>
 </Base>

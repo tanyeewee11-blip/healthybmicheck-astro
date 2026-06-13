@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-const main = "<div class=\"hero\">\n    <div class=\"breadcrumb\" style=\"font-size:.8rem;color:var(--ink3);margin-bottom:16px;\"><a href=\"index.html\" style=\"color:var(--ink3);text-decoration:none;\">Home</a> › BMI Calculator for Kids</div>\n  <h1>BMI Calculator <em>for Kids</em></h1>\n  <p>Child BMI is assessed differently from adults — using age- and sex-specific growth percentiles. Enter your child's details for an instant result.</p>\n</div>\n\n<div class=\"notice-banner\">\n  <div class=\"notice-inner\">\n    ℹ️ <strong>For children aged 2–17 only.</strong> For adults (18+), use the <a href=\"bmi-calculator.html\" style=\"color:#0C447C;font-weight:500;\">standard BMI calculator</a>. This tool uses CDC BMI-for-age growth charts and is intended for informational use only — always consult your child's paediatrician for health advice.\n  </div>\n</div>\n\n<div class=\"container\">\n\n  <div class=\"card\">\n    <label style=\"display:block;font-size:0.875rem;font-weight:500;margin-bottom:8px;color:var(--ink2);\">Sex</label>\n    <div class=\"sex-toggle\" style=\"margin-bottom:24px;\">\n      <button class=\"active\" id=\"btn-boy\" onclick=\"setSex('boy')\">👦 Boy</button>\n      <button id=\"btn-girl\" onclick=\"setSex('girl')\">👧 Girl</button>\n    </div>\n\n    <div class=\"input-group\">\n      <label>Age</label>\n      <div class=\"input-row\">\n        <div class=\"input-wrap\">\n          <select id=\"age-years\">\n            <option value=\"\">Years</option>\n            <option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option>\n            <option value=\"5\">5</option><option value=\"6\">6</option><option value=\"7\">7</option>\n            <option value=\"8\">8</option><option value=\"9\">9</option><option value=\"10\">10</option>\n            <option value=\"11\">11</option><option value=\"12\">12</option><option value=\"13\">13</option>\n            <option value=\"14\">14</option><option value=\"15\">15</option><option value=\"16\">16</option>\n            <option value=\"17\">17</option>\n          </select>\n          <span class=\"unit-badge\">yr</span>\n        </div>\n        <div class=\"input-wrap\">\n          <select id=\"age-months\">\n            <option value=\"0\">0 months</option>\n            <option value=\"1\">1 month</option><option value=\"2\">2 months</option>\n            <option value=\"3\">3 months</option><option value=\"4\">4 months</option>\n            <option value=\"5\">5 months</option><option value=\"6\">6 months</option>\n            <option value=\"7\">7 months</option><option value=\"8\">8 months</option>\n            <option value=\"9\">9 months</option><option value=\"10\">10 months</option>\n            <option value=\"11\">11 months</option>\n          </select>\n        </div>\n      </div>\n    </div>\n\n    <label style=\"display:block;font-size:0.875rem;font-weight:500;margin-bottom:8px;color:var(--ink2);\">Units</label>\n    <div class=\"unit-toggle\">\n      <button class=\"active\" onclick=\"setUnit('metric')\">Metric (kg / cm)</button>\n      <button onclick=\"setUnit('imperial')\">Imperial (lb / in)</button>\n    </div>\n\n    <div class=\"input-group\" id=\"metric-inputs\">\n      <label>Weight</label>\n      <div class=\"input-wrap\" style=\"margin-bottom:12px;\">\n        <input type=\"number\" id=\"weight-kg\" placeholder=\"35\">\n        <span class=\"unit-badge\">kg</span>\n      </div>\n      <label>Height</label>\n      <div class=\"input-wrap\">\n        <input type=\"number\" id=\"height-cm\" placeholder=\"135\">\n        <span class=\"unit-badge\">cm</span>\n      </div>\n    </div>\n\n    <div class=\"input-group\" id=\"imperial-inputs\" style=\"display:none\">\n      <label>Weight</label>\n      <div class=\"input-wrap\" style=\"margin-bottom:12px;\">\n        <input type=\"number\" id=\"weight-lb\" placeholder=\"77\">\n        <span class=\"unit-badge\">lb</span>\n      </div>\n      <label>Height</label>\n      <div class=\"input-row\">\n        <div class=\"input-wrap\">\n          <input type=\"number\" id=\"height-ft\" placeholder=\"4\">\n          <span class=\"unit-badge\">ft</span>\n        </div>\n        <div class=\"input-wrap\">\n          <input type=\"number\" id=\"height-in\" placeholder=\"5\">\n          <span class=\"unit-badge\">in</span>\n        </div>\n      </div>\n    </div>\n\n    <button class=\"calc-btn\" onclick=\"calculate()\">Calculate Child BMI →</button>\n  </div>\n\n  <!-- Result -->\n  <div class=\"result-card\" id=\"result-card\">\n    <div class=\"pct-number\" id=\"pct-number\">—<span class=\"pct-sup\" id=\"pct-sup\"></span></div>\n    <div class=\"bmi-raw\" id=\"bmi-raw\">BMI: —</div>\n    <div class=\"bmi-category\" id=\"bmi-category\"></div>\n\n    <div class=\"pct-bar-wrap\">\n      <div class=\"pct-bar-track\">\n        <div class=\"pct-bar-pointer\" id=\"pct-pointer\" style=\"left:0%\"></div>\n      </div>\n      <div class=\"pct-bar-labels\">\n        <span>Underweight<br>&lt;5th</span>\n        <span>Healthy weight<br>5th–84th</span>\n        <span>Overweight<br>85th–94th</span>\n        <span>Obese<br>≥95th</span>\n      </div>\n    </div>\n\n    <div class=\"info-grid\">\n      <div class=\"info-box\">\n        <div class=\"label\">BMI value</div>\n        <div class=\"value\" id=\"bmi-display\">—</div>\n      </div>\n      <div class=\"info-box\">\n        <div class=\"label\">Compared to peers</div>\n        <div class=\"value\" id=\"peers-text\">—</div>\n      </div>\n    </div>\n\n    <div class=\"health-tip\" id=\"health-tip\"></div>\n  </div>\n\n  <!-- Percentile table -->\n  <div id=\"percentile-table\">\n    <h2 class=\"section-title\">CDC BMI-for-Age Percentile Categories</h2>\n    <p class=\"section-sub\">Unlike adult BMI, children's BMI is compared to growth charts by age and sex.</p>\n    <div class=\"card\" style=\"padding:0;overflow:hidden;\">\n      <table>\n        <thead>\n          <tr>\n            <th>Category</th>\n            <th>Percentile Range</th>\n            <th>Action</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr><td><span class=\"dot\" style=\"background:#3A7BBF\"></span>Underweight</td><td>Below 5th percentile</td><td>Consult paediatrician</td></tr>\n          <tr><td><span class=\"dot\" style=\"background:#2D6A4F\"></span>Healthy weight</td><td>5th to 84th percentile</td><td>Maintain healthy habits</td></tr>\n          <tr><td><span class=\"dot\" style=\"background:#C17B2A\"></span>Overweight</td><td>85th to 94th percentile</td><td>Discuss with doctor</td></tr>\n          <tr><td><span class=\"dot\" style=\"background:#B83232\"></span>Obese</td><td>95th percentile and above</td><td>Seek medical advice</td></tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n\n  <!-- FAQ -->\n  <div class=\"faq-section\" id=\"faq\">\n    <h2 class=\"section-title\">Frequently Asked Questions</h2>\n\n    <div class=\"faq-item\">\n      <button class=\"faq-q\" onclick=\"toggleFaq(this)\">How is BMI calculated for children?</button>\n      <div class=\"faq-a\">For children and teenagers aged 2–17, BMI is calculated the same way as for adults — weight (kg) divided by height (m) squared — but the result is interpreted differently. Instead of fixed categories, a child's BMI is compared to other children of the same age and sex using CDC growth charts. The result is a <strong>percentile</strong>: for example, the 75th percentile means the child's BMI is higher than 75% of children the same age and sex.</div>\n    </div>\n\n    <div class=\"faq-item\">\n      <button class=\"faq-q\" onclick=\"toggleFaq(this)\">What is a healthy BMI percentile for my child?</button>\n      <div class=\"faq-a\">According to the CDC, a <strong>healthy weight</strong> for children is a BMI between the <strong>5th and 85th percentile</strong> for their age and sex. Below the 5th percentile is underweight. Between the 85th and 95th percentile is overweight. At or above the 95th percentile is considered obese.</div>\n    </div>\n\n    <div class=\"faq-item\">\n      <button class=\"faq-q\" onclick=\"toggleFaq(this)\">Why can't I use adult BMI categories for my child?</button>\n      <div class=\"faq-a\">Children's bodies change significantly as they grow, and normal amounts of body fat vary by age and sex. A BMI of 18 means something very different for a 5-year-old than for a 15-year-old. The percentile method accounts for these normal developmental differences by comparing a child's BMI to thousands of children of the same age and sex rather than using a single fixed cutoff.</div>\n    </div>\n\n    <div class=\"faq-item\">\n      <button class=\"faq-q\" onclick=\"toggleFaq(this)\">My child's percentile is high — should I put them on a diet?</button>\n      <div class=\"faq-a\">No — never put a child on a restrictive diet without medical supervision. If your child's BMI percentile is in the overweight or obese range, the first step is to consult your paediatrician. Children are still growing, and the goal is usually to <em>slow weight gain</em> while allowing normal height growth, not to lose weight rapidly. Focus on family-wide healthy habits: balanced meals, reducing screen time, and encouraging active play.</div>\n    </div>\n\n    <div class=\"faq-item\">\n      <button class=\"faq-q\" onclick=\"toggleFaq(this)\">Is this calculator accurate for Asian children?</button>\n      <div class=\"faq-a\">This calculator uses CDC growth charts developed primarily from US population data. Research suggests that children of Asian descent may have higher body fat at lower BMI values, similar to Asian adults. If your child is of Asian, South Asian, or Southeast Asian descent, discuss this with your paediatrician who can provide ethnicity-appropriate guidance. For adult BMI, see our <a href=\"asian-bmi-calculator.html\">Asian BMI Calculator</a>.</div>\n    </div>\n  </div>\n\n  <!-- Article -->\n  <div class=\"article-section\">\n    <h2>How Child BMI Works — And Why It's Different from Adult BMI</h2>\n    <p>When most people think of BMI, they think of the standard adult categories: underweight below 18.5, normal up to 24.9, overweight up to 29.9, and obese at 30 and above. These cutoffs work reasonably well for adults whose bodies have finished developing. But for children and teenagers, a fixed cutoff system would be misleading.</p>\n    <p>A 6-year-old and a 16-year-old are growing at completely different rates and naturally carry different amounts of body fat at different stages of development. Girls typically gain body fat in early puberty; boys gain more muscle mass later. Using the same BMI number to classify both would produce wildly inaccurate results.</p>\n    <p>To solve this, the CDC developed <strong>BMI-for-age growth charts</strong> — separate charts for boys and girls, covering ages 2 to 20 — based on national health surveys of thousands of children. Your child's BMI is plotted against these charts to produce a <strong>percentile ranking</strong>.</p>\n\n    <h2>Understanding Percentiles</h2>\n    <p>A percentile tells you how your child's BMI compares to other children of the same age and sex. If your child is at the <strong>60th percentile</strong>, their BMI is higher than 60% of children their age and sex, and lower than 40%. This is squarely in the healthy range.</p>\n    <div class=\"callout\"><p>💡 <strong>Important:</strong> A higher percentile is not automatically bad, and a lower percentile is not automatically good. What matters is whether the percentile falls within the healthy range (5th–85th) and whether it is stable over time. A sudden jump in percentile — even within the healthy range — may be worth discussing with your doctor.</p></div>\n\n    <h2>What to Do If Your Child Is Outside the Healthy Range</h2>\n    <h3>If your child is underweight (below 5th percentile)</h3>\n    <p>Underweight children may not be getting enough calories or nutrients to support healthy growth. This can sometimes reflect a medical condition, a very fast growth phase, or difficulty eating. Do not try to address this with supplements or high-calorie foods on your own — speak with your paediatrician first.</p>\n\n    <h3>If your child is overweight or obese (above 85th percentile)</h3>\n    <p>The approach for children is very different from adults. The goal is rarely weight loss — it is usually to slow the rate of weight gain while the child continues to grow in height, which naturally brings BMI down over time. Practical steps include:</p>\n    <ul>\n      <li>Reducing sugary drinks and ultra-processed snacks as a family</li>\n      <li>Encouraging at least 60 minutes of moderate physical activity daily (CDC recommendation for children)</li>\n      <li>Prioritising sleep — poor sleep is linked to weight gain in children</li>\n      <li>Limiting recreational screen time</li>\n      <li>Making changes as a whole family, not singling out the child</li>\n    </ul>\n    <div class=\"warn-callout\"><p>⚠️ Never comment negatively on a child's weight or body shape. Research consistently shows that weight stigma in childhood increases the risk of disordered eating, anxiety, and long-term poor health outcomes. Focus on healthy habits for the whole family, not on the child's weight specifically.</p></div>\n\n    <h2>Limitations of Child BMI</h2>\n    <p>BMI is a screening tool, not a diagnosis. It cannot distinguish between muscle mass and body fat. A very active, muscular child may have a high BMI percentile despite having healthy body composition. Conversely, a child with low muscle mass may have a normal BMI percentile but still have relatively high body fat. For a thorough assessment, your child's paediatrician will consider BMI alongside growth trends, physical examination, and family history.</p>\n\n    <div class=\"sources\">\n      <strong>References:</strong><br>\n      Centers for Disease Control and Prevention. <a href=\"https://www.cdc.gov/bmi/child-teen-calculator/index.html\" target=\"_blank\" rel=\"noopener\">Child and Teen BMI Calculator</a>. CDC, 2024.<br>\n      CDC. About Child & Teen BMI. <a href=\"https://www.cdc.gov/bmi/child-teen-bmi/about-child-teen-bmi.html\" target=\"_blank\" rel=\"noopener\">cdc.gov</a>, 2024.<br>\n      Kuczmarski RJ et al. CDC Growth Charts: United States. <em>Advance Data</em>. 2000;314:1–190.\n    </div>\n\n    <div class=\"related\">\n      <h3>Related Tools & Articles</h3>\n      <div class=\"related-links\">\n        <a href=\"bmi-calculator.html\">Adult BMI Calculator</a>\n        <a href=\"asian-bmi-calculator.html\">Asian BMI Calculator</a>\n        <a href=\"what-is-bmi.html\">What Is BMI?</a>\n        <a href=\"bmi-chart-by-age.html\">BMI Chart by Age</a>\n        <a href=\"ideal-weight.html\">Ideal Weight Calculator</a>\n        <a href=\"how-to-lower-bmi.html\">How to Lower Your BMI</a>\n        <a href=\"calorie-calculator.html\">Calorie Calculator</a>\n      \n        <a href=\"body-fat.html\">Body Fat Calculator</a>\n        <a href=\"water-intake.html\">Water Intake Calculator</a>\n        <a href=\"waist-to-height-ratio.html\">Waist-to-Height Ratio</a>\n      \n        <a href=\"sleep-and-weight-loss.html\">Sleep & Weight Loss</a>\n      </div>\n    </div>\n  </div>\n\n</div>\n\n\n  <!-- CTA Block -->\n  <div style=\"max-width:720px;margin:0 auto;padding:0 20px 48px;\">\n    <div style=\"background:#1A1714;border-radius:20px;padding:32px 28px;text-align:center;\">\n      <p style=\"font-size:.78rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;\">Next step</p>\n      <h2 style=\"font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;line-height:1.2;\">More health tools</h2>\n      <p style=\"font-size:.875rem;color:rgba(255,255,255,.6);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto;\">Calculate daily calories, water intake, and ideal weight for adults.</p>\n      <div style=\"display:flex;flex-wrap:wrap;gap:10px;justify-content:center;\">\n      <a href=\"bmi-calculator.html\" style=\"display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;\">⚖️ Adult BMI Calculator →</a>\n      <a href=\"asian-bmi-calculator.html\" style=\"display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;\">🌏 Asian BMI →</a>\n      <a href=\"calorie-calculator.html\" style=\"display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;\">🔥 Calorie Calculator →</a>\n      </div>\n    </div>\n  </div>\n\n\n<div class=\"card\" style=\"padding:20px;margin:20px 0;overflow-x:auto;\">\n  <p style=\"font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:14px;\">Child BMI — percentile categories explained</p>\n  <svg viewBox=\"0 0 620 90\" xmlns=\"http://www.w3.org/2000/svg\" style=\"width:100%;max-width:620px;display:block;font-family:'DM Sans',sans-serif;\">\n    <rect x=\"10\" y=\"15\" width=\"120\" height=\"45\" rx=\"8\" fill=\"#DCE9F8\" stroke=\"#C7DCEE\" stroke-width=\"1.5\"/>\n    <text x=\"70\" y=\"36\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\" fill=\"#3A7BBF\">Underweight</text>\n    <text x=\"70\" y=\"52\" text-anchor=\"middle\" font-size=\"9\" fill=\"#3A7BBF\">Below 5th %ile</text>\n    <rect x=\"140\" y=\"15\" width=\"180\" height=\"45\" rx=\"8\" fill=\"#D8EFE4\" stroke=\"#A8D5BE\" stroke-width=\"1.5\"/>\n    <text x=\"230\" y=\"36\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\" fill=\"#2D6A4F\">Healthy weight</text>\n    <text x=\"230\" y=\"52\" text-anchor=\"middle\" font-size=\"9\" fill=\"#2D6A4F\">5th to 84th %ile</text>\n    <rect x=\"330\" y=\"15\" width=\"130\" height=\"45\" rx=\"8\" fill=\"#FBF0DC\" stroke=\"#F5D9A8\" stroke-width=\"1.5\"/>\n    <text x=\"395\" y=\"36\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\" fill=\"#C17B2A\">Overweight</text>\n    <text x=\"395\" y=\"52\" text-anchor=\"middle\" font-size=\"9\" fill=\"#C17B2A\">85th to 94th %ile</text>\n    <rect x=\"470\" y=\"15\" width=\"140\" height=\"45\" rx=\"8\" fill=\"#FADFDF\" stroke=\"#F5B8B8\" stroke-width=\"1.5\"/>\n    <text x=\"540\" y=\"36\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\" fill=\"#B83232\">Obese</text>\n    <text x=\"540\" y=\"52\" text-anchor=\"middle\" font-size=\"9\" fill=\"#B83232\">95th %ile or above</text>\n    <text x=\"310\" y=\"80\" text-anchor=\"middle\" font-size=\"9\" fill=\"#A09A94\">CDC/WHO percentile categories for children 2–19 years</text>\n  </svg>\n</div>";
 ---
 
 <Base
@@ -8,5 +7,272 @@ const main = "<div class=\"hero\">\n    <div class=\"breadcrumb\" style=\"font-s
   description="Free BMI calculator for children and teens aged 2–17. Uses CDC BMI-for-age percentile method to assess healthy weight. Instant results for boys and girls."
   canonical="https://healthybmicheck.com/bmi-calculator-kids.html"
 >
-  <Fragment set:html={main} />
+<div class="hero">
+    <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › BMI Calculator for Kids</div>
+  <h1>BMI Calculator <em>for Kids</em></h1>
+  <p>Child BMI is assessed differently from adults — using age- and sex-specific growth percentiles. Enter your child's details for an instant result.</p>
+</div>
+
+<div class="notice-banner">
+  <div class="notice-inner">
+    ℹ️ <strong>For children aged 2–17 only.</strong> For adults (18+), use the <a href="bmi-calculator.html" style="color:#0C447C;font-weight:500;">standard BMI calculator</a>. This tool uses CDC BMI-for-age growth charts and is intended for informational use only — always consult your child's paediatrician for health advice.
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <label style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:8px;color:var(--ink2);">Sex</label>
+    <div class="sex-toggle" style="margin-bottom:24px;">
+      <button class="active" id="btn-boy" onclick="setSex('boy')">👦 Boy</button>
+      <button id="btn-girl" onclick="setSex('girl')">👧 Girl</button>
+    </div>
+
+    <div class="input-group">
+      <label>Age</label>
+      <div class="input-row">
+        <div class="input-wrap">
+          <select id="age-years">
+            <option value="">Years</option>
+            <option value="2">2</option><option value="3">3</option><option value="4">4</option>
+            <option value="5">5</option><option value="6">6</option><option value="7">7</option>
+            <option value="8">8</option><option value="9">9</option><option value="10">10</option>
+            <option value="11">11</option><option value="12">12</option><option value="13">13</option>
+            <option value="14">14</option><option value="15">15</option><option value="16">16</option>
+            <option value="17">17</option>
+          </select>
+          <span class="unit-badge">yr</span>
+        </div>
+        <div class="input-wrap">
+          <select id="age-months">
+            <option value="0">0 months</option>
+            <option value="1">1 month</option><option value="2">2 months</option>
+            <option value="3">3 months</option><option value="4">4 months</option>
+            <option value="5">5 months</option><option value="6">6 months</option>
+            <option value="7">7 months</option><option value="8">8 months</option>
+            <option value="9">9 months</option><option value="10">10 months</option>
+            <option value="11">11 months</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <label style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:8px;color:var(--ink2);">Units</label>
+    <div class="unit-toggle">
+      <button class="active" onclick="setUnit('metric')">Metric (kg / cm)</button>
+      <button onclick="setUnit('imperial')">Imperial (lb / in)</button>
+    </div>
+
+    <div class="input-group" id="metric-inputs">
+      <label>Weight</label>
+      <div class="input-wrap" style="margin-bottom:12px;">
+        <input type="number" id="weight-kg" placeholder="35">
+        <span class="unit-badge">kg</span>
+      </div>
+      <label>Height</label>
+      <div class="input-wrap">
+        <input type="number" id="height-cm" placeholder="135">
+        <span class="unit-badge">cm</span>
+      </div>
+    </div>
+
+    <div class="input-group" id="imperial-inputs" style="display:none">
+      <label>Weight</label>
+      <div class="input-wrap" style="margin-bottom:12px;">
+        <input type="number" id="weight-lb" placeholder="77">
+        <span class="unit-badge">lb</span>
+      </div>
+      <label>Height</label>
+      <div class="input-row">
+        <div class="input-wrap">
+          <input type="number" id="height-ft" placeholder="4">
+          <span class="unit-badge">ft</span>
+        </div>
+        <div class="input-wrap">
+          <input type="number" id="height-in" placeholder="5">
+          <span class="unit-badge">in</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">Calculate Child BMI →</button>
+  </div>
+
+  <!-- Result -->
+  <div class="result-card" id="result-card">
+    <div class="pct-number" id="pct-number">—<span class="pct-sup" id="pct-sup"></span></div>
+    <div class="bmi-raw" id="bmi-raw">BMI: —</div>
+    <div class="bmi-category" id="bmi-category"></div>
+
+    <div class="pct-bar-wrap">
+      <div class="pct-bar-track">
+        <div class="pct-bar-pointer" id="pct-pointer" style="left:0%"></div>
+      </div>
+      <div class="pct-bar-labels">
+        <span>Underweight<br>&lt;5th</span>
+        <span>Healthy weight<br>5th–84th</span>
+        <span>Overweight<br>85th–94th</span>
+        <span>Obese<br>≥95th</span>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-box">
+        <div class="label">BMI value</div>
+        <div class="value" id="bmi-display">—</div>
+      </div>
+      <div class="info-box">
+        <div class="label">Compared to peers</div>
+        <div class="value" id="peers-text">—</div>
+      </div>
+    </div>
+
+    <div class="health-tip" id="health-tip"></div>
+  </div>
+
+  <!-- Percentile table -->
+  <div id="percentile-table">
+    <h2 class="section-title">CDC BMI-for-Age Percentile Categories</h2>
+    <p class="section-sub">Unlike adult BMI, children's BMI is compared to growth charts by age and sex.</p>
+    <div class="card" style="padding:0;overflow:hidden;">
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Percentile Range</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="dot" style="background:#3A7BBF"></span>Underweight</td><td>Below 5th percentile</td><td>Consult paediatrician</td></tr>
+          <tr><td><span class="dot" style="background:#2D6A4F"></span>Healthy weight</td><td>5th to 84th percentile</td><td>Maintain healthy habits</td></tr>
+          <tr><td><span class="dot" style="background:#C17B2A"></span>Overweight</td><td>85th to 94th percentile</td><td>Discuss with doctor</td></tr>
+          <tr><td><span class="dot" style="background:#B83232"></span>Obese</td><td>95th percentile and above</td><td>Seek medical advice</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section" id="faq">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How is BMI calculated for children?</button>
+      <div class="faq-a">For children and teenagers aged 2–17, BMI is calculated the same way as for adults — weight (kg) divided by height (m) squared — but the result is interpreted differently. Instead of fixed categories, a child's BMI is compared to other children of the same age and sex using CDC growth charts. The result is a <strong>percentile</strong>: for example, the 75th percentile means the child's BMI is higher than 75% of children the same age and sex.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is a healthy BMI percentile for my child?</button>
+      <div class="faq-a">According to the CDC, a <strong>healthy weight</strong> for children is a BMI between the <strong>5th and 85th percentile</strong> for their age and sex. Below the 5th percentile is underweight. Between the 85th and 95th percentile is overweight. At or above the 95th percentile is considered obese.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Why can't I use adult BMI categories for my child?</button>
+      <div class="faq-a">Children's bodies change significantly as they grow, and normal amounts of body fat vary by age and sex. A BMI of 18 means something very different for a 5-year-old than for a 15-year-old. The percentile method accounts for these normal developmental differences by comparing a child's BMI to thousands of children of the same age and sex rather than using a single fixed cutoff.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">My child's percentile is high — should I put them on a diet?</button>
+      <div class="faq-a">No — never put a child on a restrictive diet without medical supervision. If your child's BMI percentile is in the overweight or obese range, the first step is to consult your paediatrician. Children are still growing, and the goal is usually to <em>slow weight gain</em> while allowing normal height growth, not to lose weight rapidly. Focus on family-wide healthy habits: balanced meals, reducing screen time, and encouraging active play.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is this calculator accurate for Asian children?</button>
+      <div class="faq-a">This calculator uses CDC growth charts developed primarily from US population data. Research suggests that children of Asian descent may have higher body fat at lower BMI values, similar to Asian adults. If your child is of Asian, South Asian, or Southeast Asian descent, discuss this with your paediatrician who can provide ethnicity-appropriate guidance. For adult BMI, see our <a href="asian-bmi-calculator.html">Asian BMI Calculator</a>.</div>
+    </div>
+  </div>
+
+  <!-- Article -->
+  <div class="article-section">
+    <h2>How Child BMI Works — And Why It's Different from Adult BMI</h2>
+    <p>When most people think of BMI, they think of the standard adult categories: underweight below 18.5, normal up to 24.9, overweight up to 29.9, and obese at 30 and above. These cutoffs work reasonably well for adults whose bodies have finished developing. But for children and teenagers, a fixed cutoff system would be misleading.</p>
+    <p>A 6-year-old and a 16-year-old are growing at completely different rates and naturally carry different amounts of body fat at different stages of development. Girls typically gain body fat in early puberty; boys gain more muscle mass later. Using the same BMI number to classify both would produce wildly inaccurate results.</p>
+    <p>To solve this, the CDC developed <strong>BMI-for-age growth charts</strong> — separate charts for boys and girls, covering ages 2 to 20 — based on national health surveys of thousands of children. Your child's BMI is plotted against these charts to produce a <strong>percentile ranking</strong>.</p>
+
+    <h2>Understanding Percentiles</h2>
+    <p>A percentile tells you how your child's BMI compares to other children of the same age and sex. If your child is at the <strong>60th percentile</strong>, their BMI is higher than 60% of children their age and sex, and lower than 40%. This is squarely in the healthy range.</p>
+    <div class="callout"><p>💡 <strong>Important:</strong> A higher percentile is not automatically bad, and a lower percentile is not automatically good. What matters is whether the percentile falls within the healthy range (5th–85th) and whether it is stable over time. A sudden jump in percentile — even within the healthy range — may be worth discussing with your doctor.</p></div>
+
+    <h2>What to Do If Your Child Is Outside the Healthy Range</h2>
+    <h3>If your child is underweight (below 5th percentile)</h3>
+    <p>Underweight children may not be getting enough calories or nutrients to support healthy growth. This can sometimes reflect a medical condition, a very fast growth phase, or difficulty eating. Do not try to address this with supplements or high-calorie foods on your own — speak with your paediatrician first.</p>
+
+    <h3>If your child is overweight or obese (above 85th percentile)</h3>
+    <p>The approach for children is very different from adults. The goal is rarely weight loss — it is usually to slow the rate of weight gain while the child continues to grow in height, which naturally brings BMI down over time. Practical steps include:</p>
+    <ul>
+      <li>Reducing sugary drinks and ultra-processed snacks as a family</li>
+      <li>Encouraging at least 60 minutes of moderate physical activity daily (CDC recommendation for children)</li>
+      <li>Prioritising sleep — poor sleep is linked to weight gain in children</li>
+      <li>Limiting recreational screen time</li>
+      <li>Making changes as a whole family, not singling out the child</li>
+    </ul>
+    <div class="warn-callout"><p>⚠️ Never comment negatively on a child's weight or body shape. Research consistently shows that weight stigma in childhood increases the risk of disordered eating, anxiety, and long-term poor health outcomes. Focus on healthy habits for the whole family, not on the child's weight specifically.</p></div>
+
+    <h2>Limitations of Child BMI</h2>
+    <p>BMI is a screening tool, not a diagnosis. It cannot distinguish between muscle mass and body fat. A very active, muscular child may have a high BMI percentile despite having healthy body composition. Conversely, a child with low muscle mass may have a normal BMI percentile but still have relatively high body fat. For a thorough assessment, your child's paediatrician will consider BMI alongside growth trends, physical examination, and family history.</p>
+
+    <div class="sources">
+      <strong>References:</strong><br>
+      Centers for Disease Control and Prevention. <a href="https://www.cdc.gov/bmi/child-teen-calculator/index.html" target="_blank" rel="noopener">Child and Teen BMI Calculator</a>. CDC, 2024.<br>
+      CDC. About Child & Teen BMI. <a href="https://www.cdc.gov/bmi/child-teen-bmi/about-child-teen-bmi.html" target="_blank" rel="noopener">cdc.gov</a>, 2024.<br>
+      Kuczmarski RJ et al. CDC Growth Charts: United States. <em>Advance Data</em>. 2000;314:1–190.
+    </div>
+
+    <div class="related">
+      <h3>Related Tools & Articles</h3>
+      <div class="related-links">
+        <a href="bmi-calculator.html">Adult BMI Calculator</a>
+        <a href="asian-bmi-calculator.html">Asian BMI Calculator</a>
+        <a href="what-is-bmi.html">What Is BMI?</a>
+        <a href="bmi-chart-by-age.html">BMI Chart by Age</a>
+        <a href="ideal-weight.html">Ideal Weight Calculator</a>
+        <a href="how-to-lower-bmi.html">How to Lower Your BMI</a>
+        <a href="calorie-calculator.html">Calorie Calculator</a>
+      
+        <a href="body-fat.html">Body Fat Calculator</a>
+        <a href="water-intake.html">Water Intake Calculator</a>
+        <a href="waist-to-height-ratio.html">Waist-to-Height Ratio</a>
+      
+        <a href="sleep-and-weight-loss.html">Sleep & Weight Loss</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+  <!-- CTA Block -->
+  <div style="max-width:720px;margin:0 auto;padding:0 20px 48px;">
+    <div style="background:#1A1714;border-radius:20px;padding:32px 28px;text-align:center;">
+      <p style="font-size:.78rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Next step</p>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;line-height:1.2;">More health tools</h2>
+      <p style="font-size:.875rem;color:rgba(255,255,255,.6);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto;">Calculate daily calories, water intake, and ideal weight for adults.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+      <a href="bmi-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;">⚖️ Adult BMI Calculator →</a>
+      <a href="asian-bmi-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;">🌏 Asian BMI →</a>
+      <a href="calorie-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;">🔥 Calorie Calculator →</a>
+      </div>
+    </div>
+  </div>
+
+
+<div class="card" style="padding:20px;margin:20px 0;overflow-x:auto;">
+  <p style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:14px;">Child BMI — percentile categories explained</p>
+  <svg viewBox="0 0 620 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;display:block;font-family:'DM Sans',sans-serif;">
+    <rect x="10" y="15" width="120" height="45" rx="8" fill="#DCE9F8" stroke="#C7DCEE" stroke-width="1.5"/>
+    <text x="70" y="36" text-anchor="middle" font-size="10" font-weight="700" fill="#3A7BBF">Underweight</text>
+    <text x="70" y="52" text-anchor="middle" font-size="9" fill="#3A7BBF">Below 5th %ile</text>
+    <rect x="140" y="15" width="180" height="45" rx="8" fill="#D8EFE4" stroke="#A8D5BE" stroke-width="1.5"/>
+    <text x="230" y="36" text-anchor="middle" font-size="10" font-weight="700" fill="#2D6A4F">Healthy weight</text>
+    <text x="230" y="52" text-anchor="middle" font-size="9" fill="#2D6A4F">5th to 84th %ile</text>
+    <rect x="330" y="15" width="130" height="45" rx="8" fill="#FBF0DC" stroke="#F5D9A8" stroke-width="1.5"/>
+    <text x="395" y="36" text-anchor="middle" font-size="10" font-weight="700" fill="#C17B2A">Overweight</text>
+    <text x="395" y="52" text-anchor="middle" font-size="9" fill="#C17B2A">85th to 94th %ile</text>
+    <rect x="470" y="15" width="140" height="45" rx="8" fill="#FADFDF" stroke="#F5B8B8" stroke-width="1.5"/>
+    <text x="540" y="36" text-anchor="middle" font-size="10" font-weight="700" fill="#B83232">Obese</text>
+    <text x="540" y="52" text-anchor="middle" font-size="9" fill="#B83232">95th %ile or above</text>
+    <text x="310" y="80" text-anchor="middle" font-size="9" fill="#A09A94">CDC/WHO percentile categories for children 2–19 years</text>
+  </svg>
+</div>
 </Base>

@@ -1,6 +1,5 @@
 ---
 import Base from '../../layouts/Base.astro';
-const main = "<main>\n\n  <div class=\"hero\">\n    <h1>Health <em>Guides</em></h1>\n    <p>Evidence-based articles on BMI, weight loss, nutrition, and exercise — written to help you understand your health, not just track numbers.</p>\n  </div>\n\n  <!-- Search box -->\n  <div style=\"max-width:480px;margin:0 auto 24px;padding:0 24px;\">\n    <div style=\"position:relative;\">\n      <input id=\"guide-search\" type=\"text\" placeholder=\"Search guides… e.g. protein, BMI, sleep\"\n        style=\"width:100%;padding:11px 16px 11px 44px;border:1.5px solid var(--border);border-radius:100px;font-family:inherit;font-size:.9rem;background:var(--surface);color:var(--ink);outline:none;transition:border-color .2s;\"\n        oninput=\"searchGuides(this.value)\" onfocus=\"this.style.borderColor='var(--accent)'\" onblur=\"this.style.borderColor='var(--border)'\">\n      <span style=\"position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:1rem;pointer-events:none;\">🔍</span>\n    </div>\n  </div>\n\n  <!-- Filter tabs -->\n  <div class=\"filters\">\n    <button class=\"filter-btn active\" onclick=\"filterCards('all',this)\" id=\"tab-all\">All <span style=\"background:rgba(255,255,255,0.25);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;\">65</span></button>\n    <button class=\"filter-btn\" onclick=\"filterCards('BMI',this)\">BMI <span style=\"background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);\">14</span></button>\n    <button class=\"filter-btn\" onclick=\"filterCards('Calories',this)\">Calories <span style=\"background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);\">14</span></button>\n    <button class=\"filter-btn\" onclick=\"filterCards('Nutrition',this)\">Nutrition <span style=\"background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);\">11</span></button>\n    <button class=\"filter-btn\" onclick=\"filterCards('Exercise',this)\">Exercise <span style=\"background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);\">7</span></button>\n    <button class=\"filter-btn\" onclick=\"filterCards('Hydration',this)\">Hydration <span style=\"background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);\">4</span></button>\n    <button class=\"filter-btn\" onclick=\"filterCards('By Height',this)\">By Height <span style=\"background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);\">8</span></button>\n    <button class=\"filter-btn\" onclick=\"filterCards('By Age',this)\">By Age <span style=\"background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);\">7</span></button>\n  </div>\n\n  <!-- All Guides Grid -->\n  <div class=\"guides-grid\" id=\"guides-grid\">\n\n    <!-- BMI -->\n    <a class=\"guide-card\" href=\"../what-is-bmi.html\" data-tag=\"BMI\">\n      <div class=\"card-top\"><div class=\"card-icon\">📖</div><div><div class=\"card-tag\">BMI</div></div></div>\n      <h2>What Is BMI?</h2>\n      <p>A complete explanation of Body Mass Index — how it's calculated, what it measures, and its limitations as a health indicator.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-bmi-for-women.html\" data-tag=\"BMI\">\n      <div class=\"card-top\"><div class=\"card-icon\">👩</div><div><div class=\"card-tag\">BMI</div></div></div>\n      <h2>Healthy BMI for Women</h2>\n      <p>What a healthy BMI range looks like for women at different life stages, including pregnancy and menopause considerations.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../normal-bmi-for-men.html\" data-tag=\"BMI\">\n      <div class=\"card-top\"><div class=\"card-icon\">👨</div><div><div class=\"card-tag\">BMI</div></div></div>\n      <h2>Normal BMI for Men</h2>\n      <p>BMI ranges, body composition differences, and health risk thresholds specific to men across different age groups.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../bmi-chart-by-age.html\" data-tag=\"BMI\">\n      <div class=\"card-top\"><div class=\"card-icon\">📈</div><div><div class=\"card-tag\">BMI</div></div></div>\n      <h2>BMI Chart by Age</h2>\n      <p>Visual BMI reference charts broken down by age group — see how healthy ranges shift as you get older.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../how-to-lower-bmi.html\" data-tag=\"BMI\">\n      <div class=\"card-top\"><div class=\"card-icon\">⬇️</div><div><div class=\"card-tag\">BMI</div></div></div>\n      <h2>How to Lower Your BMI</h2>\n      <p>Practical, evidence-based strategies for reducing BMI through sustainable changes to diet, exercise, and lifestyle.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <!-- Calories -->\n    <a class=\"guide-card\" href=\"../how-many-calories-per-day.html\" data-tag=\"Calories\">\n      <div class=\"card-top\"><div class=\"card-icon\">🔢</div><div><div class=\"card-tag\">Calories</div></div></div>\n      <h2>How Many Calories Per Day?</h2>\n      <p>How to calculate your daily calorie needs based on your age, sex, height, weight, and activity level using validated formulas.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../calories-to-lose-weight.html\" data-tag=\"Calories\">\n      <div class=\"card-top\"><div class=\"card-icon\">⚖️</div><div><div class=\"card-tag\">Calories</div></div></div>\n      <h2>Calories to Lose Weight</h2>\n      <p>How calorie deficits work, how large a deficit is safe, and how to set a realistic calorie target for steady weight loss.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <!-- Nutrition -->\n    <a class=\"guide-card\" href=\"../high-protein-foods.html\" data-tag=\"Nutrition\">\n      <div class=\"card-top\"><div class=\"card-icon\">🥩</div><div><div class=\"card-tag\">Nutrition</div></div></div>\n      <h2>High Protein Foods List</h2>\n      <p>A comprehensive list of the best dietary protein sources ranked by protein content per 100 g, with serving suggestions.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <!-- Hydration -->\n    <a class=\"guide-card\" href=\"../how-much-water-per-day.html\" data-tag=\"Hydration\">\n      <div class=\"card-top\"><div class=\"card-icon\">💧</div><div><div class=\"card-tag\">Hydration</div></div></div>\n      <h2>How Much Water Per Day?</h2>\n      <p>Daily water intake recommendations based on body weight, activity, and climate — plus signs of dehydration to watch for.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <!-- Exercise -->\n    <a class=\"guide-card\" href=\"../best-exercises-to-lose-weight.html\" data-tag=\"Exercise\">\n      <div class=\"card-top\"><div class=\"card-icon\">🏃</div><div><div class=\"card-tag\">Exercise</div></div></div>\n      <h2>Best Exercises to Lose Weight</h2>\n      <p>The most effective exercise types for weight loss ranked by calorie burn, accessibility, and long-term adherence.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../how-to-lose-belly-fat.html\" data-tag=\"Exercise\">\n      <div class=\"card-top\"><div class=\"card-icon\">💪</div><div><div class=\"card-tag\">Exercise</div></div></div>\n      <h2>How to Lose Belly Fat</h2>\n      <p>Evidence-based strategies for reducing visceral and subcutaneous abdominal fat — including what actually works and what doesn't.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <!-- By Height -->\n    <a class=\"guide-card\" href=\"../healthy-weight-160cm-female.html\" data-tag=\"By Height\">\n      <div class=\"card-top\"><div class=\"card-icon\">📏</div><div><div class=\"card-tag\">By Height</div></div></div>\n      <h2>Healthy Weight: 160 cm Women</h2>\n      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 160 cm.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-weight-165cm-female.html\" data-tag=\"By Height\">\n      <div class=\"card-top\"><div class=\"card-icon\">📏</div><div><div class=\"card-tag\">By Height</div></div></div>\n      <h2>Healthy Weight: 165 cm Women</h2>\n      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 165 cm.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-weight-170cm-female.html\" data-tag=\"By Height\">\n      <div class=\"card-top\"><div class=\"card-icon\">📏</div><div><div class=\"card-tag\">By Height</div></div></div>\n      <h2>Healthy Weight: 170 cm Women</h2>\n      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 170 cm.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-weight-170cm-male.html\" data-tag=\"By Height\">\n      <div class=\"card-top\"><div class=\"card-icon\">📏</div><div><div class=\"card-tag\">By Height</div></div></div>\n      <h2>Healthy Weight: 170 cm Men</h2>\n      <p>Healthy weight range, calorie needs, and height-specific health tips for men at 170 cm.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-weight-175cm-male.html\" data-tag=\"By Height\">\n      <div class=\"card-top\"><div class=\"card-icon\">📏</div><div><div class=\"card-tag\">By Height</div></div></div>\n      <h2>Healthy Weight: 175 cm Men</h2>\n      <p>Healthy weight range, calorie needs, and height-specific health tips for men at 175 cm.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-weight-5ft4in-female.html\" data-tag=\"By Height\">\n      <div class=\"card-top\"><div class=\"card-icon\">📏</div><div><div class=\"card-tag\">By Height</div></div></div>\n      <h2>Healthy Weight: 5'4\" Women</h2>\n      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 5 feet 4 inches.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-weight-5ft9in-male.html\" data-tag=\"By Height\">\n      <div class=\"card-top\"><div class=\"card-icon\">📏</div><div><div class=\"card-tag\">By Height</div></div></div>\n      <h2>Healthy Weight: 5'9\" Men</h2>\n      <p>Healthy weight range, calorie needs, and height-specific health tips for men at 5 feet 9 inches.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-weight-5ft6in-female.html\" data-tag=\"By Height\">\n      <div class=\"card-top\"><div class=\"card-icon\">📏</div><div><div class=\"card-tag\">By Height</div></div></div>\n      <h2>Healthy Weight: 5'6\" Women</h2>\n      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 5 feet 6 inches.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <!-- By Age -->\n    <a class=\"guide-card\" href=\"../healthy-bmi-20-year-old-female.html\" data-tag=\"By Age\">\n      <div class=\"card-top\"><div class=\"card-icon\">🗓️</div><div><div class=\"card-tag\">By Age</div></div></div>\n      <h2>Healthy BMI: Age 20 (Women)</h2>\n      <p>Body composition, muscle mass, and key health considerations for women in their 20s.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-bmi-30-year-old-female.html\" data-tag=\"By Age\">\n      <div class=\"card-top\"><div class=\"card-icon\">🗓️</div><div><div class=\"card-tag\">By Age</div></div></div>\n      <h2>Healthy BMI: Age 30 (Women)</h2>\n      <p>How body composition changes in your 30s and what to prioritise to maintain a healthy BMI.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-bmi-40-year-old-female.html\" data-tag=\"By Age\">\n      <div class=\"card-top\"><div class=\"card-icon\">🗓️</div><div><div class=\"card-tag\">By Age</div></div></div>\n      <h2>Healthy BMI: Age 40 (Women)</h2>\n      <p>Perimenopause, body recomposition, and evidence-based strategies for women in their 40s.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-bmi-50-year-old-female.html\" data-tag=\"By Age\">\n      <div class=\"card-top\"><div class=\"card-icon\">🗓️</div><div><div class=\"card-tag\">By Age</div></div></div>\n      <h2>Healthy BMI: Age 50 (Women)</h2>\n      <p>Post-menopause, metabolic changes, and evidence-based strategies for women in their 50s.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-bmi-30-year-old-male.html\" data-tag=\"By Age\">\n      <div class=\"card-top\"><div class=\"card-icon\">🗓️</div><div><div class=\"card-tag\">By Age</div></div></div>\n      <h2>Healthy BMI: Age 30 (Men)</h2>\n      <p>Metabolic slowdown, muscle preservation, and cardiovascular risk for men entering their 30s.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-bmi-40-year-old-male.html\" data-tag=\"By Age\">\n      <div class=\"card-top\"><div class=\"card-icon\">🗓️</div><div><div class=\"card-tag\">By Age</div></div></div>\n      <h2>Healthy BMI: Age 40 (Men)</h2>\n      <p>Testosterone decline, visceral fat risk, and the most impactful habits for men in their 40s.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-bmi-50-year-old-male.html\" data-tag=\"By Age\">\n      <div class=\"card-top\"><div class=\"card-icon\">🗓️</div><div><div class=\"card-tag\">By Age</div></div></div>\n      <h2>Healthy BMI: Age 50 (Men)</h2>\n      <p>Sarcopenia, andropause, and evidence-based strategies for maintaining a healthy BMI after 50.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <!-- New Articles -->\n    <a class=\"guide-card\" href=\"../bmi-vs-body-fat.html\" data-tag=\"BMI\">\n      <div class=\"card-top\"><div class=\"card-icon\">⚖️</div><div><div class=\"card-tag\">BMI</div></div></div>\n      <h2>BMI vs Body Fat Percentage</h2>\n      <p>Which metric matters more for your health? When BMI misleads, when body fat % is essential, and how to use both together.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../healthy-bmi-asian-women.html\" data-tag=\"BMI\">\n      <div class=\"card-top\"><div class=\"card-icon\">🌏</div><div><div class=\"card-tag\">BMI</div></div></div>\n      <h2>Healthy BMI for Asian Women</h2>\n      <p>Why standard BMI ranges don't apply to Asian women, what thresholds to use instead, and what the research says.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../how-to-lose-5kg.html\" data-tag=\"Calories\">\n      <div class=\"card-top\"><div class=\"card-icon\">📉</div><div><div class=\"card-tag\">Calories</div></div></div>\n      <h2>How to Lose 5kg Safely</h2>\n      <p>A realistic, science-based plan — the right calorie deficit, protein targets, exercise approach, and timeline to expect.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n  \n    <a class=\"guide-card\" href=\"../bmi-calculator-not-accurate.html\" data-tag=\"BMI\">\n      <div class=\"card-top\"><div class=\"card-icon\">🔬</div><div><div class=\"card-tag\">BMI</div></div></div>\n      <h2>Is BMI Accurate?</h2>\n      <p>BMI has real limitations — muscle vs fat, ethnicity gaps, age effects. Here's when it works and when to use other metrics instead.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n  \n    <!-- Nutrition additions -->\n    <a class=\"guide-card\" href=\"../what-to-eat-to-lose-weight.html\" data-tag=\"Nutrition\">\n      <div class=\"card-top\"><div class=\"card-icon\">🥗</div><div><div class=\"card-tag\">Nutrition</div></div></div>\n      <h2>What to Eat to Lose Weight</h2>\n      <p>No fad diets. The evidence-based foods that make a calorie deficit easier — what to eat more of, what to limit, and why.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../intermittent-fasting.html\" data-tag=\"Nutrition\">\n      <div class=\"card-top\"><div class=\"card-icon\">⏱️</div><div><div class=\"card-tag\">Nutrition</div></div></div>\n      <h2>Intermittent Fasting: Does It Work?</h2>\n      <p>An honest look at what the research actually shows — who IF works for, who should be cautious, and the most common mistakes.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <!-- Exercise additions -->\n    <a class=\"guide-card\" href=\"../how-many-steps-per-day.html\" data-tag=\"Exercise\">\n      <div class=\"card-top\"><div class=\"card-icon\">👟</div><div><div class=\"card-tag\">Exercise</div></div></div>\n      <h2>How Many Steps Per Day Is Healthy?</h2>\n      <p>Is 10,000 steps backed by science? What the research actually shows about daily step count and realistic targets for different goals.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../cardio-vs-weights.html\" data-tag=\"Exercise\">\n      <div class=\"card-top\"><div class=\"card-icon\">🏋️</div><div><div class=\"card-tag\">Exercise</div></div></div>\n      <h2>Cardio vs Weight Training for Fat Loss</h2>\n      <p>Cardio burns more calories per session. Weights build muscle that burns calories at rest. Which actually wins — and why the answer might surprise you.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <!-- Hydration additions -->\n    <a class=\"guide-card\" href=\"../signs-of-dehydration.html\" data-tag=\"Hydration\">\n      <div class=\"card-top\"><div class=\"card-icon\">🚰</div><div><div class=\"card-tag\">Hydration</div></div></div>\n      <h2>Signs of Dehydration</h2>\n      <p>Dehydration affects you before you feel thirsty. Learn the early warning signs, who's most at risk, and the urine colour test.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n    <a class=\"guide-card\" href=\"../does-water-help-lose-weight.html\" data-tag=\"Hydration\">\n      <div class=\"card-top\"><div class=\"card-icon\">💧</div><div><div class=\"card-tag\">Hydration</div></div></div>\n      <h2>Does Water Help You Lose Weight?</h2>\n      <p>Water doesn't burn fat directly — but it supports weight loss through three well-documented mechanisms. Here's what the research shows.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n  \n    <a class=\"guide-card\" href=\"../weight-loss-plateau.html\" data-tag=\"Calories\">\n      <div class=\"card-top\"><div class=\"card-icon\">📈</div><div><div class=\"card-tag\">Weight Loss</div></div></div>\n      <h2>Why You've Hit a Weight Loss Plateau</h2>\n      <p>Why plateaus happen, the physiology behind them, and exactly how to break through one.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../sleep-and-weight-loss.html\" data-tag=\"Calories\">\n      <div class=\"card-top\"><div class=\"card-icon\">😴</div><div><div class=\"card-tag\">Weight Loss</div></div></div>\n      <h2>How Sleep Affects Weight Loss</h2>\n      <p>Poor sleep sabotages fat loss through hormones and metabolism. How much sleep you need for results.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../stress-and-weight-gain.html\" data-tag=\"Calories\">\n      <div class=\"card-top\"><div class=\"card-icon\">😤</div><div><div class=\"card-tag\">Weight Loss</div></div></div>\n      <h2>Stress and Weight Gain: The Cortisol Connection</h2>\n      <p>Chronic stress raises cortisol, promotes visceral fat, and sabotages weight loss. The science and fixes.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../metabolism-facts.html\" data-tag=\"Calories\">\n      <div class=\"card-top\"><div class=\"card-icon\">⚡</div><div><div class=\"card-tag\">Weight Loss</div></div></div>\n      <h2>Metabolism: Facts, Myths & How to Boost It</h2>\n      <p>What metabolism actually is, what the myths get wrong, and what genuinely raises your metabolic rate.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../protein-for-weight-loss.html\" data-tag=\"Nutrition\">\n      <div class=\"card-top\"><div class=\"card-icon\">🥩</div><div><div class=\"card-tag\">Nutrition</div></div></div>\n      <h2>How Much Protein Do You Need to Lose Weight?</h2>\n      <p>Protein is the most important macronutrient for fat loss. Exactly how much you need and the best sources.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../how-long-to-lose-10kg.html\" data-tag=\"Calories\">\n      <div class=\"card-top\"><div class=\"card-icon\">🎯</div><div><div class=\"card-tag\">Weight Loss</div></div></div>\n      <h2>How Long Does It Take to Lose 10kg?</h2>\n      <p>The realistic timeline, how to set your calorie deficit, and month-by-month expectations.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../best-diet-for-weight-loss.html\" data-tag=\"Calories\">\n      <div class=\"card-top\"><div class=\"card-icon\">🥗</div><div><div class=\"card-tag\">Weight Loss</div></div></div>\n      <h2>Best Diet for Weight Loss: What the Research Shows</h2>\n      <p>Mediterranean, keto, low-fat — which diet actually wins? The research gives a clear, surprising answer.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../how-to-lose-weight-fast-safely.html\" data-tag=\"Calories\">\n      <div class=\"card-top\"><div class=\"card-icon\">📉</div><div><div class=\"card-tag\">Weight Loss</div></div></div>\n      <h2>How to Lose Weight Fast (Safely)</h2>\n      <p>The fastest safe rate of fat loss and the protocol to maximise results without muscle loss.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../what-is-tdee.html\" data-tag=\"Calories\">\n      <div class=\"card-top\"><div class=\"card-icon\">🔢</div><div><div class=\"card-tag\">Calories</div></div></div>\n      <h2>What Is TDEE? Total Daily Energy Expenditure Explained</h2>\n      <p>TDEE is the most important number for weight management. How it works and how to calculate yours.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../how-to-count-calories.html\" data-tag=\"Calories\">\n      <div class=\"card-top\"><div class=\"card-icon\">📊</div><div><div class=\"card-tag\">Calories</div></div></div>\n      <h2>How to Count Calories: A Beginner's Guide</h2>\n      <p>Calorie counting works — but only if done accurately. The right tools and the mistakes to avoid.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../calorie-density-foods.html\" data-tag=\"Nutrition\">\n      <div class=\"card-top\"><div class=\"card-icon\">🥦</div><div><div class=\"card-tag\">Nutrition</div></div></div>\n      <h2>Low Calorie Density Foods That Keep You Full</h2>\n      <p>Eat satisfying portions while consuming fewer calories. The science of calorie density explained.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../sugar-and-weight-gain.html\" data-tag=\"Nutrition\">\n      <div class=\"card-top\"><div class=\"card-icon\">🍬</div><div><div class=\"card-tag\">Nutrition</div></div></div>\n      <h2>Sugar and Weight Gain: How Much Is Too Much?</h2>\n      <p>Sugar's real role in weight gain, which sugars actually matter, and practical ways to reduce them.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../fibre-foods.html\" data-tag=\"Nutrition\">\n      <div class=\"card-top\"><div class=\"card-icon\">🌾</div><div><div class=\"card-tag\">Nutrition</div></div></div>\n      <h2>High Fibre Foods and Why Fibre Matters for Weight</h2>\n      <p>Fibre is the most underrated weight management tool. How much you need and the best food sources.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../meal-prep-for-weight-loss.html\" data-tag=\"Nutrition\">\n      <div class=\"card-top\"><div class=\"card-icon\">🍱</div><div><div class=\"card-tag\">Nutrition</div></div></div>\n      <h2>Meal Prep for Weight Loss: A Practical Guide</h2>\n      <p>Meal prepping removes decision fatigue and makes healthy choices the default. How to start.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../healthy-fats-foods.html\" data-tag=\"Nutrition\">\n      <div class=\"card-top\"><div class=\"card-icon\">🫒</div><div><div class=\"card-tag\">Nutrition</div></div></div>\n      <h2>Healthy Fats: Which Fats to Eat and Avoid</h2>\n      <p>Not all fats are equal. Which fats protect health, which to limit, and the myth that fat makes you fat.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../how-to-start-exercising.html\" data-tag=\"Exercise\">\n      <div class=\"card-top\"><div class=\"card-icon\">🚶</div><div><div class=\"card-tag\">Exercise</div></div></div>\n      <h2>How to Start Exercising (When You've Never Done It)</h2>\n      <p>A realistic beginner guide — what to do, how much, and how to build a habit that actually sticks.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../strength-training-beginners.html\" data-tag=\"Exercise\">\n      <div class=\"card-top\"><div class=\"card-icon\">🏋️</div><div><div class=\"card-tag\">Exercise</div></div></div>\n      <h2>Strength Training for Beginners</h2>\n      <p>The most effective exercise for fat loss and metabolic health. A simple guide to get started.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../walking-for-weight-loss.html\" data-tag=\"Exercise\">\n      <div class=\"card-top\"><div class=\"card-icon\">👟</div><div><div class=\"card-tag\">Exercise</div></div></div>\n      <h2>Walking for Weight Loss: How to Make It Work</h2>\n      <p>Walking is underrated for fat loss. How much to walk, how to maximise calorie burn, and why it works.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../what-is-body-composition.html\" data-tag=\"BMI\">\n      <div class=\"card-top\"><div class=\"card-icon\">⚖️</div><div><div class=\"card-tag\">Body</div></div></div>\n      <h2>What Is Body Composition?</h2>\n      <p>Why the ratio of fat to muscle matters more than weight alone — and how to measure and improve it.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../waist-circumference-health.html\" data-tag=\"BMI\">\n      <div class=\"card-top\"><div class=\"card-icon\">📏</div><div><div class=\"card-tag\">Body</div></div></div>\n      <h2>Waist Circumference: Why It Matters More Than Weight</h2>\n      <p>Your waist predicts metabolic disease better than BMI. The healthy thresholds and how to reduce it.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../visceral-fat.html\" data-tag=\"BMI\">\n      <div class=\"card-top\"><div class=\"card-icon\">🫀</div><div><div class=\"card-tag\">Body</div></div></div>\n      <h2>Visceral Fat: What It Is and How to Reduce It</h2>\n      <p>The most dangerous fat type — stored around organs. What causes it and the most effective ways to reduce it.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../muscle-vs-fat.html\" data-tag=\"BMI\">\n      <div class=\"card-top\"><div class=\"card-icon\">💪</div><div><div class=\"card-tag\">Body</div></div></div>\n      <h2>Muscle vs Fat: Why the Scale Lies</h2>\n      <p>Muscle is denser than fat — the scale can stay the same while your body gets leaner. What to track instead.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../healthy-weight-maintenance.html\" data-tag=\"Calories\">\n      <div class=\"card-top\"><div class=\"card-icon\">⚖️</div><div><div class=\"card-tag\">Weight Loss</div></div></div>\n      <h2>How to Maintain Your Weight After Losing It</h2>\n      <p>80% of people regain lost weight. The habits that separate successful long-term maintainers from the rest.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../why-am-i-not-losing-weight.html\" data-tag=\"Calories\">\n      <div class=\"card-top\"><div class=\"card-icon\">❓</div><div><div class=\"card-tag\">Weight Loss</div></div></div>\n      <h2>Why Am I Not Losing Weight? 8 Common Reasons</h2>\n      <p>Eating well and exercising but the scale won't move? These 8 reasons explain why — and what to do.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../electrolytes-explained.html\" data-tag=\"Hydration\">\n      <div class=\"card-top\"><div class=\"card-icon\">⚡</div><div><div class=\"card-tag\">Hydration</div></div></div>\n      <h2>Electrolytes: What They Are and Why You Need Them</h2>\n      <p>Electrolytes regulate fluid balance and muscle function. When you need more and the best food sources.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../alcohol-and-weight.html\" data-tag=\"Nutrition\">\n      <div class=\"card-top\"><div class=\"card-icon\">🍷</div><div><div class=\"card-tag\">Nutrition</div></div></div>\n      <h2>Alcohol and Weight Gain: What You Need to Know</h2>\n      <p>Alcohol's impact on fat loss through calories, appetite, sleep, and fat storage. Practical strategies.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../coffee-and-weight-loss.html\" data-tag=\"Nutrition\">\n      <div class=\"card-top\"><div class=\"card-icon\">☕</div><div><div class=\"card-tag\">Nutrition</div></div></div>\n      <h2>Does Coffee Help You Lose Weight?</h2>\n      <p>Caffeine genuinely boosts metabolism — but the effect is modest. What the research shows and when it helps.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../healthy-bmi-over-50.html\" data-tag=\"BMI\">\n      <div class=\"card-top\"><div class=\"card-icon\">🗓️</div><div><div class=\"card-tag\">BMI</div></div></div>\n      <h2>Healthy BMI After 50: What Changes and Why</h2>\n      <p>BMI ranges shift slightly with age. What's optimal after 50, and why muscle mass matters more than numbers.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n    <a class=\"guide-card\" href=\"../bmi-and-muscle-mass.html\" data-tag=\"BMI\">\n      <div class=\"card-top\"><div class=\"card-icon\">💪</div><div><div class=\"card-tag\">BMI</div></div></div>\n      <h2>BMI and Muscle Mass: Why Athletes Score High</h2>\n      <p>Muscular people often have 'overweight' BMIs despite low body fat. Why BMI fails active people.</p>\n      <div class=\"card-arrow\">Read guide →</div>\n    </a>\n\n  </div>\n\n  <!-- Load More -->\n  <div id=\"load-more-wrap\" style=\"text-align:center;padding:8px 0 40px;\">\n    <button id=\"load-more-btn\" onclick=\"loadMore()\"\n      style=\"background:var(--surface);border:1.5px solid var(--border);border-radius:100px;padding:10px 28px;font-family:inherit;font-size:.875rem;color:var(--ink2);cursor:pointer;transition:all .2s;\"\n      onmouseover=\"this.style.borderColor='var(--accent)';this.style.color='var(--accent)'\"\n      onmouseout=\"this.style.borderColor='var(--border)';this.style.color='var(--ink2)'\">\n      Load more guides\n    </button>\n    <p id=\"load-more-count\" style=\"font-size:.78rem;color:var(--ink3);margin-top:8px;\"></p>\n  </div>\n\n  <!-- CTA strip -->\n  <div class=\"cta-strip\">\n    <h2>Check Your Numbers</h2>\n    <p>Use our free calculators to get personalised results based on your height, weight, age, and activity level.</p>\n    <a href=\"../index.html\" class=\"cta-btn\">Open All Tools →</a>\n  </div>\n\n</main>";
 ---
 
 <Base
@@ -8,5 +7,498 @@ const main = "<main>\n\n  <div class=\"hero\">\n    <h1>Health <em>Guides</em></
   description="Evidence-based health guides covering BMI, calorie needs, weight loss, nutrition, and exercise. Free, research-backed articles to help you reach your health goals."
   canonical="https://healthybmicheck.com/guides/"
 >
-  <Fragment set:html={main} />
+<main>
+
+  <div class="hero">
+    <h1>Health <em>Guides</em></h1>
+    <p>Evidence-based articles on BMI, weight loss, nutrition, and exercise — written to help you understand your health, not just track numbers.</p>
+  </div>
+
+  <!-- Search box -->
+  <div style="max-width:480px;margin:0 auto 24px;padding:0 24px;">
+    <div style="position:relative;">
+      <input id="guide-search" type="text" placeholder="Search guides… e.g. protein, BMI, sleep"
+        style="width:100%;padding:11px 16px 11px 44px;border:1.5px solid var(--border);border-radius:100px;font-family:inherit;font-size:.9rem;background:var(--surface);color:var(--ink);outline:none;transition:border-color .2s;"
+        oninput="searchGuides(this.value)" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+      <span style="position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:1rem;pointer-events:none;">🔍</span>
+    </div>
+  </div>
+
+  <!-- Filter tabs -->
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterCards('all',this)" id="tab-all">All <span style="background:rgba(255,255,255,0.25);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;">65</span></button>
+    <button class="filter-btn" onclick="filterCards('BMI',this)">BMI <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">14</span></button>
+    <button class="filter-btn" onclick="filterCards('Calories',this)">Calories <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">14</span></button>
+    <button class="filter-btn" onclick="filterCards('Nutrition',this)">Nutrition <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">11</span></button>
+    <button class="filter-btn" onclick="filterCards('Exercise',this)">Exercise <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">7</span></button>
+    <button class="filter-btn" onclick="filterCards('Hydration',this)">Hydration <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">4</span></button>
+    <button class="filter-btn" onclick="filterCards('By Height',this)">By Height <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">8</span></button>
+    <button class="filter-btn" onclick="filterCards('By Age',this)">By Age <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">7</span></button>
+  </div>
+
+  <!-- All Guides Grid -->
+  <div class="guides-grid" id="guides-grid">
+
+    <!-- BMI -->
+    <a class="guide-card" href="../what-is-bmi.html" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">📖</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>What Is BMI?</h2>
+      <p>A complete explanation of Body Mass Index — how it's calculated, what it measures, and its limitations as a health indicator.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-bmi-for-women.html" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">👩</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>Healthy BMI for Women</h2>
+      <p>What a healthy BMI range looks like for women at different life stages, including pregnancy and menopause considerations.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../normal-bmi-for-men.html" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">👨</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>Normal BMI for Men</h2>
+      <p>BMI ranges, body composition differences, and health risk thresholds specific to men across different age groups.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../bmi-chart-by-age.html" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">📈</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>BMI Chart by Age</h2>
+      <p>Visual BMI reference charts broken down by age group — see how healthy ranges shift as you get older.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../how-to-lower-bmi.html" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">⬇️</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>How to Lower Your BMI</h2>
+      <p>Practical, evidence-based strategies for reducing BMI through sustainable changes to diet, exercise, and lifestyle.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <!-- Calories -->
+    <a class="guide-card" href="../how-many-calories-per-day.html" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">🔢</div><div><div class="card-tag">Calories</div></div></div>
+      <h2>How Many Calories Per Day?</h2>
+      <p>How to calculate your daily calorie needs based on your age, sex, height, weight, and activity level using validated formulas.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../calories-to-lose-weight.html" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">⚖️</div><div><div class="card-tag">Calories</div></div></div>
+      <h2>Calories to Lose Weight</h2>
+      <p>How calorie deficits work, how large a deficit is safe, and how to set a realistic calorie target for steady weight loss.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <!-- Nutrition -->
+    <a class="guide-card" href="../high-protein-foods.html" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">🥩</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>High Protein Foods List</h2>
+      <p>A comprehensive list of the best dietary protein sources ranked by protein content per 100 g, with serving suggestions.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <!-- Hydration -->
+    <a class="guide-card" href="../how-much-water-per-day.html" data-tag="Hydration">
+      <div class="card-top"><div class="card-icon">💧</div><div><div class="card-tag">Hydration</div></div></div>
+      <h2>How Much Water Per Day?</h2>
+      <p>Daily water intake recommendations based on body weight, activity, and climate — plus signs of dehydration to watch for.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <!-- Exercise -->
+    <a class="guide-card" href="../best-exercises-to-lose-weight.html" data-tag="Exercise">
+      <div class="card-top"><div class="card-icon">🏃</div><div><div class="card-tag">Exercise</div></div></div>
+      <h2>Best Exercises to Lose Weight</h2>
+      <p>The most effective exercise types for weight loss ranked by calorie burn, accessibility, and long-term adherence.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../how-to-lose-belly-fat.html" data-tag="Exercise">
+      <div class="card-top"><div class="card-icon">💪</div><div><div class="card-tag">Exercise</div></div></div>
+      <h2>How to Lose Belly Fat</h2>
+      <p>Evidence-based strategies for reducing visceral and subcutaneous abdominal fat — including what actually works and what doesn't.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <!-- By Height -->
+    <a class="guide-card" href="../healthy-weight-160cm-female.html" data-tag="By Height">
+      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
+      <h2>Healthy Weight: 160 cm Women</h2>
+      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 160 cm.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-weight-165cm-female.html" data-tag="By Height">
+      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
+      <h2>Healthy Weight: 165 cm Women</h2>
+      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 165 cm.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-weight-170cm-female.html" data-tag="By Height">
+      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
+      <h2>Healthy Weight: 170 cm Women</h2>
+      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 170 cm.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-weight-170cm-male.html" data-tag="By Height">
+      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
+      <h2>Healthy Weight: 170 cm Men</h2>
+      <p>Healthy weight range, calorie needs, and height-specific health tips for men at 170 cm.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-weight-175cm-male.html" data-tag="By Height">
+      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
+      <h2>Healthy Weight: 175 cm Men</h2>
+      <p>Healthy weight range, calorie needs, and height-specific health tips for men at 175 cm.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-weight-5ft4in-female.html" data-tag="By Height">
+      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
+      <h2>Healthy Weight: 5'4" Women</h2>
+      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 5 feet 4 inches.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-weight-5ft9in-male.html" data-tag="By Height">
+      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
+      <h2>Healthy Weight: 5'9" Men</h2>
+      <p>Healthy weight range, calorie needs, and height-specific health tips for men at 5 feet 9 inches.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-weight-5ft6in-female.html" data-tag="By Height">
+      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
+      <h2>Healthy Weight: 5'6" Women</h2>
+      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 5 feet 6 inches.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <!-- By Age -->
+    <a class="guide-card" href="../healthy-bmi-20-year-old-female.html" data-tag="By Age">
+      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">By Age</div></div></div>
+      <h2>Healthy BMI: Age 20 (Women)</h2>
+      <p>Body composition, muscle mass, and key health considerations for women in their 20s.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-bmi-30-year-old-female.html" data-tag="By Age">
+      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">By Age</div></div></div>
+      <h2>Healthy BMI: Age 30 (Women)</h2>
+      <p>How body composition changes in your 30s and what to prioritise to maintain a healthy BMI.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-bmi-40-year-old-female.html" data-tag="By Age">
+      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">By Age</div></div></div>
+      <h2>Healthy BMI: Age 40 (Women)</h2>
+      <p>Perimenopause, body recomposition, and evidence-based strategies for women in their 40s.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-bmi-50-year-old-female.html" data-tag="By Age">
+      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">By Age</div></div></div>
+      <h2>Healthy BMI: Age 50 (Women)</h2>
+      <p>Post-menopause, metabolic changes, and evidence-based strategies for women in their 50s.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-bmi-30-year-old-male.html" data-tag="By Age">
+      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">By Age</div></div></div>
+      <h2>Healthy BMI: Age 30 (Men)</h2>
+      <p>Metabolic slowdown, muscle preservation, and cardiovascular risk for men entering their 30s.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-bmi-40-year-old-male.html" data-tag="By Age">
+      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">By Age</div></div></div>
+      <h2>Healthy BMI: Age 40 (Men)</h2>
+      <p>Testosterone decline, visceral fat risk, and the most impactful habits for men in their 40s.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-bmi-50-year-old-male.html" data-tag="By Age">
+      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">By Age</div></div></div>
+      <h2>Healthy BMI: Age 50 (Men)</h2>
+      <p>Sarcopenia, andropause, and evidence-based strategies for maintaining a healthy BMI after 50.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <!-- New Articles -->
+    <a class="guide-card" href="../bmi-vs-body-fat.html" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">⚖️</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>BMI vs Body Fat Percentage</h2>
+      <p>Which metric matters more for your health? When BMI misleads, when body fat % is essential, and how to use both together.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../healthy-bmi-asian-women.html" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">🌏</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>Healthy BMI for Asian Women</h2>
+      <p>Why standard BMI ranges don't apply to Asian women, what thresholds to use instead, and what the research says.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../how-to-lose-5kg.html" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">📉</div><div><div class="card-tag">Calories</div></div></div>
+      <h2>How to Lose 5kg Safely</h2>
+      <p>A realistic, science-based plan — the right calorie deficit, protein targets, exercise approach, and timeline to expect.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+  
+    <a class="guide-card" href="../bmi-calculator-not-accurate.html" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">🔬</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>Is BMI Accurate?</h2>
+      <p>BMI has real limitations — muscle vs fat, ethnicity gaps, age effects. Here's when it works and when to use other metrics instead.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+  
+    <!-- Nutrition additions -->
+    <a class="guide-card" href="../what-to-eat-to-lose-weight.html" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">🥗</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>What to Eat to Lose Weight</h2>
+      <p>No fad diets. The evidence-based foods that make a calorie deficit easier — what to eat more of, what to limit, and why.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../intermittent-fasting.html" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">⏱️</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>Intermittent Fasting: Does It Work?</h2>
+      <p>An honest look at what the research actually shows — who IF works for, who should be cautious, and the most common mistakes.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <!-- Exercise additions -->
+    <a class="guide-card" href="../how-many-steps-per-day.html" data-tag="Exercise">
+      <div class="card-top"><div class="card-icon">👟</div><div><div class="card-tag">Exercise</div></div></div>
+      <h2>How Many Steps Per Day Is Healthy?</h2>
+      <p>Is 10,000 steps backed by science? What the research actually shows about daily step count and realistic targets for different goals.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../cardio-vs-weights.html" data-tag="Exercise">
+      <div class="card-top"><div class="card-icon">🏋️</div><div><div class="card-tag">Exercise</div></div></div>
+      <h2>Cardio vs Weight Training for Fat Loss</h2>
+      <p>Cardio burns more calories per session. Weights build muscle that burns calories at rest. Which actually wins — and why the answer might surprise you.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <!-- Hydration additions -->
+    <a class="guide-card" href="../signs-of-dehydration.html" data-tag="Hydration">
+      <div class="card-top"><div class="card-icon">🚰</div><div><div class="card-tag">Hydration</div></div></div>
+      <h2>Signs of Dehydration</h2>
+      <p>Dehydration affects you before you feel thirsty. Learn the early warning signs, who's most at risk, and the urine colour test.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <a class="guide-card" href="../does-water-help-lose-weight.html" data-tag="Hydration">
+      <div class="card-top"><div class="card-icon">💧</div><div><div class="card-tag">Hydration</div></div></div>
+      <h2>Does Water Help You Lose Weight?</h2>
+      <p>Water doesn't burn fat directly — but it supports weight loss through three well-documented mechanisms. Here's what the research shows.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+  
+    <a class="guide-card" href="../weight-loss-plateau.html" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">📈</div><div><div class="card-tag">Weight Loss</div></div></div>
+      <h2>Why You've Hit a Weight Loss Plateau</h2>
+      <p>Why plateaus happen, the physiology behind them, and exactly how to break through one.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../sleep-and-weight-loss.html" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">😴</div><div><div class="card-tag">Weight Loss</div></div></div>
+      <h2>How Sleep Affects Weight Loss</h2>
+      <p>Poor sleep sabotages fat loss through hormones and metabolism. How much sleep you need for results.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../stress-and-weight-gain.html" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">😤</div><div><div class="card-tag">Weight Loss</div></div></div>
+      <h2>Stress and Weight Gain: The Cortisol Connection</h2>
+      <p>Chronic stress raises cortisol, promotes visceral fat, and sabotages weight loss. The science and fixes.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../metabolism-facts.html" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">⚡</div><div><div class="card-tag">Weight Loss</div></div></div>
+      <h2>Metabolism: Facts, Myths & How to Boost It</h2>
+      <p>What metabolism actually is, what the myths get wrong, and what genuinely raises your metabolic rate.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../protein-for-weight-loss.html" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">🥩</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>How Much Protein Do You Need to Lose Weight?</h2>
+      <p>Protein is the most important macronutrient for fat loss. Exactly how much you need and the best sources.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../how-long-to-lose-10kg.html" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">🎯</div><div><div class="card-tag">Weight Loss</div></div></div>
+      <h2>How Long Does It Take to Lose 10kg?</h2>
+      <p>The realistic timeline, how to set your calorie deficit, and month-by-month expectations.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../best-diet-for-weight-loss.html" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">🥗</div><div><div class="card-tag">Weight Loss</div></div></div>
+      <h2>Best Diet for Weight Loss: What the Research Shows</h2>
+      <p>Mediterranean, keto, low-fat — which diet actually wins? The research gives a clear, surprising answer.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../how-to-lose-weight-fast-safely.html" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">📉</div><div><div class="card-tag">Weight Loss</div></div></div>
+      <h2>How to Lose Weight Fast (Safely)</h2>
+      <p>The fastest safe rate of fat loss and the protocol to maximise results without muscle loss.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../what-is-tdee.html" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">🔢</div><div><div class="card-tag">Calories</div></div></div>
+      <h2>What Is TDEE? Total Daily Energy Expenditure Explained</h2>
+      <p>TDEE is the most important number for weight management. How it works and how to calculate yours.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../how-to-count-calories.html" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">📊</div><div><div class="card-tag">Calories</div></div></div>
+      <h2>How to Count Calories: A Beginner's Guide</h2>
+      <p>Calorie counting works — but only if done accurately. The right tools and the mistakes to avoid.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../calorie-density-foods.html" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">🥦</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>Low Calorie Density Foods That Keep You Full</h2>
+      <p>Eat satisfying portions while consuming fewer calories. The science of calorie density explained.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../sugar-and-weight-gain.html" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">🍬</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>Sugar and Weight Gain: How Much Is Too Much?</h2>
+      <p>Sugar's real role in weight gain, which sugars actually matter, and practical ways to reduce them.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../fibre-foods.html" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">🌾</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>High Fibre Foods and Why Fibre Matters for Weight</h2>
+      <p>Fibre is the most underrated weight management tool. How much you need and the best food sources.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../meal-prep-for-weight-loss.html" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">🍱</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>Meal Prep for Weight Loss: A Practical Guide</h2>
+      <p>Meal prepping removes decision fatigue and makes healthy choices the default. How to start.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../healthy-fats-foods.html" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">🫒</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>Healthy Fats: Which Fats to Eat and Avoid</h2>
+      <p>Not all fats are equal. Which fats protect health, which to limit, and the myth that fat makes you fat.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../how-to-start-exercising.html" data-tag="Exercise">
+      <div class="card-top"><div class="card-icon">🚶</div><div><div class="card-tag">Exercise</div></div></div>
+      <h2>How to Start Exercising (When You've Never Done It)</h2>
+      <p>A realistic beginner guide — what to do, how much, and how to build a habit that actually sticks.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../strength-training-beginners.html" data-tag="Exercise">
+      <div class="card-top"><div class="card-icon">🏋️</div><div><div class="card-tag">Exercise</div></div></div>
+      <h2>Strength Training for Beginners</h2>
+      <p>The most effective exercise for fat loss and metabolic health. A simple guide to get started.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../walking-for-weight-loss.html" data-tag="Exercise">
+      <div class="card-top"><div class="card-icon">👟</div><div><div class="card-tag">Exercise</div></div></div>
+      <h2>Walking for Weight Loss: How to Make It Work</h2>
+      <p>Walking is underrated for fat loss. How much to walk, how to maximise calorie burn, and why it works.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../what-is-body-composition.html" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">⚖️</div><div><div class="card-tag">Body</div></div></div>
+      <h2>What Is Body Composition?</h2>
+      <p>Why the ratio of fat to muscle matters more than weight alone — and how to measure and improve it.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../waist-circumference-health.html" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">Body</div></div></div>
+      <h2>Waist Circumference: Why It Matters More Than Weight</h2>
+      <p>Your waist predicts metabolic disease better than BMI. The healthy thresholds and how to reduce it.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../visceral-fat.html" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">🫀</div><div><div class="card-tag">Body</div></div></div>
+      <h2>Visceral Fat: What It Is and How to Reduce It</h2>
+      <p>The most dangerous fat type — stored around organs. What causes it and the most effective ways to reduce it.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../muscle-vs-fat.html" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">💪</div><div><div class="card-tag">Body</div></div></div>
+      <h2>Muscle vs Fat: Why the Scale Lies</h2>
+      <p>Muscle is denser than fat — the scale can stay the same while your body gets leaner. What to track instead.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../healthy-weight-maintenance.html" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">⚖️</div><div><div class="card-tag">Weight Loss</div></div></div>
+      <h2>How to Maintain Your Weight After Losing It</h2>
+      <p>80% of people regain lost weight. The habits that separate successful long-term maintainers from the rest.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../why-am-i-not-losing-weight.html" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">❓</div><div><div class="card-tag">Weight Loss</div></div></div>
+      <h2>Why Am I Not Losing Weight? 8 Common Reasons</h2>
+      <p>Eating well and exercising but the scale won't move? These 8 reasons explain why — and what to do.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../electrolytes-explained.html" data-tag="Hydration">
+      <div class="card-top"><div class="card-icon">⚡</div><div><div class="card-tag">Hydration</div></div></div>
+      <h2>Electrolytes: What They Are and Why You Need Them</h2>
+      <p>Electrolytes regulate fluid balance and muscle function. When you need more and the best food sources.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../alcohol-and-weight.html" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">🍷</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>Alcohol and Weight Gain: What You Need to Know</h2>
+      <p>Alcohol's impact on fat loss through calories, appetite, sleep, and fat storage. Practical strategies.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../coffee-and-weight-loss.html" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">☕</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>Does Coffee Help You Lose Weight?</h2>
+      <p>Caffeine genuinely boosts metabolism — but the effect is modest. What the research shows and when it helps.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../healthy-bmi-over-50.html" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>Healthy BMI After 50: What Changes and Why</h2>
+      <p>BMI ranges shift slightly with age. What's optimal after 50, and why muscle mass matters more than numbers.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="../bmi-and-muscle-mass.html" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">💪</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>BMI and Muscle Mass: Why Athletes Score High</h2>
+      <p>Muscular people often have 'overweight' BMIs despite low body fat. Why BMI fails active people.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+  </div>
+
+  <!-- Load More -->
+  <div id="load-more-wrap" style="text-align:center;padding:8px 0 40px;">
+    <button id="load-more-btn" onclick="loadMore()"
+      style="background:var(--surface);border:1.5px solid var(--border);border-radius:100px;padding:10px 28px;font-family:inherit;font-size:.875rem;color:var(--ink2);cursor:pointer;transition:all .2s;"
+      onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'"
+      onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--ink2)'">
+      Load more guides
+    </button>
+    <p id="load-more-count" style="font-size:.78rem;color:var(--ink3);margin-top:8px;"></p>
+  </div>
+
+  <!-- CTA strip -->
+  <div class="cta-strip">
+    <h2>Check Your Numbers</h2>
+    <p>Use our free calculators to get personalised results based on your height, weight, age, and activity level.</p>
+    <a href="../index.html" class="cta-btn">Open All Tools →</a>
+  </div>
+
+</main>
 </Base>
