@@ -19,39 +19,170 @@ import Base from '../layouts/Base.astro';
   </div>
 
   <div class="hero">
-    <h1>Know Your Numbers.<br><em>Improve Your Health.</em></h1>
-    <p>Free, science-based health calculators — BMI, calories, body fat, and more. Instant results, no sign-up.</p>
+    <h1>Check Your BMI<br><em>in 10 Seconds</em></h1>
+    <p>Enter your height and weight — get your BMI, category, and healthy weight range instantly.</p>
 
-    <!-- Trust badges -->
-    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:20px auto 4px;max-width:520px;">
-      <span style="display:inline-flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:.78rem;color:var(--ink2);">✅ 10 free tools</span>
-      <span style="display:inline-flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:.78rem;color:var(--ink2);">🔬 WHO &amp; CDC formulas</span>
-      <span style="display:inline-flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:.78rem;color:var(--ink2);">🔒 No data stored</span>
-      <span style="display:inline-flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:.78rem;color:var(--ink2);">⚡ Instant results</span>
-    </div>
+    <!-- Inline BMI Calculator -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;max-width:420px;margin:28px auto 0;box-shadow:0 4px 24px rgba(26,23,20,.08);text-align:left;">
 
-    <!-- Search bar -->
-    <div style="position:relative;max-width:420px;margin:24px auto 12px;width:100%;box-sizing:border-box;padding:0 16px;">
-      <input id="hero-search" type="text" placeholder="What do you want to check? e.g. BMI, calories…"
-        style="width:100%;padding:14px 48px 14px 18px;border:1.5px solid var(--border);border-radius:100px;font-size:.95rem;font-family:inherit;background:var(--surface);color:var(--ink);outline:none;box-shadow:0 2px 12px rgba(26,23,20,.06);"
-        oninput="handleSearch(this.value)" onkeydown="if(event.key==='Enter')goSearch()">
-      <button onclick="goSearch()" aria-label="Search"
-        style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:var(--ink);border:none;border-radius:100px;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4" stroke="#fff" stroke-width="1.5"/><path d="M9.5 9.5L12 12" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <!-- Unit toggle -->
+      <div style="display:flex;gap:8px;margin-bottom:20px;">
+        <button id="hero-unit-metric" onclick="heroSetUnit('metric')"
+          style="flex:1;padding:9px 0;border-radius:8px;border:1.5px solid var(--accent);background:var(--accent);color:#fff;font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;">
+          Metric (kg/cm)
+        </button>
+        <button id="hero-unit-imperial" onclick="heroSetUnit('imperial')"
+          style="flex:1;padding:9px 0;border-radius:8px;border:1.5px solid var(--border);background:transparent;color:var(--ink2);font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;">
+          Imperial (lb/in)
+        </button>
+      </div>
+
+      <!-- Metric inputs -->
+      <div id="hero-metric-inputs">
+        <div style="display:flex;gap:10px;margin-bottom:12px;">
+          <div style="flex:1;">
+            <label style="font-size:.78rem;font-weight:600;color:var(--ink2);display:block;margin-bottom:4px;">Weight (kg)</label>
+            <input id="hero-weight-kg" type="number" placeholder="e.g. 70" min="20" max="300"
+              style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:.95rem;font-family:inherit;background:var(--bg);color:var(--ink);box-sizing:border-box;">
+          </div>
+          <div style="flex:1;">
+            <label style="font-size:.78rem;font-weight:600;color:var(--ink2);display:block;margin-bottom:4px;">Height (cm)</label>
+            <input id="hero-height-cm" type="number" placeholder="e.g. 170" min="100" max="250"
+              style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:.95rem;font-family:inherit;background:var(--bg);color:var(--ink);box-sizing:border-box;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Imperial inputs -->
+      <div id="hero-imperial-inputs" style="display:none;">
+        <div style="display:flex;gap:10px;margin-bottom:12px;">
+          <div style="flex:1;">
+            <label style="font-size:.78rem;font-weight:600;color:var(--ink2);display:block;margin-bottom:4px;">Weight (lb)</label>
+            <input id="hero-weight-lb" type="number" placeholder="e.g. 154" min="44" max="660"
+              style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:.95rem;font-family:inherit;background:var(--bg);color:var(--ink);box-sizing:border-box;">
+          </div>
+          <div style="flex:1;">
+            <label style="font-size:.78rem;font-weight:600;color:var(--ink2);display:block;margin-bottom:4px;">Height (in)</label>
+            <input id="hero-height-in" type="number" placeholder="e.g. 67" min="40" max="96"
+              style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:.95rem;font-family:inherit;background:var(--bg);color:var(--ink);box-sizing:border-box;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Calculate button -->
+      <button onclick="heroCalc()"
+        style="width:100%;padding:13px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;font-family:inherit;margin-bottom:14px;">
+        Calculate BMI →
       </button>
-      <!-- Search suggestions dropdown -->
-      <div id="search-dropdown" style="display:none;position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);border:1.5px solid var(--border);border-radius:14px;box-shadow:0 4px 20px rgba(26,23,20,.1);overflow:hidden;z-index:100;"></div>
+
+      <!-- Result (hidden until calculated) -->
+      <div id="hero-result" style="display:none;border-top:1px solid var(--border);padding-top:14px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+          <span style="font-size:.82rem;color:var(--ink2);">Your BMI</span>
+          <span id="hero-bmi-val" style="font-size:1.6rem;font-weight:700;font-family:'DM Serif Display',serif;"></span>
+        </div>
+        <div id="hero-bmi-badge" style="display:inline-block;padding:4px 14px;border-radius:100px;font-size:.82rem;font-weight:600;margin-bottom:10px;"></div>
+        <div id="hero-healthy-range" style="font-size:.82rem;color:var(--ink2);margin-bottom:12px;"></div>
+        <a href="bmi-calculator.html" style="font-size:.82rem;color:var(--accent);text-decoration:none;font-weight:500;">See full results + health tips →</a>
+      </div>
+
+      <!-- Error message -->
+      <div id="hero-error" style="display:none;font-size:.82rem;color:#B83232;margin-top:-8px;margin-bottom:4px;">Please enter valid height and weight.</div>
     </div>
 
-    <!-- Quick suggestion pills -->
-    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
-      <button onclick="quickSearch('BMI')" style="background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.8rem;font-family:inherit;color:var(--ink2);cursor:pointer;">⚖️ BMI</button>
-      <button onclick="quickSearch('lose weight')" style="background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.8rem;font-family:inherit;color:var(--ink2);cursor:pointer;">📉 Lose weight</button>
-      <button onclick="quickSearch('Asian BMI')" style="background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.8rem;font-family:inherit;color:var(--ink2);cursor:pointer;">🌏 Asian BMI</button>
-      <button onclick="quickSearch('kids')" style="background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.8rem;font-family:inherit;color:var(--ink2);cursor:pointer;">👶 Kids BMI</button>
-      <button onclick="quickSearch('macros')" style="background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.8rem;font-family:inherit;color:var(--ink2);cursor:pointer;">🥗 Macros</button>
+    <!-- Trust badges — smaller, below calculator -->
+    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:18px auto 0;max-width:420px;">
+      <span style="font-size:.75rem;color:var(--ink3);">🔬 WHO formulas</span>
+      <span style="font-size:.75rem;color:var(--ink3);">·</span>
+      <span style="font-size:.75rem;color:var(--ink3);">🔒 No data stored</span>
+      <span style="font-size:.75rem;color:var(--ink3);">·</span>
+      <span style="font-size:.75rem;color:var(--ink3);">⚡ Instant results</span>
     </div>
   </div>
+
+  <script>
+  var heroUnit = 'metric';
+
+  function heroSetUnit(u) {
+    heroUnit = u;
+    var metricBtn   = document.getElementById('hero-unit-metric');
+    var imperialBtn = document.getElementById('hero-unit-imperial');
+    var metricIn    = document.getElementById('hero-metric-inputs');
+    var imperialIn  = document.getElementById('hero-imperial-inputs');
+    var active   = 'flex:1;padding:9px 0;border-radius:8px;border:1.5px solid var(--accent);background:var(--accent);color:#fff;font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;';
+    var inactive = 'flex:1;padding:9px 0;border-radius:8px;border:1.5px solid var(--border);background:transparent;color:var(--ink2);font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;';
+    if (u === 'metric') {
+      metricBtn.style.cssText = active;
+      imperialBtn.style.cssText = inactive;
+      metricIn.style.display = 'block';
+      imperialIn.style.display = 'none';
+    } else {
+      metricBtn.style.cssText = inactive;
+      imperialBtn.style.cssText = active;
+      metricIn.style.display = 'none';
+      imperialIn.style.display = 'block';
+    }
+    document.getElementById('hero-result').style.display = 'none';
+    document.getElementById('hero-error').style.display = 'none';
+  }
+
+  function heroCalc() {
+    var bmi, w, h;
+    var err = document.getElementById('hero-error');
+    var res = document.getElementById('hero-result');
+    err.style.display = 'none';
+    res.style.display = 'none';
+
+    if (heroUnit === 'metric') {
+      w = parseFloat(document.getElementById('hero-weight-kg').value);
+      h = parseFloat(document.getElementById('hero-height-cm').value) / 100;
+    } else {
+      w = parseFloat(document.getElementById('hero-weight-lb').value);
+      h = parseFloat(document.getElementById('hero-height-in').value);
+      bmi = (w / (h * h)) * 703;
+    }
+
+    if (heroUnit === 'metric') bmi = w / (h * h);
+
+    if (!bmi || bmi < 10 || bmi > 80 || isNaN(bmi)) {
+      err.style.display = 'block';
+      return;
+    }
+
+    bmi = Math.round(bmi * 10) / 10;
+
+    var cat, color, hRange;
+    if (bmi < 18.5) {
+      cat = 'Underweight'; color = '#3A7BBF';
+    } else if (bmi < 25) {
+      cat = 'Normal weight'; color = '#2D6A4F';
+    } else if (bmi < 30) {
+      cat = 'Overweight'; color = '#C17B2A';
+    } else {
+      cat = 'Obese'; color = '#B83232';
+    }
+
+    // Healthy weight range for their height
+    var hMin, hMax;
+    if (heroUnit === 'metric') {
+      hMin = Math.round(18.5 * h * h * 10) / 10;
+      hMax = Math.round(24.9 * h * h * 10) / 10;
+      hRange = 'Healthy range for your height: ' + hMin + ' – ' + hMax + ' kg';
+    } else {
+      var hIn = parseFloat(document.getElementById('hero-height-in').value);
+      hMin = Math.round(18.5 * hIn * hIn / 703 * 10) / 10;
+      hMax = Math.round(24.9 * hIn * hIn / 703 * 10) / 10;
+      hRange = 'Healthy range for your height: ' + hMin + ' – ' + hMax + ' lb';
+    }
+
+    document.getElementById('hero-bmi-val').textContent = bmi;
+    var badge = document.getElementById('hero-bmi-badge');
+    badge.textContent = cat;
+    badge.style.cssText = 'display:inline-block;padding:4px 14px;border-radius:100px;font-size:.82rem;font-weight:600;margin-bottom:10px;background:' + color + '22;color:' + color + ';';
+    document.getElementById('hero-healthy-range').textContent = hRange;
+    res.style.display = 'block';
+  }
+  </script>
 
   <!-- Calculators -->
   <section class="section">
