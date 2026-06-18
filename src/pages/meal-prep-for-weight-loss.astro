@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Meal Prep for Weight Loss: A Practical Guide", "item": "https://healthybmicheck.com/meal-prep-for-weight-loss.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Meal Prep for Weight Loss: A Practical Guide | HealthyBMICheck"
   description="Meal prepping is one of the most effective habits for consistent weight loss. A practical weekly system with batch-cook ideas and time-saving tips."
@@ -274,5 +277,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Meal Prep for Weight Loss: A Practical Guide", "item": "https://healthybmicheck.com/meal-prep-for-weight-loss.html"}]}</script>
 </Base>

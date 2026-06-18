@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Long Does It Take to Lose 10kg?", "item": "https://healthybmicheck.com/how-long-to-lose-10kg.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="How Long Does It Take to Lose 10kg? | HealthyBMICheck"
   description="Losing 10 kg safely takes 20–30 weeks for most people. A realistic timeline, the key variables that affect your rate, and how to stay on track."
@@ -252,5 +255,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Long Does It Take to Lose 10kg?", "item": "https://healthybmicheck.com/how-long-to-lose-10kg.html"}]}</script>
 </Base>

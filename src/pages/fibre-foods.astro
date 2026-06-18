@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "High Fibre Foods & Why Fibre Aids Weight Loss", "item": "https://healthybmicheck.com/fibre-foods.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="High Fibre Foods & Why Fibre Aids Weight Loss | HealthyBMICheck"
   description="Dietary fibre is one of the most underrated weight-loss tools. Learn how it controls hunger, improves gut health, and the best high-fibre foods to eat."
@@ -272,5 +275,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "High Fibre Foods & Why Fibre Aids Weight Loss", "item": "https://healthybmicheck.com/fibre-foods.html"}]}</script>
 </Base>

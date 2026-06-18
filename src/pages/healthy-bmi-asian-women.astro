@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy BMI for Asian Women: Research-Based Thresholds", "item": "https://healthybmicheck.com/healthy-bmi-asian-women.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Healthy BMI for Asian Women: Research-Based Thresholds | HealthyBMI"
   description="Asian women face higher metabolic risk at lower BMI values. Learn the correct BMI thresholds, why they differ from Western guidelines, and your healthy range."
@@ -246,5 +249,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy BMI for Asian Women: Research-Based Thresholds", "item": "https://healthybmicheck.com/healthy-bmi-asian-women.html"}]}</script>
 </Base>

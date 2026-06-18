@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Much Water Should You Drink Per Day? — Complete Guide", "item": "https://healthybmicheck.com/how-much-water-per-day.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="How Much Water Should You Drink Per Day? — Complete Guide"
   description="Find out exactly how much water you should drink daily. Learn how weight, activity, climate, and diet affect your hydration needs, with practical tips to."
@@ -256,5 +259,4 @@ const schemaJson = JSON.stringify({
 
 <!-- E-E-A-T: Sources & Medical Review -->
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Much Water Should You Drink Per Day? — Complete Guide", "item": "https://healthybmicheck.com/how-much-water-per-day.html"}]}</script>
 </Base>

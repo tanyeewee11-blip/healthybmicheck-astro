@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Body Composition: What It Is & Why It Beats BMI", "item": "https://healthybmicheck.com/what-is-body-composition.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Body Composition: What It Is & Why It Beats BMI | HealthyBMICheck"
   description="Body composition — the ratio of fat to muscle — is a more meaningful health measure than weight alone. Learn what it is, how to measure it, and how to improve it."
@@ -259,5 +262,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Body Composition: What It Is & Why It Beats BMI", "item": "https://healthybmicheck.com/what-is-body-composition.html"}]}</script>
 </Base>

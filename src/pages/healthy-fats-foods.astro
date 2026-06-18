@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy Fats: Which Fats to Eat and Avoid", "item": "https://healthybmicheck.com/healthy-fats-foods.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Healthy Fats: Which Fats to Eat and Avoid | HealthyBMICheck"
   description="Not all fats are equal. Learn which fats protect heart health and support weight loss, which to limit, and the myth that dietary fat makes you fat."
@@ -255,5 +258,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy Fats: Which Fats to Eat and Avoid", "item": "https://healthybmicheck.com/healthy-fats-foods.html"}]}</script>
 </Base>

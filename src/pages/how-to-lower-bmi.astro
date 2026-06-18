@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Lower Your BMI — Practical, Science-Backed Tips", "item": "https://healthybmicheck.com/how-to-lower-bmi.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="How to Lower Your BMI — Practical, Science-Backed Tips"
   description="Learn how to lower your BMI effectively and sustainably. Science-backed strategies covering diet, exercise, sleep, and lifestyle changes that actually work."
@@ -277,5 +280,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Lower Your BMI — Practical, Science-Backed Tips", "item": "https://healthybmicheck.com/how-to-lower-bmi.html"}]}</script>
 </Base>

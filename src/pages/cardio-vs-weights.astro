@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Cardio vs Weights for Fat Loss — Which Wins?", "item": "https://healthybmicheck.com/cardio-vs-weights.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Cardio vs Weights for Fat Loss — Which Wins? | HealthyBMICheck"
   description="Cardio burns more calories per session. Weights build muscle that burns calories at rest. Which is actually better for fat loss? The science-based answer."
@@ -269,5 +272,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Cardio vs Weights for Fat Loss — Which Wins?", "item": "https://healthybmicheck.com/cardio-vs-weights.html"}]}</script>
 </Base>

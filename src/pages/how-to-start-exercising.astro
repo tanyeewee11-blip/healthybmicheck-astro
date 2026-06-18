@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Start Exercising as a Beginner", "item": "https://healthybmicheck.com/how-to-start-exercising.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="How to Start Exercising as a Beginner | HealthyBMICheck"
   description="Starting an exercise habit is the hardest part. A realistic, evidence-based plan for beginners — no gym required, no willpower needed."
@@ -256,5 +259,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Start Exercising as a Beginner", "item": "https://healthybmicheck.com/how-to-start-exercising.html"}]}</script>
 </Base>

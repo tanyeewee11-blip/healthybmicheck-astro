@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Best Diet for Weight Loss: What Research Shows", "item": "https://healthybmicheck.com/best-diet-for-weight-loss.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Best Diet for Weight Loss: What Research Shows | HealthyBMICheck"
   description="Mediterranean, keto, low-fat, intermittent fasting — which diet is actually best for weight loss? The research gives a clear answer that may surprise you."
@@ -249,5 +252,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Best Diet for Weight Loss: What Research Shows", "item": "https://healthybmicheck.com/best-diet-for-weight-loss.html"}]}</script>
 </Base>

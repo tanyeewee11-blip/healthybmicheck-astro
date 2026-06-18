@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI vs Body Fat Percentage: Which Matters More? — HealthyBMICheck", "item": "https://healthybmicheck.com/bmi-vs-body-fat.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="BMI vs Body Fat Percentage: Which Matters More? — HealthyBMICheck"
   description="BMI and body fat percentage both measure health — but they measure different things. Learn when each matters, which is more accurate, and how to use both together."
@@ -268,5 +271,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI vs Body Fat Percentage: Which Matters More? — HealthyBMICheck", "item": "https://healthybmicheck.com/bmi-vs-body-fat.html"}]}</script>
 </Base>

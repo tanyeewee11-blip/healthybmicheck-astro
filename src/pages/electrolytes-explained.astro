@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Electrolytes: What They Are & Why You Need Them", "item": "https://healthybmicheck.com/electrolytes-explained.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Electrolytes: What They Are & Why You Need Them | HealthyBMICheck"
   description="Electrolytes regulate fluid balance, muscle function, and nerve signals. Learn which electrolytes matter, when you need more, and the best food sources."
@@ -253,5 +256,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Electrolytes: What They Are & Why You Need Them", "item": "https://healthybmicheck.com/electrolytes-explained.html"}]}</script>
 </Base>

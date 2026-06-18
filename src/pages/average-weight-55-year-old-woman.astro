@@ -63,9 +63,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Average Weight for a 55-Year-Old Woman — By Height & BMI", "item": "https://healthybmicheck.com/average-weight-55-year-old-woman.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Average Weight for a 55-Year-Old Woman — By Height & BMI"
   description="What is the average weight for a 55-year-old woman? See average weight by height, healthy weight ranges, and what affects weight in your mid-50s."
@@ -227,5 +230,4 @@ const schemaJson = JSON.stringify({
 </div>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Average Weight for a 55-Year-Old Woman — By Height & BMI", "item": "https://healthybmicheck.com/average-weight-55-year-old-woman.html"}]}</script>
 </Base>

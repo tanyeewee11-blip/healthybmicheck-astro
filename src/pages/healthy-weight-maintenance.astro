@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Maintain Your Weight After Losing It", "item": "https://healthybmicheck.com/healthy-weight-maintenance.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="How to Maintain Your Weight After Losing It | HealthyBMICheck"
   description="Most people regain lost weight within 2 years. The evidence-based habits that actually prevent weight regain long-term, based on successful maintainers."
@@ -253,5 +256,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Maintain Your Weight After Losing It", "item": "https://healthybmicheck.com/healthy-weight-maintenance.html"}]}</script>
 </Base>

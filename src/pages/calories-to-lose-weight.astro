@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Many Calories to Lose Weight? — The Complete Guide", "item": "https://healthybmicheck.com/calories-to-lose-weight.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="How Many Calories to Lose Weight? — The Complete Guide"
   description="Find out exactly how many calories you need to eat to lose weight safely. Learn about calorie deficits, TDEE, and how to calculate your personal weight."
@@ -244,5 +247,4 @@ const schemaJson = JSON.stringify({
 
 <!-- E-E-A-T: Sources & Medical Review -->
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Many Calories to Lose Weight? — The Complete Guide", "item": "https://healthybmicheck.com/calories-to-lose-weight.html"}]}</script>
 </Base>

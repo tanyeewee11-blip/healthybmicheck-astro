@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Stress and Weight Gain: The Cortisol Connection", "item": "https://healthybmicheck.com/stress-and-weight-gain.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Stress and Weight Gain: The Cortisol Connection | HealthyBMICheck"
   description="Chronic stress raises cortisol, promotes fat storage, and drives emotional eating. How stress causes weight gain and evidence-based ways to break the cycle."
@@ -253,5 +256,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Stress and Weight Gain: The Cortisol Connection", "item": "https://healthybmicheck.com/stress-and-weight-gain.html"}]}</script>
 </Base>

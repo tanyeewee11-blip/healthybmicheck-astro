@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Lose Belly Fat — Science-Backed Strategies That Work", "item": "https://healthybmicheck.com/how-to-lose-belly-fat.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="How to Lose Belly Fat — Science-Backed Strategies That Work"
   description="Learn how to lose belly fat effectively with science-backed strategies. Covers diet, exercise, sleep, and lifestyle changes that target abdominal fat."
@@ -347,5 +350,4 @@ ies">The Most Effective Strategies</a></li>
 
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Lose Belly Fat — Science-Backed Strategies That Work", "item": "https://healthybmicheck.com/how-to-lose-belly-fat.html"}]}</script>
 </Base>

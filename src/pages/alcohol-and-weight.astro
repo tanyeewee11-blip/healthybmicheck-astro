@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Alcohol and Weight Gain: What You Need to Know", "item": "https://healthybmicheck.com/alcohol-and-weight.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Alcohol and Weight Gain: What You Need to Know | HealthyBMICheck"
   description="Alcohol contributes to weight gain through calories, appetite stimulation, disrupted sleep, and metabolic effects. How much matters and what to do about it."
@@ -265,5 +268,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Alcohol and Weight Gain: What You Need to Know", "item": "https://healthybmicheck.com/alcohol-and-weight.html"}]}</script>
 </Base>

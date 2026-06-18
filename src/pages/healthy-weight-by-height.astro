@@ -12,9 +12,12 @@ const schemaJson = JSON.stringify({
   "dateModified": "2026-06-17-10",
   "mainEntityOfPage": { "@type": "WebPage", "@id": "https://healthybmicheck.com/healthy-weight-by-height.html" }
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy Weight by Height Chart — Men & Women", "item": "https://healthybmicheck.com/healthy-weight-by-height.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   title="Healthy Weight by Height Chart — Men & Women | HealthyBMICheck"
   description="Healthy weight ranges for every height from 4'10" to 6'4" (150–195 cm) for men and women. Imperial and metric, with Asian BMI standards and formula averages." to 6'4\" (150–195 cm) for men and women. Includes BMI range, formula average, and Asian BMI standard."
   canonical="https://healthybmicheck.com/healthy-weight-by-height.html"
@@ -291,5 +294,4 @@ function applySex2() {
 </script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy Weight by Height Chart — Men & Women", "item": "https://healthybmicheck.com/healthy-weight-by-height.html"}]}</script>
 </Base>

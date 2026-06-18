@@ -89,9 +89,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Waist-to-Height Ratio Calculator — Better Than BMI?", "item": "https://healthybmicheck.com/waist-to-height-ratio.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Waist-to-Height Ratio Calculator — Better Than BMI?"
   description="Free waist-to-height ratio calculator. WHtR is a more accurate predictor of metabolic health risk than BMI. Instant results with risk category and healthy."
@@ -359,5 +362,4 @@ const schemaJson = JSON.stringify({
     </div>
   </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Waist-to-Height Ratio Calculator — Better Than BMI?", "item": "https://healthybmicheck.com/waist-to-height-ratio.html"}]}</script>
 </Base>

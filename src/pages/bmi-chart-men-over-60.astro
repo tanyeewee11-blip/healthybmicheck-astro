@@ -55,9 +55,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI Chart for Men Over 60 — Healthy Weight by Age & Height", "item": "https://healthybmicheck.com/bmi-chart-men-over-60.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="BMI Chart for Men Over 60 — Healthy Weight by Age & Height"
   description="BMI chart for men over 60. See healthy BMI ranges by age, average BMI for men in their 60s, and what the numbers actually mean for older men's health."
@@ -247,5 +250,4 @@ const schemaJson = JSON.stringify({
 </div>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI Chart for Men Over 60 — Healthy Weight by Age & Height", "item": "https://healthybmicheck.com/bmi-chart-men-over-60.html"}]}</script>
 </Base>

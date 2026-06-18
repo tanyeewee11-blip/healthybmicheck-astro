@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Does Drinking More Water Help You Lose Weight?", "item": "https://healthybmicheck.com/does-water-help-lose-weight.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Does Drinking More Water Help You Lose Weight? | HealthyBMICheck"
   description="Drinking water before meals, replacing sugary drinks, and staying hydrated all support fat loss. Here's what the evidence says and how much to drink."
@@ -235,5 +238,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Does Drinking More Water Help You Lose Weight?", "item": "https://healthybmicheck.com/does-water-help-lose-weight.html"}]}</script>
 </Base>

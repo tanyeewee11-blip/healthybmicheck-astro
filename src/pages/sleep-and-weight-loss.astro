@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Sleep Affects Weight Loss", "item": "https://healthybmicheck.com/sleep-and-weight-loss.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="How Sleep Affects Weight Loss | HealthyBMICheck"
   description="Poor sleep raises ghrelin, lowers leptin, and adds ~385 extra calories per day. Here's how sleep deprivation sabotages fat loss and what to do about it."
@@ -257,5 +260,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Sleep Affects Weight Loss", "item": "https://healthybmicheck.com/sleep-and-weight-loss.html"}]}</script>
 </Base>

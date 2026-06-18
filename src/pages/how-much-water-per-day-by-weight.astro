@@ -55,9 +55,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Much Water Should You Drink Per Day? By Weight & Age", "item": "https://healthybmicheck.com/how-much-water-per-day-by-weight.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="How Much Water Should You Drink Per Day? By Weight & Age"
   description="Find out exactly how much water to drink per day based on your weight. Includes a simple formula, chart by weight, and adjustments for activity and climate."
@@ -248,5 +251,4 @@ const schemaJson = JSON.stringify({
 </div>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Much Water Should You Drink Per Day? By Weight & Age", "item": "https://healthybmicheck.com/how-much-water-per-day-by-weight.html"}]}</script>
 </Base>

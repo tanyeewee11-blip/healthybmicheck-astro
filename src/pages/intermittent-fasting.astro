@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Intermittent Fasting: Does It Actually Work?", "item": "https://healthybmicheck.com/intermittent-fasting.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Intermittent Fasting: Does It Actually Work? | HealthyBMICheck"
   description="Intermittent fasting is popular — but does the science support it? An honest look at what the research shows, who it works for, and common mistakes."
@@ -279,5 +282,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Intermittent Fasting: Does It Actually Work?", "item": "https://healthybmicheck.com/intermittent-fasting.html"}]}</script>
 </Base>

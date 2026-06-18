@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI and Muscle Mass: Why Athletes Score High", "item": "https://healthybmicheck.com/bmi-and-muscle-mass.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="BMI and Muscle Mass: Why Athletes Score High | HealthyBMICheck"
   description="Athletes often register as "overweight" by BMI despite low body fat. Learn why BMI misclassifies muscular people and which metrics to use instead."
@@ -245,5 +248,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI and Muscle Mass: Why Athletes Score High", "item": "https://healthybmicheck.com/bmi-and-muscle-mass.html"}]}</script>
 </Base>

@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy BMI After 50: What Changes and Why", "item": "https://healthybmicheck.com/healthy-bmi-over-50.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Healthy BMI After 50: What Changes and Why | HealthyBMICheck"
   description="BMI becomes less reliable after 50 as body composition changes. What BMI targets make sense after 50, how menopause and muscle loss affect the numbers."
@@ -257,5 +260,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy BMI After 50: What Changes and Why", "item": "https://healthybmicheck.com/healthy-bmi-over-50.html"}]}</script>
 </Base>

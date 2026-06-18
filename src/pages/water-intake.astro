@@ -89,9 +89,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Water Intake Calculator — How Much Water Per Day?", "item": "https://healthybmicheck.com/water-intake.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Water Intake Calculator — How Much Water Per Day?"
   description="Find out exactly how much water you should drink per day based on your weight, activity level, and climate. Free daily water intake calculator."
@@ -357,5 +360,4 @@ const schemaJson = JSON.stringify({
     </div>
   </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Water Intake Calculator — How Much Water Per Day?", "item": "https://healthybmicheck.com/water-intake.html"}]}</script>
 </Base>

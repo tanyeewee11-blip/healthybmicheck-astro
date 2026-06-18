@@ -55,9 +55,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy Weight for Seniors — BMI for Men & Women Over 60", "item": "https://healthybmicheck.com/healthy-weight-for-seniors.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Healthy Weight for Seniors — BMI for Men & Women Over 60"
   description="What is a healthy weight for seniors? BMI ranges, average weight by height for men and women over 60, and what matters most for health after 60."
@@ -254,5 +257,4 @@ const schemaJson = JSON.stringify({
 </div>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy Weight for Seniors — BMI for Men & Women Over 60", "item": "https://healthybmicheck.com/healthy-weight-for-seniors.html"}]}</script>
 </Base>

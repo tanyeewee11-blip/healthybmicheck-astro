@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Does Coffee Help You Lose Weight?", "item": "https://healthybmicheck.com/coffee-and-weight-loss.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Does Coffee Help You Lose Weight? | HealthyBMICheck"
   description="Caffeine is a genuine metabolism booster — but the effect is modest. Learn what the research shows about coffee and fat loss, and when it actually helps."
@@ -252,5 +255,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Does Coffee Help You Lose Weight?", "item": "https://healthybmicheck.com/coffee-and-weight-loss.html"}]}</script>
 </Base>

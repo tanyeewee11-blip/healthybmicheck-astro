@@ -55,9 +55,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI for Women Over 65 — Healthy Ranges & Averages", "item": "https://healthybmicheck.com/bmi-for-women-over-65.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="BMI for Women Over 65 — Healthy Ranges & Averages"
   description="What is a healthy BMI for women over 65? See healthy weight ranges by height, average BMI at this age, and why the numbers matter differently after 65."
@@ -243,5 +246,4 @@ const schemaJson = JSON.stringify({
 </div>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI for Women Over 65 — Healthy Ranges & Averages", "item": "https://healthybmicheck.com/bmi-for-women-over-65.html"}]}</script>
 </Base>

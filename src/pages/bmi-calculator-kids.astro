@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI Calculator for Kids — Child BMI by Age & Percentile", "item": "https://healthybmicheck.com/bmi-calculator-kids.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="BMI Calculator for Kids — Child BMI by Age & Percentile"
   description="Free BMI calculator for children and teens aged 2–17. Uses CDC BMI-for-age percentile method to assess healthy weight. Instant results for boys and girls."
@@ -351,5 +354,4 @@ const schemaJson = JSON.stringify({
   </svg>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI Calculator for Kids — Child BMI by Age & Percentile", "item": "https://healthybmicheck.com/bmi-calculator-kids.html"}]}</script>
 </Base>

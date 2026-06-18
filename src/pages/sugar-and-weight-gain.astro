@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Sugar and Weight Gain: How Much Is Too Much?", "item": "https://healthybmicheck.com/sugar-and-weight-gain.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Sugar and Weight Gain: How Much Is Too Much? | HealthyBMICheck"
   description="Sugar doesn't directly cause fat gain — but it makes overeating effortless. Learn how sugar affects hunger hormones, calories, and body fat."
@@ -271,5 +274,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Sugar and Weight Gain: How Much Is Too Much?", "item": "https://healthybmicheck.com/sugar-and-weight-gain.html"}]}</script>
 </Base>

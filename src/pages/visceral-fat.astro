@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Visceral Fat: What It Is and How to Reduce It", "item": "https://healthybmicheck.com/visceral-fat.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Visceral Fat: What It Is and How to Reduce It | HealthyBMICheck"
   description="Visceral fat surrounds your organs and drives insulin resistance, inflammation, and cardiovascular risk. How to measure it and reduce it effectively."
@@ -235,5 +238,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Visceral Fat: What It Is and How to Reduce It", "item": "https://healthybmicheck.com/visceral-fat.html"}]}</script>
 </Base>

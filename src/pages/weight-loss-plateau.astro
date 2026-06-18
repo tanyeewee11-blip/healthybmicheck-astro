@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Why You've Hit a Weight Loss Plateau", "item": "https://healthybmicheck.com/weight-loss-plateau.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Why You've Hit a Weight Loss Plateau | HealthyBMICheck"
   description="A weight loss plateau is normal and expected — but it doesn't mean your diet has stopped working. Learn why plateaus happen and exactly how to break through one."
@@ -224,5 +227,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Why You've Hit a Weight Loss Plateau", "item": "https://healthybmicheck.com/weight-loss-plateau.html"}]}</script>
 </Base>

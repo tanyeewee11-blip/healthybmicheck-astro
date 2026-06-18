@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Why Am I Not Losing Weight? 8 Common Reasons", "item": "https://healthybmicheck.com/why-am-i-not-losing-weight.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Why Am I Not Losing Weight? 8 Common Reasons | HealthyBMICheck"
   description="Eating well and exercising but the scale won't move? These 8 evidence-based reasons explain why weight loss stalls — and what to do about each one."
@@ -197,5 +200,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Why Am I Not Losing Weight? 8 Common Reasons", "item": "https://healthybmicheck.com/why-am-i-not-losing-weight.html"}]}</script>
 </Base>

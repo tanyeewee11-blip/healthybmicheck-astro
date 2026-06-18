@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "What is BMI? Body Mass Index Explained — HealthyBMICheck", "item": "https://healthybmicheck.com/what-is-bmi.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="What is BMI? Body Mass Index Explained — HealthyBMICheck"
   description="Learn what BMI (Body Mass Index) is, how it is calculated, what the ranges mean, and the limitations of using BMI as a health indicator."
@@ -329,5 +332,4 @@ const schemaJson = JSON.stringify({
 
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "What is BMI? Body Mass Index Explained — HealthyBMICheck", "item": "https://healthybmicheck.com/what-is-bmi.html"}]}</script>
 </Base>

@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "What Is TDEE? Total Daily Energy Expenditure", "item": "https://healthybmicheck.com/what-is-tdee.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="What Is TDEE? Total Daily Energy Expenditure | HealthyBMICheck"
   description="TDEE is the total calories you burn each day — the single most important number for weight loss, maintenance, or muscle gain. How it works and how to use it."
@@ -266,5 +269,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "What Is TDEE? Total Daily Energy Expenditure", "item": "https://healthybmicheck.com/what-is-tdee.html"}]}</script>
 </Base>

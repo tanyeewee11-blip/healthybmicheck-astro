@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Is BMI Accurate? Limitations You Should Know", "item": "https://healthybmicheck.com/bmi-calculator-not-accurate.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Is BMI Accurate? Limitations You Should Know | HealthyBMICheck"
   description="BMI can't distinguish muscle from fat and varies by ethnicity. Here are its real limitations and the better metrics to use alongside it."
@@ -241,5 +244,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Is BMI Accurate? Limitations You Should Know", "item": "https://healthybmicheck.com/bmi-calculator-not-accurate.html"}]}</script>
 </Base>

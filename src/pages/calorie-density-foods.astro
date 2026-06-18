@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Low Calorie Density Foods That Keep You Full", "item": "https://healthybmicheck.com/calorie-density-foods.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Low Calorie Density Foods That Keep You Full | HealthyBMICheck"
   description="Calorie density — calories per gram — is the key to eating large portions without overeating. Learn which foods to prioritise and which to limit."
@@ -280,5 +283,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Low Calorie Density Foods That Keep You Full", "item": "https://healthybmicheck.com/calorie-density-foods.html"}]}</script>
 </Base>

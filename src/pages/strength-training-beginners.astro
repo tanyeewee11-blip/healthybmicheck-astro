@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Strength Training for Beginners: A Simple Guide", "item": "https://healthybmicheck.com/strength-training-beginners.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Strength Training for Beginners: A Simple Guide | HealthyBMICheck"
   description="Strength training is the most effective exercise for long-term fat loss and metabolic health. A complete beginner's guide: exercises, sets, and progression."
@@ -252,5 +255,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Strength Training for Beginners: A Simple Guide", "item": "https://healthybmicheck.com/strength-training-beginners.html"}]}</script>
 </Base>

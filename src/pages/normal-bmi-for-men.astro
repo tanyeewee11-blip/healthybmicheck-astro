@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Normal BMI for Men — Healthy Ranges by Age", "item": "https://healthybmicheck.com/normal-bmi-for-men.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Normal BMI for Men — Healthy Ranges by Age"
   description="What is a normal BMI for men? Learn the healthy BMI ranges for adult men by age, how BMI differs for men, and what your result means for your health."
@@ -267,5 +270,4 @@ const schemaJson = JSON.stringify({
 
 <!-- E-E-A-T: Sources & Medical Review -->
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Normal BMI for Men — Healthy Ranges by Age", "item": "https://healthybmicheck.com/normal-bmi-for-men.html"}]}</script>
 </Base>

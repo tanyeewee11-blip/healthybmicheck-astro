@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Waist Circumference & Health Risk Explained", "item": "https://healthybmicheck.com/waist-circumference-health.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Waist Circumference & Health Risk Explained | HealthyBMICheck"
   description="Your waist circumference predicts metabolic disease risk better than your weight or BMI. Learn the thresholds, how to measure correctly, and target ranges."
@@ -280,5 +283,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Waist Circumference & Health Risk Explained", "item": "https://healthybmicheck.com/waist-circumference-health.html"}]}</script>
 </Base>

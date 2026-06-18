@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Many Calories Should I Eat a Day? — Complete Guide", "item": "https://healthybmicheck.com/how-many-calories-per-day.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="How Many Calories Should I Eat a Day? — Complete Guide"
   description="Find out how many calories you should eat per day based on your age, weight, height, and activity level. Includes calorie needs for weight loss."
@@ -269,5 +272,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Many Calories Should I Eat a Day? — Complete Guide", "item": "https://healthybmicheck.com/how-many-calories-per-day.html"}]}</script>
 </Base>

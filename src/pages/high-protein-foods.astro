@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "High Protein Foods for Weight Loss — Complete List", "item": "https://healthybmicheck.com/high-protein-foods.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="High Protein Foods for Weight Loss — Complete List"
   description="Discover the best high protein foods for weight loss. Complete list with protein content and calories per serving, plus tips on how to add more protein to."
@@ -270,5 +273,4 @@ const schemaJson = JSON.stringify({
 
 <!-- E-E-A-T: Sources & Medical Review -->
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "High Protein Foods for Weight Loss — Complete List", "item": "https://healthybmicheck.com/high-protein-foods.html"}]}</script>
 </Base>

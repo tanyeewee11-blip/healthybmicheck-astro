@@ -1,8 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy Weight for 170 cm Women — Ideal Weight Range", "item": "https://healthybmicheck.com/healthy-weight-by-height.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   title="Healthy Weight for 170 cm Women — Ideal Weight Range"
   description="What is a healthy weight for a woman who is 170 cm? The BMI healthy range is 53–72 kg (118–159 lb). See ideal weight formulas, Asian BMI range, and tips."
   canonical="https://healthybmicheck.com/healthy-weight-by-height.html"
@@ -173,5 +176,4 @@ import Base from '../layouts/Base.astro';
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy Weight for 170 cm Women — Ideal Weight Range", "item": "https://healthybmicheck.com/healthy-weight-by-height.html"}]}</script>
 </Base>

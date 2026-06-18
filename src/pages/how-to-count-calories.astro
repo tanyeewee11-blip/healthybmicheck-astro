@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Count Calories: A Beginner's Guide", "item": "https://healthybmicheck.com/how-to-count-calories.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="How to Count Calories: A Beginner's Guide | HealthyBMICheck"
   description="Calorie counting works — but only if you do it accurately. Learn the right tools, common mistakes that cause underestimating, and how to make tracking sustainable."
@@ -244,5 +247,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Count Calories: A Beginner's Guide", "item": "https://healthybmicheck.com/how-to-count-calories.html"}]}</script>
 </Base>

@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Signs of Dehydration — Symptoms & What to Do", "item": "https://healthybmicheck.com/signs-of-dehydration.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Signs of Dehydration — Symptoms & What to Do | HealthyBMICheck"
   description="Dehydration affects energy and performance before you feel thirsty. Learn the early signs, how to check your hydration status, and daily water targets."
@@ -261,5 +264,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Signs of Dehydration — Symptoms & What to Do", "item": "https://healthybmicheck.com/signs-of-dehydration.html"}]}</script>
 </Base>

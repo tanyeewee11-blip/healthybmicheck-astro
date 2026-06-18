@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "What to Eat to Lose Weight: Evidence-Based Guide", "item": "https://healthybmicheck.com/what-to-eat-to-lose-weight.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="What to Eat to Lose Weight: Evidence-Based Guide | HealthyBMICheck"
   description="No fad diets. A practical, evidence-based guide to what foods support fat loss — what to eat more of, what to limit, and why it works."
@@ -269,5 +272,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "What to Eat to Lose Weight: Evidence-Based Guide", "item": "https://healthybmicheck.com/what-to-eat-to-lose-weight.html"}]}</script>
 </Base>

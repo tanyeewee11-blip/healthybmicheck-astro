@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Lose Weight Fast (Safely)", "item": "https://healthybmicheck.com/how-to-lose-weight-fast-safely.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="How to Lose Weight Fast (Safely) | HealthyBMICheck"
   description="The fastest safe rate of fat loss is 0.5–1% of body weight per week. Here's how to maximise fat loss speed without sacrificing muscle, health, or long-term results."
@@ -270,5 +273,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Lose Weight Fast (Safely)", "item": "https://healthybmicheck.com/how-to-lose-weight-fast-safely.html"}]}</script>
 </Base>

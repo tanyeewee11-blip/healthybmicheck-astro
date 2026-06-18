@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Health Profile Calculator — All Your Metrics at Once", "item": "https://healthybmicheck.com/health-profile.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="Health Profile Calculator — All Your Metrics at Once"
   description="Enter your details once and instantly get your BMI, daily calorie needs, ideal weight, body fat percentage, and water intake — all in one place."
@@ -597,5 +600,4 @@ const schemaJson = JSON.stringify({
   </div>
 </div>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Health Profile Calculator — All Your Metrics at Once", "item": "https://healthybmicheck.com/health-profile.html"}]}</script>
 </Base>

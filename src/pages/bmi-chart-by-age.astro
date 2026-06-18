@@ -71,9 +71,12 @@ const schemaJson = JSON.stringify({
     }
   ]
 });
+
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI Chart by Age — Healthy BMI Ranges for Adults", "item": "https://healthybmicheck.com/bmi-chart-by-age.html"}]});
 ---
 
 <Base
+  breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
   title="BMI Chart by Age — Healthy BMI Ranges for Adults"
   description="Understand how healthy BMI ranges change with age. Includes BMI charts for men and women by age group, plus guidance on interpreting your result."
@@ -292,5 +295,4 @@ const schemaJson = JSON.stringify({
 
 <!-- E-E-A-T: Sources & Medical Review -->
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI Chart by Age — Healthy BMI Ranges for Adults", "item": "https://healthybmicheck.com/bmi-chart-by-age.html"}]}</script>
 </Base>
