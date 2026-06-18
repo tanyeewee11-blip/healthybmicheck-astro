@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How Much Water Should You Drink Per Day? — Complete Guide",
+      "description": "Find out exactly how much water you should drink daily. Learn how weight, activity, climate, and diet affect your hydration needs, with practical tips to.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/how-much-water-per-day.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much water should I drink per day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "General guidance is 2.0–2.5 litres (8–10 cups) per day for adults in temperate climates. In hot climates like Malaysia and Singapore, needs increase to 3–4 litres due to higher sweat losses. Individual needs vary with body size, activity level, and diet — people who eat water-rich foods (fruits and vegetables) need slightly less from drinks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does coffee and tea count towards daily water intake?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — despite their mild diuretic effect, caffeinated beverages like coffee and tea provide a net positive contribution to daily fluid intake. The small diuretic effect does not cancel out the water they provide. Plain water remains the best choice for hydration, but coffee, tea, and other beverages count."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it possible to drink too much water?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — hyponatraemia (dangerously low blood sodium from over-dilution) can occur from drinking excessive water rapidly, particularly during endurance events. For everyday life, the kidneys can process about 0.8–1 litre per hour, so drinking within this rate is safe. Urine colour is the most practical gauge of appropriate hydration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do I feel thirsty even when I drink a lot of water?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Persistent thirst despite adequate fluid intake can be a sign of diabetes (high blood sugar draws water out of cells), diabetes insipidus (impaired water regulation by the kidneys), or certain medications. If you are consistently thirsty despite drinking 2–3 litres daily, a GP check is warranted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does drinking more water speed up metabolism?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Slightly — drinking 500ml of cold water increases metabolic rate by about 30% for 30–40 minutes, burning approximately 24 kcal per litre of cold water. This metabolic effect is real but small. Water's more significant contribution to weight management is through replacing high-calorie drinks and reducing appetite before meals."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="How Much Water Should You Drink Per Day? — Complete Guide"
   description="Find out exactly how much water you should drink daily. Learn how weight, activity, climate, and diet affect your hydration needs, with practical tips to."
   canonical="https://healthybmicheck.com/how-much-water-per-day.html"
@@ -183,4 +255,6 @@ import Base from '../layouts/Base.astro';
 
 
 <!-- E-E-A-T: Sources & Medical Review -->
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Much Water Should You Drink Per Day? — Complete Guide", "item": "https://healthybmicheck.com/how-much-water-per-day.html"}]}</script>
 </Base>

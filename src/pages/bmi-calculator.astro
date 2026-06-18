@@ -1,8 +1,98 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "BMI Calculator — Free Body Mass Index Calculator",
+      "description": "Calculate your BMI instantly. Free Body Mass Index calculator with weight category, ideal weight range, and health tips. Supports both Metric and Imperial.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/bmi-calculator.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is BMI calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMI is calculated by dividing your weight in kilograms by the square of your height in metres (kg/m²). For example, if you weigh 70 kg and are 1.75 m tall: BMI = 70 ÷ (1.75 × 1.75) = 22.9. In imperial units, the formula is: BMI = (weight in pounds × 703) ÷ (height in inches)²."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a healthy BMI range for adults?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "According to the World Health Organization (WHO), a healthy BMI for adults is between 18.5 and 24.9. A BMI below 18.5 is considered underweight, 25.0–29.9 is overweight, and 30.0 or above is classified as obese. Note that for people of Asian descent, health risks may begin at a lower threshold — some guidelines suggest overweight starts at BMI 23."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is BMI accurate for everyone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMI is a useful screening tool but has known limitations. It does not directly measure body fat — it cannot distinguish between muscle mass and fat. Athletes and very muscular people may have a high BMI despite low body fat. Conversely, older adults may have a \"normal\" BMI but still carry excess fat due to muscle loss. For a more complete picture of body composition, consider pairing BMI with a Body Fat Calculator."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does BMI apply to children?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This calculator is designed for adults aged 18 and over. For children and teenagers, BMI is interpreted differently — it is compared against age- and sex-specific growth charts rather than fixed ranges. If you need to assess a child's weight status, please consult a paediatrician or use a child-specific BMI tool."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I lower my BMI if it is too high?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lowering BMI sustainably involves a combination of dietary changes and regular physical activity. The most evidence-based approach is a moderate calorie deficit (around 500 kcal/day below your maintenance level), combined with at least 150 minutes of moderate aerobic exercise per week. Strength training is also valuable as it preserves muscle mass during weight loss. See our guide on how to lower your BMI for detailed strategies, or use our Calorie Calculator to find your daily target."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "BMI Calculator",
+      "url": "https://healthybmicheck.com/bmi-calculator.html",
+      "description": "Calculate your BMI and healthy weight range instantly.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      }
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="BMI Calculator — Free Body Mass Index Calculator"
   description="Calculate your BMI instantly. Free Body Mass Index calculator with weight category, ideal weight range, and health tips. Supports both Metric and Imperial."
   canonical="https://healthybmicheck.com/bmi-calculator.html"
@@ -13,7 +103,10 @@ import Base from '../layouts/Base.astro';
   <p>Find out your Body Mass Index in seconds. Supports metric and imperial units with instant health insights.</p>
 </div>
 
+<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+
 <div class="container">
+
 
   <div class="card">
     <div class="unit-toggle">
@@ -324,4 +417,6 @@ import Base from '../layouts/Base.astro';
     <text x="557" y="60" text-anchor="middle" font-size="9" fill="#B83232">≥ 35</text>
   </svg>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI Calculator — Free Body Mass Index Calculator", "item": "https://healthybmicheck.com/bmi-calculator.html"}]}</script>
 </Base>

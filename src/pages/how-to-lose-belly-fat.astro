@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Lose Belly Fat — Science-Backed Strategies That Work",
+      "description": "Learn how to lose belly fat effectively with science-backed strategies. Covers diet, exercise, sleep, and lifestyle changes that target abdominal fat.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/how-to-lose-belly-fat.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can you target belly fat specifically with exercise?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — spot reduction is a myth. Exercise burns calories from across the body; you cannot direct fat loss to the abdomen by doing crunches. However, overall fat loss through a calorie deficit will reduce belly fat, and resistance training (which builds abdominal muscle) improves the appearance of the midsection even before fat is fully lost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What foods cause belly fat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No single food causes belly fat specifically. Excess calories from any source contribute to fat storage. However, refined carbohydrates, added sugars, trans fats, and alcohol are particularly associated with abdominal fat accumulation in studies, as they promote insulin spikes, inflammation, and liver fat storage which preferentially distributes to the abdomen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to lose belly fat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With a consistent 500 kcal/day deficit, waist circumference reductions of 1–3 cm are typically seen within 4–8 weeks. Visceral fat (the more dangerous deep abdominal fat) is more responsive to calorie deficit than subcutaneous fat and often shows measurable reductions within 6–8 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does stress cause belly fat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — chronic elevated cortisol specifically promotes visceral fat accumulation in the abdomen. Cortisol increases appetite, drives cravings for calorie-dense foods, and directly signals fat cells in the abdomen to store more fat. Stress management (sleep, exercise, relaxation techniques) is a legitimate component of a belly fat reduction strategy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is belly fat more dangerous than fat elsewhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — visceral fat (deep abdominal fat around organs) secretes inflammatory cytokines and free fatty acids directly into the liver, driving insulin resistance, dyslipidaemia, and systemic inflammation. Subcutaneous fat (the pinchable layer under skin) is metabolically less active. A waist circumference above healthy thresholds is a stronger predictor of metabolic disease than BMI."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="How to Lose Belly Fat — Science-Backed Strategies That Work"
   description="Learn how to lose belly fat effectively with science-backed strategies. Covers diet, exercise, sleep, and lifestyle changes that target abdominal fat."
   canonical="https://healthybmicheck.com/how-to-lose-belly-fat.html"
@@ -274,4 +346,6 @@ ies">The Most Effective Strategies</a></li>
 </div>
 
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Lose Belly Fat — Science-Backed Strategies That Work", "item": "https://healthybmicheck.com/how-to-lose-belly-fat.html"}]}</script>
 </Base>

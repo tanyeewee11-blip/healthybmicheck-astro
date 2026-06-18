@@ -1,8 +1,72 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Contact Us — HealthyBMICheck.com",
+      "description": "Contact the HealthyBMICheck.com team. Send us a question, report an issue, or share feedback about our free health calculators.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/contact.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are your calculators medically accurate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our calculators use established scientific formulas widely used in clinical and research settings — the Mifflin-St Jeor equation for calories, WHO BMI classifications, the U.S. Navy method for body fat, and multiple peer-reviewed ideal weight formulas. Results are estimates based on population averages and should be used as a general guide, not a medical diagnosis. For personalised health advice, please consult a qualified healthcare professional."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you store my data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All calculations on this site run entirely in your browser — no data is sent to our servers. We do not collect, store, or share any health information you enter into our calculators. See our Privacy Policy for full details."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I suggest a new calculator or article?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely — we love hearing what tools our readers find useful. Send us a message using the form above with your suggestion and we will consider it for a future update."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I found a calculation error — what should I do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Please let us know immediately using the form above or by emailing hello@healthybmicheck.com. Describe which calculator, what inputs you used, and what result you got. We take accuracy seriously and will investigate and correct any errors promptly."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Contact Us — HealthyBMICheck.com"
   description="Contact the HealthyBMICheck.com team. Send us a question, report an issue, or share feedback about our free health calculators."
   canonical="https://healthybmicheck.com/contact.html"

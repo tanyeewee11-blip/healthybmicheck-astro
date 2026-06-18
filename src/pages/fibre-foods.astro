@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "High Fibre Foods and Why Fibre Matters for Weight",
+      "description": "Dietary fibre is one of the most underrated tools for weight management. Learn how fibre supports fat loss, which foods are highest in fibre, and how much you actually need.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/fibre-foods.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much fibre do I need per day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WHO recommends at least 25g of dietary fibre per day for adults; many nutrition bodies suggest 25–38g. Most adults consume only 15–18g daily. Increasing fibre intake gradually (to avoid gas and bloating) and drinking adequate water helps the body adjust."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does fibre help with weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — fibre promotes satiety by slowing digestion, activating gut stretch receptors, and triggering hormone release (GLP-1, PYY) that signal fullness to the brain. High-fibre diets are consistently associated with lower body weight and reduced calorie intake in research studies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between soluble and insoluble fibre?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Soluble fibre (oats, beans, apples, psyllium) dissolves in water to form a gel, slowing digestion and helping lower cholesterol and blood sugar. Insoluble fibre (wheat bran, vegetables, whole grains) does not dissolve and adds bulk to stool, promoting bowel regularity. Both types are important for health."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can eating too much fibre cause problems?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Increasing fibre too quickly causes bloating, gas, and abdominal discomfort as gut bacteria adjust. Very high fibre intake (>70g/day) can impair absorption of minerals like zinc and iron. Increase intake gradually by 5g per week and maintain good hydration to minimise digestive discomfort."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the highest fibre foods I can easily add to my diet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Legumes top the list: lentils and chickpeas contain 7–8g fibre per 100g cooked. Chia seeds provide 10g per 28g serving. Avocado has 6–7g per 100g. Wholegrains (oats, brown rice, wholegrain bread) provide 2–6g per serving. Raspberries and pears are the highest-fibre common fruits at 5–6g per 100g."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
-  title="High Fibre Foods and Why Fibre Matters for Weight | HealthyBMICheck"
-  description="Dietary fibre is one of the most underrated tools for weight management. Learn how fibre supports fat loss, which foods are highest in fibre, and how much you actually need."
+  schemaJson={schemaJson}
+  title="High Fibre Foods & Why Fibre Aids Weight Loss | HealthyBMICheck"
+  description="Dietary fibre is one of the most underrated weight-loss tools. Learn how it controls hunger, improves gut health, and the best high-fibre foods to eat."
   canonical="https://healthybmicheck.com/fibre-foods.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › High Fibre Foods and Why Fibre Matters for Weight</div>
   <span class="article-tag">Nutrition</span>
   <h1>High Fibre Foods and Why Fibre Matters for Weight</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>Most people know fibre is "good for digestion" — but its role in weight management is equally significant and much less discussed. High-fibre diets are consistently associated with lower body weight, better satiety, and reduced risk of metabolic disease, independent of total calorie intake.</p>
@@ -199,4 +271,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "High Fibre Foods & Why Fibre Aids Weight Loss", "item": "https://healthybmicheck.com/fibre-foods.html"}]}</script>
 </Base>

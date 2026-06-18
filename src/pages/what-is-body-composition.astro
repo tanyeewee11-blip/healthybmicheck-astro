@@ -1,9 +1,81 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "What Is Body Composition? (And Why It Matters More Than Weight)",
+      "description": "Body composition — the ratio of fat to muscle — is a more meaningful health measure than weight alone. Learn what it is, how to measure it, and how to improve it.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/what-is-body-composition.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is body composition and why does it matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Body composition refers to the proportions of fat mass versus lean mass (muscle, bone, organs, water) in your body. It matters because two people at the same weight can have radically different health risks and physical appearances depending on how much of their weight is fat versus muscle. Scale weight alone does not capture this distinction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I improve my body composition without losing weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Body recomposition — gaining muscle while losing fat simultaneously — is possible and produces dramatic appearance changes with minimal scale movement. It requires adequate protein (2.0–2.4g/kg/day), progressive resistance training, a modest calorie deficit or maintenance intake, and sufficient sleep. It is most achievable in beginners and those returning from a training break."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a healthy body fat percentage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For men, 10–20% body fat is healthy (athletic: 6–13%). For women, 18–28% is healthy (athletic: 14–20%). Body fat naturally increases slightly with age. Below the essential fat level (3–5% for men, 10–13% for women) carries serious health risks. Above the obese threshold (25%+ for men, 32%+ for women) is associated with elevated metabolic disease risk."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is body fat percentage or BMI more useful for tracking progress?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Body fat percentage provides more specific and actionable information for people who exercise, as it shows whether changes are from fat or muscle. BMI is simpler to calculate and useful for initial screening. Using both together — plus waist circumference — gives the most complete picture. Progress photos and clothing fit are also valuable, free tools."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I have good body composition but high BMI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — this is the classic case of an athlete or resistance-trained individual. High muscle mass elevates BMI into the overweight range despite very low body fat. A body fat measurement quickly resolves this. The reverse is also true: normal BMI with poor body composition (low muscle, high fat) is a real and underrecognised pattern."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
-  title="What Is Body Composition? (And Why It Matters More Than Weight) | HealthyBMICheck"
+  schemaJson={schemaJson}
+  title="Body Composition: What It Is & Why It Beats BMI | HealthyBMICheck"
   description="Body composition — the ratio of fat to muscle — is a more meaningful health measure than weight alone. Learn what it is, how to measure it, and how to improve it."
   canonical="https://healthybmicheck.com/what-is-body-composition.html"
 >
@@ -11,7 +83,7 @@ import Base from '../layouts/Base.astro';
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › What Is Body Composition? (And Why It Matters M...</div>
   <span class="article-tag">Body</span>
   <h1>What Is Body Composition? (And Why It Matters More Than Weight)</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>Two people can weigh exactly the same but have dramatically different health profiles, fitness levels, and physical appearance — because their body composition is different. Body composition refers to the proportions of fat mass, muscle mass, bone, and water that make up total body weight. Understanding it reveals why "losing weight" and "losing fat" are not the same thing.</p>
@@ -83,6 +155,43 @@ import Base from '../layouts/Base.astro';
     <div class="warn-callout"><p>⚠️ The scale is an incomplete picture of body composition progress. Someone starting resistance training may lose 2kg of fat, gain 1kg of muscle, and see only a 1kg change on the scale — while dramatically improving their body composition and metabolic health.</p></div>
   </div>
 
+
+  <div class="article-section">
+    <h2>How to Measure Body Composition at Home</h2>
+    <p>Without clinical equipment, several practical methods can track body composition changes over time. None are perfectly accurate, but used consistently, they show meaningful trends:</p>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Method</th><th>Accuracy</th><th>Cost</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Waist circumference</strong></td><td>Good proxy for visceral fat</td><td>Free (tape measure)</td><td>Weekly tracking</td></tr>
+          <tr class="highlight-row"><td><strong>Waist-to-height ratio</strong></td><td>Strong metabolic risk predictor</td><td>Free</td><td>Metabolic risk assessment</td></tr>
+          <tr><td><strong>Skinfold callipers</strong></td><td>±3–5% with practice</td><td>£10–30</td><td>Budget body fat tracking</td></tr>
+          <tr class="highlight-row"><td><strong>Bioelectrical impedance (BIA scale)</strong></td><td>±3–8%, variable</td><td>£30–200</td><td>Trend tracking (not single readings)</td></tr>
+          <tr><td><strong>Progress photos</strong></td><td>Visual, not numerical</td><td>Free</td><td>Motivation, visual change</td></tr>
+          <tr class="highlight-row"><td><strong>DEXA scan</strong></td><td>±1–2% (clinical gold standard)</td><td>£50–150 per scan</td><td>Baseline + annual check</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>For most people, combining <strong>waist circumference + body weight + progress photos</strong> provides a complete enough picture without the cost or variability of body fat scales. Use our <a href="waist-to-height-ratio.html">Waist-to-Height Ratio Calculator</a> and <a href="body-fat.html">Body Fat Estimator</a> for a more complete view.</p>
+  </div>
+
+  <div class="article-section">
+    <h2>Healthy Body Composition Ranges by Sex and Age</h2>
+    <p>The following body fat percentage ranges are based on Gallagher et al. (2000) and are widely used in clinical and fitness settings:</p>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Category</th><th>Women (20–39)</th><th>Women (40–59)</th><th>Women (60+)</th><th>Men (20–39)</th><th>Men (40–59)</th><th>Men (60+)</th></tr></thead>
+        <tbody>
+          <tr><td>Essential fat</td><td>10–13%</td><td>10–13%</td><td>10–13%</td><td>2–5%</td><td>2–5%</td><td>2–5%</td></tr>
+          <tr class="highlight-row"><td><strong>Healthy</strong></td><td><strong>21–32%</strong></td><td><strong>23–33%</strong></td><td><strong>24–35%</strong></td><td><strong>8–19%</strong></td><td><strong>11–21%</strong></td><td><strong>13–24%</strong></td></tr>
+          <tr><td>Overweight</td><td>33–38%</td><td>34–39%</td><td>36–41%</td><td>20–24%</td><td>22–27%</td><td>25–29%</td></tr>
+          <tr class="highlight-row"><td>Obese</td><td>≥39%</td><td>≥40%</td><td>≥42%</td><td>≥25%</td><td>≥28%</td><td>≥30%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Note that healthy body fat percentage increases with age — this reflects normal physiological changes in fat distribution and muscle mass, not a lowering of health standards. For a personalised body fat estimate, use our <a href="body-fat.html">Body Fat Calculator</a>.</p>
+  </div>
+
   <div class="faq-section">
   <h2 class="section-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -149,4 +258,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Body Composition: What It Is & Why It Beats BMI", "item": "https://healthybmicheck.com/what-is-body-composition.html"}]}</script>
 </Base>

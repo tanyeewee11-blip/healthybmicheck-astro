@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Alcohol and Weight Gain: What You Need to Know",
+      "description": "Alcohol contributes to weight gain through calories, appetite stimulation, disrupted sleep, and fat storage. Learn how much impact it has and practical strategies to manage it.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/alcohol-and-weight.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does alcohol stop fat loss even if I'm in a calorie deficit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Alcohol doesn't directly stop fat loss, but it temporarily halts fat oxidation while your body metabolises it — your liver prioritises processing alcohol above everything else. During this window, dietary fat is more likely to be stored. Consistent alcohol consumption also tends to increase overall calorie intake through reduced inhibition and increased appetite."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many calories are in a standard drink?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A standard drink (10–14g of pure alcohol) contains roughly 70–100 calories from alcohol alone. Add mixers, and a cocktail can reach 200–400 calories. Beer (330ml, 5%) is around 150 kcal; wine (150ml) around 120 kcal; a shot of spirits (30ml) around 65 kcal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is wine better for weight loss than beer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Per volume, wine and standard beer are broadly similar in calories. What matters more is total consumption. The idea that red wine is metabolically superior for weight loss is not supported by evidence — any benefit from resveratrol would require amounts far beyond what anyone drinks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I drink alcohol and still lose weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, but it requires accounting for alcohol calories in your daily total. The main challenge is that alcohol is easy to underestimate, reduces dietary restraint, disrupts sleep quality (which affects hormones that regulate hunger), and often comes with high-calorie foods."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does alcohol affect muscle building?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Heavy alcohol consumption impairs muscle protein synthesis and disrupts sleep — both critical for muscle recovery and growth. Moderate consumption (1–2 drinks occasionally) has a smaller impact, but frequent drinking around training is counterproductive for body composition goals."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Alcohol and Weight Gain: What You Need to Know | HealthyBMICheck"
-  description="Alcohol contributes to weight gain through calories, appetite stimulation, disrupted sleep, and fat storage. Learn how much impact it has and practical strategies to manage it."
+  description="Alcohol contributes to weight gain through calories, appetite stimulation, disrupted sleep, and metabolic effects. How much matters and what to do about it."
   canonical="https://healthybmicheck.com/alcohol-and-weight.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Alcohol and Weight Gain: What You Need to Know</div>
   <span class="article-tag">Nutrition</span>
   <h1>Alcohol and Weight Gain: What You Need to Know</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>Alcohol is one of the most overlooked contributors to weight gain in modern diets. A typical social drinker consuming 10–14 drinks per week may be taking in 1,000–2,000 extra calories without realising it — equivalent to 2–4 extra meals per week.</p>
@@ -192,4 +264,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Alcohol and Weight Gain: What You Need to Know", "item": "https://healthybmicheck.com/alcohol-and-weight.html"}]}</script>
 </Base>

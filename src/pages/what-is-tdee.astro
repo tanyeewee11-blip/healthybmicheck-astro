@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "What Is TDEE? Total Daily Energy Expenditure Explained",
+      "description": "TDEE is the total number of calories you burn each day. Understanding it is the foundation of any weight loss or muscle-building goal. Here's how it works and how to calculate yours.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/what-is-tdee.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is TDEE and how is it calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TDEE (Total Daily Energy Expenditure) is the total calories your body burns in a day. It is calculated by multiplying your BMR (Basal Metabolic Rate — calories burned at rest) by an activity factor ranging from 1.2 (sedentary) to 1.9 (very active). Eating at your TDEE maintains your weight; eating below it creates a deficit for fat loss."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between TDEE and BMR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMR is the calories your body burns at complete rest — just to breathe, maintain organ function, and circulate blood. It typically accounts for 60–75% of TDEE. TDEE adds your physical activity on top of BMR. If you did nothing but lie still all day, you would still burn your BMR in calories."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate are TDEE calculators?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TDEE calculators using the Mifflin-St Jeor equation are accurate to within 10–15% for most healthy adults. Individual variation exists due to genetics, gut microbiome, thyroid function, and medication effects. The calculated TDEE is best treated as a starting point — adjust based on 2–4 weeks of real-world results."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does TDEE change when you lose weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — as you lose weight, your BMR decreases (a lighter body requires fewer calories at rest) and your activity-related calorie burn also decreases (moving a lighter body uses less energy). This is why recalculating your TDEE every 5–10 kg lost is important — the deficit that worked early on may become maintenance or even a surplus later."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I use TDEE to lose fat and maintain muscle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Subtract 300–500 kcal from your TDEE to create a fat loss deficit. Eat at least 1.6–2g of protein per kg of body weight to preserve muscle. Include resistance training 2–4 times per week. Recalculate TDEE every 4–8 weeks at your new body weight. Avoid deficits larger than 750 kcal/day, which accelerate muscle loss."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
-  title="What Is TDEE? Total Daily Energy Expenditure Explained | HealthyBMICheck"
-  description="TDEE is the total number of calories you burn each day. Understanding it is the foundation of any weight loss or muscle-building goal. Here's how it works and how to calculate yours."
+  schemaJson={schemaJson}
+  title="What Is TDEE? Total Daily Energy Expenditure | HealthyBMICheck"
+  description="TDEE is the total calories you burn each day — the single most important number for weight loss, maintenance, or muscle gain. How it works and how to use it."
   canonical="https://healthybmicheck.com/what-is-tdee.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › What Is TDEE? Total Daily Energy Expenditure Ex...</div>
   <span class="article-tag">Calories</span>
   <h1>What Is TDEE? Total Daily Energy Expenditure Explained</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>TDEE — Total Daily Energy Expenditure — is the total number of calories your body burns in 24 hours. It's the single most important number for anyone trying to lose fat, gain muscle, or maintain their weight. Everything else — calorie targets, deficits, surplus — flows from this number.</p>
@@ -100,6 +172,38 @@ import Base from '../layouts/Base.astro';
     <div class="warn-callout"><p>⚠️ TDEE calculators provide estimates, not exact measurements. Individual variation of ±10–15% is normal. Use your initial calculation as a starting point, then adjust based on actual results after 2–3 weeks.</p></div>
   </div>
 
+
+  <div class="article-section">
+    <h2>TDEE by Age and Sex: What to Expect</h2>
+    <p>TDEE varies significantly by age, sex, body size, and activity level. The table below shows typical ranges for healthy adults based on the Mifflin-St Jeor formula at a moderate activity level (factor 1.55):</p>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Profile</th><th>Sedentary TDEE</th><th>Moderate Activity TDEE</th><th>Very Active TDEE</th></tr></thead>
+        <tbody>
+          <tr><td>Woman, 25, 60 kg, 165 cm</td><td>~1,500 kcal</td><td>~1,950 kcal</td><td>~2,350 kcal</td></tr>
+          <tr class="highlight-row"><td>Woman, 45, 65 kg, 165 cm</td><td>~1,430 kcal</td><td>~1,870 kcal</td><td>~2,240 kcal</td></tr>
+          <tr><td>Man, 25, 80 kg, 178 cm</td><td>~1,940 kcal</td><td>~2,530 kcal</td><td>~3,040 kcal</td></tr>
+          <tr class="highlight-row"><td>Man, 45, 85 kg, 178 cm</td><td>~1,890 kcal</td><td>~2,460 kcal</td><td>~2,960 kcal</td></tr>
+          <tr><td>Man, 65, 78 kg, 175 cm</td><td>~1,700 kcal</td><td>~2,210 kcal</td><td>~2,660 kcal</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Two key patterns emerge: (1) Men have higher TDEEs than women at comparable size due to greater lean mass; (2) TDEE decreases with age — approximately 1–2% per decade after 30 — because muscle mass and BMR both decline. This is why the same diet that maintained weight at 25 may cause gradual gain at 45.</p>
+    <div class="callout"><p>💡 For your personalised TDEE based on your exact height, weight, age, and activity level, use our <a href="calorie-calculator.html">Calorie Calculator</a>.</p></div>
+  </div>
+
+  <div class="article-section">
+    <h2>Why Your Real-World TDEE May Differ from Your Calculated TDEE</h2>
+    <p>TDEE calculators are accurate on average, but several factors can cause your actual calorie burn to differ from the estimate by 10–20%:</p>
+    <ul>
+      <li><strong>Metabolic adaptation:</strong> After periods of caloric restriction, the body reduces TDEE through reduced NEAT (unconscious movement), lower thyroid output, and improved metabolic efficiency. This is why weight loss slows on a sustained deficit even with accurate tracking.</li>
+      <li><strong>Gut microbiome:</strong> Research shows that different gut bacteria extract different amounts of energy from the same food, causing real-world calorie absorption to vary by up to 10% between individuals.</li>
+      <li><strong>Inaccurate activity estimates:</strong> Most people overestimate their activity level when selecting the multiplier. If in doubt, choose the lower activity category and adjust up based on results.</li>
+      <li><strong>Medication effects:</strong> SSRIs, beta-blockers, corticosteroids, and some diabetes medications can affect metabolic rate and appetite regulation, shifting actual TDEE from predictions.</li>
+    </ul>
+    <p>The most reliable approach: treat your calculated TDEE as a starting point, track food intake consistently for 2–3 weeks, and adjust your calorie target by 100–200 kcal based on whether your weight moves as expected.</p>
+  </div>
+
   <div class="faq-section">
   <h2 class="section-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -161,4 +265,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "What Is TDEE? Total Daily Energy Expenditure", "item": "https://healthybmicheck.com/what-is-tdee.html"}]}</script>
 </Base>

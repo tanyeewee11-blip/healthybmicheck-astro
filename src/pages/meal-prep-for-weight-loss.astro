@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Meal Prep for Weight Loss: A Practical Guide",
+      "description": "Meal prepping is one of the most effective habits for consistent weight loss — it removes daily decision fatigue and makes healthy choices the default. Here's how to start.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/meal-prep-for-weight-loss.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many meals should I prep for a week?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prepping 4–5 days of meals at once is practical for most people — enough to cover weekdays while maintaining freshness. Prepare protein sources (chicken, fish, legumes), carbohydrates (rice, sweet potato), and roasted vegetables in batches. Salads and fresh items are better assembled day-by-day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does meal prepping actually help with weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Research shows meal prepping is associated with better diet quality, lower food expenditure, and greater adherence to calorie targets. Knowing exactly what you will eat and having it ready removes in-the-moment decisions that often lead to higher-calorie choices. The main mechanism is reduced friction and decision fatigue."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long do meal prepped foods stay fresh in the fridge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cooked proteins (chicken, fish, beef) last 3–4 days in the fridge. Cooked grains and legumes last 5–7 days. Hard-boiled eggs last 1 week. Sliced vegetables last 3–5 days. For safety, keep prepared meals below 4°C and reheat to >74°C before eating. Freeze anything intended for beyond day 5."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What containers are best for meal prepping?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Glass containers (particularly borosilicate glass) are safe for reheating, don't absorb odours, and have an indefinite lifespan. BPA-free plastic containers are lighter and cheaper. For portioning accuracy, containers with volume markings are helpful. Compartmentalised containers keep items separate until serving."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I meal prep if I don't like eating the same thing every day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — batch-cook versatile base components (plain rice, roasted vegetables, cooked chicken) and combine them in different ways each day rather than preparing identical complete meals. A cooked chicken breast can become a salad Monday, a stir-fry Tuesday, and a wrap Wednesday. This approach maintains variety while capturing the efficiency benefits."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Meal Prep for Weight Loss: A Practical Guide | HealthyBMICheck"
-  description="Meal prepping is one of the most effective habits for consistent weight loss — it removes daily decision fatigue and makes healthy choices the default. Here's how to start."
+  description="Meal prepping is one of the most effective habits for consistent weight loss. A practical weekly system with batch-cook ideas and time-saving tips."
   canonical="https://healthybmicheck.com/meal-prep-for-weight-loss.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Meal Prep for Weight Loss: A Practical Guide</div>
   <span class="article-tag">Nutrition</span>
   <h1>Meal Prep for Weight Loss: A Practical Guide</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>Research consistently shows that people who prepare meals at home consume fewer calories, less sodium, and less saturated fat than those who rely on restaurants or ready-made food. Meal prepping takes this one step further — by preparing food in advance, you remove the daily decision about what to eat (and the temptation to choose convenience over nutrition).</p>
@@ -201,4 +273,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Meal Prep for Weight Loss: A Practical Guide", "item": "https://healthybmicheck.com/meal-prep-for-weight-loss.html"}]}</script>
 </Base>

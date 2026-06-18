@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Why Am I Not Losing Weight? 8 Common Reasons",
+      "description": "Eating well and exercising but the scale won't move? These 8 evidence-based reasons explain why weight loss stalls — and what to do about each one.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/why-am-i-not-losing-weight.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long should I wait before concluding weight loss has truly stalled?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "3–4 consecutive weeks of no scale change (using weekly averages, not daily weigh-ins) is a true plateau. Daily fluctuations of 1–2 kg are normal. If you have been consistently below your calorie target for 4 weeks and weight hasn't moved, systematic troubleshooting is warranted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can eating too few calories prevent weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — extreme calorie restriction triggers adaptive thermogenesis, where the body reduces TDEE significantly. Paradoxically, increasing calories slightly from a very low level can restore metabolic rate and resume fat loss. Signs of eating too little include persistent fatigue, hair loss, cold intolerance, and poor sleep."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the time of day I eat affect weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For most people, meal timing has minimal effect on weight loss when total daily calories are matched. Some research suggests eating most calories earlier in the day may have modest metabolic benefits. Eating close to bedtime doesn't directly cause fat gain but can increase total daily calorie intake for some people."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I take a break from dieting if I'm stuck?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A structured 2-week diet break (eating at maintenance calories) can partially reverse adaptive thermogenesis, restore leptin levels, and reduce fatigue from prolonged restriction. Research shows diet breaks improve long-term fat loss outcomes compared to continuous restriction. After 2 weeks at maintenance, returning to a deficit often resumes progress."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why am I not losing weight even in a calorie deficit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The most common reasons are underestimating calorie intake (research shows 20–40% underestimation is typical), reduced TDEE from weight loss itself, water retention masking fat loss, insufficient sleep, elevated stress (cortisol), or inadequate protein intake. Audit these factors systematically before concluding there is a medical issue."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Why Am I Not Losing Weight? 8 Common Reasons | HealthyBMICheck"
   description="Eating well and exercising but the scale won't move? These 8 evidence-based reasons explain why weight loss stalls — and what to do about each one."
   canonical="https://healthybmicheck.com/why-am-i-not-losing-weight.html"
@@ -11,7 +83,7 @@ import Base from '../layouts/Base.astro';
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Why Am I Not Losing Weight? 8 Common Reasons</div>
   <span class="article-tag">Weight Loss</span>
   <h1>Why Am I Not Losing Weight? 8 Common Reasons</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>You're eating healthily, you're exercising — but the scale hasn't moved in weeks. This is one of the most frustrating experiences in a weight loss journey, and it happens to almost everyone. Here are the eight most common evidence-based reasons why weight loss stalls, and exactly what to do about each.</p>
@@ -124,4 +196,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Why Am I Not Losing Weight? 8 Common Reasons", "item": "https://healthybmicheck.com/why-am-i-not-losing-weight.html"}]}</script>
 </Base>

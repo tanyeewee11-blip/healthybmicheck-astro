@@ -1,9 +1,81 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Electrolytes: What They Are and Why You Need Them",
+      "description": "Electrolytes regulate fluid balance, muscle function, and nerve signals. Learn which electrolytes matter, when you need more, and the best food sources.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/electrolytes-explained.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are electrolytes and why do they matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Electrolytes are minerals that carry an electrical charge when dissolved in body fluids — sodium, potassium, magnesium, calcium, chloride, and phosphate. They regulate fluid balance, nerve signalling, muscle contraction, and pH. Imbalances from sweating, illness, or poor diet can cause muscle cramps, fatigue, and impaired performance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need electrolyte supplements if I exercise regularly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For most recreational exercisers doing under 60–90 minutes of moderate activity, a balanced diet provides sufficient electrolytes without supplementation. Electrolyte supplements become valuable for high-intensity exercise over 90 minutes, training in heat, or endurance events where significant sweat loss occurs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you get enough electrolytes from food without supplements?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — a varied diet rich in whole foods provides adequate electrolytes for most people. Key sources: sodium from food and small amounts of salt; potassium from bananas, potatoes, leafy greens; magnesium from nuts, seeds, legumes; calcium from dairy, fortified plant milks, leafy greens."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are signs of electrolyte imbalance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Muscle cramps (particularly leg cramps) often indicate low magnesium or potassium. Extreme fatigue, confusion, or irregular heartbeat can suggest more serious sodium or potassium imbalance. Headaches and nausea after prolonged exercise may indicate hyponatraemia (low sodium from over-hydrating with plain water)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Gatorade or other sports drinks necessary for hydration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For sessions under 60 minutes at moderate intensity, water is sufficient. Sports drinks become beneficial for prolonged high-intensity exercise (>60–90 minutes) or in hot and humid conditions where significant sweat loss occurs. However, many commercial sports drinks contain substantial sugar — coconut water or homemade electrolyte solutions are lower-sugar alternatives."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
-  title="Electrolytes: What They Are and Why You Need Them | HealthyBMICheck"
+  schemaJson={schemaJson}
+  title="Electrolytes: What They Are & Why You Need Them | HealthyBMICheck"
   description="Electrolytes regulate fluid balance, muscle function, and nerve signals. Learn which electrolytes matter, when you need more, and the best food sources."
   canonical="https://healthybmicheck.com/electrolytes-explained.html"
 >
@@ -11,7 +83,7 @@ import Base from '../layouts/Base.astro';
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Electrolytes: What They Are and Why You Need Them</div>
   <span class="article-tag">Hydration</span>
   <h1>Electrolytes: What They Are and Why You Need Them</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>Electrolytes are minerals that carry an electrical charge and are essential for virtually every function in the human body — from muscle contraction to nerve signalling to maintaining fluid balance. When electrolyte balance is disrupted, performance drops, symptoms appear, and in extreme cases, serious health consequences can follow.</p>
@@ -180,4 +252,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Electrolytes: What They Are & Why You Need Them", "item": "https://healthybmicheck.com/electrolytes-explained.html"}]}</script>
 </Base>

@@ -1,8 +1,64 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "BMI Chart for Men Over 60 — Healthy Weight by Age & Height",
+      "description": "BMI chart for men over 60. See healthy BMI ranges by age, average BMI for men in their 60s, and what the numbers actually mean for older men's health.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/bmi-chart-men-over-60.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is BMI 27 healthy for a man over 60?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMI 27 puts a man in the \"overweight\" category by standard WHO guidelines. However, some research suggests that for adults over 65, a BMI in the 25–27 range may be associated with better outcomes than the standard healthy range of 18.5–24.9. This is thought to be due to nutritional reserves during illness. That said, waist circumference and muscle mass are better indicators of health risk than BMI at this age. If waist circumference is under 94 cm and physical fitness is maintained, a BMI of 27 is unlikely to represent a significant health concern for most men over 60."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the most important thing for health after 60 — weight loss or muscle gain?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For most men over 60, preserving and building muscle mass (through resistance training and adequate protein) delivers more health benefit than weight loss alone. Muscle mass supports metabolic rate, bone density, functional independence, and cardiovascular health. A man who loses 5 kg of fat while maintaining muscle is in a far better health position than one who loses 5 kg of mixed fat and muscle. If weight loss is needed, prioritise preserving muscle by using a moderate deficit (300–500 kcal/day) with 1.6–2.0 g protein/kg/day and resistance training."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does BMI account for age?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — standard BMI categories (underweight, healthy, overweight, obese) are the same for all adults regardless of age. This is a recognised limitation: the same BMI in a 65-year-old represents a different body composition than in a 25-year-old due to age-related muscle loss and fat redistribution. Some researchers argue for age-adjusted BMI thresholds, but official guidelines (WHO, CDC, NHS) have not adopted this approach. In practice, clinicians often supplement BMI with waist circumference and other markers when assessing older adults."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="BMI Chart for Men Over 60 — Healthy Weight by Age & Height"
   description="BMI chart for men over 60. See healthy BMI ranges by age, average BMI for men in their 60s, and what the numbers actually mean for older men's health."
   canonical="https://healthybmicheck.com/bmi-chart-men-over-60.html"
@@ -13,7 +69,10 @@ import Base from '../layouts/Base.astro';
   <p>Healthy BMI ranges, average BMI by age, and what the numbers actually mean for men in their 60s and beyond.</p>
 </div>
 
+<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+
 <div class="container">
+
 
   <div class="answer-box">
     <div class="answer-label">Healthy BMI range for men over 60</div>
@@ -116,6 +175,33 @@ import Base from '../layouts/Base.astro';
       <li>Regular monitoring of waist circumference, not just BMI</li>
     </ul>
 
+
+    <h2>BMI, Muscle Loss, and Metabolic Syndrome After 60</h2>
+    <p>One of the most important things to understand about BMI after 60 is that the same BMI can represent very different health states depending on body composition. Two men at BMI 26 — one with 20% body fat and strong muscle mass, one with 30% body fat and significant sarcopenia — have very different metabolic risk profiles.</p>
+    <p>After 60, men lose muscle mass at approximately <strong>1–2% per year</strong> if not actively training. This means that even if the scale stays the same, the ratio of fat to muscle shifts unfavourably — a phenomenon sometimes called "sarcopenic obesity." The man at BMI 24 who hasn't exercised in 10 years may carry more visceral fat than his BMI suggests.</p>
+    <p>Three metrics are more informative than BMI alone for men over 60:</p>
+    <ul>
+      <li><strong>Waist circumference:</strong> Above 102 cm (40 inches) is high risk; 94–102 cm is elevated risk — use this alongside BMI</li>
+      <li><strong>Grip strength:</strong> A proxy for overall muscle mass and functional fitness — low grip strength is independently associated with all-cause mortality in older men</li>
+      <li><strong>Waist-to-height ratio:</strong> Below 0.5 is low risk; above 0.6 is high risk — use our <a href="waist-to-height-ratio.html">Waist-to-Height Ratio Calculator</a></li>
+    </ul>
+
+    <h2>FAQ: BMI for Men Over 60</h2>
+    <div class="faq-section" style="margin-top:0;">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is BMI 27 healthy for a man over 60?</button>
+        <div class="faq-a">BMI 27 puts a man in the "overweight" category by standard WHO guidelines. However, some research suggests that for adults over 65, a BMI in the 25–27 range may be associated with better outcomes than the standard healthy range of 18.5–24.9. This is thought to be due to nutritional reserves during illness. That said, waist circumference and muscle mass are better indicators of health risk than BMI at this age. If waist circumference is under 94 cm and physical fitness is maintained, a BMI of 27 is unlikely to represent a significant health concern for most men over 60.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the most important thing for health after 60 — weight loss or muscle gain?</button>
+        <div class="faq-a">For most men over 60, preserving and building muscle mass (through resistance training and adequate protein) delivers more health benefit than weight loss alone. Muscle mass supports metabolic rate, bone density, functional independence, and cardiovascular health. A man who loses 5 kg of fat while maintaining muscle is in a far better health position than one who loses 5 kg of mixed fat and muscle. If weight loss is needed, prioritise preserving muscle by using a moderate deficit (300–500 kcal/day) with 1.6–2.0 g protein/kg/day and resistance training.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does BMI account for age?</button>
+        <div class="faq-a">No — standard BMI categories (underweight, healthy, overweight, obese) are the same for all adults regardless of age. This is a recognised limitation: the same BMI in a 65-year-old represents a different body composition than in a 25-year-old due to age-related muscle loss and fat redistribution. Some researchers argue for age-adjusted BMI thresholds, but official guidelines (WHO, CDC, NHS) have not adopted this approach. In practice, clinicians often supplement BMI with waist circumference and other markers when assessing older adults.</div>
+      </div>
+    </div>
+
     <div class="warn-callout"><p>⚠️ BMI is a screening tool, not a diagnosis. Men over 60 with concerns about weight, cardiovascular risk, or metabolic health should discuss their individual situation with a doctor.</p></div>
 
     <div class="sources">
@@ -160,4 +246,6 @@ import Base from '../layouts/Base.astro';
   </div>
 </div>
 
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI Chart for Men Over 60 — Healthy Weight by Age & Height", "item": "https://healthybmicheck.com/bmi-chart-men-over-60.html"}]}</script>
 </Base>

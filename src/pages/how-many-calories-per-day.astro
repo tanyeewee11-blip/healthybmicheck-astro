@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How Many Calories Should I Eat a Day? — Complete Guide",
+      "description": "Find out how many calories you should eat per day based on your age, weight, height, and activity level. Includes calorie needs for weight loss.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/how-many-calories-per-day.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many calories should I eat to lose weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Calculate your TDEE (Total Daily Energy Expenditure) and subtract 500 kcal for approximately 0.5 kg loss per week, or subtract 250 kcal for a slower, easier-to-sustain loss of ~0.25 kg/week. Do not go below 1,500 kcal for men or 1,200 kcal for women without medical supervision."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is 1,200 calories a day enough?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For most adults, 1,200 kcal/day is at the lower limit of safe intake and is not sufficient for taller, heavier, or more active individuals. It provides little room for nutritional adequacy and increases risk of muscle loss. Most women need at least 1,400–1,600 kcal and most men 1,600–2,000 kcal even when actively losing weight."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do calorie needs differ so much between people?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The main variables are body size (larger bodies burn more calories at rest), muscle mass (muscle tissue burns ~3× more calories than fat tissue at rest), age (metabolism slows with age), sex (men typically burn more due to greater muscle mass), and activity level — which varies enormously between sedentary and very active people."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate are calorie counts on food labels?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Food labels in most countries are allowed a ±20% margin of error. Additionally, cooking method affects actual calorie availability — cooked food is more digestible and delivers more calories than raw food. Practical calorie tracking is accurate enough to guide weight management, but precision to the exact calorie is impossible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to count calories forever to maintain my weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most successful long-term weight maintainers develop an intuitive sense of appropriate portions and food composition from their period of tracking, which they apply without strict ongoing counting. Periodic check-ins (tracking for a week or two) when weight starts to creep up is a common strategy used by successful maintainers."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="How Many Calories Should I Eat a Day? — Complete Guide"
   description="Find out how many calories you should eat per day based on your age, weight, height, and activity level. Includes calorie needs for weight loss."
   canonical="https://healthybmicheck.com/how-many-calories-per-day.html"
@@ -196,4 +268,6 @@ import Base from '../layouts/Base.astro';
     Content is reviewed for accuracy and updated regularly. This page is for informational purposes only and does not constitute medical advice. Consult a qualified healthcare professional before making health decisions.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Many Calories Should I Eat a Day? — Complete Guide", "item": "https://healthybmicheck.com/how-many-calories-per-day.html"}]}</script>
 </Base>

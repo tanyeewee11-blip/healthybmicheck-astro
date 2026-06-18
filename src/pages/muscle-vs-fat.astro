@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Muscle vs Fat: Why the Scale Lies",
+      "description": "Muscle weighs more than fat per volume — meaning the scale can stay the same or even go up while your body gets leaner. Learn why weight is a poor measure of progress.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/muscle-vs-fat.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does muscle really weigh more than fat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A pound of muscle and a pound of fat weigh the same — a pound. The correct statement is that muscle is denser than fat: 1 litre of muscle weighs approximately 1.06 kg, while 1 litre of fat weighs approximately 0.9 kg. This means muscle takes up less space per kilogram, which is why gaining muscle while losing fat can produce significant visual changes with little scale movement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the scale go up when I start exercising?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Several temporary factors cause scale increases when starting exercise: glycogen storage in muscles increases and each gram of glycogen is stored with 3g of water; muscle inflammation from new exercise causes temporary fluid retention; and increased food intake to fuel workouts adds to this. These effects typically resolve within 2–4 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know if I'm losing fat or muscle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you are losing weight while maintaining strength in the gym, you are likely preserving muscle. If strength is declining alongside weight loss, muscle loss is occurring. Measurements (waist circumference, body fat percentage via Navy method) and progress photos give better body composition information than scale weight alone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I build muscle and lose fat at the same time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — this is called body recomposition and is most achievable in beginners, people returning from a training break, and those with higher body fat percentages. It requires adequate protein (2.0–2.4g/kg), progressive resistance training, and a modest calorie deficit or maintenance intake. Experienced trainees typically need to prioritise one goal at a time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much muscle can I realistically build per month?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Natural muscle gain rates are slow: 0.5–2 kg per month for beginners in the first year; 0.25–1 kg per month for intermediate trainees; 0.1–0.5 kg per month for advanced trainees. These upper limits require optimal training, nutrition, sleep, and genetics. Claims of faster gains in natural athletes are generally unrealistic."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Muscle vs Fat: Why the Scale Lies | HealthyBMICheck"
-  description="Muscle weighs more than fat per volume — meaning the scale can stay the same or even go up while your body gets leaner. Learn why weight is a poor measure of progress."
+  description="Muscle weighs more than fat by volume — so the scale can lie. Learn how body recomposition works, why BMI misleads gym-goers, and how to track real progress."
   canonical="https://healthybmicheck.com/muscle-vs-fat.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Muscle vs Fat: Why the Scale Lies</div>
   <span class="article-tag">Body</span>
   <h1>Muscle vs Fat: Why the Scale Lies</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>"Muscle weighs more than fat" — this is one of the most repeated (and misunderstood) fitness statements. What it actually means is that muscle is denser than fat: one kilogram of muscle takes up significantly less space than one kilogram of fat. Understanding this explains why the scale is an unreliable guide to body composition progress.</p>
@@ -72,6 +144,27 @@ import Base from '../layouts/Base.astro';
     </ul>
     <p>The key requirements: adequate protein (2.0–2.4g/kg bodyweight), consistent resistance training (2–3x/week), and a modest calorie deficit or maintenance (not an aggressive deficit, which prioritises fat loss over muscle gain).</p>
     <div class="warn-callout"><p>⚠️ Don't let scale stagnation discourage you during a combined fat loss and muscle gain phase. Take monthly progress photos and waist measurements — these will show changes the scale misses.</p></div>
+  </div>
+
+
+  <div class="article-section">
+    <h2>Practical Guide: Losing Fat While Building (or Keeping) Muscle</h2>
+    <p>The goal of most people isn't just to lose weight — it's to improve body composition: less fat, more muscle. This is sometimes called a "body recomposition." Here's how to do it effectively:</p>
+    <ul>
+      <li><strong>Eat a moderate calorie deficit (300–400 kcal/day):</strong> Large deficits accelerate muscle loss. Smaller deficits allow fat loss while preserving muscle, especially combined with resistance training.</li>
+      <li><strong>Prioritise protein (1.6–2.2 g/kg body weight):</strong> Protein provides amino acids for muscle protein synthesis and is the most satiating macronutrient, reducing hunger on a deficit.</li>
+      <li><strong>Train with progressive overload (2–4 sessions/week):</strong> Resistance training sends a signal to preserve muscle tissue even when calories are restricted. Without this signal, the body has no reason to keep metabolically expensive muscle.</li>
+      <li><strong>Sleep 7–9 hours:</strong> Growth hormone — which drives muscle repair and fat metabolism — is primarily released during deep sleep. Sleep deprivation disrupts both processes simultaneously.</li>
+      <li><strong>Be patient:</strong> Body recomposition is slower than pure fat loss. A realistic rate is 0.5–1% body fat reduction per month while maintaining or slightly increasing muscle mass. Progress shows in the mirror and measurements before it shows on the scale.</li>
+    </ul>
+    <div class="callout"><p>💡 Track progress with waist circumference + body weight together. Losing 1 cm off your waist while weight stays the same = muscle gain + fat loss happening simultaneously.</p></div>
+  </div>
+
+  <div class="article-section">
+    <h2>How Long Does It Take to Build Visible Muscle?</h2>
+    <p>Beginners ("newbie gains"): 1–2 kg of muscle in the first 2–3 months with consistent training and adequate protein. After the first year, gains slow to approximately 0.5–1 kg per month for men and 0.25–0.5 kg per month for women.</p>
+    <p>Key factors determining muscle-building speed: training consistency, sleep quality, protein intake, training programme (progressive overload), genetics, and age. Testosterone levels in men generally support faster muscle gain — which is why men typically see faster recomposition results than women at the same effort level.</p>
+    <p>Important: muscle takes up significantly less volume than the same weight of fat. 1 kg of muscle is roughly 15–20% smaller in size than 1 kg of fat. This is why people often look visibly leaner and more toned even before the scale moves much.</p>
   </div>
 
   <div class="faq-section">
@@ -139,4 +232,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Muscle vs Fat: Why the Scale Lies", "item": "https://healthybmicheck.com/muscle-vs-fat.html"}]}</script>
 </Base>

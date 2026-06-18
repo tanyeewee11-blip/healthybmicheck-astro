@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "BMI Calculator for Kids — Child BMI by Age & Percentile",
+      "description": "Free BMI calculator for children and teens aged 2–17. Uses CDC BMI-for-age percentile method to assess healthy weight. Instant results for boys and girls.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/bmi-calculator-kids.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is BMI calculated for children?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For children and teenagers aged 2–17, BMI is calculated the same way as for adults — weight (kg) divided by height (m) squared — but the result is interpreted differently. Instead of fixed categories, a child's BMI is compared to other children of the same age and sex using CDC growth charts. The result is a percentile: for example, the 75th percentile means the child's BMI is higher than 75% of children the same age and sex."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a healthy BMI percentile for my child?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "According to the CDC, a healthy weight for children is a BMI between the 5th and 85th percentile for their age and sex. Below the 5th percentile is underweight. Between the 85th and 95th percentile is overweight. At or above the 95th percentile is considered obese."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can't I use adult BMI categories for my child?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Children's bodies change significantly as they grow, and normal amounts of body fat vary by age and sex. A BMI of 18 means something very different for a 5-year-old than for a 15-year-old. The percentile method accounts for these normal developmental differences by comparing a child's BMI to thousands of children of the same age and sex rather than using a single fixed cutoff."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My child's percentile is high — should I put them on a diet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — never put a child on a restrictive diet without medical supervision. If your child's BMI percentile is in the overweight or obese range, the first step is to consult your paediatrician. Children are still growing, and the goal is usually to slow weight gain while allowing normal height growth, not to lose weight rapidly. Focus on family-wide healthy habits: balanced meals, reducing screen time, and encouraging active play."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this calculator accurate for Asian children?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This calculator uses CDC growth charts developed primarily from US population data. Research suggests that children of Asian descent may have higher body fat at lower BMI values, similar to Asian adults. If your child is of Asian, South Asian, or Southeast Asian descent, discuss this with your paediatrician who can provide ethnicity-appropriate guidance. For adult BMI, see our Asian BMI Calculator."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="BMI Calculator for Kids — Child BMI by Age & Percentile"
   description="Free BMI calculator for children and teens aged 2–17. Uses CDC BMI-for-age percentile method to assess healthy weight. Instant results for boys and girls."
   canonical="https://healthybmicheck.com/bmi-calculator-kids.html"
@@ -19,7 +91,10 @@ import Base from '../layouts/Base.astro';
   </div>
 </div>
 
+<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+
 <div class="container">
+
 
   <div class="card">
     <label style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:8px;color:var(--ink2);">Sex</label>
@@ -275,4 +350,6 @@ import Base from '../layouts/Base.astro';
     <text x="310" y="80" text-anchor="middle" font-size="9" fill="#A09A94">CDC/WHO percentile categories for children 2–19 years</text>
   </svg>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI Calculator for Kids — Child BMI by Age & Percentile", "item": "https://healthybmicheck.com/bmi-calculator-kids.html"}]}</script>
 </Base>

@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Healthy Fats: Which Fats to Eat and Avoid",
+      "description": "Not all fats are equal. Learn which fats protect heart health and support weight loss, which to limit, and the myth that dietary fat makes you fat.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/healthy-fats-foods.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does eating fat make you fat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — excess calories cause fat gain, not dietary fat specifically. Fat contains 9 kcal/g vs 4 kcal/g for carbohydrates and protein, making it calorie-dense, which makes portion control important. However, high-fat whole foods like nuts, avocado, and olive oil are associated with improved satiety and no increased weight gain in studies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between saturated and unsaturated fats?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Saturated fats (found in red meat, butter, coconut oil) have no double bonds in their carbon chain and are solid at room temperature. Unsaturated fats (olive oil, nuts, fish) have one or more double bonds and are liquid at room temperature. Unsaturated fats, particularly omega-3s, have stronger evidence for cardiovascular benefits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much fat should I eat per day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dietary guidelines generally recommend fat makes up 20–35% of total calories. For someone eating 2,000 kcal, that is 44–78g of fat per day. Prioritise unsaturated fats (olive oil, avocado, nuts, oily fish) and limit saturated fats to under 10% of total calories (under 22g at 2,000 kcal)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are omega-3 fatty acids worth supplementing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For people who eat oily fish (salmon, mackerel, sardines) 2+ times per week, supplementation is likely unnecessary. For those who don't regularly eat oily fish, a fish oil or algae-based omega-3 supplement (1–2g EPA+DHA daily) has strong evidence for cardiovascular and anti-inflammatory benefits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is coconut oil healthy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Coconut oil is high in saturated fat (about 90%), which raises LDL cholesterol. Despite claims about its lauric acid content, current evidence does not support coconut oil as a health food — major health organisations (WHO, AHA) recommend limiting it. Olive oil and avocado oil have substantially stronger evidence for cardiovascular benefit."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Healthy Fats: Which Fats to Eat and Avoid | HealthyBMICheck"
   description="Not all fats are equal. Learn which fats protect heart health and support weight loss, which to limit, and the myth that dietary fat makes you fat."
   canonical="https://healthybmicheck.com/healthy-fats-foods.html"
@@ -11,7 +83,7 @@ import Base from '../layouts/Base.astro';
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Healthy Fats: Which Fats to Eat and Avoid</div>
   <span class="article-tag">Nutrition</span>
   <h1>Healthy Fats: Which Fats to Eat and Avoid</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>Dietary fat was villainised for decades — the low-fat diet era produced fat-free products full of sugar and refined carbohydrates that arguably worsened metabolic health. The science has since clarified: fat quality matters far more than fat quantity, and the right fats are essential for health.</p>
@@ -182,4 +254,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy Fats: Which Fats to Eat and Avoid", "item": "https://healthybmicheck.com/healthy-fats-foods.html"}]}</script>
 </Base>

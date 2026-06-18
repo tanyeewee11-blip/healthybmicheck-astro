@@ -1,8 +1,72 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Average Weight for a 55-Year-Old Woman — By Height & BMI",
+      "description": "What is the average weight for a 55-year-old woman? See average weight by height, healthy weight ranges, and what affects weight in your mid-50s.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/average-weight-55-year-old-woman.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why do women gain weight in their mid-50s?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Weight gain in the mid-50s is primarily driven by hormonal changes during perimenopause and menopause. Declining oestrogen levels reduce resting metabolic rate, shift fat storage toward the abdomen (increasing visceral fat), and reduce muscle mass retention. Many women enter menopause between ages 45–55 (average age 51), so by the mid-50s most women are navigating either the late menopause transition or early post-menopause. Additionally, NEAT (non-exercise activity thermogenesis — everyday movement) naturally decreases with age and lifestyle changes, further reducing total calorie burn without obvious changes in exercise habits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a healthy weight for a 55-year-old woman at 5'4\" (163 cm)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a woman at 5'4\" (163 cm), the BMI-based healthy weight range is approximately 108–145 lb (49–66 kg). The midpoint of this range is around 127 lb (58 kg). At 55, body composition matters more than scale weight — two women at the same weight can have very different muscle-to-fat ratios. A 55-year-old with regular resistance training may be healthier at 140 lb with high muscle mass than at 115 lb with low muscle mass and high body fat percentage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it possible to lose weight at 55 as a woman?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — absolutely. Weight loss at 55 is harder than at 35 due to the metabolic and hormonal factors above, but it is achievable with the right approach. The most effective strategies are: (1) accurately calculating your new, lower calorie maintenance level using an age-appropriate calculator; (2) prioritising protein (1.6–2.0 g/kg body weight) to preserve muscle; (3) adding resistance training 2–3 times per week; and (4) being patient — fat loss of 0.5 kg per week is realistic without sacrificing muscle. Avoid very-low-calorie diets (below 1,200 kcal), which accelerate muscle loss at this age."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the menopause cause permanent weight gain?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — menopause does not cause permanent weight gain, but it makes it easier to gain weight and harder to lose it. The average weight gain directly attributable to menopause (rather than to normal ageing) is estimated at 1.5–3 kg. However, the redistribution of fat from the hips/thighs to the abdomen does appear to be largely permanent in the post-menopausal state. Managing this requires sustained lifestyle changes — particularly resistance training — rather than temporary diets."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Average Weight for a 55-Year-Old Woman — By Height & BMI"
   description="What is the average weight for a 55-year-old woman? See average weight by height, healthy weight ranges, and what affects weight in your mid-50s."
   canonical="https://healthybmicheck.com/average-weight-55-year-old-woman.html"
@@ -13,7 +77,10 @@ import Base from '../layouts/Base.astro';
   <p>What does the average 55-year-old woman weigh — and what is actually a healthy weight for your height? Here are the numbers, and what they mean.</p>
 </div>
 
+<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+
 <div class="container">
+
 
   <div class="answer-box">
     <div class="answer-label">Average weight for a 55-year-old woman</div>
@@ -93,6 +160,27 @@ import Base from '../layouts/Base.astro';
       <li>Track your macronutrient balance with our <a href="macro-calculator.html">Macro Calculator</a></li>
     </ul>
 
+
+    <h2>FAQ: Average Weight for Women at 55</h2>
+    <div class="faq-section" style="margin-top:0;">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Why do women gain weight in their mid-50s?</button>
+        <div class="faq-a">Weight gain in the mid-50s is primarily driven by hormonal changes during perimenopause and menopause. Declining oestrogen levels reduce resting metabolic rate, shift fat storage toward the abdomen (increasing visceral fat), and reduce muscle mass retention. Many women enter menopause between ages 45–55 (average age 51), so by the mid-50s most women are navigating either the late menopause transition or early post-menopause. Additionally, NEAT (non-exercise activity thermogenesis — everyday movement) naturally decreases with age and lifestyle changes, further reducing total calorie burn without obvious changes in exercise habits.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is a healthy weight for a 55-year-old woman at 5'4" (163 cm)?</button>
+        <div class="faq-a">For a woman at 5'4" (163 cm), the BMI-based healthy weight range is approximately 108–145 lb (49–66 kg). The midpoint of this range is around 127 lb (58 kg). At 55, body composition matters more than scale weight — two women at the same weight can have very different muscle-to-fat ratios. A 55-year-old with regular resistance training may be healthier at 140 lb with high muscle mass than at 115 lb with low muscle mass and high body fat percentage.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is it possible to lose weight at 55 as a woman?</button>
+        <div class="faq-a">Yes — absolutely. Weight loss at 55 is harder than at 35 due to the metabolic and hormonal factors above, but it is achievable with the right approach. The most effective strategies are: (1) accurately calculating your new, lower calorie maintenance level using an age-appropriate calculator; (2) prioritising protein (1.6–2.0 g/kg body weight) to preserve muscle; (3) adding resistance training 2–3 times per week; and (4) being patient — fat loss of 0.5 kg per week is realistic without sacrificing muscle. Avoid very-low-calorie diets (below 1,200 kcal), which accelerate muscle loss at this age.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does the menopause cause permanent weight gain?</button>
+        <div class="faq-a">No — menopause does not cause permanent weight gain, but it makes it easier to gain weight and harder to lose it. The average weight gain directly attributable to menopause (rather than to normal ageing) is estimated at 1.5–3 kg. However, the redistribution of fat from the hips/thighs to the abdomen does appear to be largely permanent in the post-menopausal state. Managing this requires sustained lifestyle changes — particularly resistance training — rather than temporary diets.</div>
+      </div>
+    </div>
+
     <div class="warn-callout"><p>⚠️ Weight and BMI are screening tools, not diagnostic measures. If you have concerns about your weight or health at 55, speak with your doctor or a registered dietitian for personalised advice.</p></div>
 
     <div class="sources">
@@ -138,4 +226,6 @@ import Base from '../layouts/Base.astro';
   </div>
 </div>
 
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Average Weight for a 55-Year-Old Woman — By Height & BMI", "item": "https://healthybmicheck.com/average-weight-55-year-old-woman.html"}]}</script>
 </Base>

@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Strength Training for Beginners: A Simple Guide",
+      "description": "Strength training is the most effective exercise for long-term fat loss and metabolic health. This beginner's guide covers the basics: what to do, how heavy to lift, and how to progress.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/strength-training-beginners.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many days per week should a beginner do strength training?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2–3 full-body sessions per week is optimal for beginners. This frequency provides sufficient stimulus for muscle adaptation while allowing adequate recovery between sessions. More is not better early on — beginners' muscles need 48–72 hours between training the same muscle groups, and recovery is when adaptation occurs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to go to a gym to do strength training?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — beginners can make excellent progress with bodyweight exercises (push-ups, squats, lunges, glute bridges, rows using a table). Adding resistance bands or a pair of adjustable dumbbells significantly expands options. Gym access becomes more valuable as you advance and need progressive overload beyond bodyweight resistance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long before I see results from strength training?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Neurological adaptations (better motor control, improved strength without visible muscle change) occur within 2–4 weeks. Visible muscle development typically requires 6–12 weeks of consistent training with adequate protein. Strength gains (ability to lift more) often appear within 2–4 weeks and are a reliable early indicator that training is working."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is progressive overload and why does it matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Progressive overload is systematically increasing the challenge placed on muscles over time — by adding weight, more reps, more sets, or reduced rest. Without progressive overload, the body adapts to a given workout and ceases to develop further. It is the fundamental principle that drives all long-term strength and muscle gains."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is strength training safe for overweight beginners?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — strength training is beneficial for overweight beginners and carries lower injury risk than high-impact cardio when started with appropriate loads and form. It builds muscle (which improves metabolic health and insulin sensitivity), preserves bone density, and improves joint stability. Start with machine exercises or bodyweight to learn movement patterns safely."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Strength Training for Beginners: A Simple Guide | HealthyBMICheck"
-  description="Strength training is the most effective exercise for long-term fat loss and metabolic health. This beginner's guide covers the basics: what to do, how heavy to lift, and how to progress."
+  description="Strength training is the most effective exercise for long-term fat loss and metabolic health. A complete beginner's guide: exercises, sets, and progression."
   canonical="https://healthybmicheck.com/strength-training-beginners.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Strength Training for Beginners: A Simple Guide</div>
   <span class="article-tag">Exercise</span>
   <h1>Strength Training for Beginners: A Simple Guide</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>Strength training — also called resistance training or weight training — is one of the most evidence-backed interventions for improving body composition, metabolic health, and long-term weight maintenance. Yet it remains one of the most underutilised tools for fat loss, particularly among beginners who are unsure where to start.</p>
@@ -179,4 +251,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Strength Training for Beginners: A Simple Guide", "item": "https://healthybmicheck.com/strength-training-beginners.html"}]}</script>
 </Base>

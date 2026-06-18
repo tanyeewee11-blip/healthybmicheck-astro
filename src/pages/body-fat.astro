@@ -1,8 +1,98 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Body Fat Calculator — Estimate Your Body Fat Percentage",
+      "description": "Estimate your body fat percentage using the U.S. Navy method. Free calculator for men and women — just a tape measure, no gym equipment needed.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/body-fat.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the U.S. Navy method?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The U.S. Navy method estimates body fat percentage using simple circumference measurements — waist, neck, and hips (for women) — along with height. It was developed for practical use in military fitness assessments and is considered reasonably accurate for most adults, with a typical margin of error of 3–4%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I measure correctly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use a flexible tape measure and measure directly on skin, not over clothing. For the waist, measure at the level of your navel while relaxed (not sucked in). For the neck, measure just below the larynx (Adam's apple), sloping slightly downward at the front. For hips (women), measure at the widest point. Take each measurement twice and use the average."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is body fat percentage better than BMI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Body fat percentage and BMI measure different things. BMI uses only height and weight, while body fat percentage directly estimates the proportion of fat in your body. Body fat percentage is generally more informative for athletes and those with high muscle mass, but BMI is easier to measure and useful for population-level screening. Using both together gives the most complete picture."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a healthy body fat percentage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For men, a healthy body fat range is generally considered to be 8–19%, with athletic individuals typically falling in the 6–13% range. For women, healthy ranges are approximately 21–33%, with athletes typically at 14–20%. These ranges vary with age — older adults tend to carry slightly more body fat as a natural part of ageing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I reduce body fat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Reducing body fat requires a combination of a moderate calorie deficit (eating slightly less than you burn) and regular physical activity, particularly strength training to preserve muscle mass. Crash diets tend to cause muscle loss alongside fat loss, which can actually worsen your body composition over time. Slow, consistent progress — around 0.5 kg per week — typically gives the best long-term results."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Body Fat Calculator",
+      "url": "https://healthybmicheck.com/body-fat.html",
+      "description": "Estimate body fat percentage using the US Navy method.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      }
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Body Fat Calculator — Estimate Your Body Fat Percentage"
   description="Estimate your body fat percentage using the U.S. Navy method. Free calculator for men and women — just a tape measure, no gym equipment needed."
   canonical="https://healthybmicheck.com/body-fat.html"
@@ -12,7 +102,10 @@ import Base from '../layouts/Base.astro';
   <h1>Body Fat <em>Percentage</em> Calculator</h1>
   <p>Estimate your body fat percentage using the U.S. Navy method — just a tape measure, no gym equipment needed.</p>
 </div>
+<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+
 <div class="container">
+
   <div class="card">
     <div class="unit-toggle">
       <button class="active" onclick="setUnit('metric')">Metric (cm)</button>
@@ -382,4 +475,6 @@ import Base from '../layouts/Base.astro';
       </div>
     </div>
   </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Body Fat Calculator — Estimate Your Body Fat Percentage", "item": "https://healthybmicheck.com/body-fat.html"}]}</script>
 </Base>

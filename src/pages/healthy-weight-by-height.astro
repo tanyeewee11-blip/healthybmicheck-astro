@@ -1,0 +1,295 @@
+---
+import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Healthy Weight by Height: Complete Reference for Men & Women",
+  "description": "Full healthy weight ranges by height for men and women — in both imperial (ft/in) and metric (cm), including BMI ranges, formula averages, and Asian BMI standards.",
+  "author": { "@type": "Organization", "name": "HealthyBMICheck.com" },
+  "publisher": { "@type": "Organization", "name": "HealthyBMICheck.com", "url": "https://healthybmicheck.com" },
+  "datePublished": "2025-05-10",
+  "dateModified": "2026-06-17-10",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://healthybmicheck.com/healthy-weight-by-height.html" }
+});
+---
+
+<Base
+  title="Healthy Weight by Height Chart — Men & Women | HealthyBMICheck"
+  description="Healthy weight ranges for every height from 4'10" to 6'4" (150–195 cm) for men and women. Imperial and metric, with Asian BMI standards and formula averages." to 6'4\" (150–195 cm) for men and women. Includes BMI range, formula average, and Asian BMI standard."
+  canonical="https://healthybmicheck.com/healthy-weight-by-height.html"
+  schemaJson={schemaJson}
+>
+
+<div class="hero">
+  <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;">
+    <a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Healthy Weight by Height
+  </div>
+  <h1>Healthy Weight by Height<br><em>Men & Women — Full Chart</em></h1>
+  <p>Evidence-based healthy weight ranges for every height, in both imperial and metric. Includes BMI range, ideal weight formula averages, and Asian BMI standards.</p>
+</div>
+
+<div class="container">
+
+  <!-- Byline / E-E-A-T -->
+  <div style="font-size:.8rem;color:var(--ink3);margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border);">
+    Based on WHO BMI guidelines and validated clinical ideal weight formulas · Last updated: <strong>June 2025</strong>
+  </div>
+
+  <!-- Explanation -->
+  <div class="article-section" style="margin-bottom:24px;">
+    <p>The <strong>healthy weight range</strong> for any height is calculated using the standard BMI range of <strong>18.5–24.9</strong> (or ≤22.9 for adults of Asian descent). The <strong>formula average</strong> shown is the mean of four validated clinical formulas — Devine (1974), Robinson (1983), Miller (1983), and Hamwi (1964) — each originally developed for medical dosing or dietetic use.</p>
+    <div class="callout"><p>💡 For your exact BMI, healthy weight range, and daily calorie needs, use our interactive <a href="bmi-calculator.html">BMI Calculator</a>. The tables below are a quick reference guide.</p></div>
+  </div>
+
+  <!-- Unit filter -->
+  <div style="margin:0 0 20px;">
+    <div style="font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;">Unit system</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+      <button onclick="showUnit('imperial')" id="btn-imperial" style="padding:7px 18px;border-radius:100px;border:1.5px solid var(--accent);background:var(--accent);color:#fff;font-size:.85rem;font-family:inherit;cursor:pointer;font-weight:500;">Imperial (ft/in · lb)</button>
+      <button onclick="showUnit('metric')" id="btn-metric" style="padding:7px 18px;border-radius:100px;border:1.5px solid var(--border);background:transparent;color:var(--ink2);font-size:.85rem;font-family:inherit;cursor:pointer;font-weight:500;">Metric (cm · kg)</button>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button onclick="showSex2('both')" id="btn2-both" style="padding:7px 18px;border-radius:100px;border:1.5px solid var(--accent);background:var(--accent);color:#fff;font-size:.85rem;font-family:inherit;cursor:pointer;font-weight:500;">Both sexes</button>
+      <button onclick="showSex2('female')" id="btn2-female" style="padding:7px 18px;border-radius:100px;border:1.5px solid var(--border);background:transparent;color:var(--ink2);font-size:.85rem;font-family:inherit;cursor:pointer;font-weight:500;">Women</button>
+      <button onclick="showSex2('male')" id="btn2-male" style="padding:7px 18px;border-radius:100px;border:1.5px solid var(--border);background:transparent;color:var(--ink2);font-size:.85rem;font-family:inherit;cursor:pointer;font-weight:500;">Men</button>
+    </div>
+  </div>
+
+  <!-- ═══ IMPERIAL TABLES ═══ -->
+  <div id="unit-imperial">
+
+    <!-- Women Imperial -->
+    <div id="imp-female">
+      <h2 class="section-title">Women — Healthy Weight by Height (Imperial)</h2>
+      <div class="card" style="padding:0;overflow:hidden;margin-bottom:24px;">
+        <table>
+          <thead>
+            <tr><th>Height</th><th>Healthy range (BMI 18.5–24.9)</th><th>Asian range (BMI ≤22.9)</th><th>Formula average</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>4'10" (58")</td><td>91–119 lb (41–54 kg)</td><td>91–110 lb (41–50 kg)</td><td>~101 lb (46 kg)</td></tr>
+            <tr class="highlight-row"><td>4'11" (59")</td><td>94–123 lb (43–56 kg)</td><td>94–114 lb (43–52 kg)</td><td>~103 lb (47 kg)</td></tr>
+            <tr><td><strong>5'0" (60")</strong></td><td>95–127 lb (43–58 kg)</td><td>95–117 lb (43–53 kg)</td><td>106 lb (48 kg)</td></tr>
+            <tr class="highlight-row"><td>5'1" (61")</td><td>98–132 lb (44–60 kg)</td><td>98–121 lb (44–55 kg)</td><td>111 lb (50 kg)</td></tr>
+            <tr><td>5'2" (62")</td><td>101–136 lb (46–62 kg)</td><td>101–125 lb (46–57 kg)</td><td>115 lb (52 kg)</td></tr>
+            <tr class="highlight-row"><td>5'3" (63")</td><td>104–141 lb (47–64 kg)</td><td>104–130 lb (47–59 kg)</td><td>119 lb (54 kg)</td></tr>
+            <tr><td>5'4" (64")</td><td>108–145 lb (49–66 kg)</td><td>108–134 lb (49–61 kg)</td><td>123 lb (56 kg)</td></tr>
+            <tr class="highlight-row"><td>5'5" (65")</td><td>111–150 lb (50–68 kg)</td><td>111–138 lb (50–63 kg)</td><td>127 lb (58 kg)</td></tr>
+            <tr><td>5'6" (66")</td><td>115–154 lb (52–70 kg)</td><td>115–142 lb (52–64 kg)</td><td>132 lb (60 kg)</td></tr>
+            <tr class="highlight-row"><td>5'7" (67")</td><td>118–159 lb (54–72 kg)</td><td>118–147 lb (54–67 kg)</td><td>136 lb (62 kg)</td></tr>
+            <tr><td>5'8" (68")</td><td>122–164 lb (55–74 kg)</td><td>122–151 lb (55–69 kg)</td><td>140 lb (64 kg)</td></tr>
+            <tr class="highlight-row"><td>5'9" (69")</td><td>125–169 lb (57–76 kg)</td><td>125–155 lb (57–70 kg)</td><td>144 lb (65 kg)</td></tr>
+            <tr><td>5'10" (70")</td><td>129–174 lb (58–79 kg)</td><td>129–160 lb (58–73 kg)</td><td>148 lb (67 kg)</td></tr>
+            <tr class="highlight-row"><td>5'11" (71")</td><td>133–179 lb (60–81 kg)</td><td>133–164 lb (60–74 kg)</td><td>153 lb (69 kg)</td></tr>
+            <tr><td>6'0" (72")</td><td>136–184 lb (62–83 kg)</td><td>136–169 lb (62–77 kg)</td><td>157 lb (71 kg)</td></tr>
+            <tr class="highlight-row"><td>6'1" (73")</td><td>140–189 lb (64–86 kg)</td><td>140–173 lb (64–79 kg)</td><td>161 lb (73 kg)</td></tr>
+            <tr><td>6'2" (74")</td><td>144–194 lb (65–88 kg)</td><td>144–178 lb (65–81 kg)</td><td>165 lb (75 kg)</td></tr>
+            <tr class="highlight-row"><td>6'3" (75")</td><td>148–199 lb (67–90 kg)</td><td>148–183 lb (67–83 kg)</td><td>169 lb (77 kg)</td></tr>
+            <tr><td>6'4" (76")</td><td>152–205 lb (69–93 kg)</td><td>152–187 lb (69–85 kg)</td><td>174 lb (79 kg)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Men Imperial -->
+    <div id="imp-male">
+      <h2 class="section-title">Men — Healthy Weight by Height (Imperial)</h2>
+      <div class="card" style="padding:0;overflow:hidden;margin-bottom:24px;">
+        <table>
+          <thead>
+            <tr><th>Height</th><th>Healthy range (BMI 18.5–24.9)</th><th>Asian range (BMI ≤22.9)</th><th>Formula average</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>4'10" (58")</td><td>91–119 lb (41–54 kg)</td><td>91–110 lb (41–50 kg)</td><td>~109 lb (49 kg)</td></tr>
+            <tr class="highlight-row"><td>4'11" (59")</td><td>94–123 lb (43–56 kg)</td><td>94–114 lb (43–52 kg)</td><td>~112 lb (51 kg)</td></tr>
+            <tr><td><strong>5'0" (60")</strong></td><td>95–127 lb (43–58 kg)</td><td>95–117 lb (43–53 kg)</td><td>114 lb (52 kg)</td></tr>
+            <tr class="highlight-row"><td>5'1" (61")</td><td>98–132 lb (44–60 kg)</td><td>98–121 lb (44–55 kg)</td><td>118 lb (54 kg)</td></tr>
+            <tr><td>5'2" (62")</td><td>101–136 lb (46–62 kg)</td><td>101–125 lb (46–57 kg)</td><td>123 lb (56 kg)</td></tr>
+            <tr class="highlight-row"><td>5'3" (63")</td><td>104–141 lb (47–64 kg)</td><td>104–130 lb (47–59 kg)</td><td>127 lb (58 kg)</td></tr>
+            <tr><td>5'4" (64")</td><td>108–145 lb (49–66 kg)</td><td>108–134 lb (49–61 kg)</td><td>132 lb (60 kg)</td></tr>
+            <tr class="highlight-row"><td>5'5" (65")</td><td>111–150 lb (50–68 kg)</td><td>111–138 lb (50–63 kg)</td><td>137 lb (62 kg)</td></tr>
+            <tr><td>5'6" (66")</td><td>115–154 lb (52–70 kg)</td><td>115–142 lb (52–64 kg)</td><td>141 lb (64 kg)</td></tr>
+            <tr class="highlight-row"><td>5'7" (67")</td><td>118–159 lb (54–72 kg)</td><td>118–147 lb (54–67 kg)</td><td>146 lb (66 kg)</td></tr>
+            <tr><td>5'8" (68")</td><td>122–164 lb (55–74 kg)</td><td>122–151 lb (55–69 kg)</td><td>150 lb (68 kg)</td></tr>
+            <tr class="highlight-row"><td>5'9" (69")</td><td>125–169 lb (57–76 kg)</td><td>125–155 lb (57–70 kg)</td><td>155 lb (70 kg)</td></tr>
+            <tr><td>5'10" (70")</td><td>129–174 lb (58–79 kg)</td><td>129–160 lb (58–73 kg)</td><td>159 lb (72 kg)</td></tr>
+            <tr class="highlight-row"><td>5'11" (71")</td><td>133–179 lb (60–81 kg)</td><td>133–164 lb (60–74 kg)</td><td>164 lb (74 kg)</td></tr>
+            <tr><td>6'0" (72")</td><td>136–184 lb (62–83 kg)</td><td>136–169 lb (62–77 kg)</td><td>169 lb (77 kg)</td></tr>
+            <tr class="highlight-row"><td>6'1" (73")</td><td>140–189 lb (64–86 kg)</td><td>140–173 lb (64–79 kg)</td><td>173 lb (79 kg)</td></tr>
+            <tr><td>6'2" (74")</td><td>144–194 lb (65–88 kg)</td><td>144–178 lb (65–81 kg)</td><td>178 lb (81 kg)</td></tr>
+            <tr class="highlight-row"><td>6'3" (75")</td><td>148–199 lb (67–90 kg)</td><td>148–183 lb (67–83 kg)</td><td>182 lb (83 kg)</td></tr>
+            <tr><td>6'4" (76")</td><td>152–205 lb (69–93 kg)</td><td>152–187 lb (69–85 kg)</td><td>187 lb (85 kg)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- end imperial -->
+
+  <!-- ═══ METRIC TABLES ═══ -->
+  <div id="unit-metric" style="display:none;">
+
+    <!-- Women Metric -->
+    <div id="met-female">
+      <h2 class="section-title">Women — Healthy Weight by Height (Metric)</h2>
+      <div class="card" style="padding:0;overflow:hidden;margin-bottom:24px;">
+        <table>
+          <thead>
+            <tr><th>Height</th><th>Healthy range (BMI 18.5–24.9)</th><th>Asian range (BMI ≤22.9)</th><th>Formula average</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>150 cm</td><td>42–56 kg (92–124 lb)</td><td>42–52 kg (92–114 lb)</td><td>48.2 kg (106 lb)</td></tr>
+            <tr class="highlight-row"><td>155 cm</td><td>44–60 kg (98–132 lb)</td><td>44–55 kg (98–122 lb)</td><td>50.2 kg (111 lb)</td></tr>
+            <tr><td>160 cm</td><td>47–64 kg (104–141 lb)</td><td>47–59 kg (104–130 lb)</td><td>54.0 kg (119 lb)</td></tr>
+            <tr class="highlight-row"><td>165 cm</td><td>50–68 kg (111–149 lb)</td><td>50–62 kg (111–137 lb)</td><td>57.7 kg (127 lb)</td></tr>
+            <tr><td>170 cm</td><td>53–72 kg (118–159 lb)</td><td>53–66 kg (118–146 lb)</td><td>61.5 kg (136 lb)</td></tr>
+            <tr class="highlight-row"><td>175 cm</td><td>57–76 kg (125–168 lb)</td><td>57–70 kg (125–155 lb)</td><td>65.2 kg (144 lb)</td></tr>
+            <tr><td>180 cm</td><td>60–81 kg (132–178 lb)</td><td>60–74 kg (132–163 lb)</td><td>69.0 kg (152 lb)</td></tr>
+            <tr class="highlight-row"><td>185 cm</td><td>63–85 kg (140–188 lb)</td><td>63–78 kg (140–172 lb)</td><td>72.7 kg (160 lb)</td></tr>
+            <tr><td>190 cm</td><td>67–90 kg (147–198 lb)</td><td>67–83 kg (147–182 lb)</td><td>76.5 kg (169 lb)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Men Metric -->
+    <div id="met-male">
+      <h2 class="section-title">Men — Healthy Weight by Height (Metric)</h2>
+      <div class="card" style="padding:0;overflow:hidden;margin-bottom:24px;">
+        <table>
+          <thead>
+            <tr><th>Height</th><th>Healthy range (BMI 18.5–24.9)</th><th>Asian range (BMI ≤22.9)</th><th>Formula average</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>150 cm</td><td>42–56 kg (92–124 lb)</td><td>42–52 kg (92–114 lb)</td><td>51.5 kg (114 lb)</td></tr>
+            <tr class="highlight-row"><td>155 cm</td><td>44–60 kg (98–132 lb)</td><td>44–55 kg (98–122 lb)</td><td>53.7 kg (118 lb)</td></tr>
+            <tr><td>160 cm</td><td>47–64 kg (104–141 lb)</td><td>47–59 kg (104–130 lb)</td><td>57.8 kg (127 lb)</td></tr>
+            <tr class="highlight-row"><td>165 cm</td><td>50–68 kg (111–149 lb)</td><td>50–62 kg (111–137 lb)</td><td>61.9 kg (136 lb)</td></tr>
+            <tr><td>170 cm</td><td>53–72 kg (118–159 lb)</td><td>53–66 kg (118–146 lb)</td><td>65.9 kg (145 lb)</td></tr>
+            <tr class="highlight-row"><td>175 cm</td><td>57–76 kg (125–168 lb)</td><td>57–70 kg (125–155 lb)</td><td>70.0 kg (154 lb)</td></tr>
+            <tr><td>180 cm</td><td>60–81 kg (132–178 lb)</td><td>60–74 kg (132–163 lb)</td><td>74.1 kg (163 lb)</td></tr>
+            <tr class="highlight-row"><td>185 cm</td><td>63–85 kg (140–188 lb)</td><td>63–78 kg (140–172 lb)</td><td>78.2 kg (172 lb)</td></tr>
+            <tr><td>190 cm</td><td>67–90 kg (147–198 lb)</td><td>67–83 kg (147–182 lb)</td><td>82.3 kg (181 lb)</td></tr>
+            <tr class="highlight-row"><td>195 cm</td><td>70–95 kg (155–209 lb)</td><td>70–87 kg (155–192 lb)</td><td>86.3 kg (190 lb)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- end metric -->
+
+  <!-- Deep-dive article content -->
+  <div class="article-section">
+
+    <h2>How to Read This Chart</h2>
+    <p>The <strong>healthy range</strong> column is derived from BMI 18.5–24.9 applied to each height — the WHO standard for adult healthy weight. The <strong>Asian range</strong> uses the lower WHO threshold of BMI ≤22.9, recommended for adults of Asian descent due to higher metabolic risk at lower BMI values.</p>
+    <p>The <strong>formula average</strong> combines four clinical ideal weight formulas (Devine, Robinson, Miller, Hamwi) into a single reference point. This number is not a target — it simply represents the midpoint of clinical estimates for that height. BMI remains the primary standard for healthy weight assessment.</p>
+
+    <h2>Why Men and Women Have Different Formula Averages</h2>
+    <p>The four ideal weight formulas produce different results for men and women at the same height because they were developed on sex-specific population data. Men generally have greater bone density, muscle mass, and lean body mass than women of the same height, which the formulas account for. The BMI-based healthy weight <em>range</em>, however, is the same for both sexes at any given height.</p>
+
+    <h2>Limitations of BMI-Based Weight Ranges</h2>
+    <p>BMI (and by extension, the weight ranges derived from it) has well-documented limitations as an individual health measure:</p>
+    <ul>
+      <li><strong>Doesn't measure body fat directly:</strong> A muscular athlete may have a BMI of 27 despite very low body fat. Use our <a href="body-fat.html">Body Fat Calculator</a> for a more accurate assessment.</li>
+      <li><strong>Doesn't account for fat distribution:</strong> Where fat is stored matters. Visceral abdominal fat carries higher health risk than subcutaneous fat in other areas. Our <a href="waist-to-height-ratio.html">Waist-to-Height Ratio Calculator</a> captures this.</li>
+      <li><strong>Population averages, not individual targets:</strong> Health status at any given weight depends on factors including diet quality, physical fitness, genetics, and medical history that BMI cannot capture.</li>
+      <li><strong>May underestimate risk in some ethnic groups:</strong> This is why separate Asian BMI thresholds exist.</li>
+    </ul>
+
+    <h2>How to Reach or Maintain Your Healthy Weight</h2>
+    <p>If your current weight falls outside your healthy range, the following evidence-based steps are most effective:</p>
+    <ul>
+      <li>Calculate your daily energy needs with our <a href="calorie-calculator.html">Calorie Calculator</a> and aim for a moderate deficit of 300–500 kcal/day if weight loss is your goal</li>
+      <li>Prioritise protein intake (1.6–2.0 g per kg of body weight) to preserve muscle while losing fat — see our <a href="high-protein-foods.html">high-protein foods guide</a></li>
+      <li>Include at least 150 minutes of moderate aerobic activity plus 2 resistance training sessions per week</li>
+      <li>Use our <a href="calorie-deficit-calculator.html">Calorie Deficit Calculator</a> to estimate your realistic weight loss timeline</li>
+    </ul>
+
+  </div>
+
+  <div class="warn-callout"><p>⚠️ These weight ranges are population-level references and are not a substitute for personalised medical advice. Body composition, health history, and individual factors can all shift what a healthy weight looks like for you specifically. Consult a healthcare provider for personalised guidance.</p></div>
+
+  <div class="related">
+    <h3>Related Pages</h3>
+    <div class="related-links">
+      <a href="healthy-bmi-by-age.html">Healthy BMI by Age</a>
+      <a href="bmi-calculator.html">BMI Calculator</a>
+      <a href="ideal-weight.html">Ideal Weight Calculator</a>
+      <a href="calorie-calculator.html">Calorie Calculator</a>
+      <a href="body-fat.html">Body Fat Calculator</a>
+      <a href="asian-bmi-calculator.html">Asian BMI Calculator</a>
+      <a href="waist-to-height-ratio.html">Waist-to-Height Ratio</a>
+      <a href="healthy-bmi-for-women.html">Healthy BMI for Women</a>
+      <a href="normal-bmi-for-men.html">Normal BMI for Men</a>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <p style="font-size:.8rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Next step</p>
+    <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;line-height:1.2;">Find out if your weight is healthy</h2>
+    <p style="font-size:.9rem;color:rgba(255,255,255,.6);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto;">Enter your height and weight to get your exact BMI, healthy weight range, and daily calorie needs in seconds.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+      <a href="bmi-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">⚖️ Calculate My BMI →</a>
+      <a href="ideal-weight.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">📏 Ideal Weight →</a>
+      <a href="calorie-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">🔥 Daily Calories →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- References -->
+<div style="max-width:720px;margin:0 auto 0;padding:0 20px 40px;">
+  <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;">
+    <strong style="display:block;margin-bottom:8px;font-size:0.85rem;">📚 References & Editorial Standards</strong>
+    <ol style="margin:8px 0 8px 18px;padding:0;">
+      <li>World Health Organization. <em>BMI Classification</em>. <a href="https://www.who.int/health-topics/obesity" style="color:var(--accent);">who.int</a></li>
+      <li>Devine BJ. (1974). <em>Gentamicin therapy</em>. Drug Intelligence and Clinical Pharmacy, 8, 650–655.</li>
+      <li>Robinson JD, et al. (1983). <em>Estimation of ideal body weight</em>. American Journal of Hospital Pharmacy, 40(6), 1016–1019.</li>
+      <li>Miller DR, et al. (1983). <em>Ideal body weight</em>. Clinical Pharmacokinetics, 8(2), 154–163.</li>
+      <li>WHO Expert Consultation. (2004). <em>Appropriate body-mass index for Asian populations</em>. The Lancet. <a href="https://doi.org/10.1016/S0140-6736(03)15268-3" style="color:var(--accent);">doi:10.1016/S0140-6736(03)15268-3</a></li>
+    </ol>
+    Content reviewed for accuracy against current clinical guidelines. Last updated June 2025. Not a substitute for professional medical advice.
+  </div>
+</div>
+
+<script>
+let currentUnit = 'imperial';
+let currentSex2 = 'both';
+
+function showUnit(unit) {
+  currentUnit = unit;
+  document.getElementById('unit-imperial').style.display = unit === 'imperial' ? '' : 'none';
+  document.getElementById('unit-metric').style.display = unit === 'metric' ? '' : 'none';
+  ['imperial','metric'].forEach(u => {
+    const btn = document.getElementById('btn-' + u);
+    btn.style.background = u === unit ? 'var(--accent)' : 'transparent';
+    btn.style.color = u === unit ? '#fff' : 'var(--ink2)';
+    btn.style.borderColor = u === unit ? 'var(--accent)' : 'var(--border)';
+  });
+  applySex2();
+}
+
+function showSex2(sex) {
+  currentSex2 = sex;
+  ['both','female','male'].forEach(s => {
+    const btn = document.getElementById('btn2-' + s);
+    btn.style.background = s === sex ? 'var(--accent)' : 'transparent';
+    btn.style.color = s === sex ? '#fff' : 'var(--ink2)';
+    btn.style.borderColor = s === sex ? 'var(--accent)' : 'var(--border)';
+  });
+  applySex2();
+}
+
+function applySex2() {
+  const showF = currentSex2 === 'both' || currentSex2 === 'female';
+  const showM = currentSex2 === 'both' || currentSex2 === 'male';
+  ['imp-female','met-female'].forEach(id => { const el = document.getElementById(id); if(el) el.style.display = showF ? '' : 'none'; });
+  ['imp-male','met-male'].forEach(id => { const el = document.getElementById(id); if(el) el.style.display = showM ? '' : 'none'; });
+}
+</script>
+
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy Weight by Height Chart — Men & Women", "item": "https://healthybmicheck.com/healthy-weight-by-height.html"}]}</script>
+</Base>

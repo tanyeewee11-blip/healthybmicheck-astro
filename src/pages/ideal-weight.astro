@@ -1,8 +1,90 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Ideal Weight Calculator — Find Your Healthy Weight Range",
+      "description": "Calculate your ideal body weight instantly based on your height and sex. Uses multiple scientific formulas including Devine, Robinson, and Miller methods.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/ideal-weight.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why are there four different formulas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Different researchers developed different formulas over the decades. The Devine formula (1974) was originally created for drug dosing. Robinson, Miller, and Hamwi developed their own versions based on different population studies. No single formula is universally accepted, which is why showing all four gives a more balanced range."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is ideal weight the same as healthy weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They are related but not identical. Ideal weight formulas give a single target number based on height and sex. Healthy weight is a range based on BMI (18.5–24.9). Most people's ideal weight falls within their healthy BMI range, but the BMI range is generally considered a more complete indicator."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do these formulas apply to athletes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not perfectly. Athletes with high muscle mass may weigh significantly more than the ideal weight estimate while still being very healthy. These formulas are best used as a general guideline for the average adult, not for athletes or those with unusually high or low muscle mass."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if my weight is far from the ideal range?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The ideal weight range is a guide, not a strict target. A more useful next step is to calculate your BMI and daily calorie needs to understand where you currently stand and what adjustments — if any — might benefit your health. Always consult a healthcare professional before making significant changes to your diet or exercise habits."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Ideal Weight Calculator",
+      "url": "https://healthybmicheck.com/ideal-weight.html",
+      "description": "Calculate ideal body weight using validated clinical formulas.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      }
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Ideal Weight Calculator — Find Your Healthy Weight Range"
   description="Calculate your ideal body weight instantly based on your height and sex. Uses multiple scientific formulas including Devine, Robinson, and Miller methods."
   canonical="https://healthybmicheck.com/ideal-weight.html"
@@ -12,7 +94,10 @@ import Base from '../layouts/Base.astro';
   <h1>Ideal <em>Weight</em> Calculator</h1>
   <p>Find your ideal body weight range based on your height and sex, using four leading scientific formulas.</p>
 </div>
+<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+
 <div class="container">
+
   <div class="card">
     <div class="unit-toggle">
       <button class="active" onclick="setUnit('metric')">Metric (cm)</button>
@@ -282,4 +367,6 @@ import Base from '../layouts/Base.astro';
       </div>
     </div>
   </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Ideal Weight Calculator — Find Your Healthy Weight Range", "item": "https://healthybmicheck.com/ideal-weight.html"}]}</script>
 </Base>

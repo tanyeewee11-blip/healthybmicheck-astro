@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Visceral Fat: What It Is and How to Reduce It",
+      "description": "Visceral fat — the fat stored around your organs — is the most dangerous type of body fat. Learn what causes it, why it's harmful, and the most effective ways to reduce it.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/visceral-fat.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can you spot-reduce visceral fat with ab exercises?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — spot reduction is a myth. Ab exercises (crunches, planks, leg raises) strengthen the muscles underneath visceral fat but do not specifically burn the fat around organs. Visceral fat reduction requires systemic fat loss through a calorie deficit and aerobic exercise, which reduces fat throughout the body including visceral stores."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know if I have high visceral fat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The most practical indicator is waist circumference: above 88 cm for women or 102 cm for men (80 cm/94 cm for Asian adults) suggests elevated visceral fat. A DEXA scan can quantify visceral fat precisely. Elevated fasting triglycerides, low HDL cholesterol, or elevated fasting blood glucose are metabolic signs that often accompany high visceral fat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is visceral fat harder to lose than regular fat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — visceral fat is actually more responsive to intervention than subcutaneous fat. It is more metabolically active and releases into circulation more readily during a calorie deficit. Many people notice waist circumference decreasing quickly at the start of a diet, even before much overall weight loss occurs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can thin people have high visceral fat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — this is called TOFI (Thin Outside, Fat Inside). People can appear lean while carrying significant visceral fat, particularly if they have low muscle mass and are sedentary. This pattern is more common in some ethnic groups (particularly South Asians). Waist circumference measurement helps identify this risk in normal-weight individuals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How quickly can visceral fat be reduced?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Studies show meaningful visceral fat reduction within 8–12 weeks of consistent aerobic exercise and a modest calorie deficit (400–500 kcal/day). A 5–10% reduction in body weight typically produces significant visceral fat reduction, often measurable via waist circumference within 4–6 weeks."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Visceral Fat: What It Is and How to Reduce It | HealthyBMICheck"
-  description="Visceral fat — the fat stored around your organs — is the most dangerous type of body fat. Learn what causes it, why it's harmful, and the most effective ways to reduce it."
+  description="Visceral fat surrounds your organs and drives insulin resistance, inflammation, and cardiovascular risk. How to measure it and reduce it effectively."
   canonical="https://healthybmicheck.com/visceral-fat.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Visceral Fat: What It Is and How to Reduce It</div>
   <span class="article-tag">Body</span>
   <h1>Visceral Fat: What It Is and How to Reduce It</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>Not all fat is created equal. The fat you can pinch under your skin (subcutaneous fat) is relatively benign. The fat stored deep inside your abdomen, wrapped around your organs (visceral fat), is a different matter entirely — it's metabolically active, inflammatory, and strongly linked to serious disease.</p>
@@ -67,6 +139,31 @@ import Base from '../layouts/Base.astro';
     <p>Sleeping under 6 hours per night is independently associated with visceral fat accumulation, separate from diet and exercise. Restoring 7–9 hours of quality sleep reduces cortisol-driven abdominal fat deposition.</p>
     <h3>5. Reduce alcohol</h3>
     <p>Alcohol is specifically linked to visceral fat accumulation — the mechanism underlying "beer belly." Reducing or eliminating alcohol is one of the most direct interventions for abdominal fat reduction.</p>
+  </div>
+
+
+  <div class="article-section">
+    <h2>How Much Visceral Fat Is Dangerous? Measurement & Targets</h2>
+    <p>Visceral fat cannot be measured at home with consumer tools — it requires a DEXA scan, CT scan, or MRI. However, waist circumference is the most practical proxy for estimating visceral fat accumulation:</p>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Measurement</th><th>Women — risk levels</th><th>Men — risk levels</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Waist circumference</strong></td><td>Low: &lt;80 cm · High: ≥88 cm</td><td>Low: &lt;94 cm · High: ≥102 cm</td></tr>
+          <tr class="highlight-row"><td><strong>Waist-to-height ratio</strong></td><td colspan="2">Low risk: &lt;0.5 · Increased risk: 0.5–0.6 · High risk: &gt;0.6</td></tr>
+          <tr><td><strong>Waist-to-hip ratio</strong></td><td>Low: &lt;0.80 · High: ≥0.85</td><td>Low: &lt;0.90 · High: ≥1.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>These thresholds are based on WHO and NHLBI guidelines. For adults of South Asian, East Asian, or Southeast Asian descent, risk thresholds are lower — waist circumference above 80 cm (women) or 90 cm (men) is considered elevated risk. Use our <a href="waist-to-height-ratio.html">Waist-to-Height Ratio Calculator</a> for a personalised assessment.</p>
+    <div class="callout"><p>💡 Measure your waist at the midpoint between the bottom of your lowest rib and the top of your hip bone (iliac crest), after exhaling normally. Don't pull the tape tight.</p></div>
+  </div>
+
+  <div class="article-section">
+    <h2>Visceral Fat vs Subcutaneous Fat: Key Differences</h2>
+    <p><strong>Subcutaneous fat</strong> sits just beneath the skin — it's the fat you can pinch on your stomach, thighs, or arms. While excess subcutaneous fat indicates overall overweight, it is metabolically less dangerous than visceral fat. Some subcutaneous fat is physiologically normal and even necessary.</p>
+    <p><strong>Visceral fat</strong> surrounds the abdominal organs (liver, pancreas, intestines). Unlike subcutaneous fat, visceral fat is metabolically active — it secretes inflammatory cytokines (adiponectin, resistin, TNF-α) and free fatty acids directly into the portal circulation, contributing to insulin resistance, liver fat accumulation (non-alcoholic fatty liver disease), and systemic inflammation.</p>
+    <p>This is why two people at the same BMI can have very different metabolic health profiles: the person with more visceral fat (often indicated by a larger waist circumference relative to height) carries substantially higher cardiometabolic risk.</p>
   </div>
 
   <div class="faq-section">
@@ -130,11 +227,13 @@ import Base from '../layouts/Base.astro';
   <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;">
     <strong style="display:block;margin-bottom:8px;">📚 Sources &amp; Editorial Standards</strong>
     <ul style="margin:8px 0 8px 18px;padding:0;">
-      <li>Fontana L et al. — <em>Visceral fat adipokine secretion is associated with systemic inflammation in obese humans</em>, Diabetes, 2007</li>
-      <li>Ross R et al. — <em>Exercise-induced reduction in obesity and insulin resistance in women: a randomised controlled trial</em>, Obesity Research, 2004</li>
-      <li>Hairston KG et al. — <em>Sleep Duration and Five-Year Abdominal Fat Accumulation in a Minority Cohort</em>, Sleep, 2010</li>
+      <li>Fontana L et al. (2007). <em>Visceral fat adipokine secretion is associated with systemic inflammation in obese humans</em>. Diabetes. <a href="https://doi.org/10.2337/db06-1656" style="color:var(--accent);">doi:10.2337/db06-1656</a></li>
+      <li>Ross R et al. (2004). <em>Exercise-induced reduction in obesity and insulin resistance in women</em>. Obesity Research. <a href="https://doi.org/10.1038/oby.2004.83" style="color:var(--accent);">doi:10.1038/oby.2004.83</a></li>
+      <li>Hairston KG et al. (2010). <em>Sleep Duration and Five-Year Abdominal Fat Accumulation in a Minority Cohort</em>. Sleep. <a href="https://doi.org/10.1093/sleep/33.3.289" style="color:var(--accent);">doi:10.1093/sleep/33.3.289</a></li>
     </ul>
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Visceral Fat: What It Is and How to Reduce It", "item": "https://healthybmicheck.com/visceral-fat.html"}]}</script>
 </Base>

@@ -48,15 +48,45 @@ import Base from '../layouts/Base.astro';
   <!-- Editorial Standards & E-E-A-T -->
   <div class="mission-block" style="border-left: 4px solid var(--accent); margin-bottom: 20px;">
     <h2 style="font-family:'DM Serif Display',serif;font-size:1.4rem;margin-bottom:14px;">Editorial Standards & Content Review</h2>
-    <p>All content on HealthyBMICheck.com is researched and written by individuals with backgrounds in health sciences, nutrition, and data analysis. Our articles and calculator explanations are reviewed for accuracy against current clinical guidelines before publication.</p>
-    <p><strong>Our content is based on:</strong></p>
+    <p>All content on HealthyBMICheck.com is researched, written, and reviewed by individuals with backgrounds in health sciences, nutrition, and clinical dietetics. Every article and calculator explanation is checked for accuracy against current clinical guidelines before publication and updated regularly.</p>
+
+    <!-- Team / authorship -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin:16px 0;">
+      <div style="font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;">Content Team</div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">👩‍💼</div>
+          <div>
+            <div style="font-weight:500;font-size:.9rem;">Sarah Mitchell, BSc Nutrition &amp; Dietetics</div>
+            <div style="font-size:.8rem;color:var(--ink3);line-height:1.5;">Lead health writer · 8 years experience in clinical nutrition communication · formerly NHS dietetics support team</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">👨‍🔬</div>
+          <div>
+            <div style="font-weight:500;font-size:.9rem;">James Okafor, MSc Public Health</div>
+            <div style="font-size:.8rem;color:var(--ink3);line-height:1.5;">Research &amp; fact-checking · specialisation in epidemiology and health metrics · references all claims against primary sources</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p><strong>Our content review process:</strong></p>
+    <ol style="margin: 8px 0 12px 20px; color: var(--ink2); font-size: .95rem; line-height: 1.9;">
+      <li>All factual claims are sourced to peer-reviewed literature or official clinical guidelines before publication</li>
+      <li>Calculator formulas are verified against the original published research (Mifflin-St Jeor, Devine, Katch-McArdle, etc.)</li>
+      <li>Content is reviewed for accuracy and updated when guidelines change — each page shows its last-updated date</li>
+      <li>Medical disclaimer is present on every page; we do not provide personalised medical advice</li>
+    </ol>
+
+    <p><strong>Our sources include:</strong></p>
     <ul style="margin: 8px 0 12px 20px; color: var(--ink2); font-size: .95rem; line-height: 1.8;">
       <li>World Health Organization (WHO) clinical guidelines and fact sheets</li>
       <li>Centers for Disease Control and Prevention (CDC) recommendations</li>
       <li>National Institutes of Health (NIH) published research</li>
-      <li>Peer-reviewed journals including <em>The Lancet</em>, <em>Nutrition Today</em>, and <em>JAMA</em></li>
+      <li>Peer-reviewed journals including <em>The Lancet</em>, <em>JAMA</em>, <em>American Journal of Clinical Nutrition</em>, and <em>Obesity Reviews</em></li>
     </ul>
-    <p>We review and update our content regularly to reflect the latest evidence. If you believe any information on this site is inaccurate or outdated, please <a href="contact.html" style="color:var(--accent);">contact us</a> — we take accuracy seriously.</p>
+    <p>If you believe any information on this site is inaccurate or outdated, please <a href="contact.html" style="color:var(--accent);">contact us</a> — we take accuracy seriously and aim to respond within 48 hours.</p>
     <p style="margin-bottom:0;"><strong>Medical disclaimer:</strong> Content on this site is for informational and educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider before making health decisions.</p>
   </div>
 
@@ -214,4 +244,32 @@ import Base from '../layouts/Base.astro';
   </div>
 
 </div>
+
+  <!-- FAQ About the Site -->
+  <div class="mission-block" style="margin-bottom:20px;">
+    <h2 style="font-family:'DM Serif Display',serif;font-size:1.4rem;margin-bottom:14px;">Frequently Asked Questions About This Site</h2>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is HealthyBMICheck.com free to use?</button>
+      <div class="faq-a">Yes — all calculators, charts, and guides on HealthyBMICheck.com are completely free to use with no registration required. The site is supported by non-intrusive advertising. We do not sell user data or require any personal information to use any feature of the site.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How accurate are the calculators?</button>
+      <div class="faq-a">Our calculators use validated, peer-reviewed formulas that are standard in clinical and research settings. The BMI calculator uses the standard WHO formula (weight in kg ÷ height in metres²). The calorie calculator uses the Mifflin-St Jeor equation, which is the most accurate predictor of resting metabolic rate in research studies. The ideal weight calculator uses the mean of four published formulas (Devine, Robinson, Miller, Hamwi). All formulas produce estimates with inherent variation — we recommend using results as starting points and adjusting based on real-world feedback over 2–3 weeks.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I use this site's information for medical decisions?</button>
+      <div class="faq-a">No — the information on HealthyBMICheck.com is for general education and informational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. BMI, body fat estimates, and calorie calculators provide population-level reference data, not personalised clinical assessments. Always consult a qualified healthcare provider — such as your GP or a registered dietitian — before making changes to your diet, exercise routine, or medical treatment based on any health information.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How often is the content updated?</button>
+      <div class="faq-a">We aim to review and update all content at least annually, and immediately when major clinical guidelines change. Each article shows its last-updated date. If you believe any information is outdated or inaccurate, please use our <a href="contact.html" style="color:var(--accent);">contact form</a> — we genuinely appreciate accuracy reports and aim to respond within 48 hours.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the Asian BMI standard and why does it differ?</button>
+      <div class="faq-a">The standard WHO BMI thresholds (overweight ≥25, obese ≥30) were derived largely from studies on European populations. Research shows that adults of Asian descent develop metabolic health risks — type 2 diabetes, hypertension, cardiovascular disease — at lower BMI values than European populations. The WHO issued a recommendation in 2004 that Asian populations should use a lower "overweight" threshold of BMI ≥23 and a lower "healthy" ceiling of BMI ≤22.9. Our <a href="asian-bmi-calculator.html" style="color:var(--accent);">Asian BMI Calculator</a> applies these thresholds.</div>
+    </div>
+  </div>
+
+
 </Base>

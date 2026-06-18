@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Lower Your BMI — Practical, Science-Backed Tips",
+      "description": "Learn how to lower your BMI effectively and sustainably. Science-backed strategies covering diet, exercise, sleep, and lifestyle changes that actually work.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/how-to-lower-bmi.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does it take to lower BMI by 1 point?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 1-point reduction in BMI requires losing approximately 2.5–3.5 kg depending on your height (it varies because BMI = kg/m², so the same weight loss means different BMI changes at different heights). At 0.5 kg/week, this takes 5–7 weeks. At 1 kg/week, 3–4 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can exercise alone lower BMI without diet changes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Exercise alone produces modest weight loss — typically 1–3 kg over 16 weeks in studies without dietary changes. This translates to a BMI reduction of roughly 0.3–0.9 points. Diet changes are significantly more powerful for weight reduction; exercise is most valuable for body composition and health improvement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the most effective strategy to lower BMI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A modest calorie deficit (400–600 kcal/day) combined with high protein intake (1.6–2g/kg) and resistance training is the most evidence-backed approach. This trio creates the deficit needed for weight loss while preserving muscle — which is critical because muscle loss during dieting reduces metabolic rate and makes long-term maintenance harder."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can BMI go too low?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — a BMI below 18.5 is classified as underweight and carries its own health risks including nutritional deficiencies, bone density loss, immune impairment, and hormonal disruption. The goal is not the lowest possible BMI but a BMI in the 18.5–24.9 range (or 18.5–22.9 for Asian adults) with good muscle mass and metabolic markers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does building muscle help lower BMI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Building muscle increases body weight, which would raise BMI if no fat is lost simultaneously. However, body recomposition (gaining muscle while losing fat) typically results in a lower BMI over time as fat loss outpaces muscle gain. More practically, the goal should be improving body composition rather than targeting a specific BMI number."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="How to Lower Your BMI — Practical, Science-Backed Tips"
   description="Learn how to lower your BMI effectively and sustainably. Science-backed strategies covering diet, exercise, sleep, and lifestyle changes that actually work."
   canonical="https://healthybmicheck.com/how-to-lower-bmi.html"
@@ -204,4 +276,6 @@ import Base from '../layouts/Base.astro';
     Content is reviewed for accuracy and updated regularly. This page is for informational purposes only and does not constitute medical advice. Consult a qualified healthcare professional before making health decisions.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Lower Your BMI — Practical, Science-Backed Tips", "item": "https://healthybmicheck.com/how-to-lower-bmi.html"}]}</script>
 </Base>

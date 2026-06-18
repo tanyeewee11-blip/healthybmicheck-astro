@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Stress and Weight Gain: The Cortisol Connection",
+      "description": "Chronic stress raises cortisol, which promotes fat storage, increases appetite, and sabotages weight loss. Learn the science and practical strategies to manage stress-related weight gain.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/stress-and-weight-gain.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does stress cause weight gain?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chronic stress elevates cortisol, which increases appetite (particularly for calorie-dense, high-sugar and high-fat foods), promotes visceral fat storage, causes water retention, and impairs sleep — which further disrupts hunger hormones. Stress also drives emotional eating behaviours that override dietary intention."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can reducing stress help with weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — multiple studies show that stress management interventions (mindfulness, adequate sleep, exercise) improve weight loss outcomes, particularly abdominal fat loss. Cortisol normalisation from stress reduction removes a hormonal obstacle to fat loss. This effect is most pronounced in people with high baseline stress levels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best exercise for stress-related weight gain?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Moderate-intensity exercise (30–45 minutes of walking, yoga, swimming, or cycling) reduces cortisol and improves mood without triggering the cortisol spikes associated with very high-intensity training. For stress-driven weight gain specifically, prioritising recovery and sleep over intense training is often more effective."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does emotional eating cause long-term weight gain?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — emotional eating creates a pattern where food is used as a coping mechanism for negative emotions, often leading to consumption of calorie-dense foods that exceed energy needs. Repeated emotional eating episodes create calorie surpluses that lead to fat gain over time. Addressing the underlying stress response is more effective than purely willpower-based restriction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much cortisol is too much for weight management?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chronically elevated cortisol (above the normal diurnal pattern) — typically measured in a morning cortisol blood test or 24-hour urinary free cortisol — impairs weight loss. Normal morning serum cortisol is 140–690 nmol/L. Extremely elevated cortisol may indicate Cushing's syndrome, which causes a distinctive pattern of central weight gain."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Stress and Weight Gain: The Cortisol Connection | HealthyBMICheck"
-  description="Chronic stress raises cortisol, which promotes fat storage, increases appetite, and sabotages weight loss. Learn the science and practical strategies to manage stress-related weight gain."
+  description="Chronic stress raises cortisol, promotes fat storage, and drives emotional eating. How stress causes weight gain and evidence-based ways to break the cycle."
   canonical="https://healthybmicheck.com/stress-and-weight-gain.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Stress and Weight Gain: The Cortisol Connection</div>
   <span class="article-tag">Weight Loss</span>
   <h1>Stress and Weight Gain: The Cortisol Connection</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>If you've ever noticed that you gain weight during stressful periods — even without changing your diet — you're not imagining it. Chronic stress triggers hormonal changes that directly promote fat storage, particularly around the abdomen.</p>
@@ -180,4 +252,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Stress and Weight Gain: The Cortisol Connection", "item": "https://healthybmicheck.com/stress-and-weight-gain.html"}]}</script>
 </Base>

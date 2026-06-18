@@ -1,10 +1,82 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Signs of Dehydration — Symptoms, Causes & What to Do",
+      "description": "Dehydration affects energy, concentration, and physical performance before you even feel thirsty. Learn the early signs, common causes, and how to stay properly hydrated.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/signs-of-dehydration.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are the first signs of dehydration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Early dehydration signs include thirst, dark yellow urine, slightly reduced urine frequency, dry mouth, and mild headache. These typically appear when you have lost about 1–2% of body weight in fluids. At this level, cognitive function and physical performance begin to decline noticeably."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you be dehydrated without feeling thirsty?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — the thirst mechanism can lag behind actual fluid loss, particularly in older adults (over 65), during exercise, or in hot weather. Older adults experience reduced thirst sensation and are at higher risk of dehydration without realising it. Urine colour is a more reliable real-time indicator than relying solely on thirst."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best way to rehydrate quickly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Water with sodium (electrolytes) rehydrates more rapidly than plain water, as sodium facilitates water absorption in the intestines. For mild to moderate dehydration, an oral rehydration solution (water, salt, and sugar) or sports drink is more effective than plain water alone. Avoid alcohol and caffeine when actively rehydrating."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does dehydration cause weight gain?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dehydration itself does not cause fat gain. However, mild dehydration can be mistaken for hunger, leading to increased food intake. Rehydration after dehydration causes temporary weight gain from water restoration, which some people misinterpret as fat gain. Chronic inadequate water intake is associated with reduced metabolic efficiency."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does dehydration headache last?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A dehydration headache typically resolves within 1–3 hours of adequate rehydration with water and electrolytes. If a headache persists beyond 4–6 hours after rehydrating, it is likely not purely from dehydration, and other causes should be considered. Paracetamol or ibuprofen with water can help during rehydration."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
-  title="Signs of Dehydration — Symptoms, Causes & What to Do | HealthyBMICheck"
-  description="Dehydration affects energy, concentration, and physical performance before you even feel thirsty. Learn the early signs, common causes, and how to stay properly hydrated."
+  schemaJson={schemaJson}
+  title="Signs of Dehydration — Symptoms & What to Do | HealthyBMICheck"
+  description="Dehydration affects energy and performance before you feel thirsty. Learn the early signs, how to check your hydration status, and daily water targets."
   canonical="https://healthybmicheck.com/signs-of-dehydration.html"
 >
 <div class="article-wrap">
@@ -188,4 +260,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Signs of Dehydration — Symptoms & What to Do", "item": "https://healthybmicheck.com/signs-of-dehydration.html"}]}</script>
 </Base>

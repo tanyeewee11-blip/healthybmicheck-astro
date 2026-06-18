@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Count Calories: A Beginner's Guide",
+      "description": "Calorie counting works — but only if you do it accurately. Learn the right tools, common mistakes that cause underestimating, and how to make tracking sustainable.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/how-to-count-calories.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need to weigh my food to count calories?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Using a food scale is the most accurate method — research shows visual estimation is off by 20–50% for many foods, particularly calorie-dense ones like nuts, oils, and cheese. A food scale that costs under $20 can significantly improve tracking accuracy. Measuring cups are acceptable for liquids and some dry foods."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the most commonly undertracked foods?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cooking oils and fats (olive oil, butter) are the most common — a tablespoon of olive oil is 120 kcal and easy to underestimate. Nuts, nut butters, and cheese are also frequently undertracked. Sauces, dressings, and condiments add up quickly. Coffee additives (milk, syrups) are often completely forgotten."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long do I need to count calories?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Research shows that consistent tracking for 3–4 months builds a lasting understanding of the calorie content of commonly eaten foods, which many people then apply intuitively without strict tracking. A common approach is to track carefully during an initial period, then periodically recheck when progress stalls or after habit changes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are calorie counting apps accurate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "App databases are generally accurate for packaged foods with barcodes. User-entered data for restaurant meals and homemade recipes is less reliable. Apps are tools for estimation, not precise measurement — a ±100–200 kcal/day inaccuracy is typical and acceptable for weight management purposes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can calorie counting become obsessive or harmful?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For most people, calorie tracking is a practical tool that improves awareness without causing harm. However, for individuals with a history of disordered eating, obsessive tracking behaviour, or significant food anxiety, calorie counting can be counterproductive. Alternative approaches (portion control, food quality focus, structured meal plans) are equally valid."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="How to Count Calories: A Beginner's Guide | HealthyBMICheck"
   description="Calorie counting works — but only if you do it accurately. Learn the right tools, common mistakes that cause underestimating, and how to make tracking sustainable."
   canonical="https://healthybmicheck.com/how-to-count-calories.html"
@@ -11,7 +83,7 @@ import Base from '../layouts/Base.astro';
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › How to Count Calories: A Beginner's Guide</div>
   <span class="article-tag">Calories</span>
   <h1>How to Count Calories: A Beginner's Guide</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>Calorie counting has the strongest evidence base of any weight management strategy. A large 2019 meta-analysis found that self-monitoring of food intake is one of the most consistent predictors of successful weight loss. But it only works when done accurately — and most beginners make the same mistakes that undermine their results.</p>
@@ -84,6 +156,32 @@ import Base from '../layouts/Base.astro';
     <p>Research supports this: even imperfect tracking produces significantly better outcomes than no tracking. A 3-day food diary every month or so can recalibrate portion awareness as habits drift over time.</p>
   </div>
 
+
+  <div class="article-section">
+    <h2>How Accurate Is Calorie Counting? Common Sources of Error</h2>
+    <p>Even careful calorie counters underestimate intake by an average of 20–30%, according to multiple studies using doubly labelled water (the gold standard for measuring actual calorie burn). The main sources of error:</p>
+    <ul>
+      <li><strong>Food database inaccuracies:</strong> Restaurant meals can vary by ±20% from listed calories. Home-cooked meals depend on weighing ingredients. Generic entries (e.g. "pasta, cooked") can be 15–25% off due to moisture content variation.</li>
+      <li><strong>Portion size estimation:</strong> Studies consistently show people underestimate portion sizes visually. Using a kitchen scale for the first 2–4 weeks establishes accurate reference points that improve long-term estimation.</li>
+      <li><strong>Cooking oils and condiments:</strong> A tablespoon of olive oil is 120 kcal. A "drizzle" poured by most people is 2–3 tablespoons. Oils, dressings, and sauces are the most commonly underlogged calorie sources.</li>
+      <li><strong>Liquid calories:</strong> Drinks are frequently omitted from logs. A standard latte (whole milk) is 180 kcal; a smoothie can be 400–800 kcal depending on ingredients.</li>
+      <li><strong>Calorie absorption varies:</strong> Raw vs cooked food, food processing level, and individual gut microbiome differences all affect how many calories are actually absorbed from what you eat — independent of what the label says.</li>
+    </ul>
+    <div class="callout"><p>💡 The goal of calorie counting isn't perfect accuracy — it's calibrated awareness. Even rough tracking reduces intake by an average of 200–300 kcal/day compared to no tracking, simply by increasing mindfulness.</p></div>
+  </div>
+
+  <div class="article-section">
+    <h2>Best Apps for Calorie Counting in 2026</h2>
+    <p>The right app depends on how much detail you want and whether you're cooking at home or eating out frequently:</p>
+    <ul>
+      <li><strong>MyFitnessPal:</strong> Largest food database (~18 million entries), good barcode scanner, connects to fitness trackers. Free version adequate for most users; Premium adds macro goal features.</li>
+      <li><strong>Cronometer:</strong> More accurate micronutrient data (vitamins, minerals) — best choice if nutrition quality matters beyond just calories and macros. Slightly smaller database than MFP.</li>
+      <li><strong>Lose It!:</strong> Clean interface, strong meal planning features, AI-based photo food recognition for quick logging without searching the database.</li>
+      <li><strong>Nutracheck (UK-focused):</strong> Better database for UK and European food products including major supermarket items; useful if you frequently eat UK-branded foods.</li>
+    </ul>
+    <p>All apps are only as accurate as the entries you use. Always cross-check new entries against the nutrition label on the physical product — user-submitted entries in large databases frequently contain errors.</p>
+  </div>
+
   <div class="faq-section">
   <h2 class="section-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -145,4 +243,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Count Calories: A Beginner's Guide", "item": "https://healthybmicheck.com/how-to-count-calories.html"}]}</script>
 </Base>

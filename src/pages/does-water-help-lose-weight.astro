@@ -1,10 +1,82 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Does Drinking More Water Help You Lose Weight?",
+      "description": "Drinking water before meals, replacing sugary drinks, and staying hydrated all support weight loss — but not for the reasons most people think. Here's what the research shows.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/does-water-help-lose-weight.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much extra weight can water help me lose?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Studies show drinking 500ml of water before meals reduces meal calorie intake by about 13% and increases weight loss by approximately 2 kg over 12 weeks compared to not doing so. Water is a meaningful but modest weight loss tool — its main benefit is reducing calorie intake, not increasing fat burning."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does cold water burn more calories?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Technically yes, but the effect is trivial. Your body burns about 8 extra calories to warm 240ml of ice water to body temperature. Drinking 8 glasses of cold water daily burns approximately 64 extra calories — equivalent to half a banana. Not worth pursuing as a weight loss strategy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can drinking water reduce appetite?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — the stomach has stretch receptors that signal satiety, and water activates these receptors temporarily. Drinking 500ml (about 2 cups) of water 30 minutes before meals is the most studied and effective timing. This effect is stronger in middle-aged and older adults."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does sparkling water count towards hydration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — plain sparkling water hydrates as effectively as still water. The carbonic acid in sparkling water is very weak and has no meaningful effect on bone density or tooth enamel from moderate consumption. Flavoured sparkling waters with no added sugar are also fine for hydration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know if I'm drinking enough water?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Urine colour is the most practical indicator. Pale yellow (straw-coloured) indicates adequate hydration; dark yellow or amber suggests you need more water. Clear urine may indicate over-hydration. Thirst is a reliable indicator in healthy adults but can lag behind actual needs, particularly during exercise or heat."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Does Drinking More Water Help You Lose Weight? | HealthyBMICheck"
-  description="Drinking water before meals, replacing sugary drinks, and staying hydrated all support weight loss — but not for the reasons most people think. Here's what the research shows."
+  description="Drinking water before meals, replacing sugary drinks, and staying hydrated all support fat loss. Here's what the evidence says and how much to drink."
   canonical="https://healthybmicheck.com/does-water-help-lose-weight.html"
 >
 <div class="article-wrap">
@@ -162,4 +234,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Does Drinking More Water Help You Lose Weight?", "item": "https://healthybmicheck.com/does-water-help-lose-weight.html"}]}</script>
 </Base>

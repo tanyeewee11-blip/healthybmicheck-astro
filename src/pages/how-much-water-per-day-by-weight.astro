@@ -1,8 +1,64 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How Much Water Should You Drink Per Day? By Weight & Age",
+      "description": "Find out exactly how much water to drink per day based on your weight. Includes a simple formula, chart by weight, and adjustments for activity and climate.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/how-much-water-per-day-by-weight.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does coffee and tea count toward daily water intake?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — despite common belief, caffeinated drinks like coffee and tea do count toward your daily fluid intake. Research shows that moderate caffeine consumption (up to 400 mg/day — about 4 cups of coffee) does not cause net dehydration in regular coffee drinkers. The mild diuretic effect of caffeine is offset by the volume of water in the drink. That said, very high caffeine intake can increase fluid losses, and caffeine sensitivity varies. It is still sensible to drink plain water as the majority of your daily fluid intake."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is 8 glasses of water per day accurate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The \"8 glasses a day\" rule (approximately 2 litres) is a rough population average that has no specific scientific basis as a universal target. The origin is often traced to a 1945 US Food and Nutrition Board recommendation that was widely misinterpreted. Actual needs vary significantly by body weight, climate, activity level, and diet. For a 60 kg sedentary person, 8 glasses may be adequate. For an 80 kg person exercising in a hot climate, it may be significantly insufficient. Weight-based calculation (35 ml/kg) is more accurate for most adults."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I tell if I am drinking enough water?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Urine colour is the most practical real-world indicator of hydration status. Pale straw yellow (like lemonade) indicates good hydration. Bright or dark yellow indicates mild-to-moderate dehydration. Clear urine may indicate over-hydration. Other signs of adequate hydration include infrequent thirst, normal energy levels, and urinating 4–8 times per day. Urine colour is affected by vitamins (B vitamins cause bright yellow regardless of hydration) and some foods (beetroot causes pink/red). Use our Water Intake Calculator for a personalised daily target."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="How Much Water Should You Drink Per Day? By Weight & Age"
   description="Find out exactly how much water to drink per day based on your weight. Includes a simple formula, chart by weight, and adjustments for activity and climate."
   canonical="https://healthybmicheck.com/how-much-water-per-day-by-weight.html"
@@ -13,7 +69,10 @@ import Base from '../layouts/Base.astro';
   <p>The most accurate way to work out your daily water intake is based on your body weight — not a generic "8 glasses" rule. Here's the formula, a chart, and how to adjust for your lifestyle.</p>
 </div>
 
+<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+
 <div class="container">
+
 
   <div class="article-section">
 
@@ -111,6 +170,41 @@ import Base from '../layouts/Base.astro';
       <li>In hot climates, drink proactively rather than waiting to feel thirsty</li>
     </ul>
 
+
+    <h2>Factors That Increase Your Water Needs</h2>
+    <p>The 35 ml/kg baseline is for a sedentary adult at moderate temperature. Several factors increase daily water needs significantly:</p>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Factor</th><th>Additional water needed</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Moderate exercise (1 hour)</strong></td><td>500–750 ml</td><td>Drink before, during, and after</td></tr>
+          <tr class="highlight-row"><td><strong>Intense exercise / heat</strong></td><td>750–1,500 ml</td><td>Replace sweat losses; electrolytes needed if &gt;90 min</td></tr>
+          <tr><td><strong>Hot climate / summer</strong></td><td>500–1,000 ml extra</td><td>Sweat losses increase in high ambient temperatures</td></tr>
+          <tr class="highlight-row"><td><strong>Pregnancy</strong></td><td>+300 ml/day</td><td>Per NHS/WHO guidance</td></tr>
+          <tr><td><strong>Breastfeeding</strong></td><td>+500–700 ml/day</td><td>Significant fluid lost through breast milk</td></tr>
+          <tr class="highlight-row"><td><strong>High-protein or high-fibre diet</strong></td><td>+250–500 ml</td><td>Protein metabolism requires more water; fibre absorbs water</td></tr>
+          <tr><td><strong>Alcohol consumption</strong></td><td>+250 ml per drink</td><td>Alcohol is a diuretic; reduces net fluid retention</td></tr>
+          <tr class="highlight-row"><td><strong>High altitude (&gt;2,500m)</strong></td><td>+500–1,000 ml</td><td>Increased respiration rate accelerates water loss</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>FAQ: Water Intake and Hydration</h2>
+    <div class="faq-section" style="margin-top:0;">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does coffee and tea count toward daily water intake?</button>
+        <div class="faq-a">Yes — despite common belief, caffeinated drinks like coffee and tea do count toward your daily fluid intake. Research shows that moderate caffeine consumption (up to 400 mg/day — about 4 cups of coffee) does not cause net dehydration in regular coffee drinkers. The mild diuretic effect of caffeine is offset by the volume of water in the drink. That said, very high caffeine intake can increase fluid losses, and caffeine sensitivity varies. It is still sensible to drink plain water as the majority of your daily fluid intake.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is 8 glasses of water per day accurate?</button>
+        <div class="faq-a">The "8 glasses a day" rule (approximately 2 litres) is a rough population average that has no specific scientific basis as a universal target. The origin is often traced to a 1945 US Food and Nutrition Board recommendation that was widely misinterpreted. Actual needs vary significantly by body weight, climate, activity level, and diet. For a 60 kg sedentary person, 8 glasses may be adequate. For an 80 kg person exercising in a hot climate, it may be significantly insufficient. Weight-based calculation (35 ml/kg) is more accurate for most adults.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How can I tell if I am drinking enough water?</button>
+        <div class="faq-a">Urine colour is the most practical real-world indicator of hydration status. Pale straw yellow (like lemonade) indicates good hydration. Bright or dark yellow indicates mild-to-moderate dehydration. Clear urine may indicate over-hydration. Other signs of adequate hydration include infrequent thirst, normal energy levels, and urinating 4–8 times per day. Urine colour is affected by vitamins (B vitamins cause bright yellow regardless of hydration) and some foods (beetroot causes pink/red). Use our <a href="water-intake.html">Water Intake Calculator</a> for a personalised daily target.</div>
+      </div>
+    </div>
+
     <div class="warn-callout"><p>⚠️ This guide is for general informational purposes. People with kidney disease, heart failure, or other conditions affecting fluid balance should follow their doctor's specific guidance, which may differ from standard recommendations.</p></div>
 
     <div class="sources">
@@ -153,4 +247,6 @@ import Base from '../layouts/Base.astro';
   </div>
 </div>
 
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Much Water Should You Drink Per Day? By Weight & Age", "item": "https://healthybmicheck.com/how-much-water-per-day-by-weight.html"}]}</script>
 </Base>

@@ -1,8 +1,98 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Asian BMI Calculator — Country-Specific Cutoffs",
+      "description": "Free Asian BMI calculator with country-specific cutoffs for Malaysia, Singapore, India, China, Japan &amp; Korea. Results under your country's standard.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/asian-bmi-calculator.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a healthy BMI for Asian adults?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For most Asian adults, the WHO recommends a healthy BMI of 18.5 to 22.9. Overweight is BMI 23.0–27.4 and obese is BMI 27.5 or above. These are lower than Western cutoffs (25 and 30) because research shows Asian populations develop metabolic disease at lower BMI values due to higher visceral fat accumulation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are BMI cutoffs different for Asians?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At the same BMI, people of Asian descent carry approximately 3–5% more visceral fat — fat stored around internal organs — compared to people of European descent. This metabolically active fat triggers insulin resistance and inflammation earlier. A 2004 WHO Expert Consultation in The Lancet confirmed this finding and recommended lower thresholds for Asian populations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What BMI is overweight for Malaysians and Singaporeans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both Malaysia (Ministry of Health) and Singapore (Health Promotion Board) use the same WHO Asian cutoffs: overweight starts at BMI 23.0 and obese starts at BMI 27.5. This is the same as the general WHO Asian guideline. A Malaysian or Singaporean adult with BMI 24 is considered overweight by local guidelines, even though the same BMI falls in the \"normal\" range by global WHO standards."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does India use the same cutoffs as Malaysia and Singapore?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. India's ICMR and the Joint Working Group (JAPI 2009 guidelines) define overweight as BMI 23.0–24.9 but set obesity at BMI ≥ 25.0 — lower than the standard 30. South Korea uses the same 23/25 split. Some Indian guidelines suggest even earlier intervention at BMI 22.9 for South Asians with abdominal obesity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does China use different BMI cutoffs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "China's National Health Commission (NHC WS/T 428-2013) uses its own research-based thresholds: overweight starts at BMI 24.0 and obese at BMI 28.0. These are slightly higher than the general WHO Asian guideline but still lower than the global WHO cutoffs of 25 and 30. China's cutoffs reflect the Working Group on Obesity in China (WGOC) findings specific to the Han Chinese population."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Asian BMI Calculator",
+      "url": "https://healthybmicheck.com/asian-bmi-calculator.html",
+      "description": "Calculate BMI using lower WHO thresholds for Asian adults.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      }
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Asian BMI Calculator — Country-Specific Cutoffs"
   description="Free Asian BMI calculator with country-specific cutoffs for Malaysia, Singapore, India, China, Japan &amp; Korea. Results under your country's standard."
   canonical="https://healthybmicheck.com/asian-bmi-calculator.html"
@@ -19,7 +109,10 @@ import Base from '../layouts/Base.astro';
   </div>
 </div>
 
+<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+
 <div class="container">
+
 
   <!-- Country Selector -->
   <div class="country-selector-wrap">
@@ -368,4 +461,6 @@ import Base from '../layouts/Base.astro';
     </div>
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Asian BMI Calculator — Country-Specific Cutoffs", "item": "https://healthybmicheck.com/asian-bmi-calculator.html"}]}</script>
 </Base>

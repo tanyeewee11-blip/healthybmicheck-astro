@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Health Profile Calculator — All Your Metrics at Once",
+      "description": "Enter your details once and instantly get your BMI, daily calorie needs, ideal weight, body fat percentage, and water intake — all in one place.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/health-profile.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the Health Profile calculator measure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Health Profile calculator gives you six key metrics in one place: BMI (with both standard and Asian cutoffs), daily calorie needs (TDEE and BMR), ideal weight range using four clinical formulas, body fat estimate, daily water requirement, and calorie targets for weight loss or gain. It replaces running six separate calculators."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is the Health Profile calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each metric uses the most validated formula available: Mifflin-St Jeor for calories (±10% for most adults), Devine/Robinson/Miller/Hamwi for ideal weight, and the U.S. Navy method for body fat (±3–4%). These are the same formulas used in clinical settings. Treat results as a precise starting point, not a medical diagnosis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use standard BMI or Asian BMI for my result?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you are of East Asian, Southeast Asian, or South Asian descent, the Asian BMI cutoffs (overweight ≥23, obese ≥27.5) are more appropriate — research shows Asian populations carry higher metabolic risk at lower BMI values. The calculator shows both so you can compare. Malaysia, Singapore, and most Asian health authorities follow the Asian standard."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I recalculate my health profile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Recalculate whenever your weight changes by 5 kg or more, when you significantly change your activity level, or every 8–12 weeks during an active weight loss or gain phase. Your TDEE changes as your body weight changes — using outdated numbers is one of the most common reasons progress stalls."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my ideal weight range span several kilograms?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The ideal weight range reflects four different clinical formulas (Devine, Robinson, Miller, Hamwi) that each define 'ideal' slightly differently based on height and sex. The range represents the consensus across these formulas. Research shows body composition (muscle-to-fat ratio) matters more than hitting a specific weight within this range."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Health Profile Calculator — All Your Metrics at Once"
   description="Enter your details once and instantly get your BMI, daily calorie needs, ideal weight, body fat percentage, and water intake — all in one place."
   canonical="https://healthybmicheck.com/health-profile.html"
@@ -524,4 +596,6 @@ import Base from '../layouts/Base.astro';
   </div>
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Health Profile Calculator — All Your Metrics at Once", "item": "https://healthybmicheck.com/health-profile.html"}]}</script>
 </Base>

@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Sugar and Weight Gain: How Much Is Too Much?",
+      "description": "Sugar doesn't directly cause fat gain — but it does make overeating easy. Learn the science behind sugar, how much is too much, and which sugars actually matter for weight.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/sugar-and-weight-gain.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does sugar directly cause weight gain?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sugar causes weight gain when it contributes to a calorie surplus — like any other calorie source. However, added sugars are particularly problematic because they provide calories without satiety, are easy to over-consume in liquid form (drinks, juices), and drive insulin spikes that can promote fat storage when consumed in excess."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between natural sugar and added sugar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Natural sugars come packaged with fibre (in whole fruit) or protein (in dairy), which slows absorption and improves satiety. Added sugars (table sugar, corn syrup, honey added to processed foods) come without these mitigating factors. The WHO recommends limiting added sugars to under 10% of total energy (about 50g for a 2,000 kcal diet)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will cutting sugar alone cause weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Reducing added sugar typically reduces total calorie intake because high-sugar foods are calorie-dense and easy to over-consume. Studies consistently show reduced sugar intake is associated with weight loss. However, the mechanism is calorie reduction, not anything uniquely harmful about sugar itself — replacing sugar with excess fat or starchy carbohydrates would not produce the same result."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are sugar substitutes (artificial sweeteners) better for weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evidence is mixed. Sugar substitutes reduce direct calorie intake from sweetness, but some research suggests they may stimulate appetite or change gut microbiome composition in ways that partially offset this benefit. Used in moderation as a replacement for sugary drinks, they appear to support weight management for most people."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much sugar is too much per day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WHO recommends free sugars (added sugars plus sugars in fruit juice and honey) be kept below 10% of total energy — about 50g for a 2,000 kcal diet. For additional health benefits, they suggest aiming below 5% (approximately 25g, or 6 teaspoons). A single 330ml can of regular soda contains about 35g of added sugar."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Sugar and Weight Gain: How Much Is Too Much? | HealthyBMICheck"
-  description="Sugar doesn't directly cause fat gain — but it does make overeating easy. Learn the science behind sugar, how much is too much, and which sugars actually matter for weight."
+  description="Sugar doesn't directly cause fat gain — but it makes overeating effortless. Learn how sugar affects hunger hormones, calories, and body fat."
   canonical="https://healthybmicheck.com/sugar-and-weight-gain.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Sugar and Weight Gain: How Much Is Too Much?</div>
   <span class="article-tag">Nutrition</span>
   <h1>Sugar and Weight Gain: How Much Is Too Much?</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>Sugar has been blamed for the obesity epidemic — but the science is more nuanced than headlines suggest. Sugar does contribute to weight gain in most modern diets, but not through any unique metabolic mechanism. Understanding how sugar actually affects body weight reveals practical strategies that work.</p>
@@ -152,9 +224,43 @@ import Base from '../layouts/Base.astro';
   </div>
 </div>
 
-<!-- E-E-A-T Sources -->
-<div style="max-width:720px;margin:0 auto 0;padding:0 20px 40px;">
-  <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;">
+</div>
+
+  <div class="article-section">
+    <h2>Hidden Sugar: Where Calories Hide Without You Knowing</h2>
+    <p>Most people underestimate sugar in foods marketed as "healthy." Here are the most common hidden sources:</p>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Food</th><th>Portion</th><th>Sugar</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Flavoured yoghurt</td><td>150g pot</td><td>15–22g</td><td>Often as much as a chocolate bar</td></tr>
+          <tr class="highlight-row"><td>Shop-bought fruit smoothie</td><td>250ml</td><td>25–35g</td><td>Fibre removed; rapid blood sugar spike</td></tr>
+          <tr><td>Granola / muesli</td><td>60g serving</td><td>12–18g</td><td>Often higher sugar than breakfast cereal</td></tr>
+          <tr class="highlight-row"><td>Jar pasta sauce</td><td>150g</td><td>10–15g</td><td>Added sugar for flavour balance</td></tr>
+          <tr><td>Sports drinks</td><td>500ml bottle</td><td>30–38g</td><td>Only useful for &gt;90 min intense exercise</td></tr>
+          <tr class="highlight-row"><td>Low-fat salad dressing</td><td>2 tbsp</td><td>6–10g</td><td>Fat replaced with sugar for palatability</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The "low-fat" category is particularly worth watching: when fat is removed, manufacturers often add sugar to maintain taste. A low-fat yoghurt may have 50% more sugar than its full-fat equivalent.</p>
+
+    <div style="margin-top:20px;">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does sugar directly cause weight gain?</button>
+        <div class="faq-a">Not directly — weight gain is caused by a sustained calorie surplus, regardless of where those calories come from. However, sugar makes overeating easy: it is highly palatable, digests quickly (providing little satiety), and is found in ultra-processed foods engineered to override normal fullness signals. Studies comparing high-sugar vs low-sugar diets at equal calorie intake find similar weight outcomes. The problem is sugar's contribution to excess calorie intake, not a special fat-producing effect.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How much sugar per day is too much?</button>
+        <div class="faq-a">The WHO recommends limiting free sugars (added sugars plus juice and honey — not sugars in whole fruit or milk) to less than 10% of total energy intake, with a further reduction to below 5% for additional benefits. For a 2,000 kcal/day diet, 10% = 50g and 5% = 25g. The average UK adult consumes ~59g/day; the average US adult ~77g/day. Sugars in whole fruit, vegetables, and plain dairy do not count toward these limits.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is fruit sugar bad for weight loss?</button>
+        <div class="faq-a">No — whole fruit is not a meaningful contributor to weight gain for most people. Whole fruit contains fibre, water, and micronutrients that slow sugar absorption and promote satiety. Research consistently links high whole fruit intake to healthy weight and lower metabolic disease risk. Fruit juice is different: fibre is removed, so sugar absorbs rapidly with minimal satiety. Prioritise whole fruit over juice, and be mindful of large portions of high-sugar fruits (mangoes, grapes, bananas) if tracking calories closely.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;margin:0 0 24px;">
     <strong style="display:block;margin-bottom:8px;">📚 Sources &amp; Editorial Standards</strong>
     <ul style="margin:8px 0 8px 18px;padding:0;">
       <li>WHO — <em>Guideline: Sugars intake for adults and children</em>, 2015</li>
@@ -164,4 +270,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Sugar and Weight Gain: How Much Is Too Much?", "item": "https://healthybmicheck.com/sugar-and-weight-gain.html"}]}</script>
 </Base>

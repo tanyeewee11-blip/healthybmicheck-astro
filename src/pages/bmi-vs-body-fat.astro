@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "BMI vs Body Fat Percentage: Which Matters More? — HealthyBMICheck",
+      "description": "BMI and body fat percentage both measure health — but they measure different things. Learn when each matters, which is more accurate, and how to use both together.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/bmi-vs-body-fat.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which is more important: BMI or body fat percentage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Body fat percentage provides more clinically useful information because it directly measures what matters for health risk — the proportion of your body that is fat versus lean tissue. BMI is a proxy that works reasonably well at population level but can be misleading for individuals with unusual muscle or fat distribution."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What body fat percentage is healthy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For men, 10–20% body fat is generally considered healthy (athletic 6–13%, fit 14–17%, acceptable 18–24%). For women, 18–28% is the healthy range (athletic 14–20%, fit 21–24%, acceptable 25–31%). These ranges vary slightly by age — body fat naturally increases with age."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I measure body fat percentage at home?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Navy method (waist, neck, and hip measurements) is accurate to within 3–4% and is free. Skinfold calipers used correctly are similar in accuracy. Consumer bioelectrical impedance scales vary widely in accuracy. DEXA scan is the gold standard but requires a clinic visit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I have a healthy BMI but high body fat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — this is called 'normal weight obesity' or TOFI (Thin Outside, Fat Inside). A person with low muscle mass and moderate fat can have a normal BMI while having above-healthy body fat percentage. This pattern carries elevated metabolic risk despite normal BMI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I track BMI or body fat to monitor my progress?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Track both, as they provide complementary information. BMI is easy to calculate and tracks total weight status. Body fat percentage shows whether weight changes are coming from fat or muscle — crucial when training, as muscle gain can keep weight stable while fat is being lost."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="BMI vs Body Fat Percentage: Which Matters More? — HealthyBMICheck"
   description="BMI and body fat percentage both measure health — but they measure different things. Learn when each matters, which is more accurate, and how to use both together."
   canonical="https://healthybmicheck.com/bmi-vs-body-fat.html"
@@ -195,4 +267,6 @@ import Base from '../layouts/Base.astro';
     Content is reviewed for accuracy and updated regularly. This page is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI vs Body Fat Percentage: Which Matters More? — HealthyBMICheck", "item": "https://healthybmicheck.com/bmi-vs-body-fat.html"}]}</script>
 </Base>

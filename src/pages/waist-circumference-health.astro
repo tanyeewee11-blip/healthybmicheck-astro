@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Waist Circumference: Why It Matters More Than Weight",
+      "description": "Your waist measurement predicts metabolic disease risk better than your weight or BMI. Learn the healthy thresholds, how to measure correctly, and how to reduce waist size.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/waist-circumference-health.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why is waist circumference more important than weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Waist circumference specifically measures abdominal fat, which is the most metabolically dangerous type. Two people can have the same weight and BMI but very different waist circumferences — the one with a larger waist has a significantly higher risk of type 2 diabetes and cardiovascular disease. Waist circumference captures fat distribution that BMI misses entirely."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I measure waist circumference correctly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Measure at the midpoint between the bottom of the lowest rib and the top of the hip bone (iliac crest) — typically just above the navel. Stand relaxed, exhale normally (don't suck in), and keep the tape horizontal all the way around. Take two measurements and average them. Morning measurement before eating gives the most consistent results."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What waist measurement is healthy for women?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Below 80 cm (31.5 inches) for Asian women and below 88 cm (34.5 inches) for Western women is considered low risk. The 80/88 cm thresholds indicate elevated risk, and above 88/102 cm indicates high risk for metabolic complications. These WHO thresholds are well-validated across multiple large population studies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does waist circumference change faster than weight during a diet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — visceral fat (which drives waist circumference) is more metabolically active and more responsive to calorie deficit than subcutaneous fat. Many people see waist reductions of 2–4 cm within 4–6 weeks of starting a calorie deficit, even when scale weight changes are slow. This is why waist circumference is a valuable complementary progress metric."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I have a healthy BMI but unhealthy waist circumference?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — this is common, particularly in people who are relatively lean overall but carry fat centrally. Called 'central obesity with normal BMI', this pattern carries similar metabolic risk to conventional obesity and is an important reason to measure waist circumference alongside BMI rather than relying on BMI alone."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
-  title="Waist Circumference: Why It Matters More Than Weight | HealthyBMICheck"
-  description="Your waist measurement predicts metabolic disease risk better than your weight or BMI. Learn the healthy thresholds, how to measure correctly, and how to reduce waist size."
+  schemaJson={schemaJson}
+  title="Waist Circumference & Health Risk Explained | HealthyBMICheck"
+  description="Your waist circumference predicts metabolic disease risk better than your weight or BMI. Learn the thresholds, how to measure correctly, and target ranges."
   canonical="https://healthybmicheck.com/waist-circumference-health.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Waist Circumference: Why It Matters More Than W...</div>
   <span class="article-tag">Body</span>
   <h1>Waist Circumference: Why It Matters More Than Weight</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>If you could only track one health measurement beyond your weight, waist circumference would be the one to choose. Research consistently shows that waist size predicts cardiovascular disease, type 2 diabetes, and all-cause mortality more accurately than BMI — because it specifically measures abdominal fat accumulation, which is the most metabolically dangerous type of fat.</p>
@@ -207,4 +279,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Waist Circumference & Health Risk Explained", "item": "https://healthybmicheck.com/waist-circumference-health.html"}]}</script>
 </Base>

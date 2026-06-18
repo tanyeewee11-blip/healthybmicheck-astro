@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Does Coffee Help You Lose Weight?",
+      "description": "Caffeine is a genuine metabolism booster — but the effect is modest. Learn what the research shows about coffee and fat loss, and when it actually helps.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/coffee-and-weight-loss.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does coffee boost metabolism?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Caffeine increases metabolic rate by approximately 3–11% and fat oxidation by up to 10–29% in the hours following consumption, based on studies using 100–400mg doses. These effects are more pronounced in leaner individuals and diminish with habitual caffeine use as tolerance develops."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does black coffee break a fast?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Plain black coffee (no milk, sugar, or additives) contains virtually zero calories and does not meaningfully raise insulin, so it does not break a fat-burning fast for most practical purposes. It may actually enhance the fat-burning effects of fasting by further raising circulating fatty acids."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can too much coffee prevent weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — excessive caffeine (>400mg/day consistently) elevates cortisol, which promotes abdominal fat storage and increases appetite. Caffeine also disrupts sleep at high doses, and poor sleep is strongly linked to weight gain. The sweet spot for fat loss benefits without downsides is typically 1–3 cups per day, earlier in the day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do coffee additives like milk or sugar affect weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Significantly. A black coffee has 2–5 kcal; a large latte with whole milk has 150–200 kcal; a blended caramel coffee drink can exceed 400 kcal. If you consume coffee with additives multiple times daily, these calories add up to a meaningful portion of your calorie budget."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is decaf coffee good for weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Decaf coffee contains minimal caffeine so lacks the metabolic-boosting effect of regular coffee. However, it retains the appetite-suppressing effect of a warm beverage and contains chlorogenic acids which may modestly reduce glucose absorption. It is a good option for those sensitive to caffeine."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Does Coffee Help You Lose Weight? | HealthyBMICheck"
   description="Caffeine is a genuine metabolism booster — but the effect is modest. Learn what the research shows about coffee and fat loss, and when it actually helps."
   canonical="https://healthybmicheck.com/coffee-and-weight-loss.html"
@@ -11,7 +83,7 @@ import Base from '../layouts/Base.astro';
   <div class="breadcrumb"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Does Coffee Help You Lose Weight?</div>
   <span class="article-tag">Nutrition</span>
   <h1>Does Coffee Help You Lose Weight?</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>Coffee is one of the most widely consumed beverages globally — and one of the most studied foods for its metabolic effects. The research on caffeine and weight loss is more nuanced than either enthusiasts or sceptics suggest: there are real effects, but they're modest and context-dependent.</p>
@@ -179,4 +251,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Does Coffee Help You Lose Weight?", "item": "https://healthybmicheck.com/coffee-and-weight-loss.html"}]}</script>
 </Base>

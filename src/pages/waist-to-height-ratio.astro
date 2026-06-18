@@ -1,8 +1,98 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Waist-to-Height Ratio Calculator — Better Than BMI?",
+      "description": "Free waist-to-height ratio calculator. WHtR is a more accurate predictor of metabolic health risk than BMI. Instant results with risk category and healthy.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/waist-to-height-ratio.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a healthy waist-to-height ratio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A healthy waist-to-height ratio is below 0.5 for most adults. The simple rule: keep your waist circumference to less than half your height. A WHtR between 0.5 and 0.59 indicates increased health risk, and 0.6 or above indicates high risk. These thresholds apply equally to men and women."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is waist-to-height ratio better than BMI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Research suggests WHtR is a better predictor of cardiovascular disease, type 2 diabetes, and mortality risk than BMI. This is because WHtR directly measures central (abdominal) fat — the most metabolically dangerous type — whereas BMI cannot distinguish between fat and muscle, or between abdominal and peripheral fat. For the most complete picture, use both alongside each other. Try our BMI calculator and compare your results."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does WHtR differ for men and women?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The universal threshold of 0.5 applies to both men and women. However, some researchers suggest women may be healthier at slightly higher WHtR values (up to 0.52–0.54) because women naturally carry more subcutaneous fat on the hips and thighs, which is less metabolically harmful. For practical screening purposes, 0.5 remains the recommended boundary for both sexes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the 0.5 rule apply to Asian adults?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — the 0.5 rule applies across ethnicities, including Asian adults. In fact, WHtR is particularly useful for Asian populations because it sidesteps the debate about Asian-specific BMI cutoffs entirely. A WHtR above 0.5 signals increased risk regardless of ethnicity. That said, some studies suggest Asian adults begin to see increased metabolic risk at WHtR values closer to 0.46–0.48. See also our Asian BMI Calculator."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is WHtR calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WHtR is simply your waist circumference divided by your height, both in the same unit (both in cm, or both in inches):WHtR = Waist (cm) ÷ Height (cm)For example, a person with a 80 cm waist and 170 cm height has a WHtR of 80 ÷ 170 = 0.47 — in the healthy range."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Waist-to-Height Ratio Calculator",
+      "url": "https://healthybmicheck.com/waist-to-height-ratio.html",
+      "description": "Calculate waist-to-height ratio and metabolic health risk.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      }
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Waist-to-Height Ratio Calculator — Better Than BMI?"
   description="Free waist-to-height ratio calculator. WHtR is a more accurate predictor of metabolic health risk than BMI. Instant results with risk category and healthy."
   canonical="https://healthybmicheck.com/waist-to-height-ratio.html"
@@ -13,7 +103,10 @@ import Base from '../layouts/Base.astro';
   <p>The simple rule: keep your waist to less than half your height. WHtR predicts metabolic health risk more accurately than BMI alone.</p>
 </div>
 
+<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+
 <div class="container">
+
 
   <div class="card">
     <div class="unit-toggle">
@@ -265,4 +358,6 @@ import Base from '../layouts/Base.astro';
       </div>
     </div>
   </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Waist-to-Height Ratio Calculator — Better Than BMI?", "item": "https://healthybmicheck.com/waist-to-height-ratio.html"}]}</script>
 </Base>

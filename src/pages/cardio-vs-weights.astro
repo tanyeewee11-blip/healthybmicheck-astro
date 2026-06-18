@@ -1,9 +1,81 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Cardio vs Weight Training for Fat Loss — Which Is Better?",
+      "description": "Cardio burns more calories per session. Weights build muscle that burns calories at rest. Which is actually better for fat loss? The science-based answer.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/cardio-vs-weights.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does cardio or weights burn more calories?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cardio typically burns more calories during the session itself. A 30-minute run burns 250–400 kcal; a 30-minute resistance training session burns 150–250 kcal for a 75 kg person. However, resistance training elevates metabolic rate for 24–72 hours post-exercise (EPOC), partially closing the gap."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I do cardio or weights first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on your primary goal. For fat loss and general fitness, resistance training first (when energy is highest) followed by cardio is commonly recommended. Doing cardio first can impair resistance training performance by depleting glycogen stores. Separate sessions on different days is the ideal but not always practical."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I lose fat with weights alone without cardio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — resistance training creates a calorie deficit when combined with appropriate nutrition, and promotes muscle mass retention during fat loss which improves long-term body composition. Many people successfully lose fat with resistance training only. Cardio accelerates calorie burn but is not mandatory."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much cardio is too much when trying to build muscle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Excessive cardio (particularly long-duration, high-intensity sessions) can impair muscle growth through cortisol elevation and competing adaptations. If building muscle is the priority, 2–3 cardio sessions of 30–45 minutes per week at moderate intensity is a reasonable ceiling before interference effects become significant."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the optimal exercise combination for body recomposition?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Research supports 3–4 resistance training sessions per week (compound movements prioritised) combined with 2–3 moderate-intensity cardio sessions. High protein intake (1.8–2.4g/kg) is essential to preserve muscle during a deficit. Progressive overload in resistance training is more important than increasing cardio volume."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
-  title="Cardio vs Weight Training for Fat Loss — Which Is Better? | HealthyBMICheck"
+  schemaJson={schemaJson}
+  title="Cardio vs Weights for Fat Loss — Which Wins? | HealthyBMICheck"
   description="Cardio burns more calories per session. Weights build muscle that burns calories at rest. Which is actually better for fat loss? The science-based answer."
   canonical="https://healthybmicheck.com/cardio-vs-weights.html"
 >
@@ -149,8 +221,44 @@ import Base from '../layouts/Base.astro';
     </div>
   </div>
 
-<div style="max-width:720px;margin:0 auto 0;padding:0 20px 40px;">
-  <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;">
+</div>
+
+  <div class="article-section">
+    <h2>A Practical Weekly Training Template</h2>
+    <p>For fat loss, improved body composition, and long-term health, the evidence points to a <strong>combined cardio + resistance training approach</strong>. Here's a practical weekly template:</p>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Day</th><th>Session</th><th>Duration</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Monday</td><td>Resistance training (full body)</td><td>45–60 min</td><td>Muscle stimulus, metabolic rate</td></tr>
+          <tr class="highlight-row"><td>Tuesday</td><td>Moderate cardio (walk/cycle/swim)</td><td>30–45 min</td><td>Fat oxidation, active recovery</td></tr>
+          <tr><td>Wednesday</td><td>Rest or light activity</td><td>—</td><td>Recovery</td></tr>
+          <tr class="highlight-row"><td>Thursday</td><td>Resistance training (full body)</td><td>45–60 min</td><td>Muscle stimulus</td></tr>
+          <tr><td>Friday</td><td>HIIT or moderate cardio</td><td>20–30 min</td><td>Calorie burn, cardiovascular fitness</td></tr>
+          <tr class="highlight-row"><td>Saturday</td><td>Longer walk or sport</td><td>60+ min</td><td>NEAT, active recovery</td></tr>
+          <tr><td>Sunday</td><td>Rest</td><td>—</td><td>Full recovery</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><p>💡 Beginners: start with 2 resistance + 2 cardio sessions per week. Consistency over months matters far more than the perfect programme from day one.</p></div>
+
+    <div style="margin-top:20px;">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Should I do cardio or weights first?</button>
+        <div class="faq-a">If doing both in the same session, resistance training first is generally recommended. Glycogen depletion from cardio reduces strength and power output, compromising your resistance training quality. Doing weights first ensures full energy for the muscle-building stimulus, then use cardio afterwards for additional calorie burn. Exception: if cardiovascular fitness is your primary goal, do cardio first or on separate days.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is HIIT better than steady-state cardio for fat loss?</button>
+        <div class="faq-a">Both produce similar fat loss results when total calorie burn is matched. HIIT burns more calories per minute and produces a modest afterburn effect (EPOC), but is more taxing and harder to sustain. Steady-state cardio is lower intensity, easier to recover from, and can be done more frequently. The best cardio for fat loss is the type you will do consistently — a mix of both typically works well.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How long until I see results from weight training?</button>
+        <div class="faq-a">Strength improvements begin within 2–3 weeks (neurological adaptations). Visible muscle changes typically take 6–12 weeks with consistent training and adequate protein. Fat loss becomes visible when body fat drops 3–5 percentage points, which takes 10–20 weeks depending on consistency. The scale may not move much in the first 4–8 weeks of a combined programme, but body composition is improving even when weight stays stable.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;margin:0 0 24px;">
     <strong style="display:block;margin-bottom:8px;">📚 Sources & Editorial Standards</strong>
     <ul style="margin:8px 0 8px 18px;padding:0;">
       <li>Willis LH et al. — <em>Effects of aerobic and/or resistance training on body mass and fat mass in overweight or obese adults</em>, Journal of Applied Physiology, 2012</li>
@@ -160,4 +268,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Cardio vs Weights for Fat Loss — Which Wins?", "item": "https://healthybmicheck.com/cardio-vs-weights.html"}]}</script>
 </Base>

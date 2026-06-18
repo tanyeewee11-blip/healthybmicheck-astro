@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Low Calorie Density Foods That Keep You Full",
+      "description": "Calorie density — calories per gram of food — is the key to eating satisfying portions while losing weight. Learn which foods let you eat more while consuming fewer calories.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/calorie-density-foods.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is calorie density and why does it matter for weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Calorie density is the number of calories per gram of food. Low calorie density foods (vegetables, fruits, lean proteins) let you eat larger volumes while consuming fewer calories, promoting satiety. High calorie density foods (oils, nuts, cheese) pack many calories into small volumes, making it easy to exceed calorie targets without feeling full."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the best low calorie density foods to eat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non-starchy vegetables (broccoli, spinach, cucumbers, lettuce) have the lowest calorie density at 0.1–0.5 kcal/g. Fruits (berries, melons, citrus) are 0.3–0.8 kcal/g. Lean proteins (chicken breast, white fish, egg whites) are 1.0–1.5 kcal/g. These form the foundation of a high-volume, lower-calorie diet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does eating low calorie density foods mean I can eat unlimited amounts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — even low calorie density foods contribute calories. The advantage is that you need to eat a much larger physical volume to reach your calorie target, which triggers satiety signals before you overshoot. A large salad (500g) might contain 200 kcal; 500g of almonds would be nearly 3,000 kcal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are high calorie density foods bad for weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not inherently. Nuts, olive oil, and avocado are high calorie density but nutrient-dense and beneficial for health. The key is portion control. Pairing small portions of high calorie density foods with large volumes of low calorie density foods (e.g. a handful of nuts on a large salad) creates satisfying, nutritious meals within a calorie target."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I use calorie density to eat more without gaining weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fill half your plate with non-starchy vegetables, a quarter with lean protein, and a quarter with complex carbohydrates. This naturally lowers the average calorie density of your meals. Adding water-rich foods like soup before meals also increases satiety without significantly increasing calories."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Low Calorie Density Foods That Keep You Full | HealthyBMICheck"
-  description="Calorie density — calories per gram of food — is the key to eating satisfying portions while losing weight. Learn which foods let you eat more while consuming fewer calories."
+  description="Calorie density — calories per gram — is the key to eating large portions without overeating. Learn which foods to prioritise and which to limit."
   canonical="https://healthybmicheck.com/calorie-density-foods.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Low Calorie Density Foods That Keep You Full</div>
   <span class="article-tag">Nutrition</span>
   <h1>Low Calorie Density Foods That Keep You Full</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>One of the most powerful but least discussed weight loss concepts is calorie density: the number of calories per gram of food. Foods with low calorie density let you eat large, satisfying portions while consuming fewer total calories. This is the science behind why people on plant-based or Mediterranean diets often lose weight without feeling deprived.</p>
@@ -207,4 +279,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Low Calorie Density Foods That Keep You Full", "item": "https://healthybmicheck.com/calorie-density-foods.html"}]}</script>
 </Base>

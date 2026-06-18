@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Maintain Your Weight After Losing It",
+      "description": "Most people regain lost weight within 2 years. Learn the evidence-based habits that separate successful long-term maintainers from those who regain — and how to be in the first group.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/healthy-weight-maintenance.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why do most people regain weight after losing it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The body actively resists weight loss through hormonal changes — reduced leptin (satiety hormone), increased ghrelin (hunger hormone), and lowered metabolic rate persist for years after weight loss. Studies show 80% of people who lose significant weight regain most of it within 5 years without ongoing active management strategies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many calories should I eat to maintain weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your maintenance calories post-weight loss are lower than before you lost weight — both because your body is lighter (needs fewer calories) and because of metabolic adaptation. Recalculate your TDEE at your new weight and treat that as your maintenance target, adjusting based on real-world results over 4–6 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What habits do long-term weight maintainers have in common?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Research from the National Weight Control Registry shows successful maintainers consistently: eat a higher-protein, lower-fat diet; exercise for 60–90 minutes most days (mainly walking); eat breakfast regularly; weigh themselves frequently; and limit television viewing. The common thread is ongoing active management, not passivity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it possible to permanently reset my set point weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Research suggests set point weight can shift over years of sustained weight maintenance, though the evidence is limited. Maintaining a lower weight for 1–2+ years appears to reduce the hormonal signals driving weight regain. The first 2 years are the highest-risk period for regain."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I continue counting calories after reaching my goal weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Some people find ongoing calorie awareness (not necessarily strict tracking) helpful to prevent creep, especially after a loss of 10%+ body weight. Others maintain weight successfully through structured eating patterns without formal tracking. The best approach is whatever is sustainable for you long-term — regain is most common when people completely abandon the practices that produced weight loss."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="How to Maintain Your Weight After Losing It | HealthyBMICheck"
-  description="Most people regain lost weight within 2 years. Learn the evidence-based habits that separate successful long-term maintainers from those who regain — and how to be in the first group."
+  description="Most people regain lost weight within 2 years. The evidence-based habits that actually prevent weight regain long-term, based on successful maintainers."
   canonical="https://healthybmicheck.com/healthy-weight-maintenance.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › How to Maintain Your Weight After Losing It</div>
   <span class="article-tag">Weight Loss</span>
   <h1>How to Maintain Your Weight After Losing It</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>Losing weight is hard. Keeping it off is harder. Research shows that approximately 80% of people who lose significant weight regain most of it within 2–5 years. But 20% succeed long-term — and researchers have spent decades studying what they do differently.</p>
@@ -180,4 +252,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Maintain Your Weight After Losing It", "item": "https://healthybmicheck.com/healthy-weight-maintenance.html"}]}</script>
 </Base>

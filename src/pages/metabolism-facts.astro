@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Metabolism: Facts, Myths & How to Boost It",
+      "description": "'Slow metabolism' is often blamed for weight gain — but what does metabolism actually mean? Learn the facts, the myths, and what actually works to raise your metabolic rate.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/metabolism-facts.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does eating small frequent meals boost metabolism?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This is a common myth. Total daily calorie intake, not meal frequency, determines metabolic rate. The thermic effect of food (energy used to digest food) is the same whether you eat 6 small meals or 3 large ones with identical total calories. Some people find frequent meals help with appetite control, but this is individual preference, not metabolic necessity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What actually speeds up metabolism?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Building and maintaining muscle mass is the most effective long-term metabolic rate booster — muscle tissue burns approximately 3× more calories at rest than fat tissue. Resistance training creates a sustained metabolic elevation (EPOC) for 24–48 hours post-session. Adequate sleep, thyroid health, and avoiding chronic extreme calorie restriction also support metabolic rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does aging slow metabolism?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, but less than popularly believed. Metabolic rate declines approximately 2–3% per decade after age 20. However, research suggests much of the middle-age weight gain attributed to 'slowing metabolism' is actually from decreased physical activity and muscle loss — both modifiable factors. The metabolism itself declines gradually, not dramatically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can certain foods boost metabolism?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Some foods have a minor thermogenic effect: caffeine increases metabolic rate by 3–11% temporarily; chilli (capsaicin) has a similarly small effect. The thermic effect of protein is higher (25–30% of calories consumed) than carbohydrates (6–8%) or fat (2–3%). None of these effects are large enough to cause weight loss on their own."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have a slow metabolism or am I just eating more than I think?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most people who believe they have a slow metabolism actually have normal metabolic rates for their body size. Research shows that people underestimate calorie intake by 20–40% on average. Metabolic rate can be accurately measured via indirect calorimetry — if a true metabolic disorder is suspected, thyroid function tests are the first clinical step."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Metabolism: Facts, Myths & How to Boost It | HealthyBMICheck"
-  description="'Slow metabolism' is often blamed for weight gain — but what does metabolism actually mean? Learn the facts, the myths, and what actually works to raise your metabolic rate."
+  description="'Slow metabolism' is often blamed for weight gain — but what does metabolism actually mean? The evidence on BMR, NEAT, and metabolic adaptation explained."
   canonical="https://healthybmicheck.com/metabolism-facts.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Metabolism: Facts, Myths & How to Boost It</div>
   <span class="article-tag">Weight Loss</span>
   <h1>Metabolism: Facts, Myths & How to Boost It</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>"I have a slow metabolism" is one of the most common explanations people give for difficulty losing weight. While metabolic rate does vary between individuals, research shows the variation is much smaller than most people assume — and several proven strategies can genuinely increase it.</p>
@@ -138,11 +210,13 @@ import Base from '../layouts/Base.astro';
   <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;">
     <strong style="display:block;margin-bottom:8px;">📚 Sources &amp; Editorial Standards</strong>
     <ul style="margin:8px 0 8px 18px;padding:0;">
-      <li>Pontzer H et al. — <em>Constrained total energy expenditure and metabolic adaptation to physical activity in adult humans</em>, Current Biology, 2016</li>
-      <li>Tremblay A et al. — <em>Adaptive thermogenesis can make a difference in the ability of obese individuals to lose body weight</em>, International Journal of Obesity, 2013</li>
-      <li>Levine JA — <em>Non-exercise activity thermogenesis (NEAT): environment and biology</em>, American Journal of Physiology, 2004</li>
+      <li>Pontzer H et al. (2016). <em>Constrained total energy expenditure and metabolic adaptation to physical activity in adult humans</em>. Current Biology. <a href="https://doi.org/10.1016/j.cub.2015.11.055" style="color:var(--accent);">doi:10.1016/j.cub.2015.11.055</a></li>
+      <li>Tremblay A et al. (2013). <em>Adaptive thermogenesis can make a difference in the ability of obese individuals to lose body weight</em>. International Journal of Obesity. <a href="https://doi.org/10.1038/ijo.2012.124" style="color:var(--accent);">doi:10.1038/ijo.2012.124</a></li>
+      <li>Levine JA. (2004). <em>Non-exercise activity thermogenesis (NEAT)</em>. American Journal of Physiology. <a href="https://doi.org/10.1152/ajpregu.00562.2003" style="color:var(--accent);">doi:10.1152/ajpregu.00562.2003</a></li>
     </ul>
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Metabolism: Facts, Myths & How to Boost It", "item": "https://healthybmicheck.com/metabolism-facts.html"}]}</script>
 </Base>

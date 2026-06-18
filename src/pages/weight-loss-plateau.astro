@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Why You've Hit a Weight Loss Plateau",
+      "description": "A weight loss plateau is normal and expected — but it doesn't mean your diet has stopped working. Learn why plateaus happen and exactly how to break through one.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/weight-loss-plateau.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long should I wait before concluding I've hit a plateau?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If your weight hasn't changed for 3–4 consecutive weeks despite consistent adherence to your diet and exercise plan, you've likely hit a true plateau. Short-term fluctuations of 1–2 weeks are often water weight changes rather than genuine plateaus. Always use weekly averages rather than daily weigh-ins."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a weight loss plateau the same as my metabolism being broken?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A plateau means your metabolism has adapted — not broken. Adaptive thermogenesis is a normal physiological response to calorie restriction. It is reversible through diet breaks, recalculating your TDEE at your current weight, or adjusting your approach. 'Broken metabolism' is a myth; controlled adaptation is the reality."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I do a cheat day to break a plateau?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A single high-calorie day is unlikely to meaningfully reverse adaptive thermogenesis. Research supports structured diet breaks of 2 weeks at maintenance calories as far more effective than single cheat days for restoring metabolic rate and leptin levels. The key difference is duration — one day is not enough for hormonal restoration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can stress cause a weight loss plateau?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Elevated cortisol from chronic stress promotes fat retention (particularly visceral fat), increases appetite and cravings for calorie-dense foods, and can cause water retention that masks fat loss on the scale. Managing sleep and stress alongside diet and exercise is essential for sustained progress."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I increase exercise to break a plateau?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Modifying exercise can help, but dramatically increasing cardio often raises cortisol and increases hunger, which can offset the extra calories burned. A better approach is adding or varying resistance training (which improves insulin sensitivity and metabolic rate), increasing daily step count, and recalculating your TDEE at your new weight."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Why You've Hit a Weight Loss Plateau | HealthyBMICheck"
   description="A weight loss plateau is normal and expected — but it doesn't mean your diet has stopped working. Learn why plateaus happen and exactly how to break through one."
   canonical="https://healthybmicheck.com/weight-loss-plateau.html"
@@ -11,7 +83,7 @@ import Base from '../layouts/Base.astro';
   <div class="breadcrumb"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Why You've Hit a Weight Loss Plateau</div>
   <span class="article-tag">Weight Loss</span>
   <h1>Why You've Hit a Weight Loss Plateau</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>You've been losing weight steadily for weeks — then suddenly the scale stops moving. You haven't changed anything. You're still eating the same, exercising the same. But the weight won't budge.</p>
@@ -151,4 +223,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Why You've Hit a Weight Loss Plateau", "item": "https://healthybmicheck.com/weight-loss-plateau.html"}]}</script>
 </Base>

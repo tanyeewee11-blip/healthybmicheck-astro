@@ -26,14 +26,14 @@ import Base from '../../layouts/Base.astro';
 
   <!-- Filter tabs -->
   <div class="filters">
-    <button class="filter-btn active" onclick="filterCards('all',this)" id="tab-all">All <span style="background:rgba(255,255,255,0.25);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;">65</span></button>
+    <button class="filter-btn active" onclick="filterCards('all',this)" id="tab-all">All <span style="background:rgba(255,255,255,0.25);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;">59</span></button>
     <button class="filter-btn" onclick="filterCards('BMI',this)">BMI <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">14</span></button>
     <button class="filter-btn" onclick="filterCards('Calories',this)">Calories <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">14</span></button>
     <button class="filter-btn" onclick="filterCards('Nutrition',this)">Nutrition <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">11</span></button>
     <button class="filter-btn" onclick="filterCards('Exercise',this)">Exercise <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">7</span></button>
     <button class="filter-btn" onclick="filterCards('Hydration',this)">Hydration <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">4</span></button>
-    <button class="filter-btn" onclick="filterCards('By Height',this)">By Height <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">8</span></button>
-    <button class="filter-btn" onclick="filterCards('By Age',this)">By Age <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">7</span></button>
+    <button class="filter-btn" onclick="filterCards('By Height',this)">By Height <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">1</span></button>
+    <button class="filter-btn" onclick="filterCards('By Age',this)">By Age <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">1</span></button>
   </div>
 
   <!-- All Guides Grid -->
@@ -122,110 +122,19 @@ import Base from '../../layouts/Base.astro';
     </a>
 
     <!-- By Height -->
-    <a class="guide-card" href="../healthy-weight-160cm-female.html" data-tag="By Height">
+    <a class="guide-card" href="../healthy-weight-by-height.html" data-tag="By Height" style="grid-column: span 1;">
       <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
-      <h2>Healthy Weight: 160 cm Women</h2>
-      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 160 cm.</p>
-      <div class="card-arrow">Read guide →</div>
-    </a>
-
-    <a class="guide-card" href="../healthy-weight-165cm-female.html" data-tag="By Height">
-      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
-      <h2>Healthy Weight: 165 cm Women</h2>
-      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 165 cm.</p>
-      <div class="card-arrow">Read guide →</div>
-    </a>
-
-    <a class="guide-card" href="../healthy-weight-170cm-female.html" data-tag="By Height">
-      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
-      <h2>Healthy Weight: 170 cm Women</h2>
-      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 170 cm.</p>
-      <div class="card-arrow">Read guide →</div>
-    </a>
-
-    <a class="guide-card" href="../healthy-weight-170cm-male.html" data-tag="By Height">
-      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
-      <h2>Healthy Weight: 170 cm Men</h2>
-      <p>Healthy weight range, calorie needs, and height-specific health tips for men at 170 cm.</p>
-      <div class="card-arrow">Read guide →</div>
-    </a>
-
-    <a class="guide-card" href="../healthy-weight-175cm-male.html" data-tag="By Height">
-      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
-      <h2>Healthy Weight: 175 cm Men</h2>
-      <p>Healthy weight range, calorie needs, and height-specific health tips for men at 175 cm.</p>
-      <div class="card-arrow">Read guide →</div>
-    </a>
-
-    <a class="guide-card" href="../healthy-weight-5ft4in-female.html" data-tag="By Height">
-      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
-      <h2>Healthy Weight: 5'4" Women</h2>
-      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 5 feet 4 inches.</p>
-      <div class="card-arrow">Read guide →</div>
-    </a>
-
-    <a class="guide-card" href="../healthy-weight-5ft9in-male.html" data-tag="By Height">
-      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
-      <h2>Healthy Weight: 5'9" Men</h2>
-      <p>Healthy weight range, calorie needs, and height-specific health tips for men at 5 feet 9 inches.</p>
-      <div class="card-arrow">Read guide →</div>
-    </a>
-
-    <a class="guide-card" href="../healthy-weight-5ft6in-female.html" data-tag="By Height">
-      <div class="card-top"><div class="card-icon">📏</div><div><div class="card-tag">By Height</div></div></div>
-      <h2>Healthy Weight: 5'6" Women</h2>
-      <p>Healthy weight range, calorie needs, and height-specific health tips for women at 5 feet 6 inches.</p>
-      <div class="card-arrow">Read guide →</div>
+      <h2>Healthy Weight by Height — Full Chart</h2>
+      <p>Complete healthy weight ranges for every height from 4'10" to 6'4" (150–195 cm) for both men and women — imperial and metric, with Asian BMI standards and formula averages.</p>
+      <div class="card-arrow">View full chart →</div>
     </a>
 
     <!-- By Age -->
-    <a class="guide-card" href="../healthy-bmi-20-year-old-female.html" data-tag="By Age">
+    <a class="guide-card" href="../healthy-bmi-by-age.html" data-tag="By Age" style="grid-column: span 1;">
       <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">By Age</div></div></div>
-      <h2>Healthy BMI: Age 20 (Women)</h2>
-      <p>Body composition, muscle mass, and key health considerations for women in their 20s.</p>
-      <div class="card-arrow">Read guide →</div>
-    </a>
-
-    <a class="guide-card" href="../healthy-bmi-30-year-old-female.html" data-tag="By Age">
-      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">By Age</div></div></div>
-      <h2>Healthy BMI: Age 30 (Women)</h2>
-      <p>How body composition changes in your 30s and what to prioritise to maintain a healthy BMI.</p>
-      <div class="card-arrow">Read guide →</div>
-    </a>
-
-    <a class="guide-card" href="../healthy-bmi-40-year-old-female.html" data-tag="By Age">
-      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">By Age</div></div></div>
-      <h2>Healthy BMI: Age 40 (Women)</h2>
-      <p>Perimenopause, body recomposition, and evidence-based strategies for women in their 40s.</p>
-      <div class="card-arrow">Read guide →</div>
-    </a>
-
-    <a class="guide-card" href="../healthy-bmi-50-year-old-female.html" data-tag="By Age">
-      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">By Age</div></div></div>
-      <h2>Healthy BMI: Age 50 (Women)</h2>
-      <p>Post-menopause, metabolic changes, and evidence-based strategies for women in their 50s.</p>
-      <div class="card-arrow">Read guide →</div>
-    </a>
-
-    <a class="guide-card" href="../healthy-bmi-30-year-old-male.html" data-tag="By Age">
-      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">By Age</div></div></div>
-      <h2>Healthy BMI: Age 30 (Men)</h2>
-      <p>Metabolic slowdown, muscle preservation, and cardiovascular risk for men entering their 30s.</p>
-      <div class="card-arrow">Read guide →</div>
-    </a>
-
-    <a class="guide-card" href="../healthy-bmi-40-year-old-male.html" data-tag="By Age">
-      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">By Age</div></div></div>
-      <h2>Healthy BMI: Age 40 (Men)</h2>
-      <p>Testosterone decline, visceral fat risk, and the most impactful habits for men in their 40s.</p>
-      <div class="card-arrow">Read guide →</div>
-    </a>
-
-    <a class="guide-card" href="../healthy-bmi-50-year-old-male.html" data-tag="By Age">
-      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">By Age</div></div></div>
-      <h2>Healthy BMI: Age 50 (Men)</h2>
-      <p>Sarcopenia, andropause, and evidence-based strategies for maintaining a healthy BMI after 50.</p>
-      <div class="card-arrow">Read guide →</div>
+      <h2>Healthy BMI by Age — Men & Women (20–65+)</h2>
+      <p>Average BMI, body fat percentage, and age-specific health guidance for men and women in their 20s through 60s — with interactive filtering by sex.</p>
+      <div class="card-arrow">View full guide →</div>
     </a>
 
     <!-- New Articles -->

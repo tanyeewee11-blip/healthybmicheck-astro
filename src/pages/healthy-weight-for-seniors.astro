@@ -1,8 +1,64 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Healthy Weight for Seniors — BMI for Men & Women Over 60",
+      "description": "What is a healthy weight for seniors? BMI ranges, average weight by height for men and women over 60, and what matters most for health after 60.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/healthy-weight-for-seniors.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best way for a senior to lose weight without losing muscle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For seniors who need to lose weight, the approach must protect muscle mass — losing muscle while dieting accelerates sarcopenia and frailty. Key principles: use a small calorie deficit (200–300 kcal/day maximum), prioritise protein at 1.6–2.0 g per kg of body weight, include resistance training at least twice per week, and lose weight slowly (0.25–0.5 kg per week). Avoid very-low-calorie diets (under 1,200 kcal/day) which cause rapid muscle loss in older adults. Discuss any weight loss plan with a doctor or registered dietitian."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is BMI still useful for adults over 70?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMI becomes less accurate as an individual health measure after 70 due to age-related changes: height often decreases slightly (compressing BMI upward), muscle mass declines while fat increases (so the same BMI represents more fat), and fat redistributes from limbs to the abdomen. Waist circumference, waist-to-height ratio, grip strength, and functional fitness tests are more clinically meaningful for older adults. That said, BMI is still a useful screening tool — very low or very high BMI at any age warrants investigation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much protein do seniors need per day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Older adults need more protein than younger adults to maintain the same muscle mass due to \"anabolic resistance\" — a reduced muscle-building response to protein intake. The European Society for Clinical Nutrition recommends at least 1.0–1.2 g of protein per kg of body weight per day for healthy older adults, and 1.2–1.5 g/kg for those who are active or have health issues. For a 70 kg person this means 84–105 g/day. Good sources include eggs, fish, chicken, Greek yoghurt, cottage cheese, legumes, and tofu."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Healthy Weight for Seniors — BMI for Men & Women Over 60"
   description="What is a healthy weight for seniors? BMI ranges, average weight by height for men and women over 60, and what matters most for health after 60."
   canonical="https://healthybmicheck.com/healthy-weight-for-seniors.html"
@@ -13,7 +69,10 @@ import Base from '../layouts/Base.astro';
   <p>BMI ranges, healthy weight by height, and what actually matters for men and women over 60.</p>
 </div>
 
+<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+
 <div class="container">
+
 
   <div class="answer-box">
     <div class="answer-label">Healthy BMI for seniors (60+)</div>
@@ -119,7 +178,36 @@ import Base from '../layouts/Base.astro';
       <li>Lose slowly — 0.25 to 0.5 kg per week is appropriate for seniors</li>
     </ul>
 
-    <div class="warn-callout"><p>⚠️ Seniors with existing health conditions, low bone density, or a history of falls should consult a doctor before beginning a weight loss programme. BMI is a screening tool, not a clinical diagnosis.</p></div>
+    <div class="article-section">
+    <h2>The Biggest Health Risk for Seniors: Underweight, Not Overweight</h2>
+    <p>In younger adults, being overweight is clearly associated with worse health outcomes. But after 65, the relationship between weight and health becomes more nuanced. Research consistently shows that underweight seniors (BMI below 20–22) face <strong>higher mortality risk</strong> than seniors at the upper end of the healthy range or even mildly overweight.</p>
+    <p>This is because low body weight in seniors often reflects:</p>
+    <ul>
+      <li><strong>Sarcopenia</strong> — age-related muscle loss, which reduces strength, balance, and metabolic rate</li>
+      <li><strong>Malnutrition or inadequate protein intake</strong> — increasingly common in older adults who eat less</li>
+      <li><strong>Frailty</strong> — reduced physiological reserve that increases vulnerability to illness and injury</li>
+    </ul>
+    <p>Some studies suggest that for adults over 70, a BMI of <strong>24–29</strong> may be associated with better survival than a BMI under 24. This "obesity paradox" in older adults is an active area of research and not fully understood, but it supports the view that maintaining body weight — and especially muscle mass — is a priority after 65.</p>
+    <div class="callout"><p>💡 For seniors, the question should not be "how do I lose weight?" but "how do I maintain or build muscle while keeping body fat reasonable?" These require different strategies.</p></div>
+  </div>
+
+  <div class="article-section">
+    <h2>FAQ: Healthy Weight for Seniors</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the best way for a senior to lose weight without losing muscle?</button>
+      <div class="faq-a">For seniors who need to lose weight, the approach must protect muscle mass — losing muscle while dieting accelerates sarcopenia and frailty. Key principles: use a small calorie deficit (200–300 kcal/day maximum), prioritise protein at 1.6–2.0 g per kg of body weight, include resistance training at least twice per week, and lose weight slowly (0.25–0.5 kg per week). Avoid very-low-calorie diets (under 1,200 kcal/day) which cause rapid muscle loss in older adults. Discuss any weight loss plan with a doctor or registered dietitian.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is BMI still useful for adults over 70?</button>
+      <div class="faq-a">BMI becomes less accurate as an individual health measure after 70 due to age-related changes: height often decreases slightly (compressing BMI upward), muscle mass declines while fat increases (so the same BMI represents more fat), and fat redistributes from limbs to the abdomen. Waist circumference, waist-to-height ratio, grip strength, and functional fitness tests are more clinically meaningful for older adults. That said, BMI is still a useful screening tool — very low or very high BMI at any age warrants investigation.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How much protein do seniors need per day?</button>
+      <div class="faq-a">Older adults need more protein than younger adults to maintain the same muscle mass due to "anabolic resistance" — a reduced muscle-building response to protein intake. The European Society for Clinical Nutrition recommends at least 1.0–1.2 g of protein per kg of body weight per day for healthy older adults, and 1.2–1.5 g/kg for those who are active or have health issues. For a 70 kg person this means 84–105 g/day. Good sources include eggs, fish, chicken, Greek yoghurt, cottage cheese, legumes, and tofu.</div>
+    </div>
+  </div>
+
+  <div class="warn-callout"><p>⚠️ Seniors with existing health conditions, low bone density, or a history of falls should consult a doctor before beginning a weight loss programme. BMI is a screening tool, not a clinical diagnosis.</p></div>
 
     <div class="sources">
       <strong>References:</strong><br>
@@ -165,4 +253,6 @@ import Base from '../layouts/Base.astro';
   </div>
 </div>
 
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy Weight for Seniors — BMI for Men & Women Over 60", "item": "https://healthybmicheck.com/healthy-weight-for-seniors.html"}]}</script>
 </Base>

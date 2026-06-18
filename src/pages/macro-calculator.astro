@@ -1,8 +1,98 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Macro Calculator — Daily Protein, Carbs & Fat Targets",
+      "description": "Free macro calculator. Get your daily protein, carbohydrate, and fat targets based on your calories, goal, and activity level. Instant results for weight.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/macro-calculator.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are macros and why do they matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Macros (macronutrients) are the three main nutrients that provide calories: protein (4 kcal/g), carbohydrates (4 kcal/g), and fat (9 kcal/g). Each plays a distinct role — protein builds and repairs muscle, carbs fuel exercise and brain function, and fat supports hormones and absorbs fat-soluble vitamins. Tracking macros is more precise than tracking calories alone, especially for body composition goals like building muscle while losing fat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many grams of protein do I need per day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For most active adults, 1.6–2.2 g per kg of body weight (0.7–1.0 g per lb) is recommended to support muscle maintenance and growth. For weight loss, staying at the higher end helps preserve lean muscle while in a calorie deficit. The minimum for sedentary adults is around 0.8 g/kg, but this is insufficient for anyone who exercises regularly. Use our Calorie Calculator to find your total energy needs first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I eat more carbs or fat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on your preferences and how you feel. Both can work for weight loss or muscle gain — what matters most is total calories and hitting your protein target. Carbs are better for high-intensity exercise performance. Fat is more satiating and keeps blood sugar stable. Most people do best somewhere in the middle (35–45% carbs, 25–35% fat). Experiment and see what makes you feel best and is easiest to stick to."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does this calculator work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator uses the Mifflin–St Jeor equation to estimate your Basal Metabolic Rate (BMR) — the calories your body burns at rest. This is then multiplied by your activity factor to get your Total Daily Energy Expenditure (TDEE). A calorie adjustment is applied based on your goal (deficit for fat loss, surplus for muscle gain). Protein is set at 2.0 g/kg for fat loss and muscle gain, or 1.6 g/kg for maintenance. The remaining calories are split between carbs and fat based on your goal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it better to track macros or just calories?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For simple weight loss or maintenance, tracking total calories works well. But if body composition matters to you — specifically building muscle while losing or maintaining fat — tracking macros is more effective. Two people eating the same calories but different macro splits can have very different body composition outcomes. Start with calories, then layer in protein tracking, then full macro tracking once you're comfortable."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Macro Calculator",
+      "url": "https://healthybmicheck.com/macro-calculator.html",
+      "description": "Calculate daily protein, carbs and fat targets for your goals.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      }
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Macro Calculator — Daily Protein, Carbs & Fat Targets"
   description="Free macro calculator. Get your daily protein, carbohydrate, and fat targets based on your calories, goal, and activity level. Instant results for weight."
   canonical="https://healthybmicheck.com/macro-calculator.html"
@@ -13,7 +103,10 @@ import Base from '../layouts/Base.astro';
   <p>Get your daily protein, carbs, and fat targets based on your body, goal, and activity level — in seconds.</p>
 </div>
 
+<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+
 <div class="container">
+
 
   <!-- Calculator -->
   <div class="card">
@@ -364,4 +457,6 @@ import Base from '../layouts/Base.astro';
       </div>
     </div>
   </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Macro Calculator — Daily Protein, Carbs & Fat Targets", "item": "https://healthybmicheck.com/macro-calculator.html"}]}</script>
 </Base>

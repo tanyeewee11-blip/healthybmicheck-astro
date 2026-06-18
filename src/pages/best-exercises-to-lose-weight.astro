@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Best Exercises to Lose Weight at Home — No Equipment Needed",
+      "description": "Discover the most effective exercises to lose weight at home with no equipment. Science-backed workouts for burning calories and building fitness from.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/best-exercises-to-lose-weight.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best exercise for burning calories?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "High-intensity activities burn the most calories per minute: running, cycling at high intensity, rowing, and jump rope top the list at 400–800 kcal/hour for a 75 kg person. However, the best exercise for fat loss is whatever you can do consistently — adherence matters far more than theoretical calorie burn."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I exercise to lose weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "150–300 minutes of moderate-intensity exercise per week is the evidence-based recommendation for weight management. For fat loss, combining 3–4 cardio sessions with 2–3 resistance training sessions per week is more effective than cardio alone, as resistance training preserves muscle mass and elevates metabolic rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does exercise alone cause significant weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Exercise alone tends to produce modest weight loss — studies show an average of 1–3 kg over 16 weeks from exercise without dietary changes. This is partly because exercise increases appetite and NEAT (non-exercise activity) often decreases. Diet is responsible for most of the calorie deficit; exercise amplifies results and improves body composition."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it better to exercise in the morning or evening for weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Total daily exercise matters far more than timing. Some research suggests morning exercise may improve adherence and reduce net calorie intake throughout the day. Evening exercise can interfere with sleep for some people. The best time is whenever you will consistently show up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can home workouts be as effective as gym workouts for fat loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — home workouts can be equally effective when programmed correctly. Bodyweight exercises (push-ups, squats, lunges, burpees) provide sufficient resistance for beginners and intermediate trainees. Adding resistance bands or a pair of dumbbells significantly expands exercise options."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Best Exercises to Lose Weight at Home — No Equipment Needed"
   description="Discover the most effective exercises to lose weight at home with no equipment. Science-backed workouts for burning calories and building fitness from."
   canonical="https://healthybmicheck.com/best-exercises-to-lose-weight.html"
@@ -246,4 +318,6 @@ import Base from '../layouts/Base.astro';
 
 
 <!-- E-E-A-T: Sources & Medical Review -->
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Best Exercises to Lose Weight at Home — No Equipment Needed", "item": "https://healthybmicheck.com/best-exercises-to-lose-weight.html"}]}</script>
 </Base>

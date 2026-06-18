@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Start Exercising (When You've Never Done It)",
+      "description": "Starting an exercise habit is harder than maintaining one. Here's a realistic, evidence-based guide for complete beginners — what to do, how much, and how to make it stick.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/how-to-start-exercising.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How often should a beginner exercise?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Starting with 3 sessions per week allows adequate recovery time, which is essential for beginners whose muscles need longer to adapt. After 4–6 weeks of consistent training, this can increase to 4–5 sessions. Rest days are not wasted days — muscle growth and adaptation primarily occur during recovery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best exercise for a complete beginner?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Walking is the safest, most accessible starting point — it requires no equipment, has very low injury risk, and provides genuine health benefits. After building a walking habit, bodyweight exercises (squats, push-ups, lunges) or swimming are excellent progressions. The best exercise is one you will consistently do."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I avoid injury as a beginner?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start at lower intensity than you think is necessary and progress gradually (no more than 10% increase in volume or intensity per week). Prioritise form over weight or speed. Allow adequate recovery between sessions targeting the same muscle groups. Listen to the difference between normal muscle soreness (delayed onset, diffuse) and injury pain (sharp, joint-specific)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do I feel so sore after starting exercise?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Delayed onset muscle soreness (DOMS) peaks 24–72 hours after exercise, particularly after eccentric movements (the lowering phase of exercises). It is caused by microscopic muscle damage that triggers adaptation and growth — not lactic acid as commonly believed. DOMS typically diminishes significantly after 2–3 weeks as the body adapts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I stay motivated to keep exercising?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Research on exercise adherence consistently shows: scheduling exercise as a fixed appointment, exercising with a partner or group, choosing activities you actually enjoy, tracking progress, starting with achievable goals (not ambitious ones), and building exercise into an existing routine (e.g. immediately after work) all significantly improve long-term adherence."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
-  title="How to Start Exercising (When You've Never Done It) | HealthyBMICheck"
-  description="Starting an exercise habit is harder than maintaining one. Here's a realistic, evidence-based guide for complete beginners — what to do, how much, and how to make it stick."
+  schemaJson={schemaJson}
+  title="How to Start Exercising as a Beginner | HealthyBMICheck"
+  description="Starting an exercise habit is the hardest part. A realistic, evidence-based plan for beginners — no gym required, no willpower needed."
   canonical="https://healthybmicheck.com/how-to-start-exercising.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › How to Start Exercising (When You've Never Done...</div>
   <span class="article-tag">Exercise</span>
   <h1>How to Start Exercising (When You've Never Done It)</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>The hardest part of exercise isn't the workout — it's starting. Most beginners try to do too much too soon, get sore or injured, lose motivation, and stop. The evidence-based approach to building a lasting exercise habit looks quite different from what gym culture promotes.</p>
@@ -183,4 +255,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Start Exercising as a Beginner", "item": "https://healthybmicheck.com/how-to-start-exercising.html"}]}</script>
 </Base>

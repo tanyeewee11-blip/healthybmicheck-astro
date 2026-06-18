@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "High Protein Foods for Weight Loss — Complete List",
+      "description": "Discover the best high protein foods for weight loss. Complete list with protein content and calories per serving, plus tips on how to add more protein to.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/high-protein-foods.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much protein do I need per day for weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For weight loss with muscle preservation, aim for 1.6–2.2g of protein per kg of body weight per day. This is significantly higher than the basic recommended dietary allowance (0.8g/kg) which is a minimum for preventing deficiency, not an optimal level for body composition goals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the highest protein foods per 100g?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dried egg whites (82g protein/100g), seitan (75g), casein/whey protein powder (70–80g), Parmesan cheese (35g), canned tuna (30g), chicken breast cooked (31g), and edamame (11g) are among the highest. For whole foods, lean meats, fish, eggs, and legumes consistently top the charts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I get enough protein from plant sources alone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — but it requires more planning than omnivore diets. Key plant protein sources include legumes (lentils, chickpeas, black beans), tofu, tempeh, edamame, seitan, and protein-fortified plant milks. Combining different plant proteins throughout the day ensures adequate essential amino acid intake."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does protein timing matter for muscle building?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Distributing protein intake across 3–5 meals per day (20–40g per meal) maximises muscle protein synthesis compared to eating the same total in fewer meals. Having protein within 2 hours after resistance training is beneficial. However, total daily protein intake is more important than precise timing for most people."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do high protein diets damage kidneys?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In healthy individuals with normal kidney function, there is no evidence that high protein diets (up to 3g/kg/day) cause kidney damage. This concern is relevant only for people with pre-existing kidney disease, for whom protein restriction may be recommended. If you have kidney issues, consult your doctor before significantly increasing protein intake."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="High Protein Foods for Weight Loss — Complete List"
   description="Discover the best high protein foods for weight loss. Complete list with protein content and calories per serving, plus tips on how to add more protein to."
   canonical="https://healthybmicheck.com/high-protein-foods.html"
@@ -197,4 +269,6 @@ import Base from '../layouts/Base.astro';
 
 
 <!-- E-E-A-T: Sources & Medical Review -->
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "High Protein Foods for Weight Loss — Complete List", "item": "https://healthybmicheck.com/high-protein-foods.html"}]}</script>
 </Base>

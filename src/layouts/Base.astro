@@ -6,6 +6,8 @@ interface Props {
   ogTitle?: string;
   ogDescription?: string;
   schemaJson?: string;
+  lastUpdated?: string;
+  isArticle?: boolean;
 }
 
 const {
@@ -15,6 +17,8 @@ const {
   ogTitle,
   ogDescription,
   schemaJson,
+  lastUpdated,
+  isArticle,
 } = Astro.props;
 ---
 
@@ -68,6 +72,8 @@ const {
     <a href="/calorie-calculator">Calories</a>
     <a href="/">All Tools</a>
     <a href="/guides">Guides</a>
+    <a href="/healthy-bmi-by-age">BMI by Age</a>
+    <a href="/healthy-weight-by-height">Weight by Height</a>
     <a href="/about">About</a>
   </nav>
   <button class="nav-toggle" aria-label="Toggle navigation">
@@ -83,6 +89,8 @@ const {
     <a href="/">All Calculators</a>
     <a href="/bmi-calculator">BMI Calculator</a>
     <a href="/guides">Guides</a>
+    <a href="/healthy-bmi-by-age">BMI by Age</a>
+    <a href="/healthy-weight-by-height">Weight by Height</a>
     <a href="/about">About</a>
     <a href="/privacy">Privacy Policy</a>
     <a href="/contact">Contact</a>

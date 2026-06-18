@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "BMI Chart by Age — Healthy BMI Ranges for Adults",
+      "description": "Understand how healthy BMI ranges change with age. Includes BMI charts for men and women by age group, plus guidance on interpreting your result.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/bmi-chart-by-age.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does healthy BMI change with age?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standard WHO BMI categories (18.5–24.9 healthy) technically apply to all adults 18+. However, some evidence suggests adults over 65 may have better health outcomes at BMIs of 22–27, as lower BMI in older adults can indicate muscle loss or underlying illness rather than genuine leanness."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a healthy BMI for a 50-year-old woman?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standard healthy range of 18.5–24.9 applies. However, due to muscle loss and hormonal changes after menopause, a BMI of 22–25 with good waist circumference (below 80 cm for Asian women, 88 cm for Western women) is a practical target. Body composition matters more than the number itself."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does BMI increase with age for many people?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMI tends to increase with age because muscle mass naturally declines from around age 30 (sarcopenia) while fat mass often increases, particularly abdominal fat. Metabolic rate decreases and activity levels typically decline, both contributing to gradual weight gain if dietary habits remain unchanged."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a BMI of 25 unhealthy for a 60-year-old?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. A BMI of 25 at age 60 with good metabolic markers (normal blood pressure, blood sugar, and cholesterol) and adequate muscle mass is generally not a health concern. The risk profile of a slightly elevated BMI in older adults is different from the same BMI in a younger person."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know if my BMI is healthy for my specific age and ethnicity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the standard WHO ranges as a baseline, then adjust: if you are of Asian descent, use the lower Asian cutoffs (overweight ≥23); if you are over 65, a BMI of 22–27 may be optimal. Always combine BMI with waist circumference and metabolic markers for a complete picture."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="BMI Chart by Age — Healthy BMI Ranges for Adults"
   description="Understand how healthy BMI ranges change with age. Includes BMI charts for men and women by age group, plus guidance on interpreting your result."
   canonical="https://healthybmicheck.com/bmi-chart-by-age.html"
@@ -219,4 +291,6 @@ import Base from '../layouts/Base.astro';
 
 
 <!-- E-E-A-T: Sources & Medical Review -->
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI Chart by Age — Healthy BMI Ranges for Adults", "item": "https://healthybmicheck.com/bmi-chart-by-age.html"}]}</script>
 </Base>

@@ -640,9 +640,9 @@ import Base from '../layouts/Base.astro';
         <option value="65">Age 65</option>
       </select>
 
-      <a id="ba-go-btn" href="healthy-bmi-20-year-old-female.html"
+      <a id="ba-go-btn" href="healthy-bmi-by-age.html"
         style="display:block;text-align:center;padding:12px;background:var(--accent);color:#fff;border-radius:10px;text-decoration:none;font-weight:600;font-size:.95rem;">
-        See BMI Guide for My Age →
+        See BMI Guide by Age →
       </a>
     </div>
 
@@ -681,7 +681,7 @@ import Base from '../layouts/Base.astro';
 
   function hwUpdateLink() {
     var slug = document.getElementById('hw-height-select').value;
-    document.getElementById('hw-go-btn').href = 'healthy-weight-' + slug + '-' + hwGender + '.html';
+    document.getElementById('hw-go-btn').href = 'healthy-weight-by-height.html';
   }
 
   function hwSetUnit(u) {
@@ -712,7 +712,7 @@ import Base from '../layouts/Base.astro';
 
   function baUpdateLink() {
     var age = document.getElementById('ba-age-select').value;
-    document.getElementById('ba-go-btn').href = 'healthy-bmi-' + age + '-year-old-' + baGender + '.html';
+    document.getElementById('ba-go-btn').href = 'healthy-bmi-by-age.html';
   }
 
   function baSetGender(g) {

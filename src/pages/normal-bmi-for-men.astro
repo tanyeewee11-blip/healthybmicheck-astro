@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Normal BMI for Men — Healthy Ranges by Age",
+      "description": "What is a normal BMI for men? Learn the healthy BMI ranges for adult men by age, how BMI differs for men, and what your result means for your health.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/normal-bmi-for-men.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a normal BMI for men?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For adult men, the WHO defines normal BMI as 18.5 to 24.9. Below 18.5 is underweight; 25.0–29.9 is overweight; 30.0 or above is obese. For men of Asian descent, the threshold adjusts: overweight starts at BMI 23.0, as Asian men accumulate more visceral fat and metabolic risk at lower BMI values than Western men."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "At what BMI do men have the lowest health risk?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Research suggests the lowest all-cause mortality risk for men corresponds to a BMI of approximately 22–24. Above 27–28, risk increases noticeably for cardiovascular disease and type 2 diabetes. Below 18.5, risk also increases due to potential malnutrition and frailty."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do muscular men often have high BMI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMI cannot distinguish between muscle and fat. A man with 90 kg of lean mass at 180 cm would have a BMI of 27.8 (classified overweight) despite very low body fat. This limitation is most pronounced in men who engage in resistance training, as men build muscle more readily than women due to higher testosterone levels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is BMI 27 unhealthy for a man?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. A BMI of 27 in a man with good muscle mass, normal waist circumference (below 94 cm for Asian men, 102 cm for Western men), and healthy metabolic markers (blood pressure, cholesterol, blood sugar) carries modest health risk. Body composition context is essential for interpreting a BMI in this range."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What waist measurement is healthy for men?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A waist circumference below 94 cm is low risk for men (most Western guidelines); 94–102 cm is increased risk; above 102 cm is high risk. For men of Asian descent, the thresholds are lower: below 90 cm is recommended. Waist circumference is a better predictor of visceral fat and metabolic disease than BMI for most men."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Normal BMI for Men — Healthy Ranges by Age"
   description="What is a normal BMI for men? Learn the healthy BMI ranges for adult men by age, how BMI differs for men, and what your result means for your health."
   canonical="https://healthybmicheck.com/normal-bmi-for-men.html"
@@ -194,4 +266,6 @@ import Base from '../layouts/Base.astro';
 
 
 <!-- E-E-A-T: Sources & Medical Review -->
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Normal BMI for Men — Healthy Ranges by Age", "item": "https://healthybmicheck.com/normal-bmi-for-men.html"}]}</script>
 </Base>

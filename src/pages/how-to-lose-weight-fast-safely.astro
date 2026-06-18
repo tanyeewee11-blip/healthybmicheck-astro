@@ -1,8 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Lose Weight Fast (Safely)",
+      "description": "The fastest safe rate of fat loss is 0.5–1% of body weight per week. Here's how to maximise fat loss speed without sacrificing muscle, health, or long-term results.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/how-to-lose-weight-fast-safely.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the fastest safe rate of weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Research and clinical guidelines generally consider 0.5–1 kg per week to be the safe, sustainable upper limit for most adults. Higher rates (1–1.5 kg/week) are possible short-term with very large people or under medical supervision but increase risk of muscle loss, gallstones, and nutritional deficiency."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can't I just eat very little to lose weight faster?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Severe calorie restriction (below ~1,000 kcal/day) triggers adaptive thermogenesis — the body lowers its metabolic rate to compensate — and causes muscle breakdown, which further reduces metabolic rate. You may lose weight rapidly initially, but the body adapts, loss stalls, and regain is faster due to the lowered metabolic rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does exercise speed up weight loss significantly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Exercise contributes meaningfully but modestly to weight loss on its own — studies show approximately 1–3 kg additional loss from exercise alone over 3–4 months. Its greater value is in preserving muscle mass (which maintains metabolic rate), improving insulin sensitivity, and enhancing mood and adherence to dietary changes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What supplements help with fast weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No supplement produces meaningful weight loss on its own. Caffeine mildly increases metabolic rate and fat oxidation. Glucomannan (konjac fibre) reduces appetite slightly. Green tea extract has a small thermogenic effect. None of these effects are large enough to replace a calorie deficit — they are at best minor adjuncts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I lose weight fast for an event without losing muscle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a specific event (wedding, holiday) 4–8 weeks away: maintain high protein intake (2.0–2.4g/kg), continue resistance training, create a 500–750 kcal/day deficit, minimise alcohol and sodium to reduce water retention, and sleep 7–9 hours. This approach maximises fat loss while preserving muscle, giving the best visual result."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="How to Lose Weight Fast (Safely) | HealthyBMICheck"
   description="The fastest safe rate of fat loss is 0.5–1% of body weight per week. Here's how to maximise fat loss speed without sacrificing muscle, health, or long-term results."
   canonical="https://healthybmicheck.com/how-to-lose-weight-fast-safely.html"
@@ -11,7 +83,7 @@ import Base from '../layouts/Base.astro';
   <div class="breadcrumb"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › How to Lose Weight Fast (Safely)</div>
   <span class="article-tag">Weight Loss</span>
   <h1>How to Lose Weight Fast (Safely)</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>Everyone wants to lose weight as fast as possible — but "fast" and "safe" exist on a spectrum. This guide explains the maximum rate of fat loss that preserves muscle, avoids metabolic damage, and produces results that last.</p>
@@ -197,4 +269,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Lose Weight Fast (Safely)", "item": "https://healthybmicheck.com/how-to-lose-weight-fast-safely.html"}]}</script>
 </Base>

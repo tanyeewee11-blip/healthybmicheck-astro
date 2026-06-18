@@ -1,10 +1,82 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Lose 5kg Safely — A Realistic, Science-Based Plan",
+      "description": "Losing 5kg safely takes 10–20 weeks, not 2. Learn the science-based approach to sustainable fat loss — how big a deficit to use, what to eat, and how to avoid the most common mistakes.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/how-to-lose-5kg.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does it realistically take to lose 5kg?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With a sustainable 500 kcal/day deficit, losing 5 kg takes approximately 10 weeks. A more moderate 300 kcal/day deficit extends this to 14–16 weeks. Very rapid loss is possible short-term but usually includes water weight and increases risk of muscle loss. 10–12 weeks is a realistic, healthy timeline for most people."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I eat to lose 5kg?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Focus on adequate protein (1.6–2g/kg/day) to preserve muscle, high-volume vegetables to manage hunger, and consistent calorie tracking to ensure you are in a deficit. Reducing ultra-processed foods, alcohol, and liquid calories typically accounts for a large portion of the needed calorie reduction without complex meal planning."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it safe to lose 5kg in one month?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Losing 5 kg in one month requires a ~1,200 kcal/day deficit, which is extreme and not recommended without medical supervision. The initial 2–3 kg may come from water weight, but the remaining genuine fat loss at this rate carries risks of muscle loss, nutrient deficiencies, and hormonal disruption. 6–10 weeks is safer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why am I not losing weight despite cutting calories?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The most common reasons are underestimating food intake (people are typically off by 20–40%), overestimating exercise calorie burn, insufficient protein leading to muscle loss that lowers metabolic rate, inadequate sleep elevating hunger hormones, or simply not being in as large a deficit as assumed. Accurate food weighing for one week usually reveals the answer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will I gain the weight back after losing 5kg?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily — people who lose weight gradually (0.5 kg/week) using sustainable dietary changes (rather than crash dieting) show better long-term maintenance. The key is transitioning from weight loss to maintenance mode: recalculating your TDEE at the new weight and eating at that level with the habits established during the loss phase."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
-  title="How to Lose 5kg Safely — A Realistic, Science-Based Plan | HealthyBMICheck"
-  description="Losing 5kg safely takes 10–20 weeks, not 2. Learn the science-based approach to sustainable fat loss — how big a deficit to use, what to eat, and how to avoid the most common mistakes."
+  schemaJson={schemaJson}
+  title="How to Lose 5kg Safely — Science-Based Plan | HealthyBMICheck"
+  description="Losing 5 kg safely takes 10–20 weeks, not 2. A science-based plan with realistic calorie targets, protein guidelines, and the habits that actually work."
   canonical="https://healthybmicheck.com/how-to-lose-5kg.html"
 >
 <div class="article-wrap">
@@ -229,4 +301,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice. Consult a healthcare provider before starting a weight loss programme.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How to Lose 5kg Safely — Science-Based Plan", "item": "https://healthybmicheck.com/how-to-lose-5kg.html"}]}</script>
 </Base>

@@ -1,10 +1,82 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Healthy BMI for Asian Women — What the Research Says",
+      "description": "Asian women have different BMI risk thresholds than Western populations. Learn what a healthy BMI means for Asian women, why the standard ranges don't apply, and what to aim for.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/healthy-bmi-asian-women.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a healthy BMI for Asian women?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For Asian women, the WHO recommends a healthy BMI of 18.5 to 22.9. Overweight is defined as BMI 23.0–27.4 and obese as 27.5 or above. These thresholds are lower than the standard Western cutoffs because Asian women carry higher visceral fat and metabolic risk at the same BMI values as Western women."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do Asian women have different BMI standards?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Research shows Asian women accumulate more visceral fat (the metabolically active fat around organs) at lower BMI values compared to women of European descent. This increases the risk of type 2 diabetes and cardiovascular disease at BMI levels considered 'normal' by global standards."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is BMI 23 overweight for an Asian woman?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By WHO Asian guidelines — which Malaysia, Singapore, and most Asian health authorities follow — yes, BMI 23.0 marks the start of the overweight category. This does not mean a BMI of 23 is necessarily unhealthy for every individual, but it does indicate elevated metabolic risk compared to a BMI below 23."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does healthy BMI for Asian women change with age?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standard thresholds apply to adult women 18–65. For women over 65, some evidence suggests a slightly higher BMI (up to 24–25) may be associated with better outcomes, as low BMI in older women can indicate muscle loss rather than genuine leanness. Waist circumference becomes an increasingly important metric with age."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What waist measurement is healthy for Asian women?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The International Diabetes Federation recommends a waist circumference below 80 cm for Asian women (compared to 88 cm for Western women). A waist above 80 cm suggests elevated visceral fat and increased metabolic risk, regardless of BMI category."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
-  title="Healthy BMI for Asian Women — What the Research Says | HealthyBMICheck"
-  description="Asian women have different BMI risk thresholds than Western populations. Learn what a healthy BMI means for Asian women, why the standard ranges don't apply, and what to aim for."
+  schemaJson={schemaJson}
+  title="Healthy BMI for Asian Women: Research-Based Thresholds | HealthyBMI"
+  description="Asian women face higher metabolic risk at lower BMI values. Learn the correct BMI thresholds, why they differ from Western guidelines, and your healthy range."
   canonical="https://healthybmicheck.com/healthy-bmi-asian-women.html"
 >
 <div class="article-wrap">
@@ -173,4 +245,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy BMI for Asian Women: Research-Based Thresholds", "item": "https://healthybmicheck.com/healthy-bmi-asian-women.html"}]}</script>
 </Base>

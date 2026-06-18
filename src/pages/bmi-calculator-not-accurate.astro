@@ -1,10 +1,82 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Is BMI Accurate? Limitations You Should Know",
+      "description": "BMI has real limitations — it can't distinguish muscle from fat, varies by ethnicity, and misses visceral fat. Here's when BMI is reliable and when you need other metrics.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/bmi-calculator-not-accurate.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why do doctors still use BMI if it's not accurate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMI remains useful as a quick, free, population-level screening tool that requires no special equipment. Its limitations are well understood by clinicians, who use it as one data point alongside other assessments. The alternative — body fat measurement tools like DEXA — are expensive and impractical for routine screening."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you have a healthy BMI but be unhealthy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — this is called 'metabolically obese normal weight' (MONW). A person can have normal BMI but carry excess visceral fat, have insulin resistance, high triglycerides, or other metabolic risk factors. Waist circumference measurement helps identify this pattern in normal-weight individuals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is BMI accurate for women?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMI uses the same formula and ranges for both sexes, but women naturally carry more body fat than men at the same BMI value. This means the same BMI may represent higher body fat in women than men, which is worth noting but does not fundamentally undermine BMI's usefulness as a screening tool."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How should I use BMI given its limitations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use BMI as a starting point, not a verdict. If your BMI is in the normal range and your waist circumference is healthy, you are likely at low metabolic risk. If your BMI is high, combine it with a body fat measurement and waist circumference for a complete picture before drawing conclusions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is BMI accurate for Asian populations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standard BMI cutoffs underestimate health risk for Asian populations. Research shows Asian adults develop metabolic disease at lower BMI values — the WHO Asian guideline sets overweight at BMI 23 (vs 25 globally) and obese at 27.5 (vs 30). Use our Asian BMI Calculator for more accurate categorisation."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Is BMI Accurate? Limitations You Should Know | HealthyBMICheck"
-  description="BMI has real limitations — it can't distinguish muscle from fat, varies by ethnicity, and misses visceral fat. Here's when BMI is reliable and when you need other metrics."
+  description="BMI can't distinguish muscle from fat and varies by ethnicity. Here are its real limitations and the better metrics to use alongside it."
   canonical="https://healthybmicheck.com/bmi-calculator-not-accurate.html"
 >
 <div class="article-wrap">
@@ -168,4 +240,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Is BMI Accurate? Limitations You Should Know", "item": "https://healthybmicheck.com/bmi-calculator-not-accurate.html"}]}</script>
 </Base>

@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Healthy BMI After 50: What Changes and Why",
+      "description": "Standard BMI ranges may not be optimal for adults over 50. Learn how body composition changes with age, what BMI targets make sense after 50, and how to stay healthy.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/healthy-bmi-over-50.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a healthy BMI for someone over 50?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standard WHO range of 18.5–24.9 applies to adults over 50, but some evidence suggests BMI 22–27 may be associated with better health outcomes in older adults. This is partly because low BMI after 50 can indicate muscle loss (sarcopenia) rather than genuine leanness, which carries its own health risks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does weight management become harder after 50?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After 50, testosterone (in men) and oestrogen (in women) decline, both of which support muscle mass. Muscle mass naturally decreases by 1–2% per year from age 30 (sarcopenia), lowering resting metabolic rate. Fat distribution shifts centrally, and lifestyle factors like reduced activity and poorer sleep compound the effect."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is exercise more important than diet for weight management over 50?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both matter, but resistance training becomes relatively more important over 50 specifically because of muscle loss. Preserving muscle mass maintains metabolic rate and insulin sensitivity. Diet quality (adequate protein: 1.6–2.0g/kg/day) combined with regular resistance training is the most evidence-supported approach."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I be less concerned about BMI after 60?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Somewhat — at very old age (75+), low BMI is a stronger predictor of mortality than high BMI. But for the 50–70 age range, maintaining BMI below 27–28 with good muscle mass and waist circumference is still associated with reduced chronic disease risk. Focus shifts from scale weight to body composition."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What waist circumference is healthy for adults over 50?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The same thresholds apply regardless of age: below 88 cm for women and 102 cm for men (80/94 cm for Asian adults). However, waist circumference becomes an increasingly important metric after 50 because it better captures visceral fat accumulation than BMI, which may not change much even as fat redistributes centrally."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="Healthy BMI After 50: What Changes and Why | HealthyBMICheck"
-  description="Standard BMI ranges may not be optimal for adults over 50. Learn how body composition changes with age, what BMI targets make sense after 50, and how to stay healthy."
+  description="BMI becomes less reliable after 50 as body composition changes. What BMI targets make sense after 50, how menopause and muscle loss affect the numbers."
   canonical="https://healthybmicheck.com/healthy-bmi-over-50.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Healthy BMI After 50: What Changes and Why</div>
   <span class="article-tag">BMI</span>
   <h1>Healthy BMI After 50: What Changes and Why</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>BMI was developed for population-level screening of working-age adults — but its limitations become more pronounced after age 50, when body composition changes significantly. Research suggests that the optimal BMI range shifts slightly with age, and that being underweight becomes as dangerous as being overweight for older adults.</p>
@@ -89,7 +161,37 @@ import Base from '../layouts/Base.astro';
     </ul>
   </div>
 
-  <div class="faq-section">
+  <div class="article-section">
+    <h2>Average BMI After 50 — By Sex and Age Group</h2>
+    <p>Average BMI continues to rise through the 50s and then often stabilises or slightly decreases in the 60s as lean mass declines. Here's what population data shows:</p>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Age group</th><th>Average BMI (women)</th><th>Average BMI (men)</th><th>Key body composition change</th></tr></thead>
+        <tbody>
+          <tr><td><strong>50–54</strong></td><td>~26.5–27.0</td><td>~28.0–28.2</td><td>Menopause begins; visceral fat increases</td></tr>
+          <tr class="highlight-row"><td><strong>55–59</strong></td><td>~27.0–27.4</td><td>~27.8–28.0</td><td>Accelerated muscle loss; fat redistribution</td></tr>
+          <tr><td><strong>60–64</strong></td><td>~27.4–27.6</td><td>~27.5–27.8</td><td>Sarcopenia becomes significant</td></tr>
+          <tr class="highlight-row"><td><strong>65–69</strong></td><td>~27.2–27.5</td><td>~27.0–27.5</td><td>BMI often stabilises; muscle mass priority</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Notice that average BMI for both sexes is <em>above</em> the standard healthy ceiling of 24.9 by the 50s. This reflects population-level weight gain with age, but also reinforces why waist circumference and body composition matter more than BMI alone at this life stage.</p>
+    <div class="callout"><p>💡 For a personalised BMI assessment with age-specific context, use our <a href="bmi-calculator.html">BMI Calculator</a>. For a fuller picture of metabolic health, also check your <a href="waist-to-height-ratio.html">Waist-to-Height Ratio</a>.</p></div>
+  </div>
+
+  <div class="article-section">
+    <h2>What Happens to BMI After Menopause (Women)</h2>
+    <p>The menopause transition typically occurs between ages 45–55 (average age 51), but its metabolic effects continue long after. Post-menopausal women face several changes that affect BMI and body composition:</p>
+    <ul>
+      <li><strong>Reduced oestrogen</strong> shifts fat storage from hips and thighs toward the abdomen, increasing visceral fat at any given BMI</li>
+      <li><strong>Lower resting metabolic rate</strong> — approximately 100–200 kcal/day less than pre-menopause at the same weight</li>
+      <li><strong>Accelerated bone density loss</strong> — making low BMI more dangerous than in pre-menopausal women (less adipose-derived oestrogen to protect bones)</li>
+      <li><strong>Disrupted sleep</strong> from hot flushes raises cortisol and ghrelin, increasing hunger and visceral fat accumulation</li>
+    </ul>
+    <p>For women in their 50s, maintaining a BMI of 22–26 with a focus on <strong>waist circumference under 80 cm</strong> is generally more meaningful than targeting the lower end of the healthy BMI range.</p>
+  </div>
+
+    <div class="faq-section">
   <h2 class="section-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">What is a healthy BMI for someone over 50?</button>
@@ -154,4 +256,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy BMI After 50: What Changes and Why", "item": "https://healthybmicheck.com/healthy-bmi-over-50.html"}]}</script>
 </Base>

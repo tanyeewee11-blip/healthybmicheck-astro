@@ -1,9 +1,81 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "What to Eat to Lose Weight — Evidence-Based Food Guide",
+      "description": "No fad diets. A practical, evidence-based guide to what foods support fat loss — what to eat more of, what to limit, and why it works.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/what-to-eat-to-lose-weight.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What foods should I eat every day to lose weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Build meals around lean proteins (chicken, fish, eggs, legumes), non-starchy vegetables (broccoli, spinach, capsicum, cucumber), and whole grains or legumes as carbohydrate sources. These foods provide high satiety per calorie, essential nutrients, and adequate fibre. They naturally help maintain a calorie deficit without constant hunger."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are carbohydrates bad for weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Carbohydrates are not inherently bad for weight loss — excess total calories cause fat gain. The quality of carbohydrates matters: whole grains, legumes, and vegetables are metabolically beneficial; refined carbohydrates and added sugars are easy to over-consume. Many people lose weight successfully on moderate-carb diets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What foods should I avoid when trying to lose weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Focus on limiting (not necessarily eliminating) ultra-processed foods (chips, biscuits, fast food), sugary drinks (soda, fruit juice, energy drinks), alcohol, and refined carbohydrates. These foods are calorie-dense, low in satiety, and easy to over-consume. No food is completely off-limits — portion and frequency are what matter."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it better to eat more frequently or fewer larger meals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Total daily calorie and protein intake matters far more than meal frequency for weight loss. Some people find 3 larger meals more satiating; others do better with 5–6 smaller meals. The best eating pattern is the one that helps you consistently maintain your calorie target and protein intake without excessive hunger."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I eat the same foods I currently eat and still lose weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Potentially yes — if you reduce portions of your current foods to create a calorie deficit, weight loss will occur. However, the reason many people find calorie restriction difficult is that energy-dense, low-fibre foods generate more hunger per calorie. Shifting towards higher-volume, lower-calorie-density foods makes maintaining a deficit significantly easier."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
-  title="What to Eat to Lose Weight — Evidence-Based Food Guide | HealthyBMICheck"
+  schemaJson={schemaJson}
+  title="What to Eat to Lose Weight: Evidence-Based Guide | HealthyBMICheck"
   description="No fad diets. A practical, evidence-based guide to what foods support fat loss — what to eat more of, what to limit, and why it works."
   canonical="https://healthybmicheck.com/what-to-eat-to-lose-weight.html"
 >
@@ -196,4 +268,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "What to Eat to Lose Weight: Evidence-Based Guide", "item": "https://healthybmicheck.com/what-to-eat-to-lose-weight.html"}]}</script>
 </Base>

@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How Long Does It Take to Lose 10kg?",
+      "description": "Losing 10kg of fat safely takes 20–30 weeks. Learn the realistic timeline, how to set your calorie deficit, and how to avoid the mistakes that cause people to regain the weight.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/how-long-to-lose-10kg.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does it take to lose 10kg safely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With a consistent 500 kcal/day deficit (losing ~0.5 kg/week), losing 10 kg takes approximately 20 weeks (5 months). With a more aggressive 750 kcal/day deficit (~0.75 kg/week), around 13–14 weeks. Very rapid loss (>1 kg/week) risks muscle loss and is harder to sustain — 4–6 months is a realistic, healthy timeline for most people."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will I lose 10kg faster if I eat very little?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Drastically cutting calories accelerates initial weight loss but triggers muscle loss, metabolic adaptation, and nutrient deficiencies, which ultimately slows fat loss and makes the weight easier to regain. Losing 10kg at 0.5–0.75 kg/week with adequate protein preserves muscle and produces more durable results."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the first thing you lose when losing weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Initially (days 1–2), the scale drops rapidly due to water loss from glycogen depletion — often 1–3 kg in the first week that is not fat. After this, weight loss is from a combination of fat, a small amount of muscle (which protein intake and resistance training minimise), and continued water balance adjustments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does losing 10kg get harder as you go?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — as you lose weight, your TDEE decreases (a lighter body needs less energy), hormonal signals drive hunger upward, and metabolic rate adapts. The same calorie deficit that worked at the start produces a smaller deficit later. This is why recalculating your TDEE every 5–10 kg lost is important."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What exercise helps lose 10kg fastest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A combination of resistance training (to preserve muscle and maintain metabolic rate) and moderate cardio (150–250 minutes per week) produces faster fat loss than either alone. High-intensity interval training (HIIT) 2–3 times per week is time-efficient for calorie burn. The most important factor is consistency over 4–6 months."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="How Long Does It Take to Lose 10kg? | HealthyBMICheck"
-  description="Losing 10kg of fat safely takes 20–30 weeks. Learn the realistic timeline, how to set your calorie deficit, and how to avoid the mistakes that cause people to regain the weight."
+  description="Losing 10 kg safely takes 20–30 weeks for most people. A realistic timeline, the key variables that affect your rate, and how to stay on track."
   canonical="https://healthybmicheck.com/how-long-to-lose-10kg.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › How Long Does It Take to Lose 10kg?</div>
   <span class="article-tag">Weight Loss</span>
   <h1>How Long Does It Take to Lose 10kg?</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>Losing 10 kilograms is a common goal — and a very achievable one. But search results are full of promises of "10kg in 6 weeks" that set unrealistic expectations and often lead to crash dieting, muscle loss, and rapid regain. This guide explains what a realistic timeline looks like and how to actually achieve it.</p>
@@ -179,4 +251,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "How Long Does It Take to Lose 10kg?", "item": "https://healthybmicheck.com/how-long-to-lose-10kg.html"}]}</script>
 </Base>

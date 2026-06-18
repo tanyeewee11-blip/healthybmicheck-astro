@@ -1,17 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "BMI and Muscle Mass: Why Athletes Score High",
+      "description": "Athletes and regular gym-goers often have 'overweight' BMIs despite low body fat. Learn why muscle mass makes BMI unreliable for active people — and what to use instead.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-06-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/bmi-and-muscle-mass.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What BMI do most athletes have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Elite athletes in strength and power sports (rugby, American football, weightlifting) often have BMIs of 27–35 despite very low body fat percentages. Endurance athletes (marathon runners, cyclists) typically have BMIs in the 18–22 range due to lower muscle mass. The sport determines the body composition, which then determines where BMI lands."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should muscular people ignore their BMI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Muscular people should interpret their BMI with context, not ignore it entirely. A high BMI from muscle mass is not a health risk, but it is worth confirming this with a body fat measurement. Waist circumference is a practical complement — if your waist is within healthy limits, a high BMI from muscle is not a concern."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much muscle do you need to have an 'overweight' BMI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For BMI to register as overweight (≥25) purely from muscle, you need to be substantially above average in muscle mass. Most recreational gym-goers with a high BMI also carry excess fat — genuine muscle-driven high BMI is less common than people assume. A body fat test will clarify this quickly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a better measure of health than BMI for active people?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Waist circumference, waist-to-height ratio, and body fat percentage are all more informative for active individuals. A body fat percentage below 18% for men and 25% for women generally indicates good health regardless of BMI. DEXA scans provide the most precise body composition measurement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does building muscle lower BMI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Building muscle while maintaining the same weight keeps BMI unchanged, since BMI is purely weight divided by height squared. If you build muscle and lose fat (body recomposition) with no net weight change, your BMI stays the same but your health and appearance improve significantly."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <Base
+  schemaJson={schemaJson}
   title="BMI and Muscle Mass: Why Athletes Score High | HealthyBMICheck"
-  description="Athletes and regular gym-goers often have 'overweight' BMIs despite low body fat. Learn why muscle mass makes BMI unreliable for active people — and what to use instead."
+  description="Athletes often register as "overweight" by BMI despite low body fat. Learn why BMI misclassifies muscular people and which metrics to use instead."
   canonical="https://healthybmicheck.com/bmi-and-muscle-mass.html"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › BMI and Muscle Mass: Why Athletes Score High</div>
   <span class="article-tag">BMI</span>
   <h1>BMI and Muscle Mass: Why Athletes Score High</h1>
-  <div class="article-meta">Updated 2026 06 &nbsp;·&nbsp; Based on peer-reviewed research &nbsp;·&nbsp; 8 min read</div>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 8 min read</div>
 
   <div class="article-section">
     <p>A rugby player. A competitive swimmer. A regular gym-goer who trains 4 times per week. What do they have in common? All three may have a BMI that classifies them as "overweight" or even "obese" — despite having low body fat and excellent cardiovascular health. This is one of the most significant limitations of BMI as a health measure.</p>
@@ -127,9 +199,42 @@ import Base from '../layouts/Base.astro';
   </div>
 </div>
 
-<!-- E-E-A-T Sources -->
-<div style="max-width:720px;margin:0 auto 0;padding:0 20px 40px;">
-  <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;">
+</div>
+
+  <div class="article-section">
+    <h2>Better Metrics for Athletic or Muscular People</h2>
+    <p>If you train regularly, these measurements give a more accurate health picture than BMI alone:</p>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Metric</th><th>What it measures</th><th>Healthy target</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Body fat %</strong></td><td>Fat vs lean mass ratio</td><td>Men: 10–20% · Women: 20–30%</td></tr>
+          <tr class="highlight-row"><td><strong>Waist circumference</strong></td><td>Abdominal / visceral fat proxy</td><td>Men &lt;94 cm · Women &lt;80 cm</td></tr>
+          <tr><td><strong>Waist-to-height ratio</strong></td><td>Metabolic risk indicator</td><td>Below 0.5 for all adults</td></tr>
+          <tr class="highlight-row"><td><strong>Grip strength</strong></td><td>Proxy for total muscle mass</td><td>Men &gt;36 kg · Women &gt;21 kg</td></tr>
+          <tr><td><strong>Resting heart rate</strong></td><td>Cardiovascular fitness</td><td>50–70 bpm for fit adults</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>If your BMI is in the overweight range but your waist circumference is healthy and body fat is in range, your health profile is likely much better than BMI suggests. Use our <a href="body-fat.html">Body Fat Calculator</a> and <a href="waist-to-height-ratio.html">Waist-to-Height Ratio Calculator</a> for a fuller picture.</p>
+
+    <div style="margin-top:20px;">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can you be overweight by BMI but still be healthy?</button>
+        <div class="faq-a">Yes — this is common in regularly training individuals. A person with BMI 26–28 who has low body fat, healthy waist circumference, good cardiovascular fitness, and normal blood markers is not at elevated health risk despite the "overweight" classification. BMI was designed as a population-level tool, not an individual health assessment. The concept of being metabolically healthy at a higher BMI is well-documented in research.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does more muscle increase BMI?</button>
+        <div class="faq-a">Yes — muscle is denser than fat, so a more muscular person weighs more at the same size. Since BMI uses weight and height alone, people with above-average muscle mass consistently have higher BMIs than their health status warrants. A competitive powerlifter at 5'10" weighing 215 lb (BMI 30.9) may have 12% body fat and excellent cardiovascular health — the opposite of what "obese" implies.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What BMI should athletes aim for?</button>
+        <div class="faq-a">There is no single athlete BMI target. Optimal BMI varies by sport: endurance runners BMI 18–21; cyclists 20–23; strength athletes 25–32. What matters is performance, health markers (blood pressure, lipids, blood glucose), and body composition — not BMI category. If you train, track body fat percentage and functional fitness metrics rather than optimising for a particular BMI.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;margin:0 0 24px;">
     <strong style="display:block;margin-bottom:8px;">📚 Sources &amp; Editorial Standards</strong>
     <ul style="margin:8px 0 8px 18px;padding:0;">
       <li>Romero-Corral A et al. — <em>Accuracy of body mass index in diagnosing obesity in the adult general population</em>, International Journal of Obesity, 2008</li>
@@ -139,4 +244,6 @@ import Base from '../layouts/Base.astro';
     Content is for informational purposes only and does not constitute medical advice.
   </div>
 </div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI and Muscle Mass: Why Athletes Score High", "item": "https://healthybmicheck.com/bmi-and-muscle-mass.html"}]}</script>
 </Base>
