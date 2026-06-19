@@ -1,0 +1,341 @@
+---
+import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"BMR Calculator — Basal Metabolic Rate","description":"Calculate your Basal Metabolic Rate (BMR) — the calories your body burns at complete rest. Uses the Mifflin-St Jeor equation, the most accurate formula available.","author":{"@type":"Organization","name":"HealthyBMICheck.com"},"publisher":{"@type":"Organization","name":"HealthyBMICheck.com","url":"https://healthybmicheck.com"},"datePublished":"2026-06-19","dateModified":"2026-06-19","mainEntityOfPage":{"@type":"WebPage","@id":"https://healthybmicheck.com/bmr-calculator.html"}},{"@type":"WebApplication","name":"BMR Calculator","url":"https://healthybmicheck.com/bmr-calculator.html","description":"Free BMR calculator using the Mifflin-St Jeor equation. Find your basal metabolic rate in seconds.","applicationCategory":"HealthApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"HealthyBMICheck.com","url":"https://healthybmicheck.com"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is BMR?","acceptedAnswer":{"@type":"Answer","text":"BMR (Basal Metabolic Rate) is the number of calories your body burns at complete rest to maintain basic life functions — breathing, circulation, cell repair, and temperature regulation. It accounts for 60-75% of total daily calorie burn for most people."}},{"@type":"Question","name":"What is the difference between BMR and TDEE?","acceptedAnswer":{"@type":"Answer","text":"BMR is calories burned at complete rest. TDEE (Total Daily Energy Expenditure) is your total daily calorie burn including activity. TDEE = BMR x activity multiplier. For weight management, TDEE is the more useful number — it tells you how many calories to eat to maintain, lose, or gain weight."}},{"@type":"Question","name":"Which BMR formula is most accurate?","acceptedAnswer":{"@type":"Answer","text":"The Mifflin-St Jeor equation (1990) is the most accurate for most adults, validated against indirect calorimetry studies. It is more accurate than the older Harris-Benedict equation (1919) for modern populations. This calculator uses Mifflin-St Jeor as the primary result."}},{"@type":"Question","name":"How do I use BMR to lose weight?","acceptedAnswer":{"@type":"Answer","text":"To lose weight, eat below your TDEE (not your BMR). Eating below your BMR for extended periods causes muscle loss and metabolic adaptation. A healthy deficit is 300-500 calories below TDEE, producing 0.3-0.5 kg of fat loss per week. Use the Calorie Calculator to find your TDEE and set a deficit."}},{"@type":"Question","name":"Does BMR change with age?","acceptedAnswer":{"@type":"Answer","text":"Yes — BMR decreases with age, primarily due to muscle mass loss (sarcopenia). After age 30, BMR declines approximately 1-2% per decade. At age 60, BMR is typically 10-20% lower than at age 20 for the same height and weight. This is why maintaining muscle mass through resistance training becomes increasingly important with age."}}]}]});
+
+const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://healthybmicheck.com/"},{"@type":"ListItem","position":2,"name":"BMR Calculator","item":"https://healthybmicheck.com/bmr-calculator.html"}]});
+---
+
+<Base
+  breadcrumbJson={breadcrumbJson}
+  schemaJson={schemaJson}
+  title="BMR Calculator — Basal Metabolic Rate (Free & Accurate)"
+  description="Calculate your Basal Metabolic Rate (BMR) instantly. Uses the Mifflin-St Jeor equation — the most accurate BMR formula. Metric and imperial supported."
+  canonical="https://healthybmicheck.com/bmr-calculator.html"
+>
+
+<div class="hero">
+  <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › BMR Calculator</div>
+  <h1>Free <em>BMR</em> Calculator</h1>
+  <p>Find out how many calories your body burns at complete rest — the foundation of any weight loss or nutrition plan.</p>
+</div>
+
+<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2026</strong></div>
+
+<div class="container">
+
+  <!-- Calculator Card -->
+  <div class="card">
+    <div class="unit-toggle">
+      <button class="active" onclick="setUnit('metric')">Metric (kg / cm)</button>
+      <button onclick="setUnit('imperial')">Imperial (lb / in)</button>
+    </div>
+
+    <div class="input-group">
+      <label>Sex</label>
+      <div class="gender-toggle">
+        <button class="gender-btn active" onclick="setGender('male', this)">♂ Male</button>
+        <button class="gender-btn" onclick="setGender('female', this)">♀ Female</button>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Age</label>
+      <div class="input-wrap">
+        <input type="number" id="age" placeholder="30" min="15" max="100">
+        <span class="unit-badge">yrs</span>
+      </div>
+    </div>
+
+    <div class="input-group" id="metric-weight-wrap">
+      <label>Weight</label>
+      <div class="input-wrap">
+        <input type="number" id="weight-kg" placeholder="70" min="20" max="300">
+        <span class="unit-badge">kg</span>
+      </div>
+    </div>
+    <div class="input-group" id="imperial-weight-wrap" style="display:none">
+      <label>Weight</label>
+      <div class="input-wrap">
+        <input type="number" id="weight-lb" placeholder="154" min="44" max="660">
+        <span class="unit-badge">lb</span>
+      </div>
+    </div>
+
+    <div class="input-group" id="metric-height-wrap">
+      <label>Height</label>
+      <div class="input-wrap">
+        <input type="number" id="height-cm" placeholder="170" min="100" max="250">
+        <span class="unit-badge">cm</span>
+      </div>
+    </div>
+    <div class="input-group" id="imperial-height-wrap" style="display:none">
+      <label>Height</label>
+      <div class="input-row">
+        <div class="input-wrap">
+          <input type="number" id="height-ft" placeholder="5" min="3" max="8">
+          <span class="unit-badge">ft</span>
+        </div>
+        <div class="input-wrap">
+          <input type="number" id="height-in" placeholder="7" min="0" max="11">
+          <span class="unit-badge">in</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">Calculate BMR →</button>
+  </div>
+
+  <!-- Result Card -->
+  <div class="result-card" id="result-card">
+    <div class="tdee-bmr-row">
+      <div class="bmr-box" style="flex:1;background:var(--surface);border-radius:12px;padding:20px;text-align:center;">
+        <div class="num" id="bmr-num" style="font-size:2.4rem;font-weight:500;color:var(--accent);font-family:'DM Serif Display',serif;">—</div>
+        <div class="lbl" style="font-size:.85rem;color:var(--ink3);margin-top:6px;">BMR — calories/day at complete rest</div>
+      </div>
+    </div>
+
+    <!-- Formula breakdown -->
+    <div id="formula-breakdown" style="display:none;margin-top:16px;background:var(--surface);border-radius:12px;padding:18px 20px;">
+      <div style="font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;">Formula Comparison</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div style="background:var(--bg);border-radius:8px;padding:12px;border:2px solid var(--accent);">
+          <div style="font-size:.75rem;font-weight:600;color:var(--accent);margin-bottom:4px;">Mifflin-St Jeor (recommended)</div>
+          <div id="mifflin-result" style="font-size:1.3rem;font-weight:500;">—</div>
+          <div style="font-size:.75rem;color:var(--ink3);margin-top:2px;">Most accurate for modern populations</div>
+        </div>
+        <div style="background:var(--bg);border-radius:8px;padding:12px;">
+          <div style="font-size:.75rem;font-weight:600;color:var(--ink3);margin-bottom:4px;">Harris-Benedict (1919)</div>
+          <div id="harris-result" style="font-size:1.3rem;font-weight:500;">—</div>
+          <div style="font-size:.75rem;color:var(--ink3);margin-top:2px;">Older formula, tends to run slightly high</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TDEE estimates -->
+    <div id="tdee-section" style="display:none;margin-top:16px;">
+      <div style="font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;">Your TDEE by Activity Level</div>
+      <div style="display:flex;flex-direction:column;gap:6px;" id="tdee-rows"></div>
+      <div style="font-size:.8rem;color:var(--ink3);margin-top:10px;">TDEE = BMR × activity multiplier. Eat at your TDEE to maintain weight, below to lose, above to gain.</div>
+    </div>
+
+    <!-- Next steps -->
+    <div style="margin-top:16px;padding:14px 16px;background:var(--surface);border-radius:10px;font-size:.85rem;line-height:1.7;">
+      <strong>Next step:</strong> Use your BMR to set calorie goals —
+      <a href="calorie-calculator.html" style="color:var(--accent);font-weight:500;">Calorie Calculator</a> ·
+      <a href="calorie-deficit-calculator.html" style="color:var(--accent);font-weight:500;">Calorie Deficit Calculator</a> ·
+      <a href="macro-calculator.html" style="color:var(--accent);font-weight:500;">Macro Calculator</a>
+    </div>
+  </div>
+
+  <!-- Article content -->
+  <div class="article-section">
+    <h2>What Is BMR?</h2>
+    <p>Your <strong>Basal Metabolic Rate (BMR)</strong> is the number of calories your body burns every day just to stay alive — with no movement, no digestion, no exercise. It represents the energy needed for essential functions: keeping your heart beating, your lungs breathing, your cells repairing, and your body temperature regulated.</p>
+    <p>For most adults, BMR accounts for <strong>60–75% of total daily calorie burn</strong>. Even if you did nothing all day, you would still burn this many calories. It's the floor of your calorie needs — and understanding it is the starting point for any nutrition plan.</p>
+    <div class="callout"><p>💡 <strong>BMR vs TDEE:</strong> BMR is calories at rest. TDEE (Total Daily Energy Expenditure) is your actual daily burn including activity. To manage your weight, you need your TDEE — use our <a href="calorie-calculator.html">Calorie Calculator</a> to get both at once.</p></div>
+
+    <h2>Which BMR Formula Does This Calculator Use?</h2>
+    <p>This calculator uses the <strong>Mifflin-St Jeor equation</strong> (1990), the most validated formula for modern adult populations:</p>
+    <div class="card" style="padding:16px 20px;margin:16px 0;font-family:monospace;font-size:.9rem;">
+      <div style="margin-bottom:8px;"><strong>Men:</strong> BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age) + 5</div>
+      <div><strong>Women:</strong> BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age) − 161</div>
+    </div>
+    <p>Compared to the older <strong>Harris-Benedict equation</strong> (1919), Mifflin-St Jeor is approximately 5% more accurate when validated against indirect calorimetry (the gold standard for measuring actual metabolic rate). The calculator also shows the Harris-Benedict result for comparison.</p>
+
+    <h2>What Affects Your BMR?</h2>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Factor</th><th>Effect on BMR</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Body weight</strong></td><td>Higher weight = higher BMR</td><td>More tissue requires more energy to maintain</td></tr>
+          <tr class="highlight-row"><td><strong>Muscle mass</strong></td><td>More muscle = higher BMR</td><td>Muscle tissue burns ~3× more calories at rest than fat</td></tr>
+          <tr><td><strong>Age</strong></td><td>BMR decreases with age</td><td>Muscle mass declines ~1-2% per decade after 30</td></tr>
+          <tr class="highlight-row"><td><strong>Sex</strong></td><td>Men typically 5-10% higher</td><td>Men have greater lean mass at same height/weight</td></tr>
+          <tr><td><strong>Height</strong></td><td>Taller = slightly higher BMR</td><td>More surface area to maintain temperature</td></tr>
+          <tr class="highlight-row"><td><strong>Thyroid function</strong></td><td>Can vary BMR by ±30%</td><td>Thyroid hormones directly control metabolic rate</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>How to Use Your BMR to Lose Weight</h2>
+    <p>Your BMR tells you the minimum calories you need to survive. But for weight management, you need your TDEE — your total daily burn including activity. Here's how to use both:</p>
+    <ul>
+      <li><strong>Never eat below your BMR long-term:</strong> Consistently eating below BMR triggers metabolic adaptation, muscle breakdown, and hormonal disruption. Your body interprets severe restriction as starvation.</li>
+      <li><strong>Calculate your TDEE:</strong> Multiply your BMR by your activity factor (1.2 for sedentary, 1.55 for moderately active, 1.9 for very active). This is your maintenance calorie level.</li>
+      <li><strong>Create a moderate deficit:</strong> Eat 300–500 calories below your TDEE for sustainable fat loss of 0.3–0.5 kg/week. Use our <a href="calorie-deficit-calculator.html">Calorie Deficit Calculator</a> to find your exact target.</li>
+      <li><strong>Recalculate regularly:</strong> As you lose weight, your BMR decreases (a lighter body burns fewer calories). Recalculate every 4–5 kg lost to keep your target accurate.</li>
+    </ul>
+
+    <h2>BMR by Age and Sex — Reference Table</h2>
+    <p>The values below use the Mifflin-St Jeor formula at average heights and weights for each group:</p>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Profile</th><th>Approx BMR</th><th>Sedentary TDEE</th><th>Moderate TDEE</th></tr></thead>
+        <tbody>
+          <tr><td>Woman, 25, 60 kg, 165 cm</td><td>~1,385 kcal</td><td>~1,660 kcal</td><td>~2,150 kcal</td></tr>
+          <tr class="highlight-row"><td>Woman, 45, 65 kg, 165 cm</td><td>~1,335 kcal</td><td>~1,600 kcal</td><td>~2,070 kcal</td></tr>
+          <tr><td>Woman, 65, 62 kg, 163 cm</td><td>~1,235 kcal</td><td>~1,480 kcal</td><td>~1,910 kcal</td></tr>
+          <tr class="highlight-row"><td>Man, 25, 80 kg, 178 cm</td><td>~1,880 kcal</td><td>~2,260 kcal</td><td>~2,910 kcal</td></tr>
+          <tr><td>Man, 45, 85 kg, 178 cm</td><td>~1,830 kcal</td><td>~2,200 kcal</td><td>~2,840 kcal</td></tr>
+          <tr class="highlight-row"><td>Man, 65, 78 kg, 175 cm</td><td>~1,650 kcal</td><td>~1,980 kcal</td><td>~2,560 kcal</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is BMR?</button>
+      <div class="faq-a">BMR (Basal Metabolic Rate) is the number of calories your body burns at complete rest to maintain basic life functions — breathing, circulation, cell repair, and temperature regulation. It accounts for 60–75% of total daily calorie burn for most people.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the difference between BMR and TDEE?</button>
+      <div class="faq-a">BMR is calories burned at complete rest. TDEE (Total Daily Energy Expenditure) is your total daily calorie burn including activity. TDEE = BMR × activity multiplier. For weight management, TDEE is the more useful number — it tells you how many calories to eat to maintain, lose, or gain weight.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Which BMR formula is most accurate?</button>
+      <div class="faq-a">The Mifflin-St Jeor equation (1990) is the most accurate for most adults, validated against indirect calorimetry studies. It is more accurate than the older Harris-Benedict equation (1919) for modern populations. This calculator uses Mifflin-St Jeor as the primary result, with Harris-Benedict shown for comparison.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How do I use BMR to lose weight?</button>
+      <div class="faq-a">To lose weight, eat below your TDEE (not your BMR). Eating below your BMR for extended periods causes muscle loss and metabolic adaptation. A healthy deficit is 300–500 calories below TDEE, producing 0.3–0.5 kg of fat loss per week. Use the Calorie Calculator to find your TDEE and set a deficit.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Does BMR change with age?</button>
+      <div class="faq-a">Yes — BMR decreases with age, primarily due to muscle mass loss (sarcopenia). After age 30, BMR declines approximately 1–2% per decade. At age 60, BMR is typically 10–20% lower than at age 20 for the same height and weight. This is why maintaining muscle mass through resistance training becomes increasingly important with age.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I increase my BMR?</button>
+      <div class="faq-a">Yes — the most effective way to raise BMR is to increase muscle mass through resistance training. Muscle tissue burns approximately 3x more calories at rest than fat tissue. Adding 1–2 kg of muscle can raise BMR by 50–100 calories/day. Eating adequate protein (1.6–2.0 g/kg/day) also supports muscle preservation. There is no credible evidence that "metabolism-boosting" foods, supplements, or detoxes meaningfully raise BMR.</div>
+    </div>
+  </div>
+
+  <div class="related">
+    <h3>Related Calculators & Guides</h3>
+    <div class="related-links">
+      <a href="calorie-calculator.html">Calorie Calculator (TDEE)</a>
+      <a href="calorie-deficit-calculator.html">Calorie Deficit Calculator</a>
+      <a href="macro-calculator.html">Macro Calculator</a>
+      <a href="what-is-tdee.html">What Is TDEE?</a>
+      <a href="metabolism-facts.html">Metabolism Facts</a>
+      <a href="how-many-calories-per-day.html">How Many Calories Per Day?</a>
+      <a href="protein-for-weight-loss.html">Protein for Weight Loss</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta-block">
+  <p style="font-size:.8rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Next step</p>
+  <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;line-height:1.2;">Turn your BMR into a weight loss plan</h2>
+  <p style="font-size:.9rem;color:rgba(255,255,255,.6);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto;">Calculate your TDEE, set a calorie deficit, and get your daily macro targets.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+    <a href="calorie-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">🔥 Calorie Calculator →</a>
+    <a href="calorie-deficit-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">📉 Calorie Deficit →</a>
+    <a href="macro-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">🥩 Macro Calculator →</a>
+  </div>
+</div>
+
+<div style="max-width:720px;margin:0 auto;padding:0 20px 40px;">
+  <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;">
+    <strong style="display:block;margin-bottom:8px;">📚 References</strong>
+    <ol style="margin:8px 0 8px 18px;padding:0;">
+      <li>Mifflin MD et al. (1990). <em>A new predictive equation for resting energy expenditure in healthy individuals</em>. Am J Clin Nutr. <a href="https://doi.org/10.1093/ajcn/51.2.241" style="color:var(--accent);">doi:10.1093/ajcn/51.2.241</a></li>
+      <li>Harris JA, Benedict FG. (1918). <em>A Biometric Study of Human Basal Metabolism</em>. PNAS. <a href="https://doi.org/10.1073/pnas.4.12.370" style="color:var(--accent);">doi:10.1073/pnas.4.12.370</a></li>
+      <li>Frankenfield D et al. (2005). <em>Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults</em>. J Am Diet Assoc. <a href="https://doi.org/10.1016/j.jada.2005.05.003" style="color:var(--accent);">doi:10.1016/j.jada.2005.05.003</a></li>
+    </ol>
+    Not a substitute for professional medical or dietary advice. Last updated June 2026.
+  </div>
+</div>
+
+<script>
+let gender = 'male';
+let unit = 'metric';
+
+function setUnit(u) {
+  unit = u;
+  document.querySelectorAll('.unit-toggle button').forEach((b,i) => b.classList.toggle('active', (u==='metric'&&i===0)||(u==='imperial'&&i===1)));
+  document.getElementById('metric-weight-wrap').style.display = u==='metric' ? '' : 'none';
+  document.getElementById('imperial-weight-wrap').style.display = u==='imperial' ? '' : 'none';
+  document.getElementById('metric-height-wrap').style.display = u==='metric' ? '' : 'none';
+  document.getElementById('imperial-height-wrap').style.display = u==='imperial' ? '' : 'none';
+}
+
+function setGender(g, btn) {
+  gender = g;
+  document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function calculate() {
+  const age = parseFloat(document.getElementById('age').value);
+  let weightKg, heightCm;
+
+  if (unit === 'metric') {
+    weightKg = parseFloat(document.getElementById('weight-kg').value);
+    heightCm = parseFloat(document.getElementById('height-cm').value);
+  } else {
+    const lb = parseFloat(document.getElementById('weight-lb').value);
+    const ft = parseFloat(document.getElementById('height-ft').value) || 0;
+    const inches = parseFloat(document.getElementById('height-in').value) || 0;
+    weightKg = lb * 0.453592;
+    heightCm = (ft * 12 + inches) * 2.54;
+  }
+
+  if (!age || !weightKg || !heightCm || age < 15 || age > 100) {
+    alert('Please fill in all fields with valid values.');
+    return;
+  }
+
+  // Mifflin-St Jeor
+  let mifflin = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
+  mifflin += gender === 'male' ? 5 : -161;
+
+  // Harris-Benedict (revised 1984)
+  let harris;
+  if (gender === 'male') {
+    harris = 88.362 + (13.397 * weightKg) + (4.799 * heightCm) - (5.677 * age);
+  } else {
+    harris = 447.593 + (9.247 * weightKg) + (3.098 * heightCm) - (4.330 * age);
+  }
+
+  const bmr = Math.round(mifflin);
+
+  document.getElementById('bmr-num').textContent = bmr.toLocaleString() + ' kcal';
+  document.getElementById('mifflin-result').textContent = Math.round(mifflin).toLocaleString() + ' kcal';
+  document.getElementById('harris-result').textContent = Math.round(harris).toLocaleString() + ' kcal';
+
+  // TDEE rows
+  const activities = [
+    { label: 'Sedentary (desk job, no exercise)', factor: 1.2 },
+    { label: 'Lightly active (exercise 1–3×/week)', factor: 1.375 },
+    { label: 'Moderately active (exercise 3–5×/week)', factor: 1.55 },
+    { label: 'Very active (exercise 6–7×/week)', factor: 1.725 },
+    { label: 'Extra active (physical job + training)', factor: 1.9 },
+  ];
+
+  const tdeeRows = document.getElementById('tdee-rows');
+  tdeeRows.innerHTML = activities.map(a => `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--surface);border-radius:8px;font-size:.85rem;">
+      <span style="color:var(--ink2);">${a.label}</span>
+      <strong style="color:var(--accent);white-space:nowrap;margin-left:12px;">${Math.round(bmr * a.factor).toLocaleString()} kcal</strong>
+    </div>
+  `).join('');
+
+  document.getElementById('result-card').classList.add('visible');
+  document.getElementById('formula-breakdown').style.display = '';
+  document.getElementById('tdee-section').style.display = '';
+  document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+</Base>
