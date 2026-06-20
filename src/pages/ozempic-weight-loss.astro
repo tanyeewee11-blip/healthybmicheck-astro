@@ -1,0 +1,181 @@
+---
+import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Ozempic and Weight Loss: What the Research Shows","description":"An evidence-based guide to Ozempic, Wegovy, and GLP-1 medications for weight loss — how they work, how much weight loss to expect, side effects, and who qualifies.","author":{"@type":"Organization","name":"HealthyBMICheck.com"},"publisher":{"@type":"Organization","name":"HealthyBMICheck.com","url":"https://healthybmicheck.com"},"datePublished":"2026-06-19","dateModified":"2026-06-19","mainEntityOfPage":{"@type":"WebPage","@id":"https://healthybmicheck.com/ozempic-weight-loss.html"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much weight can you lose on Ozempic?","acceptedAnswer":{"@type":"Answer","text":"Clinical trials show average weight loss of 5-10% of body weight on Ozempic (semaglutide 1mg) over 68 weeks. Wegovy (semaglutide 2.4mg, the higher-dose version approved specifically for weight loss) produces average weight loss of 14.9% of body weight. Results vary considerably between individuals."}},{"@type":"Question","name":"What is the difference between Ozempic and Wegovy?","acceptedAnswer":{"@type":"Answer","text":"Both contain semaglutide, but at different doses. Ozempic (0.5-1mg weekly) is approved for type 2 diabetes management. Wegovy (2.4mg weekly) is approved specifically for chronic weight management in adults with BMI 30 or above, or BMI 27 or above with at least one weight-related health condition. Wegovy produces greater weight loss due to the higher dose."}},{"@type":"Question","name":"Who qualifies for weight loss medication?","acceptedAnswer":{"@type":"Answer","text":"GLP-1 medications for weight loss are typically prescribed for adults with BMI 30 or above (obese), or BMI 27 or above with at least one weight-related health condition such as type 2 diabetes, high blood pressure, high cholesterol, or sleep apnoea. Eligibility criteria vary by country and healthcare system."}},{"@type":"Question","name":"What happens when you stop taking Ozempic?","acceptedAnswer":{"@type":"Answer","text":"Research shows that most people regain a significant portion of lost weight after stopping GLP-1 medications. A 2022 trial found participants regained two-thirds of their weight loss within one year of stopping Wegovy. This reflects the chronic nature of obesity as a disease requiring ongoing treatment, similar to how blood pressure medications require continued use."}},{"@type":"Question","name":"What are the side effects of Ozempic?","acceptedAnswer":{"@type":"Answer","text":"Common side effects include nausea (44% of users in trials), vomiting (24%), diarrhoea (30%), and constipation (24%). Most side effects occur early and reduce over time as doses are gradually increased. Rare but serious side effects include pancreatitis and gallbladder disease. People with a personal or family history of medullary thyroid carcinoma should not use GLP-1 medications."}}]}]});
+
+const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://healthybmicheck.com/"},{"@type":"ListItem","position":2,"name":"Ozempic and Weight Loss","item":"https://healthybmicheck.com/ozempic-weight-loss.html"}]});
+---
+
+<Base
+  breadcrumbJson={breadcrumbJson}
+  schemaJson={schemaJson}
+  title="Ozempic and Weight Loss: What the Research Shows | HealthyBMICheck"
+  description="How much weight do you lose on Ozempic? An evidence-based guide to GLP-1 medications — semaglutide, Wegovy, Mounjaro — covering results, side effects, and who qualifies."
+  canonical="https://healthybmicheck.com/ozempic-weight-loss.html"
+>
+
+<div class="article-wrap">
+  <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Ozempic and Weight Loss</div>
+  <span class="article-tag">Weight Loss</span>
+  <h1>Ozempic and Weight Loss: What the Research Shows</h1>
+  <div class="article-meta">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; 10 min read</div>
+
+  <div class="warn-callout" style="margin-bottom:24px;"><p>⚠️ This article is for informational purposes only and does not constitute medical advice. GLP-1 medications are prescription drugs. Consult a qualified healthcare provider about whether these medications are appropriate for your individual situation.</p></div>
+
+  <div class="article-section">
+    <p>Since 2023, GLP-1 receptor agonists — particularly semaglutide (sold as Ozempic and Wegovy) — have become the most talked-about development in weight management medicine. Clinical trials have produced results that were previously unachievable without surgery. Here's what the evidence actually shows.</p>
+
+    <div class="callout"><p>📋 <strong>Quick summary:</strong> Wegovy (semaglutide 2.4mg) produces average weight loss of ~15% of body weight over 68 weeks. Ozempic (1mg, approved for diabetes) produces ~5–10%. Most people regain significant weight after stopping. These are medical treatments, not lifestyle replacements.</p></div>
+
+    <h2>What Is Ozempic? How Do GLP-1 Medications Work?</h2>
+    <p>Ozempic is the brand name for <strong>semaglutide</strong>, a GLP-1 receptor agonist. GLP-1 (glucagon-like peptide-1) is a hormone naturally produced in the gut after eating. It:</p>
+    <ul>
+      <li>Signals the pancreas to release insulin in response to blood glucose</li>
+      <li>Slows gastric emptying (food moves more slowly from the stomach to the small intestine)</li>
+      <li>Acts on appetite centres in the brain to reduce hunger and food cravings</li>
+      <li>Increases feelings of fullness after meals</li>
+    </ul>
+    <p>GLP-1 medications mimic and amplify this natural hormone, producing sustained appetite reduction and slower digestion that leads to lower calorie intake without deliberate effort. This is distinct from willpower-based dieting — the medication physiologically reduces hunger signals.</p>
+
+    <h2>Ozempic vs Wegovy vs Mounjaro: What's the Difference?</h2>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Medication</th><th>Drug</th><th>Approved for</th><th>Typical weight loss</th><th>Dose</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ozempic</strong></td><td>Semaglutide</td><td>Type 2 diabetes</td><td>5–10% body weight</td><td>0.5–1mg weekly</td></tr>
+          <tr class="highlight-row"><td><strong>Wegovy</strong></td><td>Semaglutide</td><td>Chronic weight management</td><td>~15% body weight</td><td>2.4mg weekly</td></tr>
+          <tr><td><strong>Mounjaro / Zepbound</strong></td><td>Tirzepatide</td><td>Diabetes / weight management</td><td>~20–22% body weight</td><td>5–15mg weekly</td></tr>
+          <tr class="highlight-row"><td><strong>Saxenda</strong></td><td>Liraglutide</td><td>Weight management</td><td>~5–8% body weight</td><td>3mg daily</td></tr>
+          <tr><td><strong>Rybelsus</strong></td><td>Semaglutide (oral)</td><td>Type 2 diabetes</td><td>~4–5% body weight</td><td>14mg daily tablet</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Tirzepatide (Mounjaro/Zepbound) is a dual GIP/GLP-1 agonist that produces the largest weight loss seen in any drug trial to date — an average of 20–22% of body weight at the highest dose in the SURMOUNT-1 trial.</p>
+
+    <h2>Clinical Trial Results: How Much Weight Do People Actually Lose?</h2>
+
+    <h3>Wegovy (semaglutide 2.4mg) — STEP 1 Trial</h3>
+    <p>The landmark STEP 1 trial (2021, published in NEJM) enrolled 1,961 adults with BMI ≥30 (or ≥27 with weight-related comorbidities). After 68 weeks:</p>
+    <ul>
+      <li>Average weight loss: <strong>14.9% of body weight</strong> (vs 2.4% in the placebo group)</li>
+      <li>86% of participants achieved ≥5% weight loss</li>
+      <li>69% achieved ≥10% weight loss</li>
+      <li>50% achieved ≥15% weight loss</li>
+    </ul>
+    <p>For a 100 kg person, 14.9% = approximately 15 kg lost over 16 months.</p>
+
+    <h3>Mounjaro (tirzepatide 15mg) — SURMOUNT-1 Trial</h3>
+    <p>The SURMOUNT-1 trial (2022, NEJM) enrolled 2,539 adults without diabetes. At the highest dose (15mg weekly) after 72 weeks:</p>
+    <ul>
+      <li>Average weight loss: <strong>22.5% of body weight</strong></li>
+      <li>96% achieved ≥5% weight loss</li>
+      <li>57% achieved ≥20% weight loss</li>
+    </ul>
+    <p>These results approach what has historically only been achievable through bariatric surgery.</p>
+
+    <h2>What Happens When You Stop Taking GLP-1 Medications?</h2>
+    <p>This is the most important caveat. A 2022 trial published in <em>Diabetes, Obesity and Metabolism</em> followed participants for one year after stopping Wegovy. The findings:</p>
+    <ul>
+      <li>Participants regained an average of <strong>two-thirds of their lost weight</strong> within 12 months of stopping</li>
+      <li>Most metabolic improvements (blood pressure, blood glucose, lipids) also reversed</li>
+    </ul>
+    <p>This reflects current understanding of obesity as a chronic condition requiring ongoing treatment — similar to how antihypertensives require continued use to maintain blood pressure control. The medications suppress, rather than cure, the physiological drivers of excess weight.</p>
+
+    <h2>Side Effects</h2>
+    <p>The most common side effects from GLP-1 clinical trials:</p>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Side effect</th><th>Frequency</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Nausea</td><td>44% (Wegovy trials)</td><td>Most common early on; reduces with time</td></tr>
+          <tr class="highlight-row"><td>Diarrhoea</td><td>30%</td><td>Usually mild and transient</td></tr>
+          <tr><td>Vomiting</td><td>24%</td><td>Typically during dose escalation</td></tr>
+          <tr class="highlight-row"><td>Constipation</td><td>24%</td><td>More common at higher doses</td></tr>
+          <tr><td>Headache</td><td>14%</td><td>Usually early and resolves</td></tr>
+          <tr class="highlight-row"><td>Muscle loss</td><td>~40% of weight loss</td><td>Can be mitigated by adequate protein and resistance training</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Serious but rare side effects</strong> include pancreatitis and gallbladder disease. GLP-1 medications carry a black box warning for medullary thyroid carcinoma in rodent studies (clinical significance in humans is uncertain, but people with personal or family history of this cancer should not use these medications).</p>
+
+    <h2>Who Qualifies for GLP-1 Weight Loss Medications?</h2>
+    <p>Eligibility criteria in most countries (NHS, FDA) for Wegovy/Mounjaro prescribed for weight management:</p>
+    <ul>
+      <li>BMI ≥30 (obese), OR</li>
+      <li>BMI ≥27 with at least one weight-related health condition (type 2 diabetes, hypertension, dyslipidaemia, sleep apnoea, cardiovascular disease)</li>
+      <li>No personal or family history of medullary thyroid carcinoma or MEN2</li>
+      <li>No history of pancreatitis</li>
+      <li>Previous attempts at diet and lifestyle modification</li>
+    </ul>
+    <p>Use our <a href="bmi-calculator.html">BMI Calculator</a> to find your current BMI and see if you meet the threshold. Discuss with your GP or an obesity medicine specialist.</p>
+
+    <h2>GLP-1 Medications and Muscle Loss</h2>
+    <p>An important consideration often overlooked: approximately 40% of weight lost on GLP-1 medications is lean mass (muscle), not just fat. This is similar to what happens with rapid calorie restriction without exercise.</p>
+    <p>To mitigate muscle loss while on GLP-1 medications:</p>
+    <ul>
+      <li>Maintain high protein intake (1.2–1.6 g/kg body weight) — use our <a href="protein-calculator.html">Protein Calculator</a></li>
+      <li>Engage in resistance training at least 2–3 times per week</li>
+      <li>Avoid excessively aggressive calorie restriction on top of the appetite suppression</li>
+    </ul>
+    <div class="callout"><p>💡 GLP-1 medications work best as part of a comprehensive plan that includes adequate nutrition and regular exercise — not as a standalone solution. The medications reduce appetite; the lifestyle factors determine what you do with that opportunity.</p></div>
+  </div>
+
+  <div class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How much weight can you lose on Ozempic?</button>
+      <div class="faq-a">Clinical trials show average weight loss of 5–10% of body weight on Ozempic (semaglutide 1mg) over 68 weeks. Wegovy (semaglutide 2.4mg, the higher-dose version approved specifically for weight loss) produces average weight loss of 14.9% of body weight. Results vary considerably between individuals.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the difference between Ozempic and Wegovy?</button>
+      <div class="faq-a">Both contain semaglutide, but at different doses. Ozempic (0.5–1mg weekly) is approved for type 2 diabetes management. Wegovy (2.4mg weekly) is approved specifically for chronic weight management in adults with BMI 30 or above, or BMI 27 or above with at least one weight-related health condition. Wegovy produces greater weight loss due to the higher dose.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Who qualifies for weight loss medication?</button>
+      <div class="faq-a">GLP-1 medications for weight loss are typically prescribed for adults with BMI 30 or above, or BMI 27 or above with at least one weight-related health condition such as type 2 diabetes, high blood pressure, high cholesterol, or sleep apnoea. Eligibility criteria vary by country and healthcare system. Use our BMI Calculator to check your BMI.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What happens when you stop taking Ozempic?</button>
+      <div class="faq-a">Research shows that most people regain a significant portion of lost weight after stopping GLP-1 medications. A 2022 trial found participants regained two-thirds of their weight loss within one year of stopping Wegovy. This reflects the chronic nature of obesity as a disease requiring ongoing treatment, similar to how blood pressure medications require continued use.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What are the side effects of Ozempic?</button>
+      <div class="faq-a">Common side effects include nausea (44%), vomiting (24%), diarrhoea (30%), and constipation (24%). Most side effects occur early and reduce over time as doses are gradually increased. Rare but serious side effects include pancreatitis and gallbladder disease. People with a personal or family history of medullary thyroid carcinoma should not use GLP-1 medications.</div>
+    </div>
+  </div>
+
+  <div class="related">
+    <h3>Related Articles & Tools</h3>
+    <div class="related-links">
+      <a href="bmi-calculator.html">BMI Calculator</a>
+      <a href="protein-calculator.html">Protein Calculator</a>
+      <a href="calorie-deficit-calculator.html">Calorie Deficit Calculator</a>
+      <a href="how-to-lose-weight-fast-safely.html">How to Lose Weight Safely</a>
+      <a href="weight-loss-plateau.html">Weight Loss Plateau</a>
+      <a href="muscle-vs-fat.html">Muscle vs Fat</a>
+      <a href="healthy-bmi-over-50.html">Healthy BMI Over 50</a>
+    </div>
+  </div>
+
+  <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;margin-top:24px;">
+    <strong style="display:block;margin-bottom:8px;">📚 References</strong>
+    <ol style="margin:8px 0 8px 18px;padding:0;">
+      <li>Wilding JPH et al. (2021). <em>Once-Weekly Semaglutide in Adults with Overweight or Obesity (STEP 1)</em>. N Engl J Med. <a href="https://doi.org/10.1056/NEJMoa2032183" style="color:var(--accent);">doi:10.1056/NEJMoa2032183</a></li>
+      <li>Jastreboff AM et al. (2022). <em>Tirzepatide Once Weekly for the Treatment of Obesity (SURMOUNT-1)</em>. N Engl J Med. <a href="https://doi.org/10.1056/NEJMoa2206038" style="color:var(--accent);">doi:10.1056/NEJMoa2206038</a></li>
+      <li>Wilding JPH et al. (2022). <em>Weight regain and cardiometabolic effects after withdrawal of semaglutide</em>. Diabetes Obes Metab. <a href="https://doi.org/10.1111/dom.14725" style="color:var(--accent);">doi:10.1111/dom.14725</a></li>
+      <li>Rubino DM et al. (2022). <em>Effect of Weekly Subcutaneous Semaglutide vs Daily Liraglutide on Body Weight (STEP 8)</em>. JAMA. <a href="https://doi.org/10.1001/jama.2021.23619" style="color:var(--accent);">doi:10.1001/jama.2021.23619</a></li>
+    </ol>
+    This article is for informational purposes only. Not a substitute for professional medical advice. Last updated June 2026.
+  </div>
+</div>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+</Base>

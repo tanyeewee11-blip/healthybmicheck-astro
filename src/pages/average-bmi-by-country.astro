@@ -1,0 +1,232 @@
+---
+import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Average BMI by Country — Global Data 2024–2026","description":"Average BMI by country for men and women worldwide. Data from WHO, NCD Risk Factor Collaboration, and national health surveys. Includes obesity rates and trends.","author":{"@type":"Organization","name":"HealthyBMICheck.com"},"publisher":{"@type":"Organization","name":"HealthyBMICheck.com","url":"https://healthybmicheck.com"},"datePublished":"2026-06-19","dateModified":"2026-06-19","mainEntityOfPage":{"@type":"WebPage","@id":"https://healthybmicheck.com/average-bmi-by-country.html"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which country has the highest average BMI?","acceptedAnswer":{"@type":"Answer","text":"Pacific Island nations consistently have the highest average BMIs in the world. Nauru, Cook Islands, Palau, Marshall Islands, and Tonga all have average BMIs above 30, reflecting very high rates of obesity. Among larger nations, the United States, Mexico, and several Gulf states also have very high average BMIs."}},{"@type":"Question","name":"Which country has the lowest average BMI?","acceptedAnswer":{"@type":"Answer","text":"East and Southeast Asian nations tend to have the lowest average BMIs. Ethiopia, Eritrea, Bangladesh, Timor-Leste, and several other low-income nations have average BMIs around 20-22. Japan and South Korea have among the lowest average BMIs of high-income nations, at approximately 22-23."}},{"@type":"Question","name":"What is the average BMI in the United States?","acceptedAnswer":{"@type":"Answer","text":"The average BMI in the United States is approximately 29.0 for adults, placing the average American in the overweight category. As of the most recent NHANES data, approximately 42% of US adults are obese (BMI 30 or above) and a further 31% are overweight (BMI 25-29.9)."}},{"@type":"Question","name":"What is the average BMI in the UK?","acceptedAnswer":{"@type":"Answer","text":"The average BMI in the UK is approximately 27.5 for adults. According to NHS Health Survey for England data, around 28% of English adults are obese and a further 38% are overweight, meaning over two-thirds of UK adults have a BMI above the healthy range."}},{"@type":"Question","name":"Why do Asian countries have lower average BMIs?","acceptedAnswer":{"@type":"Answer","text":"East and Southeast Asian populations tend to have lower average BMIs due to a combination of genetic factors, traditional dietary patterns (higher vegetable and fish intake, lower processed food consumption historically), and cultural attitudes toward body weight. However, BMI thresholds for health risk are also lower for Asian populations — the WHO recommends a lower overweight threshold of BMI 23 for Asian adults."}}]}]});
+
+const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://healthybmicheck.com/"},{"@type":"ListItem","position":2,"name":"Average BMI by Country","item":"https://healthybmicheck.com/average-bmi-by-country.html"}]});
+---
+
+<Base
+  breadcrumbJson={breadcrumbJson}
+  schemaJson={schemaJson}
+  title="Average BMI by Country — Global Data (2024–2026) | HealthyBMICheck"
+  description="Average BMI by country for men and women worldwide. Data from WHO and NCD Risk Factor Collaboration. See which countries have the highest and lowest average BMIs."
+  canonical="https://healthybmicheck.com/average-bmi-by-country.html"
+>
+
+<div class="hero">
+  <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Average BMI by Country</div>
+  <h1>Average BMI by Country<br><em>Global Data 2024–2026</em></h1>
+  <p>Country-by-country average BMI data for men and women, with obesity rates and regional trends — sourced from WHO and the NCD Risk Factor Collaboration.</p>
+</div>
+
+<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Data from WHO Global Health Observatory and NCD Risk Factor Collaboration · Last updated: <strong>June 2026</strong></div>
+
+<div class="container">
+
+  <div class="answer-box">
+    <div class="answer-label">Global average BMI (adults)</div>
+    <div class="answer-value">~26.5</div>
+    <div class="answer-sub">Slightly overweight · up from ~22 in 1975 · Source: NCD-RisC</div>
+  </div>
+
+  <!-- Filter -->
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+    <button onclick="filterRegion('all')" id="btn-all" style="padding:7px 16px;border-radius:100px;border:1.5px solid var(--accent);background:var(--accent);color:#fff;font-size:.85rem;font-family:inherit;cursor:pointer;font-weight:500;">All regions</button>
+    <button onclick="filterRegion('americas')" id="btn-americas" style="padding:7px 16px;border-radius:100px;border:1.5px solid var(--border);background:transparent;color:var(--ink2);font-size:.85rem;font-family:inherit;cursor:pointer;font-weight:500;">Americas</button>
+    <button onclick="filterRegion('europe')" id="btn-europe" style="padding:7px 16px;border-radius:100px;border:1.5px solid var(--border);background:transparent;color:var(--ink2);font-size:.85rem;font-family:inherit;cursor:pointer;font-weight:500;">Europe</button>
+    <button onclick="filterRegion('asia')" id="btn-asia" style="padding:7px 16px;border-radius:100px;border:1.5px solid var(--border);background:transparent;color:var(--ink2);font-size:.85rem;font-family:inherit;cursor:pointer;font-weight:500;">Asia</button>
+    <button onclick="filterRegion('africa')" id="btn-africa" style="padding:7px 16px;border-radius:100px;border:1.5px solid var(--border);background:transparent;color:var(--ink2);font-size:.85rem;font-family:inherit;cursor:pointer;font-weight:500;">Africa</button>
+    <button onclick="filterRegion('oceania')" id="btn-oceania" style="padding:7px 16px;border-radius:100px;border:1.5px solid var(--border);background:transparent;color:var(--ink2);font-size:.85rem;font-family:inherit;cursor:pointer;font-weight:500;">Oceania</button>
+  </div>
+
+  <!-- Main data table -->
+  <div class="card" style="padding:0;overflow:hidden;margin-bottom:24px;">
+    <table id="country-table">
+      <thead>
+        <tr>
+          <th>Country</th>
+          <th>Avg BMI (Men)</th>
+          <th>Avg BMI (Women)</th>
+          <th>Obesity rate</th>
+          <th>Region</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <!-- Americas -->
+        <tr data-region="americas"><td>🇺🇸 United States</td><td>29.5</td><td>29.6</td><td>~42%</td><td>Americas</td></tr>
+        <tr class="highlight-row" data-region="americas"><td>🇲🇽 Mexico</td><td>28.1</td><td>29.4</td><td>~36%</td><td>Americas</td></tr>
+        <tr data-region="americas"><td>🇨🇦 Canada</td><td>28.0</td><td>27.5</td><td>~30%</td><td>Americas</td></tr>
+        <tr class="highlight-row" data-region="americas"><td>🇧🇷 Brazil</td><td>26.7</td><td>28.2</td><td>~26%</td><td>Americas</td></tr>
+        <tr data-region="americas"><td>🇦🇷 Argentina</td><td>27.6</td><td>27.9</td><td>~28%</td><td>Americas</td></tr>
+        <tr class="highlight-row" data-region="americas"><td>🇨🇱 Chile</td><td>27.5</td><td>28.5</td><td>~30%</td><td>Americas</td></tr>
+        <tr data-region="americas"><td>🇨🇴 Colombia</td><td>25.6</td><td>27.3</td><td>~22%</td><td>Americas</td></tr>
+        <!-- Europe -->
+        <tr class="highlight-row" data-region="europe"><td>🇬🇧 United Kingdom</td><td>27.8</td><td>27.5</td><td>~28%</td><td>Europe</td></tr>
+        <tr data-region="europe"><td>🇩🇪 Germany</td><td>27.5</td><td>26.3</td><td>~24%</td><td>Europe</td></tr>
+        <tr class="highlight-row" data-region="europe"><td>🇫🇷 France</td><td>26.5</td><td>25.8</td><td>~18%</td><td>Europe</td></tr>
+        <tr data-region="europe"><td>🇮🇹 Italy</td><td>26.7</td><td>25.5</td><td>~19%</td><td>Europe</td></tr>
+        <tr class="highlight-row" data-region="europe"><td>🇪🇸 Spain</td><td>27.3</td><td>26.5</td><td>~24%</td><td>Europe</td></tr>
+        <tr data-region="europe"><td>🇵🇱 Poland</td><td>27.2</td><td>26.5</td><td>~23%</td><td>Europe</td></tr>
+        <tr class="highlight-row" data-region="europe"><td>🇷🇺 Russia</td><td>26.5</td><td>28.2</td><td>~26%</td><td>Europe</td></tr>
+        <tr data-region="europe"><td>🇸🇪 Sweden</td><td>26.5</td><td>25.8</td><td>~21%</td><td>Europe</td></tr>
+        <tr class="highlight-row" data-region="europe"><td>🇳🇴 Norway</td><td>27.0</td><td>26.3</td><td>~23%</td><td>Europe</td></tr>
+        <tr data-region="europe"><td>🇨🇭 Switzerland</td><td>25.8</td><td>24.8</td><td>~19%</td><td>Europe</td></tr>
+        <tr class="highlight-row" data-region="europe"><td>🇳🇱 Netherlands</td><td>26.5</td><td>26.0</td><td>~20%</td><td>Europe</td></tr>
+        <tr data-region="europe"><td>🇬🇷 Greece</td><td>28.0</td><td>27.0</td><td>~26%</td><td>Europe</td></tr>
+        <!-- Asia -->
+        <tr class="highlight-row" data-region="asia"><td>🇯🇵 Japan</td><td>23.6</td><td>22.3</td><td>~4%</td><td>Asia</td></tr>
+        <tr data-region="asia"><td>🇰🇷 South Korea</td><td>24.3</td><td>23.0</td><td>~7%</td><td>Asia</td></tr>
+        <tr class="highlight-row" data-region="asia"><td>🇨🇳 China</td><td>24.8</td><td>24.2</td><td>~18%</td><td>Asia</td></tr>
+        <tr data-region="asia"><td>🇮🇳 India</td><td>22.0</td><td>22.3</td><td>~6%</td><td>Asia</td></tr>
+        <tr class="highlight-row" data-region="asia"><td>🇸🇬 Singapore</td><td>23.8</td><td>23.2</td><td>~11%</td><td>Asia</td></tr>
+        <tr data-region="asia"><td>🇲🇾 Malaysia</td><td>26.0</td><td>27.0</td><td>~30%</td><td>Asia</td></tr>
+        <tr class="highlight-row" data-region="asia"><td>🇹🇭 Thailand</td><td>23.7</td><td>24.5</td><td>~11%</td><td>Asia</td></tr>
+        <tr data-region="asia"><td>🇵🇰 Pakistan</td><td>23.5</td><td>25.3</td><td>~14%</td><td>Asia</td></tr>
+        <tr class="highlight-row" data-region="asia"><td>🇮🇩 Indonesia</td><td>22.4</td><td>24.1</td><td>~8%</td><td>Asia</td></tr>
+        <tr data-region="asia"><td>🇵🇭 Philippines</td><td>22.3</td><td>23.6</td><td>~7%</td><td>Asia</td></tr>
+        <tr class="highlight-row" data-region="asia"><td>🇸🇦 Saudi Arabia</td><td>28.2</td><td>29.8</td><td>~35%</td><td>Asia</td></tr>
+        <tr data-region="asia"><td>🇦🇪 UAE</td><td>27.5</td><td>29.0</td><td>~32%</td><td>Asia</td></tr>
+        <tr class="highlight-row" data-region="asia"><td>🇹🇷 Turkey</td><td>27.8</td><td>29.4</td><td>~32%</td><td>Asia</td></tr>
+        <tr data-region="asia"><td>🇧🇩 Bangladesh</td><td>20.4</td><td>21.5</td><td>~4%</td><td>Asia</td></tr>
+        <tr class="highlight-row" data-region="asia"><td>🇻🇳 Vietnam</td><td>21.4</td><td>21.8</td><td>~3%</td><td>Asia</td></tr>
+        <!-- Africa -->
+        <tr data-region="africa"><td>🇿🇦 South Africa</td><td>25.8</td><td>29.5</td><td>~26%</td><td>Africa</td></tr>
+        <tr class="highlight-row" data-region="africa"><td>🇳🇬 Nigeria</td><td>23.0</td><td>25.8</td><td>~9%</td><td>Africa</td></tr>
+        <tr data-region="africa"><td>🇪🇬 Egypt</td><td>28.5</td><td>31.8</td><td>~41%</td><td>Africa</td></tr>
+        <tr class="highlight-row" data-region="africa"><td>🇰🇪 Kenya</td><td>21.8</td><td>23.8</td><td>~7%</td><td>Africa</td></tr>
+        <tr data-region="africa"><td>🇬🇭 Ghana</td><td>23.0</td><td>25.0</td><td>~10%</td><td>Africa</td></tr>
+        <tr class="highlight-row" data-region="africa"><td>🇪🇹 Ethiopia</td><td>20.3</td><td>20.8</td><td>~4%</td><td>Africa</td></tr>
+        <tr data-region="africa"><td>🇲🇦 Morocco</td><td>25.7</td><td>28.0</td><td>~22%</td><td>Africa</td></tr>
+        <!-- Oceania -->
+        <tr class="highlight-row" data-region="oceania"><td>🇦🇺 Australia</td><td>27.5</td><td>27.2</td><td>~31%</td><td>Oceania</td></tr>
+        <tr data-region="oceania"><td>🇳🇿 New Zealand</td><td>28.0</td><td>27.8</td><td>~33%</td><td>Oceania</td></tr>
+        <tr class="highlight-row" data-region="oceania"><td>🇵🇬 Papua New Guinea</td><td>23.5</td><td>25.0</td><td>~18%</td><td>Oceania</td></tr>
+        <tr data-region="oceania"><td>🇳🇷 Nauru</td><td>34.5</td><td>35.8</td><td>~71%</td><td>Oceania</td></tr>
+        <tr class="highlight-row" data-region="oceania"><td>🇼🇸 Samoa</td><td>31.2</td><td>33.6</td><td>~54%</td><td>Oceania</td></tr>
+        <tr data-region="oceania"><td>🇹🇴 Tonga</td><td>31.5</td><td>34.0</td><td>~55%</td><td>Oceania</td></tr>
+        <tr class="highlight-row" data-region="oceania"><td>🇫🇯 Fiji</td><td>27.5</td><td>30.0</td><td>~30%</td><td>Oceania</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="font-size:.8rem;color:var(--ink3);margin-bottom:24px;padding:12px 16px;background:var(--surface);border-radius:8px;">
+    Data sourced from WHO Global Health Observatory, NCD Risk Factor Collaboration (NCD-RisC), and national health surveys. Values represent population averages for adults 18+, typically from 2016–2024 data cycles. Obesity rate defined as BMI ≥30.
+  </div>
+
+  <div class="article-section">
+    <h2>Global BMI Trends: What the Data Shows</h2>
+    <p>Global average BMI has increased dramatically over the past 50 years. The NCD Risk Factor Collaboration, which pooled data from 200 countries and 128 million people, found:</p>
+    <ul>
+      <li>Global average BMI rose from <strong>~21.7 in 1975 to ~26.5 in 2024</strong> for both men and women</li>
+      <li>The number of obese adults worldwide increased from 100 million in 1975 to over <strong>890 million in 2022</strong></li>
+      <li>Obesity rates have more than <strong>doubled in most countries</strong> since 1980</li>
+      <li>Low and middle-income countries are experiencing the fastest rate of increase</li>
+    </ul>
+
+    <h2>Countries With the Highest Average BMI</h2>
+    <p>Pacific Island nations dominate the upper end of global BMI rankings. Nauru has the world's highest recorded average BMI at approximately 34–36 for adults, with obesity rates above 70%. This reflects a complex combination of factors including rapid dietary transition from traditional foods to imported processed foods, genetic predisposition, and limited physical activity infrastructure.</p>
+    <p>Among larger nations, the United States has one of the highest average BMIs in the developed world at approximately 29.5 for men and 29.6 for women — placing the average American just below the obese threshold. Egypt has one of the highest average BMIs in Africa, with women averaging approximately 31.8.</p>
+
+    <h2>Countries With the Lowest Average BMI</h2>
+    <p>East and Southeast Asian nations, along with several sub-Saharan African countries, have the world's lowest average BMIs. Japan's average BMI of approximately 23.6 for men and 22.3 for women is particularly notable given Japan's status as a high-income nation — it reflects culturally embedded dietary habits (fish, vegetables, smaller portions) and social norms around body weight.</p>
+    <p>Vietnam and Bangladesh also have very low average BMIs (approximately 21), though this partly reflects food insecurity rather than optimal health.</p>
+    <div class="callout"><p>💡 Important note: low BMI is not always healthy. In low-income countries, a low average BMI often reflects undernutrition rather than optimal weight. The healthiest populations have average BMIs in the 22–25 range.</p></div>
+
+    <h2>Why Asian BMI Thresholds Are Different</h2>
+    <p>Standard WHO BMI categories (overweight ≥25, obese ≥30) were developed primarily from European population data. Research has consistently shown that adults of Asian descent develop metabolic health risks — type 2 diabetes, cardiovascular disease, hypertension — at lower BMI values than European populations.</p>
+    <p>The WHO issued a recommendation that for Asian populations, a BMI of ≥23 should be considered overweight and ≥27.5 should be considered obese. Despite having lower average BMIs than Western countries, many Asian nations have significant rates of metabolic disease.</p>
+    <p>Use our <a href="asian-bmi-calculator.html">Asian BMI Calculator</a> if you are of Asian descent to get a more appropriate BMI assessment.</p>
+
+    <h2>Average BMI by Major Country</h2>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Country</th><th>Avg BMI</th><th>Obesity rate</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>🇺🇸 United States</td><td>~29.5</td><td>~42%</td><td>Highest among G7 nations</td></tr>
+          <tr class="highlight-row"><td>🇬🇧 United Kingdom</td><td>~27.6</td><td>~28%</td><td>One of highest in Western Europe</td></tr>
+          <tr><td>🇦🇺 Australia</td><td>~27.3</td><td>~31%</td><td>Rising rapidly since 2000</td></tr>
+          <tr class="highlight-row"><td>🇩🇪 Germany</td><td>~26.9</td><td>~24%</td><td>Central European average</td></tr>
+          <tr><td>🇫🇷 France</td><td>~26.1</td><td>~18%</td><td>Among lowest in Western Europe</td></tr>
+          <tr class="highlight-row"><td>🇲🇾 Malaysia</td><td>~26.5</td><td>~30%</td><td>Rapid increase from ~22 in 1990</td></tr>
+          <tr><td>🇨🇳 China</td><td>~24.5</td><td>~18%</td><td>Large variation urban vs rural</td></tr>
+          <tr class="highlight-row"><td>🇯🇵 Japan</td><td>~22.9</td><td>~4%</td><td>Lowest among high-income nations</td></tr>
+          <tr><td>🇮🇳 India</td><td>~22.1</td><td>~6%</td><td>Large variation by state and income</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Which country has the highest average BMI?</button>
+      <div class="faq-a">Pacific Island nations consistently have the highest average BMIs. Nauru, Cook Islands, Palau, Marshall Islands, and Tonga all have average BMIs above 30. Among larger nations, the United States, Mexico, and several Gulf states also have very high average BMIs.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Which country has the lowest average BMI?</button>
+      <div class="faq-a">East and Southeast Asian nations tend to have the lowest average BMIs among reasonably nourished populations. Japan and Vietnam have average BMIs around 22–23. Ethiopia and Bangladesh have very low average BMIs, but this partly reflects food insecurity.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the average BMI in the United States?</button>
+      <div class="faq-a">The average BMI in the United States is approximately 29.0–29.5 for adults, placing the average American in the overweight category. Approximately 42% of US adults are obese (BMI 30 or above) and a further 31% are overweight.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the average BMI in the UK?</button>
+      <div class="faq-a">The average BMI in the UK is approximately 27.5 for adults. Around 28% of English adults are obese and a further 38% are overweight, meaning over two-thirds of UK adults have a BMI above the healthy range.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Why do Asian countries have lower average BMIs?</button>
+      <div class="faq-a">East and Southeast Asian populations tend to have lower average BMIs due to a combination of genetic factors, traditional dietary patterns, and cultural attitudes. However, the health risk thresholds are also lower — the WHO recommends a lower overweight threshold of BMI 23 for Asian adults, as they develop metabolic disease at lower BMI values.</div>
+    </div>
+  </div>
+
+  <div class="related">
+    <h3>Related Pages</h3>
+    <div class="related-links">
+      <a href="bmi-calculator.html">BMI Calculator</a>
+      <a href="asian-bmi-calculator.html">Asian BMI Calculator</a>
+      <a href="healthy-bmi-by-age.html">Healthy BMI by Age</a>
+      <a href="what-is-bmi.html">What Is BMI?</a>
+      <a href="bmi-calculator-not-accurate.html">BMI Limitations</a>
+      <a href="healthy-weight-by-height.html">Healthy Weight by Height</a>
+    </div>
+  </div>
+
+</div>
+
+<div style="max-width:720px;margin:0 auto;padding:0 20px 40px;">
+  <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;">
+    <strong style="display:block;margin-bottom:8px;">📚 Data Sources</strong>
+    <ol style="margin:8px 0 8px 18px;padding:0;">
+      <li>NCD Risk Factor Collaboration. (2017). <em>Worldwide trends in body-mass index, underweight, overweight, and obesity from 1975 to 2016</em>. The Lancet. <a href="https://doi.org/10.1016/S0140-6736(17)32129-3" style="color:var(--accent);">doi:10.1016/S0140-6736(17)32129-3</a></li>
+      <li>WHO Global Health Observatory. <em>Mean BMI (kg/m²) (age-standardized estimate)</em>. <a href="https://www.who.int/data/gho/data/indicators" style="color:var(--accent);">who.int</a></li>
+      <li>Flegal KM et al. (2016). <em>Trends in Obesity Among Adults in the United States</em>. JAMA. <a href="https://doi.org/10.1001/jama.2016.6458" style="color:var(--accent);">doi:10.1001/jama.2016.6458</a></li>
+    </ol>
+    Values are population averages from health surveys and modelled estimates. Individual values vary widely within any country. Last updated June 2026.
+  </div>
+</div>
+
+<script>
+function filterRegion(region) {
+  const rows = document.querySelectorAll('#table-body tr');
+  rows.forEach(row => {
+    row.style.display = (region === 'all' || row.dataset.region === region) ? '' : 'none';
+  });
+  document.querySelectorAll('[id^="btn-"]').forEach(btn => {
+    const isActive = btn.id === 'btn-' + region;
+    btn.style.background = isActive ? 'var(--accent)' : 'transparent';
+    btn.style.color = isActive ? '#fff' : 'var(--ink2)';
+    btn.style.borderColor = isActive ? 'var(--accent)' : 'var(--border)';
+  });
+}
+
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+</Base>

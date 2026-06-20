@@ -153,3 +153,8 @@
 # Catch-all: any other non-extension URL gets .html appended
 # (Cloudflare Pages processes rules top-down, specific rules above take precedence)
 /bmr-calculator /bmr-calculator.html 301
+/calories-burned-calculator /calories-burned-calculator.html 301
+/protein-calculator /protein-calculator.html 301
+/ozempic-weight-loss /ozempic-weight-loss.html 301
+/average-bmi-by-country /average-bmi-by-country.html 301
+/mediterranean-diet-for-weight-loss /mediterranean-diet-for-weight-loss.html 301

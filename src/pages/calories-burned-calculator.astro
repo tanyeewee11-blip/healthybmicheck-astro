@@ -1,0 +1,324 @@
+---
+import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Calories Burned Calculator","description":"Calculate calories burned during exercise and daily activities using MET values. Walking, running, cycling, swimming and 40+ activities supported.","author":{"@type":"Organization","name":"HealthyBMICheck.com"},"publisher":{"@type":"Organization","name":"HealthyBMICheck.com","url":"https://healthybmicheck.com"},"datePublished":"2026-06-19","dateModified":"2026-06-19","mainEntityOfPage":{"@type":"WebPage","@id":"https://healthybmicheck.com/calories-burned-calculator.html"}},{"@type":"WebApplication","name":"Calories Burned Calculator","url":"https://healthybmicheck.com/calories-burned-calculator.html","description":"Free calories burned calculator for 40+ activities. Uses MET values and body weight for accurate estimates.","applicationCategory":"HealthApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"HealthyBMICheck.com","url":"https://healthybmicheck.com"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are calories burned calculated?","acceptedAnswer":{"@type":"Answer","text":"Calories burned are calculated using MET values (Metabolic Equivalent of Task). The formula is: Calories = MET x weight in kg x duration in hours. MET values represent how many times more energy an activity requires compared to rest. Walking has a MET of about 3.5, running 8-11, cycling 6-9."}},{"@type":"Question","name":"How many calories do you burn walking 10,000 steps?","acceptedAnswer":{"@type":"Answer","text":"Walking 10,000 steps burns approximately 300-500 calories for most adults, depending on body weight and walking pace. A 70 kg person walking at moderate pace (5 km/h) for approximately 80-90 minutes burns around 350 calories. Heavier people burn more calories per step due to higher energy cost of moving greater mass."}},{"@type":"Question","name":"Does exercise burn enough calories to lose weight?","acceptedAnswer":{"@type":"Answer","text":"Exercise contributes to weight loss but is rarely sufficient alone. A 30-minute run burns 250-400 calories, which can be undone by a single snack. The most effective approach combines moderate calorie restriction (diet) with exercise. Exercise also improves metabolic health, preserves muscle during weight loss, and improves long-term weight maintenance."}},{"@type":"Question","name":"Which exercise burns the most calories?","acceptedAnswer":{"@type":"Answer","text":"High-intensity activities burn the most calories per minute: running (8-12 kcal/min), rowing (8-10 kcal/min), cycling fast (8-10 kcal/min), jumping rope (10-12 kcal/min), and swimming (6-8 kcal/min). However, sustainability matters more than per-minute burn. A 60-minute walk burns more total calories than a 10-minute sprint most people cannot sustain."}},{"@type":"Question","name":"Are calories burned estimates accurate?","acceptedAnswer":{"@type":"Answer","text":"MET-based calculations are estimates with typical accuracy of plus or minus 10-20%. Individual variation in fitness level, efficiency, and terrain significantly affects actual burn. Fitness trackers and smartwatches add heart rate data but are still estimates. Use these numbers as a guide, not a precise measurement."}}]}]});
+
+const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://healthybmicheck.com/"},{"@type":"ListItem","position":2,"name":"Calories Burned Calculator","item":"https://healthybmicheck.com/calories-burned-calculator.html"}]});
+---
+
+<Base
+  breadcrumbJson={breadcrumbJson}
+  schemaJson={schemaJson}
+  title="Calories Burned Calculator — 40+ Activities | HealthyBMICheck"
+  description="Calculate calories burned walking, running, cycling, swimming and 40+ other activities. Enter your weight and duration for an instant estimate based on MET values."
+  canonical="https://healthybmicheck.com/calories-burned-calculator.html"
+>
+
+<div class="hero">
+  <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Calories Burned Calculator</div>
+  <h1>Calories Burned<br><em>Calculator</em></h1>
+  <p>Find out how many calories you burn during exercise and everyday activities — based on your weight, duration, and activity type.</p>
+</div>
+
+<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2026</strong></div>
+
+<div class="container">
+
+  <div class="card">
+    <!-- Weight input -->
+    <div class="unit-toggle">
+      <button class="active" onclick="setUnit('metric')">Metric (kg)</button>
+      <button onclick="setUnit('imperial')">Imperial (lb)</button>
+    </div>
+
+    <div class="input-group" id="kg-wrap">
+      <label>Your Weight</label>
+      <div class="input-wrap">
+        <input type="number" id="weight-kg" placeholder="70" min="20" max="300">
+        <span class="unit-badge">kg</span>
+      </div>
+    </div>
+    <div class="input-group" id="lb-wrap" style="display:none">
+      <label>Your Weight</label>
+      <div class="input-wrap">
+        <input type="number" id="weight-lb" placeholder="154" min="44" max="660">
+        <span class="unit-badge">lb</span>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Duration</label>
+      <div class="input-row">
+        <div class="input-wrap">
+          <input type="number" id="duration-min" placeholder="30" min="1" max="600">
+          <span class="unit-badge">min</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Activity</label>
+      <select id="activity-select" style="width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);color:var(--ink1);font-size:.95rem;font-family:inherit;appearance:none;">
+        <optgroup label="🚶 Walking">
+          <option value="2.8">Walking — slow (3 km/h)</option>
+          <option value="3.5" selected>Walking — moderate (5 km/h)</option>
+          <option value="4.5">Walking — brisk (6.5 km/h)</option>
+          <option value="5.0">Walking uphill</option>
+          <option value="3.5">Walking — treadmill</option>
+        </optgroup>
+        <optgroup label="🏃 Running">
+          <option value="8.0">Running — slow (8 km/h)</option>
+          <option value="9.8">Running — moderate (10 km/h)</option>
+          <option value="11.0">Running — fast (12 km/h)</option>
+          <option value="13.0">Running — very fast (14 km/h+)</option>
+          <option value="9.0">Treadmill running</option>
+          <option value="9.5">Trail running</option>
+        </optgroup>
+        <optgroup label="🚴 Cycling">
+          <option value="4.0">Cycling — light (< 16 km/h)</option>
+          <option value="6.8">Cycling — moderate (19–22 km/h)</option>
+          <option value="10.0">Cycling — vigorous (25–30 km/h)</option>
+          <option value="8.5">Stationary bike — moderate</option>
+          <option value="11.0">Stationary bike — vigorous</option>
+          <option value="8.0">Spinning class</option>
+        </optgroup>
+        <optgroup label="🏊 Swimming">
+          <option value="5.8">Swimming — light</option>
+          <option value="7.0">Swimming — freestyle moderate</option>
+          <option value="9.8">Swimming — freestyle fast</option>
+          <option value="8.0">Swimming — breaststroke</option>
+        </optgroup>
+        <optgroup label="💪 Gym & Fitness">
+          <option value="3.5">Weight training — light</option>
+          <option value="5.0">Weight training — vigorous</option>
+          <option value="7.0">Circuit training</option>
+          <option value="8.0">HIIT</option>
+          <option value="6.0">Aerobics class</option>
+          <option value="4.0">Yoga — hatha</option>
+          <option value="6.0">Yoga — power / vinyasa</option>
+          <option value="10.0">Jump rope</option>
+          <option value="7.0">Rowing machine — moderate</option>
+          <option value="10.0">Rowing machine — vigorous</option>
+          <option value="5.0">Elliptical — moderate</option>
+          <option value="8.0">Stair climbing machine</option>
+          <option value="8.0">Kettlebell training</option>
+          <option value="5.5">Pilates</option>
+        </optgroup>
+        <optgroup label="🏅 Sports">
+          <option value="7.0">Basketball</option>
+          <option value="7.0">Football / soccer</option>
+          <option value="6.0">Tennis — singles</option>
+          <option value="4.5">Tennis — doubles</option>
+          <option value="5.5">Badminton</option>
+          <option value="8.0">Squash</option>
+          <option value="4.0">Golf (walking)</option>
+          <option value="7.0">Volleyball — competitive</option>
+          <option value="5.0">Dancing — moderate</option>
+          <option value="8.0">Dancing — vigorous</option>
+          <option value="4.0">Hiking — moderate</option>
+          <option value="6.0">Hiking — steep terrain</option>
+        </optgroup>
+        <optgroup label="🏠 Daily Activities">
+          <option value="3.5">Housework — general</option>
+          <option value="4.5">Gardening</option>
+          <option value="3.0">Cooking</option>
+          <option value="2.5">Standing</option>
+          <option value="1.3">Sitting / desk work</option>
+          <option value="2.0">Light office work</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">Calculate Calories Burned →</button>
+  </div>
+
+  <!-- Result -->
+  <div class="result-card" id="result-card">
+    <div style="text-align:center;padding:20px;">
+      <div id="result-num" style="font-size:2.8rem;font-weight:500;color:var(--accent);font-family:'DM Serif Display',serif;">—</div>
+      <div style="font-size:.9rem;color:var(--ink3);margin-top:6px;" id="result-label">calories burned</div>
+    </div>
+
+    <div id="comparison-section" style="display:none;margin-top:8px;">
+      <div style="font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;">Calorie context</div>
+      <div id="comparison-rows" style="display:flex;flex-direction:column;gap:6px;"></div>
+    </div>
+
+    <div style="margin-top:16px;padding:14px 16px;background:var(--surface);border-radius:10px;font-size:.85rem;line-height:1.7;">
+      <strong>To lose weight with exercise:</strong> Use your calorie burn alongside a calorie deficit —
+      <a href="calorie-deficit-calculator.html" style="color:var(--accent);font-weight:500;">Calorie Deficit Calculator</a> ·
+      <a href="calorie-calculator.html" style="color:var(--accent);font-weight:500;">Daily Calorie Needs</a>
+    </div>
+  </div>
+
+  <!-- Activity MET table -->
+  <div class="article-section">
+    <h2>Calories Burned by Activity — Quick Reference</h2>
+    <p>The table below shows approximate calories burned per 30 minutes for a 70 kg adult. Your result scales proportionally with your weight.</p>
+    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+      <table>
+        <thead><tr><th>Activity</th><th>30 min (70 kg)</th><th>30 min (85 kg)</th><th>Intensity</th></tr></thead>
+        <tbody>
+          <tr><td>Walking (5 km/h)</td><td>~122 kcal</td><td>~148 kcal</td><td>Low</td></tr>
+          <tr class="highlight-row"><td>Running (10 km/h)</td><td>~343 kcal</td><td>~417 kcal</td><td>High</td></tr>
+          <tr><td>Cycling (moderate)</td><td>~238 kcal</td><td>~289 kcal</td><td>Moderate</td></tr>
+          <tr class="highlight-row"><td>Swimming (freestyle)</td><td>~245 kcal</td><td>~298 kcal</td><td>Moderate–High</td></tr>
+          <tr><td>HIIT</td><td>~280 kcal</td><td>~340 kcal</td><td>Very High</td></tr>
+          <tr class="highlight-row"><td>Weight training</td><td>~175 kcal</td><td>~213 kcal</td><td>Moderate</td></tr>
+          <tr><td>Yoga (hatha)</td><td>~140 kcal</td><td>~170 kcal</td><td>Low</td></tr>
+          <tr class="highlight-row"><td>Jump rope</td><td>~350 kcal</td><td>~425 kcal</td><td>Very High</td></tr>
+          <tr><td>Hiking (moderate)</td><td>~140 kcal</td><td>~170 kcal</td><td>Moderate</td></tr>
+          <tr class="highlight-row"><td>Housework (general)</td><td>~122 kcal</td><td>~148 kcal</td><td>Low</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>How Many Calories Does Walking Burn?</h2>
+    <p>Walking is consistently underrated as a calorie-burning activity because the per-minute burn is low — but the cumulative effect of daily walking is substantial. A 70 kg person walking at 5 km/h burns approximately <strong>245 calories per hour</strong> (4 calories per minute). Key factors:</p>
+    <ul>
+      <li><strong>Body weight:</strong> A 90 kg person burns about 30% more calories per step than a 70 kg person</li>
+      <li><strong>Speed:</strong> Walking at 6.5 km/h (brisk) burns ~35% more than 5 km/h (moderate)</li>
+      <li><strong>Incline:</strong> Walking uphill at 5% grade increases calorie burn by approximately 50%</li>
+      <li><strong>10,000 steps:</strong> Burns approximately 300–500 calories for most adults, depending on weight and pace</li>
+    </ul>
+    <div class="callout"><p>💡 For most people, daily walking is the most sustainable form of calorie-burning exercise. A 30-minute daily walk adds up to ~850 kcal burned per week — equivalent to losing about 0.1 kg of fat per week from exercise alone.</p></div>
+
+    <h2>How Many Calories Does Running Burn?</h2>
+    <p>Running burns approximately <strong>8–12 calories per minute</strong> for most adults — making it one of the highest-calorie activities available. A 70 kg person running at 10 km/h for 30 minutes burns approximately 340 calories. Key points:</p>
+    <ul>
+      <li>Running pace matters less than you think — slower running burns almost as many calories per km as faster running (you just cover the distance more slowly)</li>
+      <li>A 5 km run burns approximately 300–400 calories regardless of pace for most adults</li>
+      <li>Running outdoors burns slightly more calories than treadmill running (terrain variation, wind resistance)</li>
+      <li>Post-exercise calorie burn (EPOC) from running adds approximately 5–10% to total burn</li>
+    </ul>
+
+    <h2>How This Calculator Works</h2>
+    <p>This calculator uses <strong>MET values</strong> (Metabolic Equivalent of Task) — a standardised measure of how much energy an activity requires relative to rest. The formula is:</p>
+    <div class="card" style="padding:16px 20px;margin:16px 0;font-family:monospace;font-size:.9rem;text-align:center;">
+      Calories = MET × body weight (kg) × duration (hours)
+    </div>
+    <p>MET values are sourced from the <em>Compendium of Physical Activities</em> (Ainsworth et al., 2011), the standard reference used by exercise physiologists. These are population-average estimates; individual variation of ±10–20% is normal depending on fitness level, efficiency, and terrain.</p>
+  </div>
+
+  <div class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How are calories burned calculated?</button>
+      <div class="faq-a">Calories burned are calculated using MET values (Metabolic Equivalent of Task). The formula is: Calories = MET × weight in kg × duration in hours. MET values represent how many times more energy an activity requires compared to rest. Walking has a MET of about 3.5, running 8–11, cycling 6–9.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How many calories do you burn walking 10,000 steps?</button>
+      <div class="faq-a">Walking 10,000 steps burns approximately 300–500 calories for most adults, depending on body weight and walking pace. A 70 kg person walking at moderate pace (5 km/h) for approximately 80–90 minutes burns around 350 calories. Heavier people burn more calories per step due to the higher energy cost of moving greater mass.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Does exercise burn enough calories to lose weight?</button>
+      <div class="faq-a">Exercise contributes to weight loss but is rarely sufficient alone. A 30-minute run burns 250–400 calories, which can be undone by a single snack. The most effective approach combines moderate calorie restriction with exercise. Exercise also improves metabolic health, preserves muscle during weight loss, and improves long-term weight maintenance.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Which exercise burns the most calories?</button>
+      <div class="faq-a">High-intensity activities burn the most calories per minute: running (8–12 kcal/min), rowing (8–10 kcal/min), cycling fast (8–10 kcal/min), jumping rope (10–12 kcal/min), and swimming (6–8 kcal/min). However, sustainability matters more than per-minute burn. A 60-minute walk burns more total calories than a 10-minute sprint most people cannot sustain.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Are calories burned estimates accurate?</button>
+      <div class="faq-a">MET-based calculations are estimates with typical accuracy of ±10–20%. Individual variation in fitness level, efficiency, and terrain significantly affects actual burn. Fitness trackers and smartwatches add heart rate data but are still estimates. Use these numbers as a guide, not a precise measurement.</div>
+    </div>
+  </div>
+
+  <div class="related">
+    <h3>Related Calculators & Guides</h3>
+    <div class="related-links">
+      <a href="calorie-calculator.html">Calorie Calculator (TDEE)</a>
+      <a href="calorie-deficit-calculator.html">Calorie Deficit Calculator</a>
+      <a href="bmr-calculator.html">BMR Calculator</a>
+      <a href="walking-for-weight-loss.html">Walking for Weight Loss</a>
+      <a href="cardio-vs-weights.html">Cardio vs Weights</a>
+      <a href="how-many-steps-per-day.html">How Many Steps Per Day?</a>
+      <a href="how-to-lose-weight-fast-safely.html">How to Lose Weight Fast Safely</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta-block">
+  <p style="font-size:.8rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Next step</p>
+  <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;line-height:1.2;">Turn your burn into a weight loss plan</h2>
+  <p style="font-size:.9rem;color:rgba(255,255,255,.6);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto;">Calculate how many calories you need each day and set a realistic deficit.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+    <a href="calorie-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">🔥 Daily Calorie Needs →</a>
+    <a href="calorie-deficit-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">📉 Calorie Deficit →</a>
+    <a href="bmr-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">⚡ BMR Calculator →</a>
+  </div>
+</div>
+
+<div style="max-width:720px;margin:0 auto;padding:0 20px 40px;">
+  <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;">
+    <strong style="display:block;margin-bottom:8px;">📚 References</strong>
+    <ol style="margin:8px 0 8px 18px;padding:0;">
+      <li>Ainsworth BE et al. (2011). <em>2011 Compendium of Physical Activities</em>. Med Sci Sports Exerc. <a href="https://doi.org/10.1249/MSS.0b013e31821ece12" style="color:var(--accent);">doi:10.1249/MSS.0b013e31821ece12</a></li>
+      <li>Mifflin MD et al. (1990). <em>A new predictive equation for resting energy expenditure</em>. Am J Clin Nutr. <a href="https://doi.org/10.1093/ajcn/51.2.241" style="color:var(--accent);">doi:10.1093/ajcn/51.2.241</a></li>
+    </ol>
+    Estimates only. Not a substitute for professional advice. Last updated June 2026.
+  </div>
+</div>
+
+<script>
+let unit = 'metric';
+
+function setUnit(u) {
+  unit = u;
+  document.querySelectorAll('.unit-toggle button').forEach((b,i) => b.classList.toggle('active', (u==='metric'&&i===0)||(u==='imperial'&&i===1)));
+  document.getElementById('kg-wrap').style.display = u==='metric' ? '' : 'none';
+  document.getElementById('lb-wrap').style.display = u==='imperial' ? '' : 'none';
+}
+
+function calculate() {
+  let weightKg;
+  if (unit === 'metric') {
+    weightKg = parseFloat(document.getElementById('weight-kg').value);
+  } else {
+    const lb = parseFloat(document.getElementById('weight-lb').value);
+    weightKg = lb * 0.453592;
+  }
+  const duration = parseFloat(document.getElementById('duration-min').value);
+  const met = parseFloat(document.getElementById('activity-select').value);
+  const activityName = document.getElementById('activity-select').options[document.getElementById('activity-select').selectedIndex].text;
+
+  if (!weightKg || !duration || weightKg < 20 || duration < 1) {
+    alert('Please fill in all fields with valid values.');
+    return;
+  }
+
+  const calories = Math.round(met * weightKg * (duration / 60));
+
+  document.getElementById('result-num').textContent = calories.toLocaleString();
+  document.getElementById('result-label').textContent = `calories burned — ${activityName} for ${duration} min`;
+
+  // Comparison context
+  const comparisons = [
+    { label: 'Equivalent to', value: `${(calories / 4).toFixed(0)} g of carbohydrates` },
+    { label: 'Same as burning', value: `${(calories / 7700 * 1000).toFixed(1)} g of body fat` },
+    { label: 'To cancel out', value: `a ${calories < 200 ? 'small snack (~150 kcal)' : calories < 400 ? 'medium meal (~350 kcal)' : 'large meal (~500+ kcal)'}` },
+    { label: 'Weekly burn', value: `${(calories * 7).toLocaleString()} kcal if done daily` },
+  ];
+
+  document.getElementById('comparison-rows').innerHTML = comparisons.map(c => `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--surface);border-radius:8px;font-size:.85rem;">
+      <span style="color:var(--ink3);">${c.label}</span>
+      <strong style="color:var(--ink1);margin-left:12px;text-align:right;">${c.value}</strong>
+    </div>
+  `).join('');
+
+  document.getElementById('comparison-section').style.display = '';
+  document.getElementById('result-card').classList.add('visible');
+  document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+</Base>
