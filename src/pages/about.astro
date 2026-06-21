@@ -1,277 +1,348 @@
 ---
 import Base from '../layouts/Base.astro';
-const schemaJson = JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"AboutPage","name":"About HealthyBMICheck.com","url":"https://healthybmicheck.com/about.html","publisher":{"@type":"Organization","name":"HealthyBMICheck.com","url":"https://healthybmicheck.com"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is HealthyBMICheck.com free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes \u2014 all calculators, charts, and guides on HealthyBMICheck.com are completely free to use with no registration required. The site is supported by non-intrusive advertising. We do not sell user data or require any personal information to use any feature of the site."}},{"@type":"Question","name":"How accurate are the calculators?","acceptedAnswer":{"@type":"Answer","text":"Our calculators use validated, peer-reviewed formulas that are standard in clinical and research settings. The BMI calculator uses the standard WHO formula (weight in kg \u00f7 height in metres\u00b2). The calorie calculator uses the Mifflin-St Jeor equation, which is the most accurate predictor of resting metabolic rate in research studies. The ideal weight calculator uses the mean of four published formulas (Devine, Robinson, Miller, Hamwi). All formulas produce estimates with inherent variation \u2014 we recommend using results as starting points and adjusting based on real-world feedback over 2\u20133 weeks."}},{"@type":"Question","name":"Can I use this site's information for medical decisions?","acceptedAnswer":{"@type":"Answer","text":"No \u2014 the information on HealthyBMICheck.com is for general education and informational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. BMI, body fat estimates, and calorie calculators provide population-level reference data, not personalised clinical assessments. Always consult a qualified healthcare provider \u2014 such as your GP or a registered dietitian \u2014 before making changes to your diet, exercise routine, or medical treatment based on any health information."}},{"@type":"Question","name":"How often is the content updated?","acceptedAnswer":{"@type":"Answer","text":"We aim to review and update all content at least annually, and immediately when major clinical guidelines change. Each article shows its last-updated date. If you believe any information is outdated or inaccurate, please use our contact form \u2014 we genuinely appreciate accuracy reports and aim to respond within 48 hours."}},{"@type":"Question","name":"What is the Asian BMI standard and why does it differ?","acceptedAnswer":{"@type":"Answer","text":"The standard WHO BMI thresholds (overweight \u226525, obese \u226530) were derived largely from studies on European populations. Research shows that adults of Asian descent develop metabolic health risks \u2014 type 2 diabetes, hypertension, cardiovascular disease \u2014 at lower BMI values than European populations. The WHO issued a recommendation in 2004 that Asian populations should use a lower \"overweight\" threshold of BMI \u226523 and a lower \"healthy\" ceiling of BMI \u226422.9. Our Asian BMI Calculator applies these thresholds."}}]}]});
+const schemaJson = JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"AboutPage","name":"About HealthyBMICheck.com","url":"https://healthybmicheck.com/about.html","publisher":{"@type":"Organization","name":"HealthyBMICheck.com","url":"https://healthybmicheck.com"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is HealthyBMICheck.com free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes - all calculators, charts, and guides are completely free with no registration required. Supported by non-intrusive advertising. We do not sell user data."}},{"@type":"Question","name":"How accurate are the calculators?","acceptedAnswer":{"@type":"Answer","text":"We use validated, peer-reviewed formulas standard in clinical settings. Results are population estimates - use as a starting point, not a clinical diagnosis."}},{"@type":"Question","name":"Can I use this for medical decisions?","acceptedAnswer":{"@type":"Answer","text":"No - content is for informational purposes only. Not a substitute for professional medical advice. Always consult a qualified healthcare provider."}},{"@type":"Question","name":"Do you collect my health data?","acceptedAnswer":{"@type":"Answer","text":"No. All calculations run in your browser. Nothing you enter is sent to our servers, stored, or shared."}},{"@type":"Question","name":"What is the Asian BMI standard?","acceptedAnswer":{"@type":"Answer","text":"The WHO recommends lower BMI thresholds for Asian adults - overweight at BMI 23 rather than 25 - because Asian populations develop metabolic risks at lower BMI values."}}]}]});
+const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://healthybmicheck.com/"},{"@type":"ListItem","position":2,"name":"About","item":"https://healthybmicheck.com/about.html"}]});
 ---
-
 <Base
   schemaJson={schemaJson}
+  breadcrumbJson={breadcrumbJson}
   title="About HealthyBMICheck.com — Free Health Calculators"
-  description="HealthyBMICheck.com offers 11 free, evidence-based health calculators — BMI, calories, macros, body fat and more. No sign-up, no data collection, instant."
+  description="HealthyBMICheck.com offers 13 free, evidence-based health calculators — BMI, calories, macros, body fat and more. No sign-up, no data collection, instant results."
   canonical="https://healthybmicheck.com/about.html"
 >
-<!-- Hero -->
-<div class="about-hero">
-  <h1>Free health tools,<br><em>built on real science</em></h1>
-  <p>HealthyBMICheck.com gives everyone access to accurate, evidence-based health calculators — no sign-up, no data collection, no cost.</p>
-  <div class="trust-chips">
-    <span class="trust-chip">🔬 Peer-reviewed formulas</span>
-    <span class="trust-chip">🔒 No data collected</span>
-    <span class="trust-chip">⚡ Instant results</span>
-    <span class="trust-chip">🌏 Free forever</span>
-  </div>
-</div>
 
-<div class="container">
+<style>
+  .ab { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+  .ab-hero { text-align: center; padding: 36px 0 28px; }
+  .ab-hero h1 { font-size: 2rem; font-weight: 500; color: var(--ink1); line-height: 1.25; margin-bottom: 12px; }
+  .ab-hero h1 em { font-style: italic; color: var(--accent); font-family: 'DM Serif Display', serif; }
+  .ab-hero p { font-size: .95rem; color: var(--ink3); line-height: 1.7; max-width: 480px; margin: 0 auto 18px; }
+  .ab-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .ab-chip { font-size: .78rem; padding: 5px 12px; border-radius: 100px; border: 1px solid var(--border); color: var(--ink3); display: inline-flex; align-items: center; gap: 6px; }
+
+  .ab-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 32px; }
+  .ab-stat { background: var(--surface); border-radius: 12px; padding: 18px 12px; text-align: center; border: 1px solid var(--border); }
+  .ab-stat-num { font-size: 1.75rem; font-weight: 500; color: var(--accent); font-family: 'DM Serif Display', serif; }
+  .ab-stat-lbl { font-size: .75rem; color: var(--ink3); margin-top: 4px; line-height: 1.3; }
+
+  .ab-div { height: 1px; background: var(--border); margin: 0 0 28px; }
+  .ab-lbl { font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); margin-bottom: 14px; }
+
+  .ab-hl { background: var(--accent-light); border-radius: 14px; padding: 18px 20px; margin-bottom: 10px; }
+  .ab-hl p { font-size: .9rem; color: var(--ink2); line-height: 1.75; margin: 0; }
+  .ab-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; margin-bottom: 10px; }
+  .ab-card p { font-size: .9rem; color: var(--ink2); line-height: 1.75; margin: 0 0 10px; }
+  .ab-card p:last-child { margin-bottom: 0; }
+
+  .ab-pgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px; }
+  .ab-pc { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+  .ab-pc-icon { width: 34px; height: 34px; border-radius: 9px; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+  .ab-pc-icon svg { width: 17px; height: 17px; color: var(--accent); }
+  .ab-pc-title { font-size: .875rem; font-weight: 500; color: var(--ink1); margin-bottom: 5px; }
+  .ab-pc-desc { font-size: .8rem; color: var(--ink3); line-height: 1.6; }
+
+  .ab-team-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; margin-bottom: 10px; }
+  .ab-member { display: flex; gap: 12px; align-items: flex-start; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .ab-member:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: none; }
+  .ab-av { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 500; flex-shrink: 0; }
+  .av-teal { background: #9FE1CB; color: #085041; }
+  .av-blue { background: #B5D4F4; color: #0C447C; }
+  .ab-mname { font-size: .9rem; font-weight: 500; color: var(--ink1); }
+  .ab-mrole { font-size: .8rem; color: var(--ink3); margin-top: 3px; line-height: 1.5; }
+
+  .ab-steps { display: flex; flex-direction: column; gap: 10px; }
+  .ab-step { display: flex; gap: 12px; align-items: flex-start; }
+  .ab-snum { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #fff; font-size: .72rem; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .ab-stxt { font-size: .875rem; color: var(--ink2); line-height: 1.65; }
+
+  .ab-srcs { display: flex; flex-direction: column; gap: 8px; }
+  .ab-src { display: flex; gap: 9px; align-items: center; font-size: .875rem; color: var(--ink2); }
+  .ab-src svg { width: 14px; height: 14px; color: var(--accent); flex-shrink: 0; }
+
+  .ab-calcs { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 28px; }
+  .ab-calc { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface); text-decoration: none; color: inherit; transition: background .15s; }
+  .ab-calc:last-child { border-bottom: none; }
+  .ab-calc:hover { background: var(--bg); }
+  .ab-cicon { width: 32px; height: 32px; border-radius: 9px; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .ab-cicon svg { width: 16px; height: 16px; color: var(--accent); }
+  .ab-cname { font-size: .875rem; font-weight: 500; color: var(--ink1); flex: 1; }
+  .ab-cformula { font-size: .75rem; color: var(--ink3); }
+  .ab-carrow svg { width: 15px; height: 15px; color: var(--ink3); }
+
+  .ab-tbl { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  .ab-tbl th { text-align: left; font-weight: 500; font-size: .75rem; color: var(--ink3); padding: 10px 14px; border-bottom: 2px solid var(--border); }
+  .ab-tbl td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--ink2); vertical-align: top; }
+  .ab-tbl tr:last-child td { border-bottom: none; }
+  .ab-tbl td:first-child a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .ab-tbl tr:nth-child(odd) { background: var(--surface); }
+
+  .ab-faqs { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 28px; }
+  .ab-fq { border-bottom: 1px solid var(--border); }
+  .ab-fq:last-child { border-bottom: none; }
+  .ab-fqbtn { width: 100%; padding: 15px 18px; background: var(--surface); border: none; text-align: left; font-size: .875rem; font-weight: 500; color: var(--ink1); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: inherit; transition: background .15s; }
+  .ab-fqbtn:hover { background: var(--bg); }
+  .ab-fqbtn svg { width: 16px; height: 16px; color: var(--ink3); flex-shrink: 0; transition: transform .2s; }
+  .ab-fq.open .ab-fqbtn svg { transform: rotate(180deg); }
+  .ab-fqbody { display: none; padding: 0 18px 16px; font-size: .875rem; color: var(--ink2); line-height: 1.75; background: var(--surface); }
+  .ab-fq.open .ab-fqbody { display: block; }
+
+  .ab-disclaimer { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; display: flex; gap: 10px; align-items: flex-start; margin-bottom: 28px; }
+  .ab-disclaimer svg { width: 17px; height: 17px; color: #BA7517; flex-shrink: 0; margin-top: 2px; }
+  .ab-disclaimer p { font-size: .82rem; color: var(--ink3); line-height: 1.65; margin: 0; }
+
+  @media (max-width: 480px) {
+    .ab-hero h1 { font-size: 1.6rem; }
+    .ab-pgrid { grid-template-columns: 1fr; }
+    .ab-tbl td:last-child { display: none; }
+  }
+</style>
+
+<div class="ab">
+
+  <!-- Breadcrumb -->
+  <div style="font-size:.78rem;color:var(--ink3);padding:16px 0 0;">
+    <a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> &rsaquo; About
+  </div>
+
+  <!-- Hero -->
+  <div class="ab-hero">
+    <h1>Free health tools,<br><em>built on real science</em></h1>
+    <p>Evidence-based calculators &mdash; no sign-up, no data collection, no cost. Built by people who care about getting the numbers right.</p>
+    <div class="ab-chips">
+      <span class="ab-chip">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+        Peer-reviewed formulas
+      </span>
+      <span class="ab-chip">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        No data collected
+      </span>
+      <span class="ab-chip">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Instant results
+      </span>
+      <span class="ab-chip">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Free forever
+      </span>
+    </div>
+  </div>
 
   <!-- Stats -->
-  <div class="stats-row">
-    <div class="stat-box">
-      <div class="num">11</div>
-      <div class="lbl">Free calculators</div>
+  <div class="ab-stats">
+    <div class="ab-stat"><div class="ab-stat-num">13</div><div class="ab-stat-lbl">Free calculators</div></div>
+    <div class="ab-stat"><div class="ab-stat-num">0</div><div class="ab-stat-lbl">Data collected</div></div>
+    <div class="ab-stat"><div class="ab-stat-num">100%</div><div class="ab-stat-lbl">Browser-side</div></div>
+  </div>
+
+  <div class="ab-div"></div>
+
+  <!-- Why we built this -->
+  <div style="margin-bottom:28px;">
+    <div class="ab-lbl">Why we built this</div>
+    <div class="ab-hl">
+      <p>Too many online health calculators use outdated formulas, bury results behind sign-up walls, or surround sensitive health information with intrusive ads. We wanted to do better.</p>
     </div>
-    <div class="stat-box">
-      <div class="num">0</div>
-      <div class="lbl">Data collected</div>
-    </div>
-    <div class="stat-box">
-      <div class="num">100%</div>
-      <div class="lbl">Browser-side calculations</div>
+    <div class="ab-card">
+      <p>HealthyBMICheck.com is an independent project. We&rsquo;re not affiliated with any hospital, pharmaceutical company, supplement brand, or health insurer. We have no financial interest in the results our calculators produce &mdash; only in making them as accurate and useful as possible.</p>
+      <p>Every tool on this site uses a formula from peer-reviewed research or established clinical guidelines. We cite our sources, explain the limitations, and tell you what to do with your result.</p>
     </div>
   </div>
 
-  <!-- Mission -->
-  <div class="mission-block">
-    <h2 style="font-family:'DM Serif Display',serif;font-size:1.4rem;margin-bottom:14px;">Why we built this</h2>
-    <p>Too many online health calculators use outdated formulas, bury results behind sign-up walls, or show intrusive advertising around sensitive health information. We wanted to do better.</p>
-    <p>HealthyBMICheck.com is an independent project. We're not affiliated with any hospital, pharmaceutical company, supplement brand, or health insurer. We have no financial interest in the results our calculators produce — only in making them as accurate and useful as possible.</p>
-    <p>Every tool on this site uses a formula from peer-reviewed research or established clinical guidelines. We cite our sources, explain the limitations, and tell you what to do with your result.</p>
+  <div class="ab-div"></div>
+
+  <!-- Principles -->
+  <div style="margin-bottom:28px;">
+    <div class="ab-lbl">Our principles</div>
+    <div class="ab-pgrid">
+      <div class="ab-pc">
+        <div class="ab-pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
+        <div class="ab-pc-title">Evidence-based</div>
+        <div class="ab-pc-desc">Every formula from peer-reviewed research. Sources cited on every page.</div>
+      </div>
+      <div class="ab-pc">
+        <div class="ab-pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="ab-pc-title">No data collected</div>
+        <div class="ab-pc-desc">All calculations run in your browser. Nothing leaves your device.</div>
+      </div>
+      <div class="ab-pc">
+        <div class="ab-pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div class="ab-pc-title">No friction</div>
+        <div class="ab-pc-desc">No sign-up, no paywall. Enter your numbers and get results instantly.</div>
+      </div>
+      <div class="ab-pc">
+        <div class="ab-pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <div class="ab-pc-title">Explained</div>
+        <div class="ab-pc-desc">We tell you what your result means and what to do next.</div>
+      </div>
+    </div>
   </div>
 
-  <!-- Editorial Standards & E-E-A-T -->
-  <div class="mission-block" style="border-left: 4px solid var(--accent); margin-bottom: 20px;">
-    <h2 style="font-family:'DM Serif Display',serif;font-size:1.4rem;margin-bottom:14px;">Editorial Standards & Content Review</h2>
-    <p>All content on HealthyBMICheck.com is researched, written, and reviewed by individuals with backgrounds in health sciences, nutrition, and clinical dietetics. Every article and calculator explanation is checked for accuracy against current clinical guidelines before publication and updated regularly.</p>
+  <div class="ab-div"></div>
 
-    <!-- Team / authorship -->
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin:16px 0;">
-      <div style="font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;">Content Team</div>
-      <div style="display:flex;flex-direction:column;gap:12px;">
-        <div style="display:flex;align-items:flex-start;gap:12px;">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">👩‍💼</div>
-          <div>
-            <div style="font-weight:500;font-size:.9rem;">Sarah Mitchell, BSc Nutrition &amp; Dietetics</div>
-            <div style="font-size:.8rem;color:var(--ink3);line-height:1.5;">Lead health writer · 8 years experience in clinical nutrition communication · formerly NHS dietetics support team</div>
-          </div>
+  <!-- Content team -->
+  <div style="margin-bottom:28px;">
+    <div class="ab-lbl">Editorial standards &amp; content team</div>
+    <div class="ab-card" style="margin-bottom:10px;">
+      <p>All content is researched, written, and reviewed by individuals with backgrounds in health sciences, nutrition, and clinical dietetics. Every article and calculator is checked for accuracy against current clinical guidelines before publication and updated regularly.</p>
+    </div>
+    <div class="ab-team-card">
+      <div class="ab-member">
+        <div class="ab-av av-teal">SM</div>
+        <div>
+          <div class="ab-mname">Sarah Mitchell, BSc Nutrition &amp; Dietetics</div>
+          <div class="ab-mrole">Lead health writer &nbsp;&middot;&nbsp; 8 years clinical nutrition communication &nbsp;&middot;&nbsp; formerly NHS dietetics support team</div>
         </div>
-        <div style="display:flex;align-items:flex-start;gap:12px;">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">👨‍🔬</div>
-          <div>
-            <div style="font-weight:500;font-size:.9rem;">James Okafor, MSc Public Health</div>
-            <div style="font-size:.8rem;color:var(--ink3);line-height:1.5;">Research &amp; fact-checking · specialisation in epidemiology and health metrics · references all claims against primary sources</div>
-          </div>
+      </div>
+      <div class="ab-member">
+        <div class="ab-av av-blue">JO</div>
+        <div>
+          <div class="ab-mname">James Okafor, MSc Public Health</div>
+          <div class="ab-mrole">Research &amp; fact-checking &nbsp;&middot;&nbsp; epidemiology and health metrics</div>
         </div>
       </div>
     </div>
-
-    <p><strong>Our content review process:</strong></p>
-    <ol style="margin: 8px 0 12px 20px; color: var(--ink2); font-size: .95rem; line-height: 1.9;">
-      <li>All factual claims are sourced to peer-reviewed literature or official clinical guidelines before publication</li>
-      <li>Calculator formulas are verified against the original published research (Mifflin-St Jeor, Devine, Katch-McArdle, etc.)</li>
-      <li>Content is reviewed for accuracy and updated when guidelines change — each page shows its last-updated date</li>
-      <li>Medical disclaimer is present on every page; we do not provide personalised medical advice</li>
-    </ol>
-
-    <p><strong>Our sources include:</strong></p>
-    <ul style="margin: 8px 0 12px 20px; color: var(--ink2); font-size: .95rem; line-height: 1.8;">
-      <li>World Health Organization (WHO) clinical guidelines and fact sheets</li>
-      <li>Centers for Disease Control and Prevention (CDC) recommendations</li>
-      <li>National Institutes of Health (NIH) published research</li>
-      <li>Peer-reviewed journals including <em>The Lancet</em>, <em>JAMA</em>, <em>American Journal of Clinical Nutrition</em>, and <em>Obesity Reviews</em></li>
-    </ul>
-    <p>If you believe any information on this site is inaccurate or outdated, please <a href="contact.html" style="color:var(--accent);">contact us</a> — we take accuracy seriously and aim to respond within 48 hours.</p>
-    <p style="margin-bottom:0;"><strong>Medical disclaimer:</strong> Content on this site is for informational and educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider before making health decisions.</p>
-  </div>
-
-    <!-- Principles -->
-  <h2 class="section-title">Our principles</h2>
-  <p class="section-sub">Four commitments we hold ourselves to on every page.</p>
-  <div class="principle-grid">
-    <div class="principle-card">
-      <div class="picon">🔬</div>
-      <h3>Evidence-based formulas</h3>
-      <p>Every calculator uses a formula from peer-reviewed research or established clinical guidelines. We cite our sources on every page.</p>
+    <div class="ab-card" style="margin-top:10px;">
+      <div class="ab-lbl" style="margin-bottom:12px;">Review process</div>
+      <div class="ab-steps">
+        <div class="ab-step"><div class="ab-snum">1</div><div class="ab-stxt">All claims sourced to peer-reviewed literature or clinical guidelines before publication</div></div>
+        <div class="ab-step"><div class="ab-snum">2</div><div class="ab-stxt">Calculator formulas verified against original research (Mifflin-St Jeor, Devine, Katch-McArdle, etc.)</div></div>
+        <div class="ab-step"><div class="ab-snum">3</div><div class="ab-stxt">Content reviewed and updated when guidelines change &mdash; each page shows its last-updated date</div></div>
+        <div class="ab-step"><div class="ab-snum">4</div><div class="ab-stxt">Medical disclaimer on every page; we do not provide personalised medical advice</div></div>
+      </div>
     </div>
-    <div class="principle-card">
-      <div class="picon">🔒</div>
-      <h3>No data collection</h3>
-      <p>All calculations run entirely in your browser. Nothing you enter is sent to our servers, stored, or shared with anyone.</p>
-    </div>
-    <div class="principle-card">
-      <div class="picon">⚡</div>
-      <h3>Instant, no friction</h3>
-      <p>No sign-up, no email confirmation, no paywall. Enter your numbers and get your result in under a second.</p>
-    </div>
-    <div class="principle-card">
-      <div class="picon">📖</div>
-      <h3>Explained, not just calculated</h3>
-      <p>We tell you what your result means, what its limitations are, and what to do next — not just a bare number.</p>
+    <div class="ab-card" style="margin-top:10px;">
+      <div class="ab-lbl" style="margin-bottom:12px;">Our sources include</div>
+      <div class="ab-srcs">
+        <div class="ab-src"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>World Health Organization (WHO)</div>
+        <div class="ab-src"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Centers for Disease Control and Prevention (CDC)</div>
+        <div class="ab-src"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>National Institutes of Health (NIH)</div>
+        <div class="ab-src"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>The Lancet, JAMA, American Journal of Clinical Nutrition</div>
+      </div>
     </div>
   </div>
 
-  <!-- Tools -->
-  <h2 class="section-title">Our calculators</h2>
-  <p class="section-sub">11 free tools covering the most important health metrics.</p>
-  <div class="tools-grid">
-    <a href="bmi-calculator.html" class="tool-item">
-      <div class="t-icon">⚖️</div>
-      <div class="t-name">BMI Calculator</div>
-      <div class="t-desc">Body Mass Index</div>
-    </a>
-    <a href="asian-bmi-calculator.html" class="tool-item">
-      <div class="t-icon">🌏</div>
-      <div class="t-name">Asian BMI</div>
-      <div class="t-desc">Asian-specific thresholds</div>
-    </a>
-    <a href="bmi-calculator-kids.html" class="tool-item">
-      <div class="t-icon">👶</div>
-      <div class="t-name">Kids BMI</div>
-      <div class="t-desc">CDC percentile method</div>
-    </a>
-    <a href="calorie-calculator.html" class="tool-item">
-      <div class="t-icon">🔥</div>
-      <div class="t-name">Calorie Calculator</div>
-      <div class="t-desc">Daily energy needs</div>
-    </a>
-    <a href="calorie-deficit-calculator.html" class="tool-item">
-      <div class="t-icon">📉</div>
-      <div class="t-name">Calorie Deficit</div>
-      <div class="t-desc">Weight loss timeline</div>
-    </a>
-    <a href="macro-calculator.html" class="tool-item">
-      <div class="t-icon">🥗</div>
-      <div class="t-name">Macro Calculator</div>
-      <div class="t-desc">Protein, carbs & fat</div>
-    </a>
-    <a href="ideal-weight.html" class="tool-item">
-      <div class="t-icon">🎯</div>
-      <div class="t-name">Ideal Weight</div>
-      <div class="t-desc">4 formula average</div>
-    </a>
-    <a href="body-fat.html" class="tool-item">
-      <div class="t-icon">📊</div>
-      <div class="t-name">Body Fat</div>
-      <div class="t-desc">Navy circumference method</div>
-    </a>
-    <a href="water-intake.html" class="tool-item">
-      <div class="t-icon">💧</div>
-      <div class="t-name">Water Intake</div>
-      <div class="t-desc">Daily hydration needs</div>
-    </a>
-    <a href="waist-to-height-ratio.html" class="tool-item">
-      <div class="t-icon">📏</div>
-      <div class="t-name">Waist-to-Height</div>
-      <div class="t-desc">Metabolic risk indicator</div>
-    </a>
-    <a href="health-profile.html" class="tool-item">
-      <div class="t-icon">👤</div>
-      <div class="t-name">Health Profile</div>
-      <div class="t-desc">All metrics in one place</div>
-    </a>
+  <div class="ab-div"></div>
+
+  <!-- Calculators list -->
+  <div style="margin-bottom:28px;">
+    <div class="ab-lbl">Our 13 free calculators</div>
+    <div class="ab-calcs">
+      <a class="ab-calc" href="bmi-calculator.html"><div class="ab-cicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-4M8 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-4M12 18v4"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div><span class="ab-cname">BMI Calculator</span><span class="ab-cformula">WHO formula</span><span class="ab-carrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+      <a class="ab-calc" href="calorie-calculator.html"><div class="ab-cicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div><span class="ab-cname">Calorie Calculator</span><span class="ab-cformula">Mifflin-St Jeor</span><span class="ab-carrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+      <a class="ab-calc" href="bmr-calculator.html"><div class="ab-cicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><span class="ab-cname">BMR Calculator</span><span class="ab-cformula">Mifflin + Harris-Benedict</span><span class="ab-carrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+      <a class="ab-calc" href="calories-burned-calculator.html"><div class="ab-cicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span class="ab-cname">Calories Burned</span><span class="ab-cformula">MET method</span><span class="ab-carrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+      <a class="ab-calc" href="protein-calculator.html"><div class="ab-cicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><span class="ab-cname">Protein Calculator</span><span class="ab-cformula">g/kg by goal</span><span class="ab-carrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+      <a class="ab-calc" href="calorie-deficit-calculator.html"><div class="ab-cicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><span class="ab-cname">Calorie Deficit</span><span class="ab-cformula">Weight loss timeline</span><span class="ab-carrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+      <a class="ab-calc" href="macro-calculator.html"><div class="ab-cicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></div><span class="ab-cname">Macro Calculator</span><span class="ab-cformula">Protein &middot; carbs &middot; fat</span><span class="ab-carrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+      <a class="ab-calc" href="ideal-weight.html"><div class="ab-cicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></div><span class="ab-cname">Ideal Weight</span><span class="ab-cformula">4 formula average</span><span class="ab-carrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+      <a class="ab-calc" href="body-fat.html"><div class="ab-cicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><span class="ab-cname">Body Fat Calculator</span><span class="ab-cformula">US Navy method</span><span class="ab-carrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+      <a class="ab-calc" href="water-intake.html"><div class="ab-cicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div><span class="ab-cname">Water Intake</span><span class="ab-cformula">Daily hydration needs</span><span class="ab-carrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+      <a class="ab-calc" href="waist-to-height-ratio.html"><div class="ab-cicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="12" x2="22" y2="12"/><path d="M5 12V7a7 7 0 0 1 14 0v5"/><path d="M5 12v5a7 7 0 0 0 14 0v-5"/></svg></div><span class="ab-cname">Waist-to-Height Ratio</span><span class="ab-cformula">Metabolic risk</span><span class="ab-carrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+      <a class="ab-calc" href="asian-bmi-calculator.html"><div class="ab-cicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><span class="ab-cname">Asian BMI Calculator</span><span class="ab-cformula">WHO Asian thresholds</span><span class="ab-carrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+      <a class="ab-calc" href="bmi-calculator-kids.html"><div class="ab-cicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="ab-cname">Kids BMI Calculator</span><span class="ab-cformula">CDC percentile method</span><span class="ab-carrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+    </div>
   </div>
+
+  <div class="ab-div"></div>
 
   <!-- Science table -->
-  <h2 class="section-title">The science behind our tools</h2>
-  <p class="section-sub">Each calculator uses a specific formula validated in peer-reviewed research.</p>
-  <table class="formula-table">
-    <thead>
-      <tr><th>Calculator</th><th>Formula / Method</th><th>Source</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><a href="bmi-calculator.html">BMI Calculator</a></td><td>Weight ÷ Height² (kg/m²)</td><td>World Health Organization (WHO)</td></tr>
-      <tr><td><a href="asian-bmi-calculator.html">Asian BMI Calculator</a></td><td>WHO Asian cutoffs (≥23 overweight, ≥27.5 obese)</td><td>WHO Expert Consultation, The Lancet, 2004</td></tr>
-      <tr><td><a href="bmi-calculator-kids.html">Kids BMI Calculator</a></td><td>CDC BMI-for-age LMS percentile method</td><td>CDC Growth Charts, Kuczmarski et al., 2000</td></tr>
-      <tr><td><a href="calorie-calculator.html">Calorie Calculator</a></td><td>Mifflin–St Jeor equation × activity factor</td><td>Mifflin et al., Am J Clin Nutr, 1990</td></tr>
-      <tr><td><a href="calorie-deficit-calculator.html">Calorie Deficit</a></td><td>TDEE − deficit; 7,700 kcal/kg fat rule</td><td>Hall et al., The Lancet, 2011</td></tr>
-      <tr><td><a href="macro-calculator.html">Macro Calculator</a></td><td>Mifflin–St Jeor + protein 1.6–2.2 g/kg</td><td>Morton et al., Br J Sports Med, 2018</td></tr>
-      <tr><td><a href="ideal-weight.html">Ideal Weight</a></td><td>Devine, Robinson, Miller, Hamwi formulas</td><td>Multiple peer-reviewed sources, 1964–1983</td></tr>
-      <tr><td><a href="body-fat.html">Body Fat Calculator</a></td><td>U.S. Navy circumference method</td><td>Hodgdon & Beckett, NHRC, 1984</td></tr>
-      <tr><td><a href="water-intake.html">Water Intake</a></td><td>Weight-based hydration guidelines</td><td>National Academies of Sciences, 2005</td></tr>
-      <tr><td><a href="waist-to-height-ratio.html">Waist-to-Height Ratio</a></td><td>WHtR &lt; 0.5 healthy threshold</td><td>Ashwell et al., Obesity Reviews, 2012</td></tr>
-    </tbody>
-  </table>
-
-  <!-- Who We Are -->
-  <h2 class="section-title">Who We Are</h2>
-  <div class="mission-block">
-    <p><strong>HealthyBMICheck.com was founded in 2024</strong> by a small team of developers and health researchers based in Southeast Asia. We built this site because we were frustrated by health calculator websites that buried results behind sign-up walls, used outdated formulas, or surrounded sensitive health information with aggressive advertising.</p>
-    <p>Our team has backgrounds in health sciences, software development, and nutrition research. We are not a hospital, clinic, or medical institution — we are independent builders who care about making evidence-based health information accessible to everyone, for free.</p>
-    <p>All content and calculator formulas are reviewed against current clinical guidelines from the WHO, CDC, and NIH before publication, and updated when guidelines change. If you spot an error or outdated information, <a href="contact.html" style="color:var(--accent);">please let us know</a> — we take accuracy seriously.</p>
-    <p style="margin-bottom:0;"><strong>Based in:</strong> Malaysia &nbsp;·&nbsp; <strong>Founded:</strong> 2024 &nbsp;·&nbsp; <strong>Contact:</strong> <a href="mailto:hello@healthybmicheck.com" style="color:var(--accent);">hello@healthybmicheck.com</a></p>
-  </div>
-
-  <!-- FAQ -->
-  <h2 class="section-title">Frequently Asked Questions</h2>
-  <div class="mission-block">
-    <h3 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Are your calculators accurate?</h3>
-    <p>Our calculators use validated scientific formulas — the Mifflin-St Jeor equation for calories, WHO BMI classifications, the U.S. Navy method for body fat, and peer-reviewed ideal weight formulas. Results are population-level estimates, not clinical diagnoses. Individual variation (genetics, medications, body composition) means results should be used as a guide, not an absolute.</p>
-
-    <h3 style="font-size:.95rem;font-weight:600;margin-bottom:6px;margin-top:20px;">Do you collect my health data?</h3>
-    <p>No. All calculations run entirely in your browser — no data is sent to our servers. We do not collect, store, or share any height, weight, age, or other health information you enter. See our <a href="privacy.html" style="color:var(--accent);">Privacy Policy</a> for full details.</p>
-
-    <h3 style="font-size:.95rem;font-weight:600;margin-bottom:6px;margin-top:20px;">Why is this site free?</h3>
-    <p>HealthyBMICheck.com is supported by advertising through Google AdSense. This allows us to keep all tools free with no sign-up required. We have no premium plans, no data sales, and no sponsored content — ads are the only revenue source.</p>
-
-    <h3 style="font-size:.95rem;font-weight:600;margin-bottom:6px;margin-top:20px;">Can I suggest a new calculator or topic?</h3>
-    <p style="margin-bottom:0;">Absolutely. <a href="contact.html" style="color:var(--accent);">Send us a message</a> with your suggestion — we review all feedback and have added features based on reader requests.</p>
-  </div>
-
-    <!-- Disclaimer -->
-  <div class="warn-callout">
-    ⚕️ <strong>Not medical advice.</strong> Our calculators are population-level estimates for general informational purposes only. Individual results may vary due to genetics, medications, body composition, and medical history. If you have health concerns or are planning significant lifestyle changes, consult a qualified healthcare professional.
-  </div>
-
-  <!-- Contact CTA -->
-  <div class="cta-block">
-    <h2>Start using our free tools</h2>
-    <p>All calculators are free, instant, and require no sign-up.</p>
-    <div class="cta-buttons">
-      <a href="bmi-calculator.html" class="cta-btn">⚖️ BMI Calculator</a>
-      <a href="calorie-calculator.html" class="cta-btn cta-btn-ghost">🔥 Calorie Calculator</a>
-      <a href="health-profile.html" class="cta-btn cta-btn-ghost">👤 Full Health Profile</a>
+  <div style="margin-bottom:28px;">
+    <div class="ab-lbl">The science behind our tools</div>
+    <div style="overflow-x:auto;border:1px solid var(--border);border-radius:14px;">
+      <table class="ab-tbl">
+        <thead><tr><th>Calculator</th><th>Formula / method</th><th>Published source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="bmi-calculator.html">BMI Calculator</a></td><td>Weight &divide; Height&sup2; (kg/m&sup2;)</td><td>World Health Organization</td></tr>
+          <tr><td><a href="asian-bmi-calculator.html">Asian BMI</a></td><td>WHO Asian cutoffs (&ge;23 overweight)</td><td>WHO Expert Consultation, The Lancet, 2004</td></tr>
+          <tr><td><a href="bmi-calculator-kids.html">Kids BMI</a></td><td>CDC BMI-for-age percentile</td><td>CDC Growth Charts, Kuczmarski et al., 2000</td></tr>
+          <tr><td><a href="calorie-calculator.html">Calorie Calculator</a></td><td>Mifflin-St Jeor &times; activity factor</td><td>Mifflin et al., Am J Clin Nutr, 1990</td></tr>
+          <tr><td><a href="bmr-calculator.html">BMR Calculator</a></td><td>Mifflin-St Jeor + Harris-Benedict</td><td>Mifflin et al., 1990; Harris &amp; Benedict, 1918</td></tr>
+          <tr><td><a href="calories-burned-calculator.html">Calories Burned</a></td><td>MET &times; weight &times; duration</td><td>Ainsworth et al., Med Sci Sports, 2011</td></tr>
+          <tr><td><a href="protein-calculator.html">Protein Calculator</a></td><td>Evidence-based g/kg by goal</td><td>Morton et al., Br J Sports Med, 2018</td></tr>
+          <tr><td><a href="calorie-deficit-calculator.html">Calorie Deficit</a></td><td>TDEE &minus; deficit; 7,700 kcal/kg fat rule</td><td>Hall et al., The Lancet, 2011</td></tr>
+          <tr><td><a href="macro-calculator.html">Macro Calculator</a></td><td>Mifflin-St Jeor + protein targets</td><td>Morton et al., Br J Sports Med, 2018</td></tr>
+          <tr><td><a href="ideal-weight.html">Ideal Weight</a></td><td>Devine, Robinson, Miller, Hamwi formulas</td><td>Multiple sources, 1964&ndash;1983</td></tr>
+          <tr><td><a href="body-fat.html">Body Fat</a></td><td>U.S. Navy circumference method</td><td>Hodgdon &amp; Beckett, NHRC, 1984</td></tr>
+          <tr><td><a href="water-intake.html">Water Intake</a></td><td>Weight-based hydration guidelines</td><td>National Academies of Sciences, 2005</td></tr>
+          <tr><td><a href="waist-to-height-ratio.html">Waist-to-Height</a></td><td>WHtR &lt; 0.5 healthy threshold</td><td>Ashwell et al., Obesity Reviews, 2012</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <div style="text-align:center;margin-top:16px;">
-    <p style="font-size:.875rem;color:var(--ink3);">Questions or feedback? <a href="contact.html" style="color:var(--accent);">Contact us →</a></p>
+  <div class="ab-div"></div>
+
+  <!-- FAQ -->
+  <div style="margin-bottom:28px;">
+    <div class="ab-lbl">Frequently asked questions</div>
+    <div class="ab-faqs">
+      <div class="ab-fq">
+        <button class="ab-fqbtn" onclick="toggleFaq(this)">Is this site free to use?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="ab-fqbody">Yes &mdash; all calculators, charts, and guides are completely free with no registration required. The site is supported by non-intrusive advertising. We do not sell user data or require any personal information.</div>
+      </div>
+      <div class="ab-fq">
+        <button class="ab-fqbtn" onclick="toggleFaq(this)">Do you collect my health data?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="ab-fqbody">No. All calculations run entirely in your browser. Nothing you enter is sent to our servers, stored, or shared. See our <a href="privacy.html" style="color:var(--accent);">Privacy Policy</a> for full details.</div>
+      </div>
+      <div class="ab-fq">
+        <button class="ab-fqbtn" onclick="toggleFaq(this)">How accurate are the calculators?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="ab-fqbody">We use validated peer-reviewed formulas standard in clinical settings. Results are population-level estimates &mdash; individual variation of &plusmn;10&ndash;15% is normal. Use results as a starting point and adjust based on real-world feedback over 2&ndash;3 weeks.</div>
+      </div>
+      <div class="ab-fq">
+        <button class="ab-fqbtn" onclick="toggleFaq(this)">Can I use this for medical decisions?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="ab-fqbody">No &mdash; content on this site is for informational and educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider before making health decisions.</div>
+      </div>
+      <div class="ab-fq">
+        <button class="ab-fqbtn" onclick="toggleFaq(this)">What is the Asian BMI standard?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="ab-fqbody">The standard WHO BMI thresholds were derived from European population data. Adults of Asian descent develop metabolic health risks at lower BMI values. The WHO recommends a lower overweight threshold of BMI &ge;23 for Asian adults. Our <a href="asian-bmi-calculator.html" style="color:var(--accent);">Asian BMI Calculator</a> applies these thresholds.</div>
+      </div>
+      <div class="ab-fq">
+        <button class="ab-fqbtn" onclick="toggleFaq(this)">Can I suggest a new calculator?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="ab-fqbody">Absolutely. <a href="contact.html" style="color:var(--accent);">Send us a message</a> with your suggestion &mdash; we review all feedback and have added features based on reader requests. We aim to respond within 48 hours.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ab-div"></div>
+
+  <!-- Disclaimer -->
+  <div class="ab-disclaimer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <p><strong>Not medical advice.</strong> Our calculators are population-level estimates for informational purposes only. Individual results may vary. If you have health concerns, consult a qualified healthcare professional.</p>
+  </div>
+
+  <!-- Founded -->
+  <div class="ab-card" style="margin-bottom:28px;">
+    <p><strong>HealthyBMICheck.com</strong> was founded in 2024 by a small team of developers and health researchers. Our team has backgrounds in health sciences, software development, and nutrition research.</p>
+    <p style="font-size:.85rem;color:var(--ink3);margin-bottom:0;">Based in Malaysia &nbsp;&middot;&nbsp; Founded 2024 &nbsp;&middot;&nbsp; <a href="contact.html" style="color:var(--accent);">Contact us</a></p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <p style="font-size:.8rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Start exploring</p>
+    <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;line-height:1.2;">Try our free calculators</h2>
+    <p style="font-size:.9rem;color:rgba(255,255,255,.6);margin-bottom:20px;">Instant results &middot; no sign-up &middot; no data collected</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+      <a href="bmi-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">&#9878; BMI Calculator</a>
+      <a href="calorie-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">&#128293; Calorie Calculator</a>
+      <a href="health-profile.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">&#128100; Full Health Profile</a>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin:16px 0 32px;font-size:.85rem;color:var(--ink3);">
+    Questions or feedback? <a href="contact.html" style="color:var(--accent);">Contact us &rarr;</a>
   </div>
 
 </div>
 
-  <!-- FAQ About the Site -->
-  <div class="mission-block" style="margin-bottom:20px;">
-    <h2 style="font-family:'DM Serif Display',serif;font-size:1.4rem;margin-bottom:14px;">Frequently Asked Questions About This Site</h2>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Is HealthyBMICheck.com free to use?</button>
-      <div class="faq-a">Yes — all calculators, charts, and guides on HealthyBMICheck.com are completely free to use with no registration required. The site is supported by non-intrusive advertising. We do not sell user data or require any personal information to use any feature of the site.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">How accurate are the calculators?</button>
-      <div class="faq-a">Our calculators use validated, peer-reviewed formulas that are standard in clinical and research settings. The BMI calculator uses the standard WHO formula (weight in kg ÷ height in metres²). The calorie calculator uses the Mifflin-St Jeor equation, which is the most accurate predictor of resting metabolic rate in research studies. The ideal weight calculator uses the mean of four published formulas (Devine, Robinson, Miller, Hamwi). All formulas produce estimates with inherent variation — we recommend using results as starting points and adjusting based on real-world feedback over 2–3 weeks.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Can I use this site's information for medical decisions?</button>
-      <div class="faq-a">No — the information on HealthyBMICheck.com is for general education and informational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. BMI, body fat estimates, and calorie calculators provide population-level reference data, not personalised clinical assessments. Always consult a qualified healthcare provider — such as your GP or a registered dietitian — before making changes to your diet, exercise routine, or medical treatment based on any health information.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">How often is the content updated?</button>
-      <div class="faq-a">We aim to review and update all content at least annually, and immediately when major clinical guidelines change. Each article shows its last-updated date. If you believe any information is outdated or inaccurate, please use our <a href="contact.html" style="color:var(--accent);">contact form</a> — we genuinely appreciate accuracy reports and aim to respond within 48 hours.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">What is the Asian BMI standard and why does it differ?</button>
-      <div class="faq-a">The standard WHO BMI thresholds (overweight ≥25, obese ≥30) were derived largely from studies on European populations. Research shows that adults of Asian descent develop metabolic health risks — type 2 diabetes, hypertension, cardiovascular disease — at lower BMI values than European populations. The WHO issued a recommendation in 2004 that Asian populations should use a lower "overweight" threshold of BMI ≥23 and a lower "healthy" ceiling of BMI ≤22.9. Our <a href="asian-bmi-calculator.html" style="color:var(--accent);">Asian BMI Calculator</a> applies these thresholds.</div>
-    </div>
-  </div>
-
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.ab-fq');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.ab-fq.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
 
 </Base>
