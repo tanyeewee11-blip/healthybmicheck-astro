@@ -687,7 +687,7 @@ import Base from '../layouts/Base.astro';
 
   function hwUpdateLink() {
     var slug = document.getElementById('hw-height-select').value;
-    document.getElementById('hw-go-btn').href = 'healthy-weight-by-height.html';
+    document.getElementById('hw-go-btn').href = 'healthy-weight-by-height.html?height=' + slug + '&unit=' + hwUnit + '&gender=' + hwGender;
   }
 
   function hwSetUnit(u) {
@@ -718,7 +718,7 @@ import Base from '../layouts/Base.astro';
 
   function baUpdateLink() {
     var age = document.getElementById('ba-age-select').value;
-    document.getElementById('ba-go-btn').href = 'healthy-bmi-by-age.html';
+    document.getElementById('ba-go-btn').href = 'healthy-bmi-by-age.html?age=' + age + '&gender=' + baGender;
   }
 
   function baSetGender(g) {

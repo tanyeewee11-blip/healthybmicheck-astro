@@ -1,3 +1,98 @@
+
+/* ============================================================
+   00. Dark Mode (prefers-color-scheme)
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#1A1714;
+    --surface:#242017;
+    --ink:#F0EDE8;
+    --ink2:#A8A29C;
+    --ink3:#6B6560;
+    --accent:#5DB88A;
+    --accent-light:#1A3329;
+    --warn:#E09A50;
+    --warn-light:#2C1E0A;
+    --danger:#E06060;
+    --danger-light:#2C1010;
+    --underweight:#6BA3D9;
+    --underweight-light:#0E1E35;
+    --border:#2E2A26;
+    --shadow:0 2px 16px rgba(0,0,0,0.35);
+  }
+
+  header {
+    background:#111009;
+    border-bottom-color:#5DB88A;
+  }
+
+  footer {
+    background:#111009;
+    border-top-color:#5DB88A;
+  }
+
+  .cta-inner,
+  .summary-card,
+  .tdee-box,
+  .featured-card,
+  .box-green {
+    background:#111009;
+  }
+
+  select,
+  .input-wrap input {
+    background:var(--bg);
+    color:var(--ink);
+    border-color:var(--border);
+  }
+
+  .bmi-table th,
+  th {
+    background:#1A3329;
+    color:var(--ink);
+  }
+
+  .card,
+  .result-box,
+  .result-card,
+  .answer-box,
+  .verdict-box,
+  .measure-card,
+  .form-card,
+  .country-selector-wrap {
+    background:var(--surface);
+    box-shadow:0 2px 16px rgba(0,0,0,0.3);
+  }
+
+  .toc,
+  .timeline,
+  .info-box,
+  .formula-box,
+  .workout-plan,
+  .goal-mini-box,
+  .sources {
+    background:#242017;
+  }
+
+  .notice-banner {
+    background:#1A3329;
+    border-color:#2D6A4F;
+  }
+
+  .notice-inner {
+    color:var(--ink);
+  }
+
+  nav a {
+    color:rgba(255,255,255,0.5);
+  }
+
+  nav a:hover {
+    color:#fff;
+    background:rgba(255,255,255,0.06);
+  }
+}
 /*
  * style.css — healthybmicheck.com
  *
