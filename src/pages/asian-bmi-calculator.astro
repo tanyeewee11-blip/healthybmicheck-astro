@@ -101,7 +101,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   canonical="https://healthybmicheck.com/asian-bmi-calculator.html"
 >
 <div class="hero" style="padding-bottom: 16px;">
-  <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Asian BMI Calculator</div>
+  <div class="breadcrumb" class="input-hint"><a href="index.html" class="breadcrumb-link">Home</a> › Asian BMI Calculator</div>
   <h1>Free <em>Asian BMI</em> Calculator</h1>
   <p>Uses WHO Asian cutoffs and your country's specific standard. Overweight starts at <strong>23.0</strong> for most Asian adults — not 25.</p>
 </div>
@@ -112,7 +112,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   </div>
 </div>
 
-<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+<div class="calc-byline">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
 
 <div class="container">
 
@@ -224,8 +224,8 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     <p class="section-sub">Most Asian health authorities use lower cutoffs than the standard WHO guidelines. Your selected country is highlighted.</p>
     <!-- BMI Standards Comparison Chart -->
     <div class="card" style="padding: 20px 20px 12px; margin-bottom: 14px; overflow-x: auto;">
-      <p style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:14px;">Overweight &amp; Obese thresholds by country vs WHO Global standard</p>
-      <svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart comparing BMI overweight and obese thresholds across Asian countries and WHO global standard" style="width:100%;max-width:640px;display:block;font-family:'DM Sans',sans-serif;">
+      <p class="verdict-label">Overweight &amp; Obese thresholds by country vs WHO Global standard</p>
+      <svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart comparing BMI overweight and obese thresholds across Asian countries and WHO global standard" class="full-input">
 
         <!-- Grid lines -->
         <line x1="120" y1="20" x2="120" y2="220" stroke="#E5E0D8" stroke-width="1"/>
@@ -323,7 +323,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
       </svg>
     </div>
 
-        <div class="card" style="padding:0;overflow:hidden;">
+        <div class="card" class="overflow-clip">
       <table id="country-table">
         <thead>
           <tr>
@@ -347,7 +347,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
         </tbody>
       </table>
     </div>
-    <p style="font-size:.78rem;color:var(--ink3);margin-top:8px;">* Japan uses standard WHO cutoffs officially but defines Class II obesity at BMI ≥ 25 for clinical risk management purposes.</p>
+    <p class="input-hint">* Japan uses standard WHO cutoffs officially but defines Class II obesity at BMI ≥ 25 for clinical risk management purposes.</p>
   </div>
 
   <!-- FAQ -->
@@ -418,7 +418,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
       <li><strong>Above obese threshold:</strong> Significantly elevated risk. A healthcare provider visit is advisable.</li>
     </ul>
 
-    <div class="warn-callout" style="background:var(--warn-light);border-radius:10px;padding:14px 16px;margin:16px 0;font-size:.9rem;color:var(--ink);">
+    <div class="warn-callout" class="warn-callout">
       ⚠️ BMI does not account for muscle mass, bone density, or fat distribution. For a fuller picture, pair it with a <a href="body-fat.html">Body Fat Calculator</a> or waist circumference measurement.
     </div>
 

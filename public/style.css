@@ -3342,3 +3342,110 @@ td {
   gap:8px;
   margin-bottom:20px;
 }
+
+/* ============================================================
+   17. Utility Classes (generated from inline style cleanup)
+   ============================================================ */
+
+.calc-byline {
+  font-size:.8rem;color:var(--ink3);
+  margin:0 auto 24px;max-width:720px;
+  padding:0 20px 16px;
+  border-bottom:1px solid var(--border);
+}
+
+.breadcrumb-link {
+  color:var(--ink3);
+  text-decoration:none;
+}
+.breadcrumb-link:hover { color:var(--accent); }
+
+.full-input {
+  width:100%;max-width:620px;
+  display:block;
+  font-family:'DM Sans',sans-serif;
+}
+
+.table-scroll {
+  padding:20px;
+  margin:20px 0;
+  overflow-x:auto;
+}
+
+.cta-h2 {
+  font-family:'DM Serif Display',serif;
+  font-size:1.5rem;
+  color:#fff;
+  margin-bottom:8px;
+  line-height:1.2;
+}
+
+.cta-sub {
+  font-size:.875rem;
+  color:rgba(255,255,255,.6);
+  margin-bottom:20px;
+  max-width:400px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.related-link {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px 16px;
+  text-decoration:none;
+  color:var(--ink);
+  font-size:.875rem;
+  font-family:'DM Sans',sans-serif;
+  transition:border-color .2s;
+}
+.related-link:hover { border-color:var(--accent); color:var(--accent); }
+
+.overflow-clip {
+  padding:0;
+  overflow:hidden;
+}
+
+.cta-btn-lg {
+  padding:12px 22px;
+  font-size:.9rem;
+}
+
+.text-accent { color:var(--accent); }
+.text-accent-bold { color:var(--accent); font-weight:500; }
+.text-muted { color:var(--ink2); }
+
+.field-sub {
+  font-size:.75rem;
+  color:var(--ink3);
+  margin-top:2px;
+}
+
+.field-label {
+  display:block;
+  font-size:.875rem;
+  font-weight:500;
+  margin-bottom:8px;
+  color:var(--ink2);
+}
+
+.flex-col-sm {
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.highlight-green {
+  background:#EAF4EE;
+  border:1px solid #B7DDD0;
+  border-radius:12px;
+  padding:20px 24px;
+  font-size:.82rem;
+  color:#2D4A3E;
+  line-height:1.8;
+}
+
+.text-protein { color:var(--protein); }
+.text-fat     { color:var(--fat); }
+.text-carbs   { color:var(--carbs); }

@@ -101,12 +101,12 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   canonical="https://healthybmicheck.com/calorie-calculator.html"
 >
 <div class="hero">
-  <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Calorie Calculator</div>
+  <div class="breadcrumb" class="input-hint"><a href="index.html" class="breadcrumb-link">Home</a> › Calorie Calculator</div>
   <h1>Free <em>Calorie</em> Calculator</h1>
   <p>Get your BMR and TDEE instantly — plus calorie targets for weight loss, maintenance, or muscle gain.</p>
 </div>
 
-<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+<div class="calc-byline">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
 
 <div class="container">
 
@@ -260,7 +260,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   <div class="table-section">
     <h2 class="section-title">Activity Level Guide</h2>
     <p class="section-sub">Not sure which level to pick? This is the most common source of error — most people are less active than they think.</p>
-    <div class="card" style="padding:0;overflow:hidden;">
+    <div class="card" class="overflow-clip">
       <table>
         <thead><tr><th>Level</th><th>What it looks like</th><th>Multiplier</th></tr></thead>
         <tbody>
@@ -272,14 +272,14 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
         </tbody>
       </table>
     </div>
-    <p style="font-size:.8rem;color:var(--ink3);margin-top:8px;">💡 If unsure, choose one level lower than you think — it is easier to eat slightly more if needed than to wonder why the scale is not moving.</p>
+    <p class="input-hint">💡 If unsure, choose one level lower than you think — it is easier to eat slightly more if needed than to wonder why the scale is not moving.</p>
   </div>
 
   <!-- FAQ -->
   
-<div class="card" style="padding:20px;margin:20px 0;overflow-x:auto;">
-  <p style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:14px;">TDEE components — where your daily calories go</p>
-  <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;display:block;font-family:'DM Sans',sans-serif;">
+<div class="card" class="table-scroll">
+  <p class="verdict-label">TDEE components — where your daily calories go</p>
+  <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" class="full-input">
     <rect x="10" y="20" width="310" height="35" rx="6" fill="#2D6A4F"/>
     <text x="165" y="42" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">BMR (rest) ~65%</text>
     <rect x="325" y="20" width="115" height="35" rx="6" fill="#C17B2A"/>

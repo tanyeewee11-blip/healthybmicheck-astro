@@ -101,11 +101,11 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   canonical="https://healthybmicheck.com/water-intake.html"
 >
 <div class="hero">
-    <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Water Intake Calculator</div>
+    <div class="breadcrumb" class="input-hint"><a href="index.html" class="breadcrumb-link">Home</a> › Water Intake Calculator</div>
   <h1>Daily <em>Water</em> Intake Calculator</h1>
   <p>Find out exactly how much water you should drink every day based on your weight, activity, and climate.</p>
 </div>
-<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+<div class="calc-byline">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
 
 <div class="container">
 
@@ -175,9 +175,9 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   </div>
 
   
-<div class="card" style="padding:20px;margin:20px 0;overflow-x:auto;">
-  <p style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:14px;">Urine colour hydration guide</p>
-  <svg viewBox="0 0 620 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;display:block;font-family:'DM Sans',sans-serif;">
+<div class="card" class="table-scroll">
+  <p class="verdict-label">Urine colour hydration guide</p>
+  <svg viewBox="0 0 620 90" xmlns="http://www.w3.org/2000/svg" class="full-input">
     <rect x="10" y="15" width="72" height="35" rx="8" fill="#FEFDE8" stroke="#E5E0D8" stroke-width="1"/>
     <text x="46" y="38" text-anchor="middle" font-size="9" fill="#6B6560">Over-hydrated</text>
     <rect x="92" y="15" width="72" height="35" rx="8" fill="#FFFACD" stroke="#E5E0D8" stroke-width="1"/>
@@ -202,7 +202,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   </svg>
 </div>
 
-<div style="max-width:720px;margin:0 auto;padding:0 20px;">
+<div class="container">
   <div class="article-section">
     <h2>Factors That Increase Your Water Needs</h2>
     <p>Your baseline water requirement assumes a temperate climate and sedentary lifestyle. Several common factors significantly raise your needs above the general guideline:</p>
@@ -347,15 +347,15 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
 
 
   <!-- CTA Block -->
-  <div style="max-width:720px;margin:0 auto;padding:0 20px 48px;">
-    <div style="background:#1A1714;border-radius:20px;padding:32px 28px;text-align:center;">
-      <p style="font-size:.78rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Next step</p>
-      <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;line-height:1.2;">Check your other health metrics</h2>
-      <p style="font-size:.875rem;color:rgba(255,255,255,.6);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto;">Get your BMI, calorie needs, and full health profile.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
-      <a href="health-profile.html" style="display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;">👤 Full Health Profile →</a>
-      <a href="bmi-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:#fff;text-decoration:none;border-radius:100px;padding:10px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;border:1.5px solid rgba(255,255,255,.4);">⚖️ BMI Calculator →</a>
-      <a href="calorie-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:#fff;text-decoration:none;border-radius:100px;padding:10px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;border:1.5px solid rgba(255,255,255,.4);">🔥 Calorie Calculator →</a>
+  <div class="container">
+    <div class="cta-inner">
+      <p class="cta-label">Next step</p>
+      <h2 class="cta-h2">Check your other health metrics</h2>
+      <p class="cta-sub">Get your BMI, calorie needs, and full health profile.</p>
+      <div class="cta-btns">
+      <a href="health-profile.html" class="cta-btn-p">👤 Full Health Profile →</a>
+      <a href="bmi-calculator.html" class="cta-btn-s">⚖️ BMI Calculator →</a>
+      <a href="calorie-calculator.html" class="cta-btn-s">🔥 Calorie Calculator →</a>
       </div>
     </div>
   </div>

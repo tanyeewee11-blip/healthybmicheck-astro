@@ -101,12 +101,12 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   canonical="https://healthybmicheck.com/macro-calculator.html"
 >
 <div class="hero">
-    <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Macro Calculator</div>
+    <div class="breadcrumb" class="input-hint"><a href="index.html" class="breadcrumb-link">Home</a> › Macro Calculator</div>
   <h1>Free <em>Macro Calculator</em></h1>
   <p>Get your daily protein, carbs, and fat targets based on your body, goal, and activity level — in seconds.</p>
 </div>
 
-<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
+<div class="calc-byline">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2025</strong></div>
 
 <div class="container">
 
@@ -143,7 +143,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
 
     <!-- Units -->
-    <label style="display:block;font-size:.875rem;font-weight:500;margin-bottom:8px;color:var(--ink2);">Units</label>
+    <label class="field-label">Units</label>
     <div class="unit-toggle" style="margin-bottom:20px;">
       <button class="active" onclick="setUnit('metric')">Metric (kg / cm)</button>
       <button onclick="setUnit('imperial')">Imperial (lb / in)</button>
@@ -239,7 +239,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     <div class="macro-bars">
       <div class="macro-bar-item">
         <div class="macro-bar-head">
-          <span class="macro-name" style="color:var(--protein)">Protein</span>
+          <span class="macro-name" class="text-protein">Protein</span>
           <span><span class="macro-grams" id="protein-bar-g">—</span><span class="macro-kcal" id="protein-kcal"></span></span>
         </div>
         <div class="macro-track">
@@ -248,7 +248,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
       </div>
       <div class="macro-bar-item">
         <div class="macro-bar-head">
-          <span class="macro-name" style="color:var(--carbs)">Carbohydrates</span>
+          <span class="macro-name" class="text-carbs">Carbohydrates</span>
           <span><span class="macro-grams" id="carbs-bar-g">—</span><span class="macro-kcal" id="carbs-kcal"></span></span>
         </div>
         <div class="macro-track">
@@ -257,7 +257,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
       </div>
       <div class="macro-bar-item">
         <div class="macro-bar-head">
-          <span class="macro-name" style="color:var(--fat)">Fat</span>
+          <span class="macro-name" class="text-fat">Fat</span>
           <span><span class="macro-grams" id="fat-bar-g">—</span><span class="macro-kcal" id="fat-kcal"></span></span>
         </div>
         <div class="macro-track">
@@ -337,7 +337,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   <div>
     <h2 class="section-title">Macronutrient Reference</h2>
     <p class="section-sub">Calories per gram and recommended daily ranges for adults.</p>
-    <div class="card" style="padding:0;overflow:hidden;">
+    <div class="card" class="overflow-clip">
       <table>
         <thead>
           <tr><th>Macro</th><th>Calories/g</th><th>General range</th><th>High-protein range</th></tr>
@@ -449,15 +449,15 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
 
 
   <!-- CTA Block -->
-  <div style="max-width:720px;margin:0 auto;padding:0 20px 48px;">
-    <div style="background:#1A1714;border-radius:20px;padding:32px 28px;text-align:center;">
-      <p style="font-size:.78rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Next step</p>
-      <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;line-height:1.2;">Check your other health metrics</h2>
-      <p style="font-size:.875rem;color:rgba(255,255,255,.6);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto;">Get your BMI, ideal weight, and daily water intake in seconds.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
-      <a href="bmi-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:11px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;">⚖️ BMI Calculator →</a>
-      <a href="calorie-deficit-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:#fff;text-decoration:none;border-radius:100px;padding:10px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;border:1.5px solid rgba(255,255,255,.4);">📉 Calorie Deficit →</a>
-      <a href="water-intake.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:#fff;text-decoration:none;border-radius:100px;padding:10px 20px;font-size:.875rem;font-weight:500;font-family:'DM Sans',sans-serif;border:1.5px solid rgba(255,255,255,.4);">💧 Water Intake →</a>
+  <div class="container">
+    <div class="cta-inner">
+      <p class="cta-label">Next step</p>
+      <h2 class="cta-h2">Check your other health metrics</h2>
+      <p class="cta-sub">Get your BMI, ideal weight, and daily water intake in seconds.</p>
+      <div class="cta-btns">
+      <a href="bmi-calculator.html" class="cta-btn-p">⚖️ BMI Calculator →</a>
+      <a href="calorie-deficit-calculator.html" class="cta-btn-s">📉 Calorie Deficit →</a>
+      <a href="water-intake.html" class="cta-btn-s">💧 Water Intake →</a>
       </div>
     </div>
   </div>

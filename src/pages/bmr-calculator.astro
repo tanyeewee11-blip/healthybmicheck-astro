@@ -15,12 +15,12 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
 >
 
 <div class="hero">
-  <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › BMR Calculator</div>
+  <div class="breadcrumb" class="input-hint"><a href="index.html" class="breadcrumb-link">Home</a> › BMR Calculator</div>
   <h1>Free <em>BMR</em> Calculator</h1>
   <p>Find out how many calories your body burns at complete rest — the foundation of any weight loss or nutrition plan.</p>
 </div>
 
-<div style="font-size:.8rem;color:var(--ink3);margin:0 auto 24px;max-width:720px;padding:0 20px 16px;border-bottom:1px solid var(--border);">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2026</strong></div>
+<div class="calc-byline">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>June 2026</strong></div>
 
 <div class="container">
 
@@ -91,40 +91,40 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
     <div class="tdee-bmr-row">
       <div class="bmr-box" style="flex:1;background:var(--surface);border-radius:12px;padding:20px;text-align:center;">
         <div class="num" id="bmr-num" style="font-size:2.4rem;font-weight:500;color:var(--accent);font-family:'DM Serif Display',serif;">—</div>
-        <div class="lbl" style="font-size:.85rem;color:var(--ink3);margin-top:6px;">BMR — calories/day at complete rest</div>
+        <div class="lbl" class="input-hint">BMR — calories/day at complete rest</div>
       </div>
     </div>
 
     <!-- Formula breakdown -->
     <div id="formula-breakdown" style="display:none;margin-top:16px;background:var(--surface);border-radius:12px;padding:18px 20px;">
-      <div style="font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;">Formula Comparison</div>
+      <div class="verdict-label">Formula Comparison</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
         <div style="background:var(--bg);border-radius:8px;padding:12px;border:2px solid var(--accent);">
           <div style="font-size:.75rem;font-weight:600;color:var(--accent);margin-bottom:4px;">Mifflin-St Jeor (recommended)</div>
           <div id="mifflin-result" style="font-size:1.3rem;font-weight:500;">—</div>
-          <div style="font-size:.75rem;color:var(--ink3);margin-top:2px;">Most accurate for modern populations</div>
+          <div class="field-sub">Most accurate for modern populations</div>
         </div>
         <div style="background:var(--bg);border-radius:8px;padding:12px;">
           <div style="font-size:.75rem;font-weight:600;color:var(--ink3);margin-bottom:4px;">Harris-Benedict (1919)</div>
           <div id="harris-result" style="font-size:1.3rem;font-weight:500;">—</div>
-          <div style="font-size:.75rem;color:var(--ink3);margin-top:2px;">Older formula, tends to run slightly high</div>
+          <div class="field-sub">Older formula, tends to run slightly high</div>
         </div>
       </div>
     </div>
 
     <!-- TDEE estimates -->
     <div id="tdee-section" style="display:none;margin-top:16px;">
-      <div style="font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;">Your TDEE by Activity Level</div>
-      <div style="display:flex;flex-direction:column;gap:6px;" id="tdee-rows"></div>
-      <div style="font-size:.8rem;color:var(--ink3);margin-top:10px;">TDEE = BMR × activity multiplier. Eat at your TDEE to maintain weight, below to lose, above to gain.</div>
+      <div class="verdict-label">Your TDEE by Activity Level</div>
+      <div class="flex-col-sm" id="tdee-rows"></div>
+      <div class="input-hint">TDEE = BMR × activity multiplier. Eat at your TDEE to maintain weight, below to lose, above to gain.</div>
     </div>
 
     <!-- Next steps -->
-    <div style="margin-top:16px;padding:14px 16px;background:var(--surface);border-radius:10px;font-size:.85rem;line-height:1.7;">
+    <div class="tip-box">
       <strong>Next step:</strong> Use your BMR to set calorie goals —
-      <a href="calorie-calculator.html" style="color:var(--accent);font-weight:500;">Calorie Calculator</a> ·
-      <a href="calorie-deficit-calculator.html" style="color:var(--accent);font-weight:500;">Calorie Deficit Calculator</a> ·
-      <a href="macro-calculator.html" style="color:var(--accent);font-weight:500;">Macro Calculator</a>
+      <a href="calorie-calculator.html" class="text-accent-bold">Calorie Calculator</a> ·
+      <a href="calorie-deficit-calculator.html" class="text-accent-bold">Calorie Deficit Calculator</a> ·
+      <a href="macro-calculator.html" class="text-accent-bold">Macro Calculator</a>
     </div>
   </div>
 
@@ -144,7 +144,7 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
     <p>Compared to the older <strong>Harris-Benedict equation</strong> (1919), Mifflin-St Jeor is approximately 5% more accurate when validated against indirect calorimetry (the gold standard for measuring actual metabolic rate). The calculator also shows the Harris-Benedict result for comparison.</p>
 
     <h2>What Affects Your BMR?</h2>
-    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+    <div class="card" class="overflow-clip">
       <table>
         <thead><tr><th>Factor</th><th>Effect on BMR</th><th>Why</th></tr></thead>
         <tbody>
@@ -169,7 +169,7 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
 
     <h2>BMR by Age and Sex — Reference Table</h2>
     <p>The values below use the Mifflin-St Jeor formula at average heights and weights for each group:</p>
-    <div class="card" style="padding:0;overflow:hidden;margin:16px 0;">
+    <div class="card" class="overflow-clip">
       <table>
         <thead><tr><th>Profile</th><th>Approx BMR</th><th>Sedentary TDEE</th><th>Moderate TDEE</th></tr></thead>
         <tbody>
@@ -230,24 +230,24 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
 <div class="cta-block">
     <div class="cta-inner">
   
-  <p style="font-size:.8rem;font-weight:600;color:#7EC8A4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Next step</p>
-  <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;line-height:1.2;">Turn your BMR into a weight loss plan</h2>
-  <p style="font-size:.9rem;color:rgba(255,255,255,.6);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto;">Calculate your TDEE, set a calorie deficit, and get your daily macro targets.</p>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
-    <a href="calorie-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:100px;padding:12px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;">🔥 Calorie Calculator →</a>
-    <a href="calorie-deficit-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:#fff;text-decoration:none;border-radius:100px;padding:11px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;border:1.5px solid rgba(255,255,255,.4);">📉 Calorie Deficit →</a>
-    <a href="macro-calculator.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:#fff;text-decoration:none;border-radius:100px;padding:11px 22px;font-size:.9rem;font-weight:500;font-family:'DM Sans',sans-serif;border:1.5px solid rgba(255,255,255,.4);">🥩 Macro Calculator →</a>
+  <p class="cta-label">Next step</p>
+  <h2 class="cta-h2">Turn your BMR into a weight loss plan</h2>
+  <p class="cta-sub">Calculate your TDEE, set a calorie deficit, and get your daily macro targets.</p>
+  <div class="cta-btns">
+    <a href="calorie-calculator.html" class="cta-btn-p cta-btn-lg">🔥 Calorie Calculator →</a>
+    <a href="calorie-deficit-calculator.html" class="cta-btn-s cta-btn-lg">📉 Calorie Deficit →</a>
+    <a href="macro-calculator.html" class="cta-btn-s cta-btn-lg">🥩 Macro Calculator →</a>
   </div>
 
     </div>
   </div>
-<div style="max-width:720px;margin:0 auto;padding:0 20px 40px;">
-  <div style="background:#F0F7F4;border:1px solid #B7DDD0;border-radius:12px;padding:20px 24px;font-size:0.82rem;color:#2D4A3E;line-height:1.8;">
+<div class="container">
+  <div class="highlight-green">
     <strong style="display:block;margin-bottom:8px;">📚 References</strong>
     <ol style="margin:8px 0 8px 18px;padding:0;">
-      <li>Mifflin MD et al. (1990). <em>A new predictive equation for resting energy expenditure in healthy individuals</em>. Am J Clin Nutr. <a href="https://doi.org/10.1093/ajcn/51.2.241" style="color:var(--accent);">doi:10.1093/ajcn/51.2.241</a></li>
-      <li>Harris JA, Benedict FG. (1918). <em>A Biometric Study of Human Basal Metabolism</em>. PNAS. <a href="https://doi.org/10.1073/pnas.4.12.370" style="color:var(--accent);">doi:10.1073/pnas.4.12.370</a></li>
-      <li>Frankenfield D et al. (2005). <em>Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults</em>. J Am Diet Assoc. <a href="https://doi.org/10.1016/j.jada.2005.05.003" style="color:var(--accent);">doi:10.1016/j.jada.2005.05.003</a></li>
+      <li>Mifflin MD et al. (1990). <em>A new predictive equation for resting energy expenditure in healthy individuals</em>. Am J Clin Nutr. <a href="https://doi.org/10.1093/ajcn/51.2.241" class="text-accent">doi:10.1093/ajcn/51.2.241</a></li>
+      <li>Harris JA, Benedict FG. (1918). <em>A Biometric Study of Human Basal Metabolism</em>. PNAS. <a href="https://doi.org/10.1073/pnas.4.12.370" class="text-accent">doi:10.1073/pnas.4.12.370</a></li>
+      <li>Frankenfield D et al. (2005). <em>Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults</em>. J Am Diet Assoc. <a href="https://doi.org/10.1016/j.jada.2005.05.003" class="text-accent">doi:10.1016/j.jada.2005.05.003</a></li>
     </ol>
     Not a substitute for professional medical or dietary advice. Last updated June 2026.
   </div>
@@ -322,7 +322,7 @@ function calculate() {
   const tdeeRows = document.getElementById('tdee-rows');
   tdeeRows.innerHTML = activities.map(a => `
     <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--surface);border-radius:8px;font-size:.85rem;">
-      <span style="color:var(--ink2);">${a.label}</span>
+      <span class="text-muted">${a.label}</span>
       <strong style="color:var(--accent);white-space:nowrap;margin-left:12px;">${Math.round(bmr * a.factor).toLocaleString()} kcal</strong>
     </div>
   `).join('');
