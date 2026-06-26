@@ -11,7 +11,7 @@ import Base from '../layouts/Base.astro';
 
   <!-- Hero -->
   <!-- Returning user: last results banner (shown by JS if localStorage has data) -->
-  <div id="returning-banner" style="display:none;max-width:720px;margin:24px auto 0;padding:0 24px;">
+  <div id="returning-banner" style="display:none;max-width:720px;margin:24px auto 0;padding:0 24px;min-height:0;contain:layout;">
     <div style="background:var(--accent-light);border-radius:14px;padding:16px 20px;">
       <div style="font-size:.78rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;">Welcome back — your last results</div>
       <div id="returning-results" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
@@ -41,12 +41,12 @@ import Base from '../layouts/Base.astro';
       <div id="hero-metric-inputs">
         <div style="display:flex;gap:10px;margin-bottom:12px;">
           <div style="flex:1;">
-            <label style="font-size:.78rem;font-weight:600;color:var(--ink2);display:block;margin-bottom:4px;">Weight (kg)</label>
+            <label for="hero-weight-kg" style="font-size:.78rem;font-weight:600;color:var(--ink2);display:block;margin-bottom:4px;">Weight (kg)</label>
             <input id="hero-weight-kg" type="number" placeholder="e.g. 70" min="20" max="300"
               style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:.95rem;font-family:inherit;background:var(--bg);color:var(--ink);box-sizing:border-box;">
           </div>
           <div style="flex:1;">
-            <label style="font-size:.78rem;font-weight:600;color:var(--ink2);display:block;margin-bottom:4px;">Height (cm)</label>
+            <label for="hero-height-cm" style="font-size:.78rem;font-weight:600;color:var(--ink2);display:block;margin-bottom:4px;">Height (cm)</label>
             <input id="hero-height-cm" type="number" placeholder="e.g. 170" min="100" max="250"
               style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:.95rem;font-family:inherit;background:var(--bg);color:var(--ink);box-sizing:border-box;">
           </div>
@@ -57,12 +57,12 @@ import Base from '../layouts/Base.astro';
       <div id="hero-imperial-inputs" style="display:none;">
         <div style="display:flex;gap:10px;margin-bottom:12px;">
           <div style="flex:1;">
-            <label style="font-size:.78rem;font-weight:600;color:var(--ink2);display:block;margin-bottom:4px;">Weight (lb)</label>
+            <label for="hero-weight-lb" style="font-size:.78rem;font-weight:600;color:var(--ink2);display:block;margin-bottom:4px;">Weight (lb)</label>
             <input id="hero-weight-lb" type="number" placeholder="e.g. 154" min="44" max="660"
               style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:.95rem;font-family:inherit;background:var(--bg);color:var(--ink);box-sizing:border-box;">
           </div>
           <div style="flex:1;">
-            <label style="font-size:.78rem;font-weight:600;color:var(--ink2);display:block;margin-bottom:4px;">Height (in)</label>
+            <label for="hero-height-in" style="font-size:.78rem;font-weight:600;color:var(--ink2);display:block;margin-bottom:4px;">Height (in)</label>
             <input id="hero-height-in" type="number" placeholder="e.g. 67" min="40" max="96"
               style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:.95rem;font-family:inherit;background:var(--bg);color:var(--ink);box-sizing:border-box;">
           </div>
@@ -592,7 +592,7 @@ import Base from '../layouts/Base.astro';
       </div>
 
       <!-- Height select -->
-      <label style="display:block;font-size:.875rem;font-weight:600;margin-bottom:8px;color:var(--ink);">Select your height</label>
+      <label for="hw-height-select" style="display:block;font-size:.875rem;font-weight:600;margin-bottom:8px;color:var(--ink);">Select your height</label>
       <select id="hw-height-select"
         style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);color:var(--ink);font-size:.95rem;appearance:auto;margin-bottom:16px;">
       </select>
@@ -631,7 +631,7 @@ import Base from '../layouts/Base.astro';
       </div>
 
       <!-- Age select -->
-      <label style="display:block;font-size:.875rem;font-weight:600;margin-bottom:8px;color:var(--ink);">Select your age</label>
+      <label for="ba-age-select" style="display:block;font-size:.875rem;font-weight:600;margin-bottom:8px;color:var(--ink);">Select your age</label>
       <select id="ba-age-select"
         style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);color:var(--ink);font-size:.95rem;appearance:auto;margin-bottom:16px;">
         <option value="20">Age 20</option>

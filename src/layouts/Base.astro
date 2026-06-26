@@ -62,16 +62,7 @@ const {
   <meta name="twitter:description" content={ogDescription ?? description}>
   <meta name="twitter:image" content="https://healthybmicheck.com/og-image.png">
 
-  <!-- AdSense: load after page is interactive to reduce unused JS penalty -->
-  <script>
-    window.addEventListener('load', function() {
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7723301737736770';
-      s.crossOrigin = 'anonymous';
-      document.head.appendChild(s);
-    });
-  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7723301737736770" crossorigin="anonymous"></script>
 
   <!-- Self-hosted fonts: eliminates render-blocking + CLS from Google Fonts -->
   <!-- DM Sans: preload critical weights (400 normal used for body text) -->
