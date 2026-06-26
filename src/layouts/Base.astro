@@ -62,13 +62,21 @@ const {
   <meta name="twitter:description" content={ogDescription ?? description}>
   <meta name="twitter:image" content="https://healthybmicheck.com/og-image.png">
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7723301737736770" crossorigin="anonymous"></script>
+  <!-- AdSense: load after page is interactive to reduce unused JS penalty -->
+  <script>
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7723301737736770';
+      s.crossOrigin = 'anonymous';
+      document.head.appendChild(s);
+    });
+  </script>
 
-  <!-- Google Fonts: preconnect for speed, then load DM Sans + DM Serif Display -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap">
+  <!-- Self-hosted fonts: eliminates render-blocking + CLS from Google Fonts -->
+  <!-- DM Sans: preload critical weights (400 normal used for body text) -->
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-400.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-serif-display-400.woff2" crossorigin>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>

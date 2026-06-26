@@ -107,7 +107,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
 
     <div class="input-group">
-      <label>Age</label>
+      <label for="age-years">Age (years)</label>
       <div class="input-row">
         <div class="input-wrap">
           <select id="age-years">
@@ -122,7 +122,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
           <span class="unit-badge">yr</span>
         </div>
         <div class="input-wrap">
-          <select id="age-months">
+          <select id="age-months" aria-label="Age (months)">
             <option value="0">0 months</option>
             <option value="1">1 month</option><option value="2">2 months</option>
             <option value="3">3 months</option><option value="4">4 months</option>

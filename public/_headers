@@ -4,19 +4,21 @@
 # HTML pages — short cache, revalidate on CDN
 /*.html
   Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400
+  Link: </fonts/dm-sans-400.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://www.google-analytics.com https://fundingchoicesmessages.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; connect-src 'self' https://www.google-analytics.com; object-src 'none'; base-uri 'self';
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://www.google-analytics.com https://fundingchoicesmessages.google.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; connect-src 'self' https://www.google-analytics.com; object-src 'none'; base-uri 'self';
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
 # Root index
 /
   Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400
+  Link: </fonts/dm-sans-400.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://www.google-analytics.com https://fundingchoicesmessages.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; connect-src 'self' https://www.google-analytics.com; object-src 'none'; base-uri 'self';
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://www.google-analytics.com https://fundingchoicesmessages.google.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; connect-src 'self' https://www.google-analytics.com; object-src 'none'; base-uri 'self';
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
 # Images — long cache (content never changes once deployed)
