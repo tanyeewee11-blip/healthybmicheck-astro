@@ -978,7 +978,7 @@ label {
   font-weight:600;
   text-transform:uppercase;
   letter-spacing:.06em;
-  color:rgba(255,255,255,.55);
+  color:rgba(255,255,255,.85);
   margin-bottom:4px;
 }
 
@@ -1237,7 +1237,7 @@ select:focus {
   font-weight:600;
   text-transform:uppercase;
   letter-spacing:.06em;
-  color:rgba(255,255,255,.45);
+  color:rgba(255,255,255,.85);
   margin-top:4px;
 }
 
@@ -1884,7 +1884,7 @@ select:focus {
 .tdee-box .lbl {
   font-size:.75rem;
   font-weight:600;
-  color:rgba(255,255,255,.55);
+  color:rgba(255,255,255,.85);
   text-transform:uppercase;
   letter-spacing:.07em;
   margin-top:6px;
@@ -2917,7 +2917,7 @@ td {
 
 .r-unit {
   font-size:.75rem;
-  color:rgba(255,255,255,.5);
+  color:rgba(255,255,255,.85);
   margin-top:4px;
 }
 

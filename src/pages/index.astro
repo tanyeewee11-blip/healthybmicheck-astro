@@ -593,8 +593,9 @@ import Base from '../layouts/Base.astro';
 
       <!-- Height select -->
       <label for="hw-height-select" style="display:block;font-size:.875rem;font-weight:600;margin-bottom:8px;color:var(--ink);">Select your height</label>
-      <select id="hw-height-select"
+      <select id="hw-height-select" aria-label="Select your height"
         style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);color:var(--ink);font-size:.95rem;appearance:auto;margin-bottom:16px;">
+        <option value="" disabled selected>Select your height</option>
       </select>
 
       <a id="hw-go-btn" href="#"
@@ -632,7 +633,7 @@ import Base from '../layouts/Base.astro';
 
       <!-- Age select -->
       <label for="ba-age-select" style="display:block;font-size:.875rem;font-weight:600;margin-bottom:8px;color:var(--ink);">Select your age</label>
-      <select id="ba-age-select"
+      <select id="ba-age-select" aria-label="Select your age"
         style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);color:var(--ink);font-size:.95rem;appearance:auto;margin-bottom:16px;">
         <option value="20">Age 20</option>
         <option value="25">Age 25</option>
