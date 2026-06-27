@@ -69,7 +69,7 @@
     --surface:#242017;
     --ink:#F0EDE8;
     --ink2:#A8A29C;
-    --ink3:#6B6560;
+    --ink3:#918B85;
     --accent:#5DB88A;
     --accent-light:#1A3329;
     --warn:#E09A50;
@@ -191,7 +191,7 @@
   --surface:#FFFFFF;
   --ink:#1A1714;
   --ink2:#6B6560;
-  --ink3:#A09A94;
+  --ink3:#736D67;
   --accent:#2D6A4F;
   --accent-light:#D8EFE4;
   --warn:#C17B2A;
@@ -3401,6 +3401,38 @@ td {
   justify-content:center;
   gap:8px;
   margin-bottom:20px;
+}
+
+/* ============================================================
+   16b. Link accessibility — underline for inline content links
+   Fixes: "Links rely on color to be distinguishable" (WCAG 1.4.1)
+   ============================================================ */
+
+/* Article body links — add underline so they're distinguishable without color */
+.article-body a,
+.guide-content a,
+p > a,
+li > a {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 2px;
+}
+
+p > a:hover,
+li > a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Nav, footer, card links — keep no underline (these are clearly interactive by context) */
+nav a,
+footer a,
+.card a,
+.article-row,
+.nf-tool,
+.related-link,
+.cta-btn-p,
+.cta-btn-s {
+  text-decoration: none;
 }
 
 /* ============================================================
