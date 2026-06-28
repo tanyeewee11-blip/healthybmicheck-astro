@@ -2338,8 +2338,8 @@ tr:nth-child(even) td {
 
 .article-tag {
   display:inline-block;
-  background:var(--accent-light);
-  color:var(--accent);
+  background:#2D6A4F;
+  color:#ffffff;
   font-size:.72rem;
   font-weight:600;
   letter-spacing:.08em;
