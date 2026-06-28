@@ -68,7 +68,36 @@ const schemaJson = JSON.stringify({
           }
         }
       ]
-    }
+    },
+    {
+    "@type": "HowTo",
+    "name": "How to Calculate BMI for Children and Teenagers",
+    "description": "Calculate your child's BMI-for-age percentile using CDC growth charts.",
+    "totalTime": "PT2M",
+    "tool": [
+        {
+            "@type": "HowToTool",
+            "name": "HealthyBMICheck Kids BMI Calculator"
+        }
+    ],
+    "step": [
+        {
+            "@type": "HowToStep",
+            "name": "Select sex and enter age",
+            "text": "Choose male or female and enter your child's age in years and months. BMI is interpreted differently at each age and sex."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Enter height and weight",
+            "text": "Input your child's current height and weight. Both metric and imperial units are supported."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Read the BMI percentile and category",
+            "text": "The result shows your child's BMI percentile: underweight (<5th), healthy (5th\u201384th), overweight (85th\u201394th), or obese (\u226595th percentile)."
+        }
+    ]
+}
   ]
 });
 

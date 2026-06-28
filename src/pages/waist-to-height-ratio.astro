@@ -86,7 +86,40 @@ const schemaJson = JSON.stringify({
         "name": "HealthyBMICheck.com",
         "url": "https://healthybmicheck.com"
       }
-    }
+    },
+    {
+    "@type": "HowTo",
+    "name": "How to Calculate Your Waist-to-Height Ratio",
+    "description": "Measure your waist-to-height ratio \u2014 a simple, accurate predictor of cardiometabolic risk.",
+    "totalTime": "PT2M",
+    "tool": [
+        {
+            "@type": "HowToTool",
+            "name": "HealthyBMICheck Waist-to-Height Ratio Calculator"
+        },
+        {
+            "@type": "HowToTool",
+            "name": "Measuring tape"
+        }
+    ],
+    "step": [
+        {
+            "@type": "HowToStep",
+            "name": "Measure your waist",
+            "text": "Wrap a tape around your waist at the midpoint between your lowest rib and the top of your hip bone. Breathe out normally and measure."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Enter your height",
+            "text": "Input your height in the same unit as your waist measurement (cm or inches)."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Read your ratio and risk level",
+            "text": "Your waist-to-height ratio is displayed. Below 0.5 is the healthy target \u2014 keeping your waist less than half your height reduces cardiovascular risk."
+        }
+    ]
+}
   ]
 });
 

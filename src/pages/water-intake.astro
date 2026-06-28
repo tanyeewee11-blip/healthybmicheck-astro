@@ -86,7 +86,36 @@ const schemaJson = JSON.stringify({
         "name": "HealthyBMICheck.com",
         "url": "https://healthybmicheck.com"
       }
-    }
+    },
+    {
+    "@type": "HowTo",
+    "name": "How to Calculate Your Daily Water Intake",
+    "description": "Find out how much water you should drink each day based on your body weight and activity level.",
+    "totalTime": "PT1M",
+    "tool": [
+        {
+            "@type": "HowToTool",
+            "name": "HealthyBMICheck Water Intake Calculator"
+        }
+    ],
+    "step": [
+        {
+            "@type": "HowToStep",
+            "name": "Enter your body weight",
+            "text": "Input your current weight in kg or lbs. The baseline uses 35ml per kg of body weight."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Select your activity level",
+            "text": "Choose sedentary, moderately active, or very active. Exercise increases fluid requirements significantly."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Check your daily water target",
+            "text": "Your recommended daily water intake in litres and cups is shown instantly, adjusted for your activity level."
+        }
+    ]
+}
   ]
 });
 

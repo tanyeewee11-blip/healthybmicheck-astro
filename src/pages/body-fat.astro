@@ -86,7 +86,50 @@ const schemaJson = JSON.stringify({
         "name": "HealthyBMICheck.com",
         "url": "https://healthybmicheck.com"
       }
-    }
+    },
+    {
+    "@type": "HowTo",
+    "name": "How to Estimate Your Body Fat Percentage",
+    "description": "Use the US Navy body fat method to estimate your body fat percentage using simple tape measurements.",
+    "totalTime": "PT3M",
+    "tool": [
+        {
+            "@type": "HowToTool",
+            "name": "HealthyBMICheck Body Fat Calculator"
+        },
+        {
+            "@type": "HowToTool",
+            "name": "Measuring tape"
+        }
+    ],
+    "step": [
+        {
+            "@type": "HowToStep",
+            "name": "Measure your waist",
+            "text": "For men: measure at the navel. For women: at the narrowest point. Keep the tape horizontal."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Measure your neck",
+            "text": "Measure just below the larynx, sloping slightly downward at the front."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Measure your hips (women only)",
+            "text": "Measure at the widest point of your hips and buttocks, keeping the tape horizontal."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Enter your height",
+            "text": "Input your height in cm or ft/in using the unit toggle."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Read your body fat % and category",
+            "text": "Your estimated body fat percentage and health category are shown instantly."
+        }
+    ]
+}
   ]
 });
 

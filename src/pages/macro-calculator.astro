@@ -86,7 +86,36 @@ const schemaJson = JSON.stringify({
         "name": "HealthyBMICheck.com",
         "url": "https://healthybmicheck.com"
       }
-    }
+    },
+    {
+    "@type": "HowTo",
+    "name": "How to Calculate Your Macros",
+    "description": "Find your ideal daily protein, carbohydrate, and fat targets based on your calorie needs and fitness goal.",
+    "totalTime": "PT2M",
+    "tool": [
+        {
+            "@type": "HowToTool",
+            "name": "HealthyBMICheck Macro Calculator"
+        }
+    ],
+    "step": [
+        {
+            "@type": "HowToStep",
+            "name": "Enter your details",
+            "text": "Input your sex, age, height, and weight. The calculator uses these to estimate your TDEE."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Choose your activity level and goal",
+            "text": "Select how active you are and whether you want to lose fat, maintain, or build muscle."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Read your macro targets",
+            "text": "Your daily protein, carbohydrates, and fat targets are displayed as totals and as a visual percentage breakdown."
+        }
+    ]
+}
   ]
 });
 

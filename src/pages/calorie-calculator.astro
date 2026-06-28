@@ -86,7 +86,46 @@ const schemaJson = JSON.stringify({
         "name": "HealthyBMICheck.com",
         "url": "https://healthybmicheck.com"
       }
-    }
+    },
+    {
+    "@type": "HowTo",
+    "name": "How to Calculate Your Daily Calorie Needs",
+    "description": "Use our free calorie calculator to find your TDEE and set the right calorie target for weight loss, maintenance, or muscle gain.",
+    "totalTime": "PT2M",
+    "tool": [
+        {
+            "@type": "HowToTool",
+            "name": "HealthyBMICheck Calorie Calculator"
+        }
+    ],
+    "step": [
+        {
+            "@type": "HowToStep",
+            "name": "Select your sex",
+            "text": "Choose male or female to ensure the Mifflin-St Jeor formula uses the correct baseline metabolic rate."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Enter your age, height, and weight",
+            "text": "Input your current age in years, height (cm or ft/in), and body weight (kg or lbs). Switch between metric and imperial using the unit toggle."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Choose your activity level",
+            "text": "Select the activity level that best matches your typical weekly routine \u2014 from sedentary to very active."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Select your goal",
+            "text": "Choose weight loss, maintenance, or muscle gain. The calculator applies the appropriate calorie adjustment to your TDEE."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Read your results",
+            "text": "Your BMR, TDEE, and goal-specific calorie target are displayed instantly below the form."
+        }
+    ]
+}
   ]
 });
 

@@ -86,7 +86,36 @@ const schemaJson = JSON.stringify({
         "name": "HealthyBMICheck.com",
         "url": "https://healthybmicheck.com"
       }
-    }
+    },
+    {
+    "@type": "HowTo",
+    "name": "How to Calculate BMI Using Asian Standards",
+    "description": "Calculate your BMI using WHO-recommended thresholds for Asian populations \u2014 overweight starts at 23, obese at 27.5.",
+    "totalTime": "PT1M",
+    "tool": [
+        {
+            "@type": "HowToTool",
+            "name": "HealthyBMICheck Asian BMI Calculator"
+        }
+    ],
+    "step": [
+        {
+            "@type": "HowToStep",
+            "name": "Enter your weight and height",
+            "text": "Input your current weight and height. Both metric and imperial are supported."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Click Calculate",
+            "text": "Your BMI is calculated instantly using: weight (kg) \u00f7 height (m)\u00b2."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Read your result against Asian thresholds",
+            "text": "Your BMI is shown alongside WHO Asian cutoffs: under 18.5 (underweight), 18.5\u201322.9 (normal), 23\u201327.4 (overweight), 27.5+ (obese)."
+        }
+    ]
+}
   ]
 });
 

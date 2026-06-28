@@ -86,7 +86,36 @@ const schemaJson = JSON.stringify({
         "name": "HealthyBMICheck.com",
         "url": "https://healthybmicheck.com"
       }
-    }
+    },
+    {
+    "@type": "HowTo",
+    "name": "How to Calculate Your Calorie Deficit for Weight Loss",
+    "description": "Find the right daily calorie deficit to lose weight at a safe, sustainable rate.",
+    "totalTime": "PT2M",
+    "tool": [
+        {
+            "@type": "HowToTool",
+            "name": "HealthyBMICheck Calorie Deficit Calculator"
+        }
+    ],
+    "step": [
+        {
+            "@type": "HowToStep",
+            "name": "Enter your details",
+            "text": "Input your sex, age, height, current weight, and activity level. The calculator estimates your maintenance calories (TDEE)."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Enter your target weight and timeline",
+            "text": "Set your goal weight and how many weeks you want to reach it. The calculator tells you if the required deficit is safe."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Review your calorie target",
+            "text": "See your maintenance calories, recommended daily intake, and weekly calorie deficit. A safe deficit is typically 300\u2013500 kcal/day."
+        }
+    ]
+}
   ]
 });
 

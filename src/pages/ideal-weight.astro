@@ -78,7 +78,36 @@ const schemaJson = JSON.stringify({
         "name": "HealthyBMICheck.com",
         "url": "https://healthybmicheck.com"
       }
-    }
+    },
+    {
+    "@type": "HowTo",
+    "name": "How to Find Your Ideal Weight",
+    "description": "Calculate your ideal body weight using four clinical formulas \u2014 Devine, Robinson, Miller, and Hamwi.",
+    "totalTime": "PT1M",
+    "tool": [
+        {
+            "@type": "HowToTool",
+            "name": "HealthyBMICheck Ideal Weight Calculator"
+        }
+    ],
+    "step": [
+        {
+            "@type": "HowToStep",
+            "name": "Select your sex",
+            "text": "Choose male or female \u2014 the four formulas use different baselines for men and women."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Enter your height",
+            "text": "Input your height in cm or ft/in. This is the only measurement needed."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Review all four formula results",
+            "text": "See your ideal weight from the Devine, Robinson, Miller, and Hamwi formulas. The range gives you a practical healthy weight target."
+        }
+    ]
+}
   ]
 });
 

@@ -68,7 +68,45 @@ const schemaJson = JSON.stringify({
           }
         }
       ]
-    }
+    },
+    {
+    "@type": "HowTo",
+    "name": "How to Build Your Full Health Profile",
+    "description": "Combine BMI, body fat, waist measurements, and activity level into one comprehensive health snapshot.",
+    "totalTime": "PT3M",
+    "tool": [
+        {
+            "@type": "HowToTool",
+            "name": "HealthyBMICheck Health Profile Tool"
+        },
+        {
+            "@type": "HowToTool",
+            "name": "Measuring tape (optional)"
+        }
+    ],
+    "step": [
+        {
+            "@type": "HowToStep",
+            "name": "Enter your basic details",
+            "text": "Input your sex, age, height, and weight. These are used across all health metrics."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Add optional body measurements",
+            "text": "Enter your waist, neck, and hip measurements for body fat estimation and waist-to-height ratio."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Select your activity level",
+            "text": "Choose how active you typically are each week. This affects your TDEE and health risk assessment."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Review your full health snapshot",
+            "text": "See your BMI, weight category, estimated body fat %, waist-to-height ratio, TDEE, and overall health score \u2014 all in one place."
+        }
+    ]
+}
   ]
 });
 

@@ -1,7 +1,40 @@
 ---
 import Base from '../layouts/Base.astro';
 
-const schemaJson = JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"BMR Calculator — Basal Metabolic Rate","description":"Calculate your Basal Metabolic Rate (BMR) — the calories your body burns at complete rest. Uses the Mifflin-St Jeor equation, the most accurate formula available.","author":{"@type":"Organization","name":"HealthyBMICheck.com"},"publisher":{"@type":"Organization","name":"HealthyBMICheck.com","url":"https://healthybmicheck.com"},"datePublished":"2026-06-19","dateModified":"2026-06-19","mainEntityOfPage":{"@type":"WebPage","@id":"https://healthybmicheck.com/bmr-calculator.html"}},{"@type":"WebApplication","name":"BMR Calculator","url":"https://healthybmicheck.com/bmr-calculator.html","description":"Free BMR calculator using the Mifflin-St Jeor equation. Find your basal metabolic rate in seconds.","applicationCategory":"HealthApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"HealthyBMICheck.com","url":"https://healthybmicheck.com"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is BMR?","acceptedAnswer":{"@type":"Answer","text":"BMR (Basal Metabolic Rate) is the number of calories your body burns at complete rest to maintain basic life functions — breathing, circulation, cell repair, and temperature regulation. It accounts for 60-75% of total daily calorie burn for most people."}},{"@type":"Question","name":"What is the difference between BMR and TDEE?","acceptedAnswer":{"@type":"Answer","text":"BMR is calories burned at complete rest. TDEE (Total Daily Energy Expenditure) is your total daily calorie burn including activity. TDEE = BMR x activity multiplier. For weight management, TDEE is the more useful number — it tells you how many calories to eat to maintain, lose, or gain weight."}},{"@type":"Question","name":"Which BMR formula is most accurate?","acceptedAnswer":{"@type":"Answer","text":"The Mifflin-St Jeor equation (1990) is the most accurate for most adults, validated against indirect calorimetry studies. It is more accurate than the older Harris-Benedict equation (1919) for modern populations. This calculator uses Mifflin-St Jeor as the primary result."}},{"@type":"Question","name":"How do I use BMR to lose weight?","acceptedAnswer":{"@type":"Answer","text":"To lose weight, eat below your TDEE (not your BMR). Eating below your BMR for extended periods causes muscle loss and metabolic adaptation. A healthy deficit is 300-500 calories below TDEE, producing 0.3-0.5 kg of fat loss per week. Use the Calorie Calculator to find your TDEE and set a deficit."}},{"@type":"Question","name":"Does BMR change with age?","acceptedAnswer":{"@type":"Answer","text":"Yes — BMR decreases with age, primarily due to muscle mass loss (sarcopenia). After age 30, BMR declines approximately 1-2% per decade. At age 60, BMR is typically 10-20% lower than at age 20 for the same height and weight. This is why maintaining muscle mass through resistance training becomes increasingly important with age."}}]}]});
+const schemaJson = JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"BMR Calculator — Basal Metabolic Rate","description":"Calculate your Basal Metabolic Rate (BMR) — the calories your body burns at complete rest. Uses the Mifflin-St Jeor equation, the most accurate formula available.","author":{"@type":"Organization","name":"HealthyBMICheck.com"},"publisher":{"@type":"Organization","name":"HealthyBMICheck.com","url":"https://healthybmicheck.com"},"datePublished":"2026-06-19","dateModified":"2026-06-19","mainEntityOfPage":{"@type":"WebPage","@id":"https://healthybmicheck.com/bmr-calculator.html"}},{"@type":"WebApplication","name":"BMR Calculator","url":"https://healthybmicheck.com/bmr-calculator.html","description":"Free BMR calculator using the Mifflin-St Jeor equation. Find your basal metabolic rate in seconds.","applicationCategory":"HealthApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"HealthyBMICheck.com","url":"https://healthybmicheck.com"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is BMR?","acceptedAnswer":{"@type":"Answer","text":"BMR (Basal Metabolic Rate) is the number of calories your body burns at complete rest to maintain basic life functions — breathing, circulation, cell repair, and temperature regulation. It accounts for 60-75% of total daily calorie burn for most people."}},{"@type":"Question","name":"What is the difference between BMR and TDEE?","acceptedAnswer":{"@type":"Answer","text":"BMR is calories burned at complete rest. TDEE (Total Daily Energy Expenditure) is your total daily calorie burn including activity. TDEE = BMR x activity multiplier. For weight management, TDEE is the more useful number — it tells you how many calories to eat to maintain, lose, or gain weight."}},{"@type":"Question","name":"Which BMR formula is most accurate?","acceptedAnswer":{"@type":"Answer","text":"The Mifflin-St Jeor equation (1990) is the most accurate for most adults, validated against indirect calorimetry studies. It is more accurate than the older Harris-Benedict equation (1919) for modern populations. This calculator uses Mifflin-St Jeor as the primary result."}},{"@type":"Question","name":"How do I use BMR to lose weight?","acceptedAnswer":{"@type":"Answer","text":"To lose weight, eat below your TDEE (not your BMR). Eating below your BMR for extended periods causes muscle loss and metabolic adaptation. A healthy deficit is 300-500 calories below TDEE, producing 0.3-0.5 kg of fat loss per week. Use the Calorie Calculator to find your TDEE and set a deficit."}},{"@type":"Question","name":"Does BMR change with age?","acceptedAnswer":{"@type":"Answer","text":"Yes — BMR decreases with age, primarily due to muscle mass loss (sarcopenia). After age 30, BMR declines approximately 1-2% per decade. At age 60, BMR is typically 10-20% lower than at age 20 for the same height and weight. This is why maintaining muscle mass through resistance training becomes increasingly important with age."}}]}, {
+  "@type": "HowTo",
+  "name": "How to Calculate Your BMR (Basal Metabolic Rate)",
+  "description": "Use our free BMR calculator to find out how many calories your body burns at complete rest.",
+  "totalTime": "PT2M",
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": "HealthyBMICheck BMR Calculator"
+    }
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Choose your sex",
+      "text": "Select male or female."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Enter your age, height, and weight",
+      "text": "Input your measurements. Metric and imperial are both supported."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Click Calculate",
+      "text": "Your BMR is displayed instantly."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Use your BMR as a baseline",
+      "text": "Multiply your BMR by your activity factor to get your TDEE."
+    }
+  ]
+}]});
 
 const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://healthybmicheck.com/"},{"@type":"ListItem","position":2,"name":"BMR Calculator","item":"https://healthybmicheck.com/bmr-calculator.html"}]});
 ---
