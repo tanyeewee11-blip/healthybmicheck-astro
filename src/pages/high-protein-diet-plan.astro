@@ -1,0 +1,256 @@
+---
+import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "High-Protein Diet Plan for Weight Loss: How Much Protein Do You Need?",
+      "description": "How much protein you actually need to lose fat without losing muscle — with daily targets by body weight, the best protein sources, and a simple meal plan to hit your numbers.",
+      "author": { "@type": "Organization", "name": "HealthyBMICheck.com" },
+      "publisher": { "@type": "Organization", "name": "HealthyBMICheck.com", "url": "https://healthybmicheck.com" },
+      "datePublished": "2026-06-28",
+      "dateModified": "2026-06-28",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://healthybmicheck.com/high-protein-diet-plan.html" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much protein per day to lose weight?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For weight loss while preserving muscle, aim for 1.6–2.2 g of protein per kg of body weight per day. A 70 kg person should target roughly 112–154 g of protein daily. This is significantly higher than general population recommendations (0.8 g/kg) because the body's protein requirements increase during a calorie deficit to protect muscle tissue." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a high-protein diet safe for kidneys?",
+          "acceptedAnswer": { "@type": "Answer", "text": "In healthy individuals with no pre-existing kidney disease, high protein intake (up to 2.2 g/kg/day) has not been shown to cause kidney damage in multiple systematic reviews. However, people with existing kidney disease or reduced kidney function should follow a lower-protein diet as advised by their nephrologist, as elevated protein can accelerate kidney decline in those with compromised function." }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the best high-protein foods for weight loss?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The best protein sources for weight loss are those that provide high protein per calorie: egg whites, chicken breast, canned tuna, low-fat cottage cheese, Greek yoghurt, tofu, tempeh, lentils, and white fish. These provide 15–30 g of protein per 100 g with relatively low calorie counts, making it easier to hit protein targets without exceeding calorie goals." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I get enough protein without eating meat?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Complete or near-complete plant protein sources include tofu, tempeh, edamame, quinoa, seitan (wheat gluten), and soy milk. Combining legumes with whole grains (rice and lentils, for example) provides all essential amino acids. Lacto-ovo vegetarians have an even easier time with eggs and dairy products. Hitting 1.6 g/kg on a plant-based diet requires planning but is very achievable." }
+        }
+      ]
+    }
+  ]
+});
+
+const breadcrumbJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/" },
+    { "@type": "ListItem", "position": 2, "name": "High-Protein Diet Plan", "item": "https://healthybmicheck.com/high-protein-diet-plan.html" }
+  ]
+});
+---
+
+<Base
+  breadcrumbJson={breadcrumbJson}
+  schemaJson={schemaJson}
+  title="High-Protein Diet Plan for Weight Loss — HealthyBMICheck"
+  description="Exact protein targets by body weight, the 20 best high-protein foods, and a 3-day meal plan to hit your numbers on any diet — including plant-based."
+  canonical="https://healthybmicheck.com/high-protein-diet-plan.html"
+>
+<div class="article-wrap">
+
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> › <a href="guides.html">Guides</a> › High-Protein Diet Plan
+  </div>
+
+  <p class="article-tag" style="margin:0;">NUTRITION</p>
+  <h1>High-Protein Diet Plan for Weight Loss: How Much Do You Actually Need?</h1>
+  <div class="meta">Last updated: June 2026 &nbsp;·&nbsp; 9 min read &nbsp;·&nbsp; Reviewed for accuracy</div>
+
+  <p>Protein is the single most important dietary variable for losing fat while keeping muscle. It keeps you fuller for longer, requires more energy to digest than carbs or fat, and provides the amino acids your body needs to maintain lean tissue during a calorie deficit. This guide gives you the exact targets, the best food sources, and a practical meal plan — no supplements required.</p>
+
+  <div class="toc">
+    <div class="toc-title">📋 In This Article</div>
+    <ol>
+      <li><a href="#why-protein">Why Protein Matters More During Weight Loss</a></li>
+      <li><a href="#how-much">How Much Protein Do You Actually Need?</a></li>
+      <li><a href="#protein-targets">Daily Protein Targets by Body Weight</a></li>
+      <li><a href="#best-foods">The 20 Best High-Protein Foods</a></li>
+      <li><a href="#meal-plan">3-Day High-Protein Meal Plan</a></li>
+      <li><a href="#plant-based">Getting Enough Protein on a Plant-Based Diet</a></li>
+      <li><a href="#timing">Does Protein Timing Matter?</a></li>
+      <li><a href="#safety">Is High Protein Safe?</a></li>
+    </ol>
+  </div>
+
+  <h2 id="why-protein">Why Protein Matters More During Weight Loss</h2>
+  <p>When you eat fewer calories than you burn, your body needs to find fuel from somewhere. Ideally, that fuel comes entirely from stored fat. In practice, some muscle is always lost during a deficit — but the amount of muscle lost is largely determined by two factors: how much protein you eat and whether you do resistance training.</p>
+  <p>Protein protects muscle during a deficit through several mechanisms:</p>
+  <ul>
+    <li><strong>Provides amino acids for muscle protein synthesis</strong> — the ongoing process of repairing and building muscle fibres</li>
+    <li><strong>Increases satiety</strong> — protein is the most satiating macronutrient, reducing hunger and making calorie restriction more sustainable</li>
+    <li><strong>Raises the thermic effect of food</strong> — the body burns 20–30% of protein calories just in the process of digesting and metabolising it (vs 5–10% for carbs and 0–3% for fat)</li>
+    <li><strong>Preserves metabolic rate</strong> — muscle loss lowers basal metabolic rate; preserving muscle by eating adequate protein prevents this decline</li>
+  </ul>
+  <p>Studies consistently show that higher protein intakes during calorie restriction produce better body composition outcomes — more fat lost, more muscle retained — compared to standard protein intakes, even when total calories are identical.</p>
+
+  <h2 id="how-much">How Much Protein Do You Actually Need?</h2>
+  <p>The general population recommendation of 0.8 g of protein per kg of body weight per day is a minimum to prevent deficiency — not an optimal amount for weight loss. For people in a calorie deficit who want to preserve muscle, the evidence supports significantly higher intakes:</p>
+
+  <div class="card" style="padding:20px;margin:20px 0;border:1px solid var(--border);border-radius:12px;">
+    <table class="bmi-table">
+      <thead><tr><th>Goal</th><th>Protein target</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>General health</td><td>0.8 g/kg/day</td><td>Minimum to prevent deficiency</td></tr>
+        <tr><td>Weight loss (moderate)</td><td>1.2–1.6 g/kg/day</td><td>Good baseline for most people</td></tr>
+        <tr><td><strong>Weight loss (optimal)</strong></td><td><strong>1.6–2.2 g/kg/day</strong></td><td><strong>Maximises muscle retention</strong></td></tr>
+        <tr><td>Weight loss + heavy training</td><td>2.0–2.4 g/kg/day</td><td>For active individuals training 4+ days/week</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Use lean body mass as your reference if you have a high body fat percentage. A 90 kg person with 40% body fat has a lean mass of 54 kg — targeting 2.2 g/kg of total weight (198 g) may be excessive; targeting 2.2 g/kg of lean mass (119 g) is more appropriate. Use our <a href="body-fat.html">Body Fat Calculator</a> to estimate lean mass and our <a href="macro-calculator.html">Macro Calculator</a> to get a personalised protein target.</p>
+
+  <h2 id="protein-targets">Daily Protein Targets by Body Weight</h2>
+
+  <table class="bmi-table">
+    <thead>
+      <tr><th>Body weight</th><th>Minimum (1.2 g/kg)</th><th>Optimal (1.6 g/kg)</th><th>High (2.2 g/kg)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>50 kg</td><td>60 g</td><td>80 g</td><td>110 g</td></tr>
+      <tr><td>60 kg</td><td>72 g</td><td>96 g</td><td>132 g</td></tr>
+      <tr><td>70 kg</td><td>84 g</td><td>112 g</td><td>154 g</td></tr>
+      <tr><td>80 kg</td><td>96 g</td><td>128 g</td><td>176 g</td></tr>
+      <tr><td>90 kg</td><td>108 g</td><td>144 g</td><td>198 g</td></tr>
+      <tr><td>100 kg</td><td>120 g</td><td>160 g</td><td>220 g</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="best-foods">The 20 Best High-Protein Foods</h2>
+  <p>The best protein sources for weight loss provide maximum protein per calorie, not just maximum protein per 100 g. Foods high in protein but also very high in fat (like cheddar cheese or fatty mince) can make hitting calorie targets harder.</p>
+
+  <table class="bmi-table">
+    <thead>
+      <tr><th>Food</th><th>Protein per 100g</th><th>Calories per 100g</th><th>Protein efficiency</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Egg whites</td><td>11g</td><td>52 kcal</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>Canned tuna (in water)</td><td>26g</td><td>116 kcal</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>Chicken breast (cooked)</td><td>31g</td><td>165 kcal</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>Low-fat cottage cheese</td><td>12g</td><td>85 kcal</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>Non-fat Greek yoghurt</td><td>10g</td><td>59 kcal</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>Cod / white fish</td><td>20g</td><td>82 kcal</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>Turkey breast</td><td>29g</td><td>157 kcal</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>Edamame</td><td>11g</td><td>122 kcal</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>Tofu (firm)</td><td>8g</td><td>76 kcal</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>Lentils (cooked)</td><td>9g</td><td>116 kcal</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>Chickpeas (cooked)</td><td>9g</td><td>164 kcal</td><td>⭐⭐⭐</td></tr>
+      <tr><td>Salmon</td><td>20g</td><td>208 kcal</td><td>⭐⭐⭐</td></tr>
+      <tr><td>Whole eggs</td><td>13g</td><td>155 kcal</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>Tempeh</td><td>19g</td><td>193 kcal</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>Lean beef mince (5% fat)</td><td>26g</td><td>137 kcal</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>Seitan (wheat gluten)</td><td>25g</td><td>120 kcal</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>Low-fat milk</td><td>3.5g</td><td>42 kcal</td><td>⭐⭐⭐</td></tr>
+      <tr><td>Pumpkin seeds</td><td>19g</td><td>559 kcal</td><td>⭐⭐</td></tr>
+      <tr><td>Black beans (cooked)</td><td>9g</td><td>132 kcal</td><td>⭐⭐⭐</td></tr>
+      <tr><td>Shrimp / prawns</td><td>20g</td><td>85 kcal</td><td>⭐⭐⭐⭐⭐</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="meal-plan">3-Day High-Protein Meal Plan</h2>
+  <p>This sample plan targets approximately 130–140 g of protein and 1,500–1,600 kcal per day — suitable for a 70–80 kg person aiming to lose fat. Adjust portions up or down based on your calorie target from our <a href="calorie-calculator.html">Calorie Calculator</a>.</p>
+
+  <h3>Day 1</h3>
+  <div class="card" style="padding:16px 20px;margin:12px 0;border:1px solid var(--border);border-radius:10px;">
+    <p><strong>Breakfast:</strong> 3 scrambled eggs + 150g Greek yoghurt + 1 banana → ~42g protein, ~420 kcal</p>
+    <p><strong>Lunch:</strong> 150g chicken breast + 150g brown rice + large green salad with olive oil dressing → ~47g protein, ~520 kcal</p>
+    <p><strong>Snack:</strong> 150g cottage cheese + cucumber → ~18g protein, ~130 kcal</p>
+    <p><strong>Dinner:</strong> 150g salmon + 200g roasted vegetables + 100g quinoa → ~38g protein, ~530 kcal</p>
+    <p style="color:var(--ink3);font-size:.85rem;margin:0;"><strong>Total: ~145g protein · ~1,600 kcal</strong></p>
+  </div>
+
+  <h3>Day 2</h3>
+  <div class="card" style="padding:16px 20px;margin:12px 0;border:1px solid var(--border);border-radius:10px;">
+    <p><strong>Breakfast:</strong> 200g Greek yoghurt + 30g oats + 100g berries → ~22g protein, ~310 kcal</p>
+    <p><strong>Lunch:</strong> 1 can tuna + 2 slices wholegrain bread + tomato & spinach → ~35g protein, ~400 kcal</p>
+    <p><strong>Snack:</strong> 3 boiled eggs → ~18g protein, ~230 kcal</p>
+    <p><strong>Dinner:</strong> 200g lean beef stir-fry with 150g tofu + mixed vegetables + 100g noodles → ~55g protein, ~620 kcal</p>
+    <p style="color:var(--ink3);font-size:.85rem;margin:0;"><strong>Total: ~130g protein · ~1,560 kcal</strong></p>
+  </div>
+
+  <h3>Day 3</h3>
+  <div class="card" style="padding:16px 20px;margin:12px 0;border:1px solid var(--border);border-radius:10px;">
+    <p><strong>Breakfast:</strong> 4 egg white omelette with vegetables + 150g cottage cheese → ~36g protein, ~280 kcal</p>
+    <p><strong>Lunch:</strong> 200g turkey breast + 150g sweet potato + broccoli → ~50g protein, ~480 kcal</p>
+    <p><strong>Snack:</strong> 200g Greek yoghurt + 20g almonds → ~22g protein, ~280 kcal</p>
+    <p><strong>Dinner:</strong> 200g white fish (baked) + 200g lentils + roasted vegetables → ~48g protein, ~560 kcal</p>
+    <p style="color:var(--ink3);font-size:.85rem;margin:0;"><strong>Total: ~156g protein · ~1,600 kcal</strong></p>
+  </div>
+
+  <h2 id="plant-based">Getting Enough Protein on a Plant-Based Diet</h2>
+  <p>Hitting 1.6 g/kg of protein on a plant-based diet requires planning but is very achievable. Key strategies:</p>
+  <ul>
+    <li><strong>Prioritise complete protein sources:</strong> tofu, tempeh, edamame, seitan, quinoa, and soy milk all provide all essential amino acids</li>
+    <li><strong>Combine complementary proteins:</strong> rice + lentils, hummus + wholegrain pitta, peanut butter + wholegrain bread — these combinations provide complete amino acid profiles</li>
+    <li><strong>Build meals around protein:</strong> instead of adding protein as an afterthought, start meal planning with the protein source and build around it</li>
+    <li><strong>Use protein-fortified foods:</strong> soy milk, high-protein pasta, and fortified plant milks can boost daily totals meaningfully</li>
+    <li><strong>Consider pea or soy protein powder:</strong> these are complete proteins and are an efficient, affordable way to top up if food sources fall short</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>Plant-based protein example:</strong> 200g firm tofu (16g) + 150g cooked lentils (14g) + 100g edamame (11g) + 200g soy yoghurt (8g) + 50g hemp seeds (16g) = <strong>65g protein from plants alone</strong> at breakfast and lunch. Achievable.</p>
+  </div>
+
+  <h2 id="timing">Does Protein Timing Matter?</h2>
+  <p>The short answer: less than you've probably been told. The "anabolic window" — the idea that you must consume protein within 30 minutes of training — has been largely debunked for the general population. Total daily protein intake matters far more than timing.</p>
+  <p>That said, there are a few evidence-supported timing principles worth following:</p>
+  <ul>
+    <li><strong>Spread protein across meals</strong> — 3–4 servings of 30–40g each stimulates muscle protein synthesis more effectively than front- or back-loading all your protein in one or two meals</li>
+    <li><strong>Include protein at breakfast</strong> — morning protein intake is associated with better appetite control throughout the day</li>
+    <li><strong>Consume protein within 2 hours of resistance training</strong> — the window is wider than once thought, but within 2 hours is a reasonable guideline</li>
+    <li><strong>Casein protein before bed</strong> — slow-digesting protein (cottage cheese, casein powder, Greek yoghurt) before sleep may enhance overnight muscle protein synthesis</li>
+  </ul>
+
+  <h2 id="safety">Is High Protein Safe?</h2>
+  <p>In healthy individuals, intakes up to 2.2 g/kg/day are well-supported by the evidence as safe. Multiple systematic reviews and meta-analyses have found no evidence of kidney damage, bone loss, or other adverse effects from high protein diets in people with normal kidney function.</p>
+  <p><strong>Important exception:</strong> People with existing chronic kidney disease (CKD) should follow a <em>lower</em> protein diet as advised by their nephrologist — high protein intake accelerates decline in already-compromised kidneys. If you have CKD, do not follow the targets in this article without medical guidance.</p>
+  <p>Adequate hydration is important on a high-protein diet — aim for the water intake calculated by our <a href="water-intake.html">Water Intake Calculator</a>, adjusted upward slightly if protein intake is very high.</p>
+
+  <div class="cta-strip">
+    <div class="cta-inner">
+      <p class="cta-label">GET YOUR TARGETS</p>
+      <h2 class="cta-h2">Personalise Your Protein & Macros</h2>
+      <p class="cta-sub">Find your exact daily protein, carb, and fat targets based on your weight and goals.</p>
+      <div class="cta-btns">
+        <a href="macro-calculator.html" class="cta-btn-p">Macro Calculator →</a>
+        <a href="calorie-calculator.html" class="cta-btn-s">Calorie Calculator</a>
+        <a href="body-fat.html" class="cta-btn-s">Body Fat Calculator</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="max-width:720px;margin:0 auto;padding:0 20px 32px;">
+  <div style="margin-bottom:24px;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:14px;">
+    <p style="font-size:.72rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px;">Related tools & guides</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      <a href="macro-calculator.html" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--border);border-radius:100px;padding:7px 14px;text-decoration:none;color:var(--ink);font-size:.8rem;font-weight:500;">🥩 Macro Calculator</a>
+      <a href="calorie-calculator.html" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--border);border-radius:100px;padding:7px 14px;text-decoration:none;color:var(--ink);font-size:.8rem;font-weight:500;">🔥 Calorie Calculator</a>
+      <a href="body-fat.html" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--border);border-radius:100px;padding:7px 14px;text-decoration:none;color:var(--ink);font-size:.8rem;font-weight:500;">📉 Body Fat Calculator</a>
+      <a href="what-to-eat-to-lose-weight.html" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--border);border-radius:100px;padding:7px 14px;text-decoration:none;color:var(--ink);font-size:.8rem;font-weight:500;">🥗 What to Eat to Lose Weight</a>
+      <a href="how-to-lose-5kg.html" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--border);border-radius:100px;padding:7px 14px;text-decoration:none;color:var(--ink);font-size:.8rem;font-weight:500;">🎯 How to Lose 5kg</a>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+    <span style="font-size:.8rem;color:var(--ink3);font-weight:500;">Share:</span>
+    <a href="https://api.whatsapp.com/send?text=High-Protein%20Diet%20Plan%20for%20Weight%20Loss%20https%3A%2F%2Fhealthybmicheck.com%2Fhigh-protein-diet-plan.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#fff;text-decoration:none;border-radius:100px;padding:8px 16px;font-size:.8rem;font-weight:500;">💬 WhatsApp</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhealthybmicheck.com%2Fhigh-protein-diet-plan.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#1877F2;color:#fff;text-decoration:none;border-radius:100px;padding:8px 16px;font-size:.8rem;font-weight:500;">📘 Facebook</a>
+    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fhealthybmicheck.com%2Fhigh-protein-diet-plan.html&text=High-Protein%20Diet%20Plan%20for%20Weight%20Loss" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#000;color:#fff;text-decoration:none;border-radius:100px;padding:8px 16px;font-size:.8rem;font-weight:500;">✕ X</a>
+  </div>
+</div>
+
+</Base>
