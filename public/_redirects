@@ -1,3 +1,7 @@
 # Cloudflare Pages natively serves /page and /page.html as the same URL
 # No redirects needed for .html consolidation - Cloudflare handles this automatically
-/guides /guides/index.html 301
+/guides /guides/ 301
+
+# Old duplicate "guides.html" page was removed in favor of /guides/ (the real hub).
+# Redirect so any existing backlinks/bookmarks/indexed URLs consolidate correctly.
+/guides.html /guides/ 301
