@@ -1,0 +1,350 @@
+---
+import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Lean Body Mass Calculator — Boer, James & Hume Formulas",
+      "description": "Calculate your lean body mass (fat-free mass) instantly based on your height, weight, and sex, using three validated clinical formulas.",
+      "author": { "@type": "Organization", "name": "HealthyBMICheck.com" },
+      "publisher": { "@type": "Organization", "name": "HealthyBMICheck.com", "url": "https://healthybmicheck.com" },
+      "datePublished": "2026-07-05",
+      "dateModified": "2026-07-05",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://healthybmicheck.com/lean-body-mass.html" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is lean body mass?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lean body mass (LBM), also called fat-free mass, is your total body weight minus fat mass. It includes muscle, bone, organs, water, and connective tissue — essentially everything in your body except stored fat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are there three different formulas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Boer, James, and Hume formulas were each developed independently using different population studies. The Boer formula (1984) is widely used in clinical practice and drug dosing. The James formula (1976) accounts for body mass index in its calculation. The Hume formula (1966) is one of the oldest and most established. No single formula is universally accepted, so showing all three gives a more balanced estimate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between lean body mass and muscle mass?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lean body mass includes muscle, but also bone, organs, water, and connective tissue. Muscle mass refers specifically to skeletal muscle tissue. LBM is always higher than muscle mass alone, since it includes everything in the body that isn't fat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate are lean body mass formulas compared to body fat percentage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "These formulas use height, weight, and sex to estimate lean mass without requiring circumference measurements, but they do not account for individual differences in muscularity. If you have measured your body fat percentage, multiplying it by your total weight and subtracting from your total weight gives a more personalized estimate of lean mass."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does lean body mass matter for nutrition and training?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lean body mass is often used to set more accurate protein targets (grams per kg of lean mass rather than total weight) and to estimate resting energy expenditure, since lean tissue burns significantly more calories at rest than fat tissue. Tracking lean mass over time also helps confirm whether weight changes reflect fat loss/gain versus muscle loss/gain."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Lean Body Mass Calculator",
+      "url": "https://healthybmicheck.com/lean-body-mass.html",
+      "description": "Calculate lean body mass using validated clinical formulas (Boer, James, Hume).",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "HealthyBMICheck.com", "url": "https://healthybmicheck.com" }
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to Calculate Your Lean Body Mass",
+      "description": "Calculate your lean body mass using three established formulas — Boer, James, and Hume.",
+      "totalTime": "PT1M",
+      "tool": [{ "@type": "HowToTool", "name": "HealthyBMICheck Lean Body Mass Calculator" }],
+      "step": [
+        { "@type": "HowToStep", "name": "Select your sex", "text": "The formulas use different baselines for men and women." },
+        { "@type": "HowToStep", "name": "Enter your height and weight", "text": "Input in cm/kg or ft-in/lb." },
+        { "@type": "HowToStep", "name": "Review all three formula results", "text": "See your lean body mass from the Boer, James, and Hume formulas, plus the average estimate." }
+      ]
+    }
+  ]
+});
+
+const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://healthybmicheck.com/"},{"@type":"ListItem","position":2,"name":"Lean Body Mass Calculator","item":"https://healthybmicheck.com/lean-body-mass.html"}]});
+---
+
+<Base
+  breadcrumbJson={breadcrumbJson}
+  schemaJson={schemaJson}
+  title="Lean Body Mass Calculator — Estimate Fat-Free Mass"
+  description="Calculate your lean body mass (fat-free mass) instantly based on height, weight, and sex, using three validated clinical formulas."
+  canonical="https://healthybmicheck.com/lean-body-mass.html"
+>
+<div class="hero">
+    <div class="breadcrumb" class="input-hint"><a href="index.html" class="breadcrumb-link">Home</a> › Lean Body Mass Calculator</div>
+  <h1>Lean Body <em>Mass</em> Calculator</h1>
+  <p>Estimate your fat-free mass — muscle, bone, organs, and water — using three established clinical formulas.</p>
+</div>
+<div class="calc-byline">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>July 2026</strong></div>
+
+<div class="container">
+
+  <div class="card">
+    <div class="unit-toggle">
+      <button class="active" onclick="setUnit('metric')">Metric (cm/kg)</button>
+      <button onclick="setUnit('imperial')">Imperial (ft-in/lb)</button>
+    </div>
+    <div class="input-group">
+      <label>Sex</label>
+      <div class="gender-toggle">
+        <button class="gender-btn active" onclick="setGender('male',this)">Male</button>
+        <button class="gender-btn" onclick="setGender('female',this)">Female</button>
+      </div>
+    </div>
+
+    <div class="input-group" id="metric-h">
+      <label>Height</label>
+      <div class="input-wrap">
+        <input type="number" id="height-cm" placeholder="170" min="100" max="250">
+        <span class="unit-badge">cm</span>
+      </div>
+    </div>
+    <div class="input-group" id="imperial-h" style="display:none">
+      <label>Height</label>
+      <div class="input-row">
+        <div class="input-wrap">
+          <input type="number" id="height-ft" placeholder="5" min="3" max="8">
+          <span class="unit-badge">ft</span>
+        </div>
+        <div class="input-wrap">
+          <input type="number" id="height-in" placeholder="7" min="0" max="11">
+          <span class="unit-badge">in</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-group" id="metric-w">
+      <label>Weight</label>
+      <div class="input-wrap">
+        <input type="number" id="weight-kg" placeholder="70" min="30" max="250">
+        <span class="unit-badge">kg</span>
+      </div>
+    </div>
+    <div class="input-group" id="imperial-w" style="display:none">
+      <label>Weight</label>
+      <div class="input-wrap">
+        <input type="number" id="weight-lb" placeholder="154" min="66" max="550">
+        <span class="unit-badge">lb</span>
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">Calculate Lean Body Mass →</button>
+  </div>
+
+  <!-- Result -->
+  <div class="result-card" id="result-card">
+    <div class="tdee-bmr-row">
+      <div class="bmr-box" style="flex:1;background:var(--surface);border-radius:12px;padding:20px;text-align:center;">
+        <div class="num" id="lbm-avg" style="font-size:2.4rem;font-weight:500;color:var(--accent);font-family:'DM Serif Display',serif;">—</div>
+        <div class="lbl" class="input-hint">Average estimated lean body mass</div>
+      </div>
+    </div>
+
+    <div class="tip-box" id="fat-mass-box" style="display:none;">
+      <strong>Estimated fat mass:</strong> <span id="fat-mass-val">—</span> · <strong>Lean mass %:</strong> <span id="lean-pct-val">—</span>
+    </div>
+
+    <div style="margin-top:16px;">
+      <div class="verdict-label">By Formula</div>
+      <div class="flex-col-sm" id="formula-rows"></div>
+    </div>
+
+    <div class="tip-box">
+      <strong>Next step:</strong> Have a measured body fat percentage?
+      <a href="body-fat.html" class="text-accent-bold">Check it here</a> for a more personalized lean mass estimate,
+      or use <a href="calorie-calculator.html" class="text-accent-bold">Calorie Calculator</a> to set your intake.
+    </div>
+  </div>
+
+  <div class="article-section">
+    <h2>What Is Lean Body Mass?</h2>
+    <p><strong>Lean body mass (LBM)</strong>, also called fat-free mass, is everything in your body that isn't stored fat — muscle, bone, organs, connective tissue, and water. It's a more useful reference point than total body weight for setting protein targets, estimating resting energy needs, and tracking whether weight change reflects fat loss or muscle loss.</p>
+
+    <h2>The Three Formulas Used</h2>
+    <ul>
+      <li><strong>Boer Formula (1984):</strong> Men: LBM = 0.407 × weight(kg) + 0.267 × height(cm) − 19.2. Women: LBM = 0.252 × weight(kg) + 0.473 × height(cm) − 48.3. Widely used in clinical and pharmacological dosing contexts.</li>
+      <li><strong>James Formula (1976):</strong> Men: LBM = 1.10 × weight(kg) − 128 × (weight/height)². Women: LBM = 1.07 × weight(kg) − 148 × (weight/height)². Incorporates a body-mass-relative adjustment.</li>
+      <li><strong>Hume Formula (1966):</strong> Men: LBM = 0.3281 × weight(kg) + 0.33929 × height(cm) − 29.5336. Women: LBM = 0.29569 × weight(kg) + 0.41813 × height(cm) − 43.2933. One of the earliest validated formulas.</li>
+    </ul>
+    <p>No single formula is universally superior — showing the average across all three gives a more realistic estimate than relying on just one.</p>
+
+    <div class="callout"><p>💡 <strong>Have a body fat percentage already?</strong> A more personalized calculation is: Lean Mass = Total Weight × (1 − Body Fat %). Use our <a href="body-fat.html">Body Fat Calculator</a> first, then apply this formula for a result specific to you rather than population averages.</p></div>
+
+    <h2>Lean Body Mass vs Muscle Mass</h2>
+    <p>These terms are often used interchangeably but aren't the same. Lean body mass includes <em>all</em> non-fat tissue — muscle, bone, organs, and water. Muscle mass refers specifically to skeletal muscle. LBM will always be a larger number than muscle mass alone, since bone and organs typically make up 15-20% of total body weight on their own.</p>
+
+    <h2>Why Lean Body Mass Matters</h2>
+    <ul>
+      <li><strong>Protein targets:</strong> Many nutrition guidelines recommend protein intake per kg of lean mass (e.g. 1.6-2.2 g/kg) rather than total weight, which is more accurate for people with higher body fat percentages.</li>
+      <li><strong>Resting energy needs:</strong> Lean tissue is far more metabolically active than fat tissue, so lean mass is a stronger predictor of your BMR than total weight alone. Try our <a href="bmr-calculator.html">BMR Calculator</a>.</li>
+      <li><strong>Tracking body recomposition:</strong> If your weight is stable but lean mass is increasing, you're likely building muscle while losing fat — a sign of progress the scale alone won't show.</li>
+    </ul>
+
+    <h2>Limitations</h2>
+    <p>These formulas estimate lean mass from height, weight, and sex alone — they don't account for individual differences in muscularity, ethnicity, or age-related muscle loss (sarcopenia). Someone with unusually high or low muscle mass for their height and weight will see less accurate results. Formulas based on measured body fat percentage (see the callout above) are generally more personalized.</p>
+
+    <div class="sources">
+      <strong>References:</strong><br>
+      Boer P. Estimated lean body mass as an index for normalization of body fluid volumes in humans. <em>American Journal of Physiology.</em> 1984;247(4):F632-636.<br>
+      James WPT. <em>Research on Obesity: A Report of the DHSS/MRC Group.</em> London: HMSO, 1976.<br>
+      Hume R. Prediction of lean body mass from height and weight. <em>Journal of Clinical Pathology.</em> 1966;19(4):389-391.
+    </div>
+
+    <div class="related">
+      <h3>Related Calculators &amp; Guides</h3>
+      <div class="related-links">
+        <a href="body-fat.html">Body Fat Calculator</a>
+        <a href="bmi-calculator.html">BMI Calculator</a>
+        <a href="bmr-calculator.html">BMR Calculator</a>
+        <a href="calorie-calculator.html">Calorie Calculator</a>
+        <a href="ideal-weight.html">Ideal Weight Calculator</a>
+        <a href="macro-calculator.html">Macro Calculator</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is lean body mass?</button>
+      <div class="faq-a">Lean body mass (LBM), also called fat-free mass, is your total body weight minus fat mass. It includes muscle, bone, organs, water, and connective tissue — essentially everything in your body except stored fat.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Why are there three different formulas?</button>
+      <div class="faq-a">The Boer, James, and Hume formulas were each developed independently using different population studies. The Boer formula (1984) is widely used in clinical practice and drug dosing. The James formula (1976) accounts for body mass index in its calculation. The Hume formula (1966) is one of the oldest and most established. No single formula is universally accepted, so showing all three gives a more balanced estimate.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the difference between lean body mass and muscle mass?</button>
+      <div class="faq-a">Lean body mass includes muscle, but also bone, organs, water, and connective tissue. Muscle mass refers specifically to skeletal muscle tissue. LBM is always higher than muscle mass alone, since it includes everything in the body that isn't fat.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How accurate are lean body mass formulas compared to body fat percentage?</button>
+      <div class="faq-a">These formulas use height, weight, and sex to estimate lean mass without requiring circumference measurements, but they do not account for individual differences in muscularity. If you have measured your body fat percentage, multiplying it by your total weight and subtracting from your total weight gives a more personalized estimate of lean mass.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Why does lean body mass matter for nutrition and training?</button>
+      <div class="faq-a">Lean body mass is often used to set more accurate protein targets (grams per kg of lean mass rather than total weight) and to estimate resting energy expenditure, since lean tissue burns significantly more calories at rest than fat tissue. Tracking lean mass over time also helps confirm whether weight changes reflect fat loss/gain versus muscle loss/gain.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta-block">
+  <div class="cta-inner">
+    <p class="cta-label">Next step</p>
+    <h2 class="cta-h2">Turn lean mass into a nutrition plan</h2>
+    <p class="cta-sub">Set your calorie and protein targets based on your body composition.</p>
+    <div class="cta-btns">
+      <a href="calorie-calculator.html" class="cta-btn-p cta-btn-lg">🔥 Calorie Calculator →</a>
+      <a href="macro-calculator.html" class="cta-btn-s cta-btn-lg">🥩 Macro Calculator →</a>
+      <a href="body-fat.html" class="cta-btn-s cta-btn-lg">📊 Body Fat Calculator →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+let unit = 'metric', gender = 'male';
+
+function setUnit(u) {
+  unit = u;
+  document.querySelectorAll('.unit-toggle button').forEach((b,i) => b.classList.toggle('active',(u==='metric'&&i===0)||(u==='imperial'&&i===1)));
+  document.getElementById('metric-h').style.display = u==='metric' ? '' : 'none';
+  document.getElementById('imperial-h').style.display = u==='imperial' ? '' : 'none';
+  document.getElementById('metric-w').style.display = u==='metric' ? '' : 'none';
+  document.getElementById('imperial-w').style.display = u==='imperial' ? '' : 'none';
+}
+function setGender(g,btn) {
+  gender = g;
+  document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function fmtKg(kg) {
+  return unit === 'metric' ? kg.toFixed(1) + ' kg' : (kg / 0.453592).toFixed(1) + ' lb';
+}
+
+function calculate() {
+  let heightCm, weightKg;
+  if (unit === 'metric') {
+    heightCm = parseFloat(document.getElementById('height-cm').value);
+    weightKg = parseFloat(document.getElementById('weight-kg').value);
+  } else {
+    const ft = parseFloat(document.getElementById('height-ft').value) || 0;
+    const ins = parseFloat(document.getElementById('height-in').value) || 0;
+    heightCm = (ft * 12 + ins) * 2.54;
+    weightKg = (parseFloat(document.getElementById('weight-lb').value) || 0) * 0.453592;
+  }
+
+  if (!heightCm || !weightKg || heightCm < 100 || weightKg < 20) {
+    alert('Please enter a valid height and weight.');
+    return;
+  }
+
+  const wOverH = weightKg / heightCm;
+  let boer, james, hume;
+  if (gender === 'male') {
+    boer  = 0.407 * weightKg + 0.267 * heightCm - 19.2;
+    james = 1.10 * weightKg - 128 * (wOverH * wOverH);
+    hume  = 0.3281 * weightKg + 0.33929 * heightCm - 29.5336;
+  } else {
+    boer  = 0.252 * weightKg + 0.473 * heightCm - 48.3;
+    james = 1.07 * weightKg - 148 * (wOverH * wOverH);
+    hume  = 0.29569 * weightKg + 0.41813 * heightCm - 43.2933;
+  }
+
+  const vals = [boer, james, hume].map(v => Math.max(v, weightKg * 0.5));
+  const avg = vals.reduce((a,b) => a+b, 0) / vals.length;
+
+  document.getElementById('lbm-avg').textContent = fmtKg(avg);
+
+  const fatMass = Math.max(0, weightKg - avg);
+  const leanPct = (avg / weightKg * 100).toFixed(1);
+  document.getElementById('fat-mass-val').textContent = fmtKg(fatMass);
+  document.getElementById('lean-pct-val').textContent = leanPct + '%';
+  document.getElementById('fat-mass-box').style.display = '';
+
+  const rows = document.getElementById('formula-rows');
+  const labels = [['Boer', vals[0]], ['James', vals[1]], ['Hume', vals[2]]];
+  rows.innerHTML = labels.map(([name, v]) => `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--surface);border-radius:8px;font-size:.85rem;">
+      <span class="text-muted">${name} Formula</span>
+      <strong style="color:var(--accent);white-space:nowrap;margin-left:12px;">${fmtKg(v)}</strong>
+    </div>
+  `).join('');
+
+  document.getElementById('result-card').classList.add('visible');
+  document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+</Base>

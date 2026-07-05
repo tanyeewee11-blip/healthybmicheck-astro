@@ -1,0 +1,433 @@
+---
+import Base from '../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Pregnancy Weight Gain Calculator — IOM Guidelines",
+      "description": "Calculate your recommended pregnancy weight gain range based on your pre-pregnancy BMI, using the Institute of Medicine (IOM) guidelines.",
+      "author": { "@type": "Organization", "name": "HealthyBMICheck.com" },
+      "publisher": { "@type": "Organization", "name": "HealthyBMICheck.com", "url": "https://healthybmicheck.com" },
+      "datePublished": "2026-07-04",
+      "dateModified": "2026-07-04",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://healthybmicheck.com/pregnancy-weight-gain-calculator.html" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much weight should I gain during pregnancy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on your pre-pregnancy BMI. The Institute of Medicine recommends 12.5-18 kg (28-40 lb) for underweight women, 11.5-16 kg (25-35 lb) for normal weight, 7-11.5 kg (15-25 lb) for overweight, and 5-9 kg (11-20 lb) for obese pre-pregnancy BMI. These are general guidelines — your doctor may recommend a different target based on your individual health."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it normal to gain weight unevenly during pregnancy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Most guidelines recommend only 0.5-2 kg (1-4.5 lb) total in the first trimester, with the majority of weight gain occurring steadily through the second and third trimesters. Week-to-week gain can also vary due to fluid retention, so looking at the overall trend over several weeks is more meaningful than any single weigh-in."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I'm having twins?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Recommended weight gain is higher for twin pregnancies. The IOM recommends 16.8-24.5 kg (37-54 lb) for normal weight, 14.1-22.7 kg (31-50 lb) for overweight, and 11.3-19.1 kg (25-42 lb) for obese pre-pregnancy BMI. There is no established IOM range for underweight women carrying twins — this should be discussed directly with your healthcare provider."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I gain more or less than the recommended range?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "These ranges are population-level guidelines, not strict individual targets. Gaining outside the recommended range is common and does not automatically mean something is wrong, but it is worth discussing with your healthcare provider, since it can be associated with different risks for both parent and baby. Your doctor is best placed to interpret your specific situation."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Pregnancy Weight Gain Calculator",
+      "url": "https://healthybmicheck.com/pregnancy-weight-gain-calculator.html",
+      "description": "Free pregnancy weight gain calculator based on IOM guidelines and pre-pregnancy BMI.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "HealthyBMICheck.com", "url": "https://healthybmicheck.com" }
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to Calculate Your Recommended Pregnancy Weight Gain",
+      "description": "Use our free calculator to find your recommended weight gain range during pregnancy, based on IOM guidelines.",
+      "totalTime": "PT2M",
+      "tool": [{ "@type": "HowToTool", "name": "HealthyBMICheck Pregnancy Weight Gain Calculator" }],
+      "step": [
+        { "@type": "HowToStep", "name": "Enter your pre-pregnancy height and weight", "text": "This determines your pre-pregnancy BMI category." },
+        { "@type": "HowToStep", "name": "Select singleton or twins", "text": "Recommended ranges differ for twin pregnancies." },
+        { "@type": "HowToStep", "name": "Optionally enter your current week of pregnancy", "text": "Get an estimated recommended gain-to-date." },
+        { "@type": "HowToStep", "name": "Click Calculate", "text": "See your recommended total weight gain range and weekly pace guidance." }
+      ]
+    }
+  ]
+});
+
+const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://healthybmicheck.com/"},{"@type":"ListItem","position":2,"name":"Pregnancy Weight Gain Calculator","item":"https://healthybmicheck.com/pregnancy-weight-gain-calculator.html"}]});
+---
+
+<Base
+  breadcrumbJson={breadcrumbJson}
+  schemaJson={schemaJson}
+  title="Pregnancy Weight Gain Calculator — IOM Guidelines (Free)"
+  description="Calculate your recommended pregnancy weight gain range based on pre-pregnancy BMI, using official IOM guidelines. Metric and imperial supported."
+  canonical="https://healthybmicheck.com/pregnancy-weight-gain-calculator.html"
+>
+
+<div class="hero">
+  <div class="breadcrumb" class="input-hint"><a href="index.html" class="breadcrumb-link">Home</a> › Pregnancy Weight Gain Calculator</div>
+  <h1>Pregnancy <em>Weight Gain</em> Calculator</h1>
+  <p>Find your recommended weight gain range during pregnancy, based on your pre-pregnancy BMI and official IOM guidelines.</p>
+</div>
+
+<div class="calc-byline">Reviewed by <strong>Sarah Mitchell, BSc Nutrition</strong> · Last updated: <strong>July 2026</strong></div>
+
+<div class="container">
+
+  <div class="card">
+    <div class="unit-toggle">
+      <button class="active" onclick="setUnit('metric')">Metric (kg / cm)</button>
+      <button onclick="setUnit('imperial')">Imperial (lb / in)</button>
+    </div>
+
+    <div class="input-group">
+      <label>Pregnancy type</label>
+      <div class="gender-toggle">
+        <button class="gender-btn active" onclick="setMulti(1,this)">Singleton</button>
+        <button class="gender-btn" onclick="setMulti(2,this)">Twins</button>
+      </div>
+    </div>
+
+    <div class="input-group" id="metric-height-wrap">
+      <label>Pre-pregnancy height</label>
+      <div class="input-wrap">
+        <input type="number" id="height-cm" placeholder="165" min="100" max="220">
+        <span class="unit-badge">cm</span>
+      </div>
+    </div>
+    <div class="input-group" id="imperial-height-wrap" style="display:none">
+      <label>Pre-pregnancy height</label>
+      <div class="input-row">
+        <div class="input-wrap">
+          <input type="number" id="height-ft" placeholder="5" min="3" max="7">
+          <span class="unit-badge">ft</span>
+        </div>
+        <div class="input-wrap">
+          <input type="number" id="height-in" placeholder="5" min="0" max="11">
+          <span class="unit-badge">in</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-group" id="metric-weight-wrap">
+      <label>Pre-pregnancy weight</label>
+      <div class="input-wrap">
+        <input type="number" id="weight-kg" placeholder="60" min="30" max="200">
+        <span class="unit-badge">kg</span>
+      </div>
+    </div>
+    <div class="input-group" id="imperial-weight-wrap" style="display:none">
+      <label>Pre-pregnancy weight</label>
+      <div class="input-wrap">
+        <input type="number" id="weight-lb" placeholder="132" min="66" max="440">
+        <span class="unit-badge">lb</span>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Current week of pregnancy (optional)</label>
+      <div class="input-wrap">
+        <input type="number" id="current-week" placeholder="e.g. 20" min="1" max="42">
+        <span class="unit-badge">wks</span>
+      </div>
+      <div class="field-sub">Leave blank to just see your full-pregnancy target range.</div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">Calculate →</button>
+  </div>
+
+  <!-- Result Card -->
+  <div class="result-card" id="result-card">
+    <div class="tdee-bmr-row">
+      <div class="bmr-box" style="flex:1;background:var(--surface);border-radius:12px;padding:20px;text-align:center;">
+        <div class="num" id="range-num" style="font-size:1.9rem;font-weight:500;color:var(--accent);font-family:'DM Serif Display',serif;">—</div>
+        <div class="lbl" class="input-hint">Recommended total weight gain (full pregnancy)</div>
+      </div>
+    </div>
+
+    <div id="category-breakdown" style="display:none;margin-top:16px;background:var(--surface);border-radius:12px;padding:18px 20px;">
+      <div class="verdict-label">Your Pre-Pregnancy BMI Category</div>
+      <div id="category-result" style="font-size:1.3rem;font-weight:500;">—</div>
+      <div class="field-sub" id="category-sub">Institute of Medicine (IOM), 2009 guidelines</div>
+    </div>
+
+    <div id="progress-section" style="display:none;margin-top:16px;">
+      <div class="verdict-label">Estimated Gain-to-Date (Week <span id="week-label"></span>)</div>
+      <div class="flex-col-sm" id="progress-rows"></div>
+      <div class="input-hint">A rough guide only — actual week-to-week gain varies and isn't linear, especially early on.</div>
+    </div>
+
+    <div id="rate-section" style="display:none;margin-top:16px;">
+      <div class="verdict-label">Typical Weekly Pace (2nd & 3rd Trimester)</div>
+      <div class="flex-col-sm" id="rate-rows"></div>
+    </div>
+
+    <div class="tip-box">
+      <strong>Next step:</strong> These are population-level guidelines —
+      talk to your <strong>OB/GYN or midwife</strong> about what's right for your individual pregnancy.
+    </div>
+  </div>
+
+  <!-- Article content -->
+  <div class="article-section">
+    <h2>How Pregnancy Weight Gain Recommendations Work</h2>
+    <p>The most widely used guidelines come from the <strong>Institute of Medicine (IOM)</strong>, now part of the National Academies of Sciences, Engineering, and Medicine. Rather than a single target, the IOM recommends a <strong>range</strong> based on your <strong>pre-pregnancy BMI</strong> — since starting weight affects how much additional weight supports a healthy pregnancy.</p>
+    <div class="callout"><p>💡 <strong>Important:</strong> These figures are general population guidelines, not a diagnosis or a prescription. Your healthcare provider may recommend something different based on your health history, whether you're carrying twins, or other individual factors.</p></div>
+
+    <h2>Recommended Total Weight Gain — Singleton Pregnancy</h2>
+    <div class="card" class="overflow-clip">
+      <table>
+        <thead><tr><th>Pre-Pregnancy BMI</th><th>Category</th><th>Recommended Total Gain</th></tr></thead>
+        <tbody>
+          <tr><td>Below 18.5</td><td>Underweight</td><td>12.5–18 kg (28–40 lb)</td></tr>
+          <tr class="highlight-row"><td>18.5–24.9</td><td>Normal weight</td><td>11.5–16 kg (25–35 lb)</td></tr>
+          <tr><td>25.0–29.9</td><td>Overweight</td><td>7–11.5 kg (15–25 lb)</td></tr>
+          <tr class="highlight-row"><td>30.0 and above</td><td>Obese</td><td>5–9 kg (11–20 lb)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Recommended Total Weight Gain — Twin Pregnancy</h2>
+    <div class="card" class="overflow-clip">
+      <table>
+        <thead><tr><th>Pre-Pregnancy BMI</th><th>Category</th><th>Recommended Total Gain</th></tr></thead>
+        <tbody>
+          <tr><td>18.5–24.9</td><td>Normal weight</td><td>16.8–24.5 kg (37–54 lb)</td></tr>
+          <tr class="highlight-row"><td>25.0–29.9</td><td>Overweight</td><td>14.1–22.7 kg (31–50 lb)</td></tr>
+          <tr><td>30.0 and above</td><td>Obese</td><td>11.3–19.1 kg (25–42 lb)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="field-sub">The IOM has not established a specific range for underweight women carrying twins due to limited data — this should be discussed directly with your provider.</p>
+
+    <h2>Weight Gain Isn't Even Across Pregnancy</h2>
+    <p>Most of the recommended weight gain happens in the second and third trimesters, not the first:</p>
+    <ul>
+      <li><strong>First trimester:</strong> Typically just 0.5–2 kg (1–4.5 lb) total, regardless of starting BMI. Many people gain very little — or even lose weight briefly due to nausea.</li>
+      <li><strong>Second and third trimester:</strong> A more steady weekly pace, which varies by pre-pregnancy BMI category (see the calculator above).</li>
+    </ul>
+    <p>Week-to-week weight can also fluctuate due to fluid retention, so it's more useful to track the trend over several weeks than to react to any single weigh-in.</p>
+
+    <h2>Where Does the Weight Actually Go?</h2>
+    <div class="card" class="overflow-clip">
+      <table>
+        <thead><tr><th>Component</th><th>Approximate Weight</th></tr></thead>
+        <tbody>
+          <tr><td>Baby</td><td>~3.2–3.6 kg (7–8 lb)</td></tr>
+          <tr class="highlight-row"><td>Placenta</td><td>~0.7 kg (1.5 lb)</td></tr>
+          <tr><td>Amniotic fluid</td><td>~0.9 kg (2 lb)</td></tr>
+          <tr class="highlight-row"><td>Increased blood volume</td><td>~1.4–1.8 kg (3–4 lb)</td></tr>
+          <tr><td>Breast tissue</td><td>~0.9 kg (2 lb)</td></tr>
+          <tr class="highlight-row"><td>Uterus growth</td><td>~0.9 kg (2 lb)</td></tr>
+          <tr><td>Fat, protein & fluid stores</td><td>~2.7–3.6 kg (6–8 lb)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="field-sub">These are typical approximate contributions for a singleton pregnancy at term — individual variation is normal.</p>
+
+    <h2>What If My Weight Gain Is Outside the Range?</h2>
+    <p>Gaining above or below the recommended range is common and doesn't automatically indicate a problem — but it's a good thing to raise with your OB/GYN or midwife, since they can interpret it in the context of your overall health, blood pressure, and how the pregnancy is progressing. This calculator is meant as a general reference point to bring to that conversation, not a replacement for it.</p>
+  </div>
+
+  <div class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How much weight should I gain during pregnancy?</button>
+      <div class="faq-a">It depends on your pre-pregnancy BMI. The Institute of Medicine recommends 12.5–18 kg (28–40 lb) for underweight women, 11.5–16 kg (25–35 lb) for normal weight, 7–11.5 kg (15–25 lb) for overweight, and 5–9 kg (11–20 lb) for obese pre-pregnancy BMI. These are general guidelines — your doctor may recommend a different target based on your individual health.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is it normal to gain weight unevenly during pregnancy?</button>
+      <div class="faq-a">Yes. Most guidelines recommend only 0.5–2 kg (1–4.5 lb) total in the first trimester, with the majority of weight gain occurring steadily through the second and third trimesters. Week-to-week gain can also vary due to fluid retention, so looking at the overall trend over several weeks is more meaningful than any single weigh-in.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What if I'm having twins?</button>
+      <div class="faq-a">Recommended weight gain is higher for twin pregnancies. The IOM recommends 16.8–24.5 kg (37–54 lb) for normal weight, 14.1–22.7 kg (31–50 lb) for overweight, and 11.3–19.1 kg (25–42 lb) for obese pre-pregnancy BMI. There is no established IOM range for underweight women carrying twins — this should be discussed directly with your healthcare provider.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What happens if I gain more or less than the recommended range?</button>
+      <div class="faq-a">These ranges are population-level guidelines, not strict individual targets. Gaining outside the recommended range is common and does not automatically mean something is wrong, but it is worth discussing with your healthcare provider, since it can be associated with different risks for both parent and baby. Your doctor is best placed to interpret your specific situation.</div>
+    </div>
+  </div>
+
+  <div class="related">
+    <h3>Related Calculators &amp; Guides</h3>
+    <div class="related-links">
+      <a href="bmi-calculator.html">BMI Calculator</a>
+      <a href="calorie-calculator.html">Calorie Calculator</a>
+      <a href="ideal-weight.html">Ideal Weight Calculator</a>
+      <a href="what-is-bmi.html">What is BMI?</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta-block">
+  <div class="cta-inner">
+    <p class="cta-label">Next step</p>
+    <h2 class="cta-h2">Check your pre-pregnancy BMI in detail</h2>
+    <p class="cta-sub">See your full BMI category and healthy weight range for your height.</p>
+    <div class="cta-btns">
+      <a href="bmi-calculator.html" class="cta-btn-p cta-btn-lg">⚖️ BMI Calculator →</a>
+      <a href="calorie-calculator.html" class="cta-btn-s cta-btn-lg">🔥 Calorie Calculator →</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="highlight-green">
+    <strong style="display:block;margin-bottom:8px;">📚 References</strong>
+    <ol style="margin:8px 0 8px 18px;padding:0;">
+      <li>Institute of Medicine (US) and National Research Council (US) Committee to Reexamine IOM Pregnancy Weight Guidelines. (2009). <em>Weight Gain During Pregnancy: Reexamining the Guidelines</em>. National Academies Press. <a href="https://doi.org/10.17226/12584" class="text-accent">doi:10.17226/12584</a></li>
+      <li>American College of Obstetricians and Gynecologists (ACOG). <em>Weight Gain During Pregnancy</em>, Committee Opinion.</li>
+    </ol>
+    Not a substitute for professional medical advice. Always consult your OB/GYN or midwife about your individual pregnancy. Last updated July 2026.
+  </div>
+</div>
+
+<script>
+let unit = 'metric';
+let babies = 1;
+
+function setUnit(u) {
+  unit = u;
+  document.querySelectorAll('.unit-toggle button').forEach((b,i) => b.classList.toggle('active', (u==='metric'&&i===0)||(u==='imperial'&&i===1)));
+  document.getElementById('metric-height-wrap').style.display = u==='metric' ? '' : 'none';
+  document.getElementById('imperial-height-wrap').style.display = u==='imperial' ? '' : 'none';
+  document.getElementById('metric-weight-wrap').style.display = u==='metric' ? '' : 'none';
+  document.getElementById('imperial-weight-wrap').style.display = u==='imperial' ? '' : 'none';
+}
+
+function setMulti(n, btn) {
+  babies = n;
+  document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function fmtKg(kg) {
+  return unit === 'metric' ? kg.toFixed(1) + ' kg' : (kg / 0.453592).toFixed(1) + ' lb';
+}
+
+function calculate() {
+  let heightCm, weightKg;
+  if (unit === 'metric') {
+    heightCm = parseFloat(document.getElementById('height-cm').value);
+    weightKg = parseFloat(document.getElementById('weight-kg').value);
+  } else {
+    const ft = parseFloat(document.getElementById('height-ft').value) || 0;
+    const inches = parseFloat(document.getElementById('height-in').value) || 0;
+    heightCm = (ft * 12 + inches) * 2.54;
+    weightKg = (parseFloat(document.getElementById('weight-lb').value) || 0) * 0.453592;
+  }
+
+  if (!heightCm || !weightKg || heightCm < 100) {
+    alert('Please fill in your pre-pregnancy height and weight.');
+    return;
+  }
+
+  const bmi = weightKg / ((heightCm / 100) ** 2);
+  let category, low, high, rateLow, rateHigh, firstTri = [0.5, 2];
+
+  if (babies === 1) {
+    if (bmi < 18.5) { category = 'Underweight'; low = 12.5; high = 18; rateLow = 0.44; rateHigh = 0.58; }
+    else if (bmi < 25) { category = 'Normal weight'; low = 11.5; high = 16; rateLow = 0.35; rateHigh = 0.50; }
+    else if (bmi < 30) { category = 'Overweight'; low = 7; high = 11.5; rateLow = 0.23; rateHigh = 0.33; }
+    else { category = 'Obese'; low = 5; high = 9; rateLow = 0.17; rateHigh = 0.27; }
+  } else {
+    if (bmi < 18.5) {
+      category = 'Underweight';
+      document.getElementById('category-result').textContent = category;
+      document.getElementById('category-sub').textContent = 'No established IOM range for underweight twin pregnancies — please consult your OB/GYN.';
+      document.getElementById('range-num').textContent = 'Consult your doctor';
+      document.getElementById('category-breakdown').style.display = '';
+      document.getElementById('progress-section').style.display = 'none';
+      document.getElementById('rate-section').style.display = 'none';
+      document.getElementById('result-card').classList.add('visible');
+      document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      return;
+    }
+    else if (bmi < 25) { category = 'Normal weight'; low = 16.8; high = 24.5; rateLow = 0.5; rateHigh = 0.75; }
+    else if (bmi < 30) { category = 'Overweight'; low = 14.1; high = 22.7; rateLow = 0.44; rateHigh = 0.68; }
+    else { category = 'Obese'; low = 11.3; high = 19.1; rateLow = 0.34; rateHigh = 0.58; }
+  }
+
+  document.getElementById('range-num').textContent = fmtKg(low) + ' – ' + fmtKg(high);
+  document.getElementById('category-result').textContent = category + ` (BMI ${bmi.toFixed(1)})`;
+  document.getElementById('category-sub').textContent = 'Institute of Medicine (IOM), 2009 guidelines · ' + (babies === 2 ? 'twin pregnancy' : 'singleton pregnancy');
+  document.getElementById('category-breakdown').style.display = '';
+
+  const rateRows = document.getElementById('rate-rows');
+  rateRows.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--surface);border-radius:8px;font-size:.85rem;">
+      <span class="text-muted">First trimester (total)</span>
+      <strong style="color:var(--accent);white-space:nowrap;margin-left:12px;">${fmtKg(firstTri[0])} – ${fmtKg(firstTri[1])}</strong>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--surface);border-radius:8px;font-size:.85rem;">
+      <span class="text-muted">2nd/3rd trimester (per week)</span>
+      <strong style="color:var(--accent);white-space:nowrap;margin-left:12px;">${fmtKg(rateLow)} – ${fmtKg(rateHigh)}</strong>
+    </div>
+  `;
+  document.getElementById('rate-section').style.display = '';
+
+  const week = parseFloat(document.getElementById('current-week').value);
+  if (week && week >= 1 && week <= 42) {
+    let estLow, estHigh;
+    if (week <= 13) {
+      const frac = week / 13;
+      estLow = firstTri[0] * frac;
+      estHigh = firstTri[1] * frac;
+    } else {
+      const weeksIn2nd3rd = week - 13;
+      estLow = firstTri[0] + rateLow * weeksIn2nd3rd;
+      estHigh = firstTri[1] + rateHigh * weeksIn2nd3rd;
+      estLow = Math.min(estLow, low);
+      estHigh = Math.min(estHigh, high);
+    }
+    document.getElementById('week-label').textContent = week;
+    document.getElementById('progress-rows').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--surface);border-radius:8px;font-size:.85rem;">
+        <span class="text-muted">Estimated gain so far</span>
+        <strong style="color:var(--accent);white-space:nowrap;margin-left:12px;">${fmtKg(estLow)} – ${fmtKg(estHigh)}</strong>
+      </div>
+    `;
+    document.getElementById('progress-section').style.display = '';
+  } else {
+    document.getElementById('progress-section').style.display = 'none';
+  }
+
+  document.getElementById('result-card').classList.add('visible');
+  document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+</Base>
