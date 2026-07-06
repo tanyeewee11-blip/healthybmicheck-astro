@@ -1,5 +1,7 @@
-# Cloudflare Pages natively serves /page and /page.html as the same URL
-# No redirects needed for .html consolidation - Cloudflare handles this automatically
+# Cloudflare Pages natively serves /page and /page.html with the same content,
+# but this does NOT make them SEO-equivalent: both return 200, so Google can
+# crawl and index both independently. Explicit 301s (below) are what actually
+# consolidate ranking signals onto a single canonical URL.
 
 # guides/index.astro builds to /guides.html (build.format: 'file' in astro.config.mjs
 # outputs foo/index.astro as foo.html, not a foo/ directory). /guides/ was never a
@@ -7,3 +9,156 @@
 # /guides.html -> /guides/) redirected working URLs to a 404. Fixed: redirect the
 # non-existent /guides/ to the real page instead.
 /guides/ /guides.html 301
+/guides /guides.html 301
+
+# Deprecated age/height-specific template pages, consolidated into hub pages.
+# These used to be handled via robots.txt Disallow + canonical tag, but that
+# combo doesn't work: Google can't read a canonical tag on a page it's blocked
+# from crawling in the first place. Redirecting properly passes link equity to
+# the hub pages instead of leaving these stuck in a blocked/orphaned state.
+/healthy-bmi-20-year-old-female /healthy-bmi-by-age.html 301
+/healthy-bmi-20-year-old-female.html /healthy-bmi-by-age.html 301
+/healthy-bmi-20-year-old-male /healthy-bmi-by-age.html 301
+/healthy-bmi-20-year-old-male.html /healthy-bmi-by-age.html 301
+/healthy-bmi-25-year-old-female /healthy-bmi-by-age.html 301
+/healthy-bmi-25-year-old-female.html /healthy-bmi-by-age.html 301
+/healthy-bmi-25-year-old-male /healthy-bmi-by-age.html 301
+/healthy-bmi-25-year-old-male.html /healthy-bmi-by-age.html 301
+/healthy-bmi-30-year-old-female /healthy-bmi-by-age.html 301
+/healthy-bmi-30-year-old-female.html /healthy-bmi-by-age.html 301
+/healthy-bmi-30-year-old-male /healthy-bmi-by-age.html 301
+/healthy-bmi-30-year-old-male.html /healthy-bmi-by-age.html 301
+/healthy-bmi-35-year-old-female /healthy-bmi-by-age.html 301
+/healthy-bmi-35-year-old-female.html /healthy-bmi-by-age.html 301
+/healthy-bmi-35-year-old-male /healthy-bmi-by-age.html 301
+/healthy-bmi-35-year-old-male.html /healthy-bmi-by-age.html 301
+/healthy-bmi-40-year-old-female /healthy-bmi-by-age.html 301
+/healthy-bmi-40-year-old-female.html /healthy-bmi-by-age.html 301
+/healthy-bmi-40-year-old-male /healthy-bmi-by-age.html 301
+/healthy-bmi-40-year-old-male.html /healthy-bmi-by-age.html 301
+/healthy-bmi-45-year-old-female /healthy-bmi-by-age.html 301
+/healthy-bmi-45-year-old-female.html /healthy-bmi-by-age.html 301
+/healthy-bmi-45-year-old-male /healthy-bmi-by-age.html 301
+/healthy-bmi-45-year-old-male.html /healthy-bmi-by-age.html 301
+/healthy-bmi-50-year-old-female /healthy-bmi-by-age.html 301
+/healthy-bmi-50-year-old-female.html /healthy-bmi-by-age.html 301
+/healthy-bmi-50-year-old-male /healthy-bmi-by-age.html 301
+/healthy-bmi-50-year-old-male.html /healthy-bmi-by-age.html 301
+/healthy-bmi-55-year-old-female /healthy-bmi-by-age.html 301
+/healthy-bmi-55-year-old-female.html /healthy-bmi-by-age.html 301
+/healthy-bmi-55-year-old-male /healthy-bmi-by-age.html 301
+/healthy-bmi-55-year-old-male.html /healthy-bmi-by-age.html 301
+/healthy-bmi-60-year-old-female /healthy-bmi-by-age.html 301
+/healthy-bmi-60-year-old-female.html /healthy-bmi-by-age.html 301
+/healthy-bmi-60-year-old-male /healthy-bmi-by-age.html 301
+/healthy-bmi-60-year-old-male.html /healthy-bmi-by-age.html 301
+/healthy-bmi-65-year-old-female /healthy-bmi-by-age.html 301
+/healthy-bmi-65-year-old-female.html /healthy-bmi-by-age.html 301
+/healthy-bmi-65-year-old-male /healthy-bmi-by-age.html 301
+/healthy-bmi-65-year-old-male.html /healthy-bmi-by-age.html 301
+/healthy-weight-150cm-female /healthy-weight-by-height.html 301
+/healthy-weight-150cm-female.html /healthy-weight-by-height.html 301
+/healthy-weight-150cm-male /healthy-weight-by-height.html 301
+/healthy-weight-150cm-male.html /healthy-weight-by-height.html 301
+/healthy-weight-155cm-female /healthy-weight-by-height.html 301
+/healthy-weight-155cm-female.html /healthy-weight-by-height.html 301
+/healthy-weight-155cm-male /healthy-weight-by-height.html 301
+/healthy-weight-155cm-male.html /healthy-weight-by-height.html 301
+/healthy-weight-160cm-female /healthy-weight-by-height.html 301
+/healthy-weight-160cm-female.html /healthy-weight-by-height.html 301
+/healthy-weight-160cm-male /healthy-weight-by-height.html 301
+/healthy-weight-160cm-male.html /healthy-weight-by-height.html 301
+/healthy-weight-165cm-female /healthy-weight-by-height.html 301
+/healthy-weight-165cm-female.html /healthy-weight-by-height.html 301
+/healthy-weight-165cm-male /healthy-weight-by-height.html 301
+/healthy-weight-165cm-male.html /healthy-weight-by-height.html 301
+/healthy-weight-170cm-female /healthy-weight-by-height.html 301
+/healthy-weight-170cm-female.html /healthy-weight-by-height.html 301
+/healthy-weight-170cm-male /healthy-weight-by-height.html 301
+/healthy-weight-170cm-male.html /healthy-weight-by-height.html 301
+/healthy-weight-175cm-female /healthy-weight-by-height.html 301
+/healthy-weight-175cm-female.html /healthy-weight-by-height.html 301
+/healthy-weight-175cm-male /healthy-weight-by-height.html 301
+/healthy-weight-175cm-male.html /healthy-weight-by-height.html 301
+/healthy-weight-180cm-female /healthy-weight-by-height.html 301
+/healthy-weight-180cm-female.html /healthy-weight-by-height.html 301
+/healthy-weight-180cm-male /healthy-weight-by-height.html 301
+/healthy-weight-180cm-male.html /healthy-weight-by-height.html 301
+/healthy-weight-185cm-female /healthy-weight-by-height.html 301
+/healthy-weight-185cm-female.html /healthy-weight-by-height.html 301
+/healthy-weight-185cm-male /healthy-weight-by-height.html 301
+/healthy-weight-185cm-male.html /healthy-weight-by-height.html 301
+/healthy-weight-190cm-female /healthy-weight-by-height.html 301
+/healthy-weight-190cm-female.html /healthy-weight-by-height.html 301
+/healthy-weight-190cm-male /healthy-weight-by-height.html 301
+/healthy-weight-190cm-male.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft-female /healthy-weight-by-height.html 301
+/healthy-weight-5ft-female.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft-male /healthy-weight-by-height.html 301
+/healthy-weight-5ft-male.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft0in-female /healthy-weight-by-height.html 301
+/healthy-weight-5ft0in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft10in-female /healthy-weight-by-height.html 301
+/healthy-weight-5ft10in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft10in-male /healthy-weight-by-height.html 301
+/healthy-weight-5ft10in-male.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft11in-female /healthy-weight-by-height.html 301
+/healthy-weight-5ft11in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft11in-male /healthy-weight-by-height.html 301
+/healthy-weight-5ft11in-male.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft1in-female /healthy-weight-by-height.html 301
+/healthy-weight-5ft1in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft1in-male /healthy-weight-by-height.html 301
+/healthy-weight-5ft1in-male.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft2in-female /healthy-weight-by-height.html 301
+/healthy-weight-5ft2in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft2in-male /healthy-weight-by-height.html 301
+/healthy-weight-5ft2in-male.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft3in-female /healthy-weight-by-height.html 301
+/healthy-weight-5ft3in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft3in-male /healthy-weight-by-height.html 301
+/healthy-weight-5ft3in-male.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft4in-female /healthy-weight-by-height.html 301
+/healthy-weight-5ft4in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft4in-male /healthy-weight-by-height.html 301
+/healthy-weight-5ft4in-male.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft5in-female /healthy-weight-by-height.html 301
+/healthy-weight-5ft5in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft5in-male /healthy-weight-by-height.html 301
+/healthy-weight-5ft5in-male.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft6in-female /healthy-weight-by-height.html 301
+/healthy-weight-5ft6in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft6in-male /healthy-weight-by-height.html 301
+/healthy-weight-5ft6in-male.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft7in-female /healthy-weight-by-height.html 301
+/healthy-weight-5ft7in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft7in-male /healthy-weight-by-height.html 301
+/healthy-weight-5ft7in-male.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft8in-female /healthy-weight-by-height.html 301
+/healthy-weight-5ft8in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft8in-male /healthy-weight-by-height.html 301
+/healthy-weight-5ft8in-male.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft9in-female /healthy-weight-by-height.html 301
+/healthy-weight-5ft9in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-5ft9in-male /healthy-weight-by-height.html 301
+/healthy-weight-5ft9in-male.html /healthy-weight-by-height.html 301
+/healthy-weight-6ft-female /healthy-weight-by-height.html 301
+/healthy-weight-6ft-female.html /healthy-weight-by-height.html 301
+/healthy-weight-6ft-male /healthy-weight-by-height.html 301
+/healthy-weight-6ft-male.html /healthy-weight-by-height.html 301
+/healthy-weight-6ft1in-female /healthy-weight-by-height.html 301
+/healthy-weight-6ft1in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-6ft1in-male /healthy-weight-by-height.html 301
+/healthy-weight-6ft1in-male.html /healthy-weight-by-height.html 301
+/healthy-weight-6ft2in-female /healthy-weight-by-height.html 301
+/healthy-weight-6ft2in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-6ft2in-male /healthy-weight-by-height.html 301
+/healthy-weight-6ft2in-male.html /healthy-weight-by-height.html 301
+/healthy-weight-6ft3in-female /healthy-weight-by-height.html 301
+/healthy-weight-6ft3in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-6ft3in-male /healthy-weight-by-height.html 301
+/healthy-weight-6ft3in-male.html /healthy-weight-by-height.html 301
+/healthy-weight-6ft4in-female /healthy-weight-by-height.html 301
+/healthy-weight-6ft4in-female.html /healthy-weight-by-height.html 301
+/healthy-weight-6ft4in-male /healthy-weight-by-height.html 301
+/healthy-weight-6ft4in-male.html /healthy-weight-by-height.html 301
