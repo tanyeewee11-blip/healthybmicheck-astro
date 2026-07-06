@@ -1,7 +1,9 @@
 # Cloudflare Pages natively serves /page and /page.html as the same URL
 # No redirects needed for .html consolidation - Cloudflare handles this automatically
-/guides /guides/ 301
 
-# Old duplicate "guides.html" page was removed in favor of /guides/ (the real hub).
-# Redirect so any existing backlinks/bookmarks/indexed URLs consolidate correctly.
-/guides.html /guides/ 301
+# guides/index.astro builds to /guides.html (build.format: 'file' in astro.config.mjs
+# outputs foo/index.astro as foo.html, not a foo/ directory). /guides/ was never a
+# real path - the two rules that used to live here (/guides -> /guides/ and
+# /guides.html -> /guides/) redirected working URLs to a 404. Fixed: redirect the
+# non-existent /guides/ to the real page instead.
+/guides/ /guides.html 301
