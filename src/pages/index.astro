@@ -100,7 +100,7 @@ import Base from '../layouts/Base.astro';
     </div>
   </div>
 
-  <script>
+  <script is:inline>
   var heroUnit = 'metric';
 
   function heroSetUnit(u) {
@@ -676,7 +676,7 @@ import Base from '../layouts/Base.astro';
     </p>
   </section>
 
-  <script>
+  <script is:inline>
   // ── Height selector ──────────────────────────────────────────────
   var hwUnit   = 'imperial';
   var hwGender = 'female';
@@ -751,6 +751,79 @@ import Base from '../layouts/Base.astro';
   }
 
   document.getElementById('ba-age-select').addEventListener('change', baUpdateLink);
+
+  // ── Tool category tabs ───────────────────────────────────────────
+  function showTab(name, btn) {
+    document.querySelectorAll('.calc-panel').forEach(function (p) {
+      p.classList.toggle('active', p.id === 'tab-' + name);
+    });
+    document.querySelectorAll('.calc-tab').forEach(function (b) {
+      b.classList.remove('active');
+    });
+    btn.classList.add('active');
+  }
+
+  // ── Goal quiz ────────────────────────────────────────────────────
+  var quizAnswers = {};
+  var quizToolMap = {
+    lose: [
+      { icon: '📉', title: 'Calorie Deficit Calculator', href: 'calorie-deficit-calculator.html' },
+      { icon: '🥗', title: 'Macro Calculator', href: 'macro-calculator.html' },
+      { icon: '📊', title: 'Body Fat Calculator', href: 'body-fat.html' }
+    ],
+    muscle: [
+      { icon: '🥗', title: 'Macro Calculator', href: 'macro-calculator.html' },
+      { icon: '🍗', title: 'Protein Calculator', href: 'protein-calculator.html' },
+      { icon: '⚡', title: 'BMR Calculator', href: 'bmr-calculator.html' }
+    ],
+    health: [
+      { icon: '⚖️', title: 'BMI Calculator', href: 'bmi-calculator.html' },
+      { icon: '📏', title: 'Waist-to-Height Ratio', href: 'waist-to-height-ratio.html' },
+      { icon: '👤', title: 'Full Health Profile', href: 'health-profile.html' }
+    ],
+    understand: [
+      { icon: '👤', title: 'Full Health Profile', href: 'health-profile.html' },
+      { icon: '⚖️', title: 'BMI Calculator', href: 'bmi-calculator.html' },
+      { icon: '📊', title: 'Body Fat Calculator', href: 'body-fat.html' }
+    ]
+  };
+
+  function quizAnswer(step, val) {
+    quizAnswers[step] = val;
+    var pct = step === 1 ? 33 : step === 2 ? 66 : 100;
+    document.getElementById('quiz-progress-bar').style.width = pct + '%';
+    document.getElementById('quiz-step-' + step).style.display = 'none';
+
+    if (step === 1) {
+      if (val === 'health' || val === 'understand') {
+        document.getElementById('quiz-q2').textContent = 'Are you of Asian descent?';
+      }
+      document.getElementById('quiz-step-2').style.display = 'block';
+    } else if (step === 2) {
+      document.getElementById('quiz-step-3').style.display = 'block';
+    } else if (step === 3) {
+      var goal = quizAnswers[1] || 'health';
+      var tools = quizToolMap[goal] || quizToolMap.health;
+      if (quizAnswers[2] === 'asian' && goal === 'health') {
+        tools = [{ icon: '🌏', title: 'Asian BMI Calculator', href: 'asian-bmi-calculator.html' }].concat(tools.slice(0, 2));
+      }
+      var container = document.getElementById('quiz-result-tools');
+      container.innerHTML = tools.map(function (t) {
+        return '<a href="' + t.href + '" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--bg);border-radius:10px;text-decoration:none;color:var(--ink);font-weight:600;font-size:.9rem;">'
+          + '<span style="font-size:1.2rem;">' + t.icon + '</span>' + t.title + '</a>';
+      }).join('');
+      document.getElementById('quiz-result').style.display = 'block';
+    }
+  }
+
+  function resetQuiz() {
+    quizAnswers = {};
+    document.getElementById('quiz-progress-bar').style.width = '0%';
+    document.getElementById('quiz-result').style.display = 'none';
+    document.getElementById('quiz-step-2').style.display = 'none';
+    document.getElementById('quiz-step-3').style.display = 'none';
+    document.getElementById('quiz-step-1').style.display = 'block';
+  }
   </script>
 </main>
 

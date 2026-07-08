@@ -396,4 +396,72 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
   </div>
 
+<script is:inline>
+let unit = 'metric';
+
+function setUnit(u) {
+  unit = u;
+  document.querySelectorAll('.unit-toggle button').forEach((b,i) => b.classList.toggle('active', (u==='metric'&&i===0)||(u==='imperial'&&i===1)));
+  document.getElementById('metric-height-group').style.display = u === 'metric' ? '' : 'none';
+  document.getElementById('imperial-height-group').style.display = u === 'imperial' ? '' : 'none';
+  document.getElementById('waist-unit').textContent = u === 'metric' ? 'cm' : 'in';
+}
+
+function calculate() {
+  let waistCm, heightCm;
+  const waistInput = parseFloat(document.getElementById('waist-cm').value);
+
+  if (unit === 'metric') {
+    waistCm = waistInput;
+    heightCm = parseFloat(document.getElementById('height-cm').value);
+  } else {
+    waistCm = waistInput * 2.54;
+    const ft = parseFloat(document.getElementById('height-ft').value) || 0;
+    const inch = parseFloat(document.getElementById('height-in').value) || 0;
+    heightCm = (ft * 12 + inch) * 2.54;
+  }
+
+  if (!waistCm || !heightCm) return alert('Please enter valid numbers');
+
+  const whtr = waistCm / heightCm;
+  const whtrRound = Math.round(whtr * 100) / 100;
+
+  let cat;
+  if (whtr < 0.34) cat = 'Very low';
+  else if (whtr < 0.5) cat = 'Healthy';
+  else if (whtr < 0.6) cat = 'Increased risk';
+  else cat = 'High risk';
+
+  document.getElementById('whtr-number').textContent = whtrRound;
+  document.getElementById('result-category').textContent = cat;
+  document.getElementById('result-card').classList.add('visible');
+
+  const pct = Math.min(Math.max((whtr - 0.25) / (0.75 - 0.25) * 100, 2), 98);
+  document.getElementById('gauge-pointer').style.left = pct + '%';
+
+  const healthyWaistCm = heightCm * 0.499;
+  const toLoseCm = Math.max(waistCm - healthyWaistCm, 0);
+  document.getElementById('healthy-waist').textContent = unit === 'metric'
+    ? healthyWaistCm.toFixed(1) + ' cm'
+    : (healthyWaistCm / 2.54).toFixed(1) + ' in';
+  document.getElementById('waist-to-lose').textContent = toLoseCm > 0
+    ? (unit === 'metric' ? toLoseCm.toFixed(1) + ' cm' : (toLoseCm / 2.54).toFixed(1) + ' in')
+    : 'Already in range';
+
+  const tips = {
+    'Very low': "Your waist-to-height ratio is very low. If this is unintentional or accompanied by other symptoms, consider speaking with a healthcare provider.",
+    'Healthy': "Your waist-to-height ratio is in the healthy range, associated with lower metabolic health risk. Keep it up with a balanced diet and regular activity.",
+    'Increased risk': "Your waist-to-height ratio suggests increased metabolic health risk (higher visceral fat). A moderate calorie deficit and regular exercise can help — try our <a href='calorie-calculator.html'>Calorie Calculator</a>.",
+    'High risk': "Your waist-to-height ratio is in the high-risk range, associated with significantly elevated risk of type 2 diabetes and cardiovascular disease. Speaking with a healthcare provider is strongly recommended."
+  };
+  document.getElementById('health-tip').innerHTML = tips[cat] || '';
+  document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function toggleFaq(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+</script>
+
 </Base>

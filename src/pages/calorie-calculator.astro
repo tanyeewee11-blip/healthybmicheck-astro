@@ -429,4 +429,84 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   </div>
 </div>
 
+<script is:inline>
+let gender = 'male';
+let unit = 'metric';
+
+function setUnit(u) {
+  unit = u;
+  document.querySelectorAll('.unit-toggle button').forEach((b,i) => b.classList.toggle('active', (u==='metric'&&i===0)||(u==='imperial'&&i===1)));
+  document.getElementById('metric-weight-wrap').style.display = u==='metric' ? '' : 'none';
+  document.getElementById('imperial-weight-wrap').style.display = u==='imperial' ? '' : 'none';
+  document.getElementById('metric-height-wrap').style.display = u==='metric' ? '' : 'none';
+  document.getElementById('imperial-height-wrap').style.display = u==='imperial' ? '' : 'none';
+}
+
+function setGender(g, btn) {
+  gender = g;
+  document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function calculate() {
+  const age = parseFloat(document.getElementById('age').value);
+  const activity = parseFloat(document.getElementById('activity').value);
+  let weightKg, heightCm;
+
+  if (unit === 'metric') {
+    weightKg = parseFloat(document.getElementById('weight-kg').value);
+    heightCm = parseFloat(document.getElementById('height-cm').value);
+  } else {
+    const lb = parseFloat(document.getElementById('weight-lb').value);
+    const ft = parseFloat(document.getElementById('height-ft').value) || 0;
+    const inches = parseFloat(document.getElementById('height-in').value) || 0;
+    weightKg = lb * 0.453592;
+    heightCm = (ft * 12 + inches) * 2.54;
+  }
+
+  if (!age || !weightKg || !heightCm || age < 15 || age > 100) {
+    alert('Please fill in all fields with valid values.');
+    return;
+  }
+
+  // Mifflin-St Jeor BMR
+  let bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
+  bmr += gender === 'male' ? 5 : -161;
+  bmr = Math.round(bmr);
+
+  const tdee = Math.round(bmr * activity);
+
+  document.getElementById('bmr-num').textContent = bmr.toLocaleString() + ' kcal';
+  document.getElementById('tdee-num').textContent = tdee.toLocaleString() + ' kcal';
+
+  // Breakdown bar: BMR vs Activity vs TEF(~10%)
+  const tefPct = 10;
+  const bmrPct = Math.round((bmr / tdee) * 100);
+  const actPct = Math.max(100 - bmrPct - tefPct, 0);
+  document.getElementById('bar-bmr').style.width = bmrPct + '%';
+  document.getElementById('bar-activity').style.width = actPct + '%';
+  document.getElementById('bmr-pct').textContent = bmrPct;
+  document.getElementById('act-pct').textContent = actPct;
+
+  // Goal targets
+  document.getElementById('loss-mild').textContent = (tdee - 250).toLocaleString() + ' kcal';
+  document.getElementById('loss-normal').textContent = (tdee - 500).toLocaleString() + ' kcal';
+  document.getElementById('gain-mild').textContent = (tdee + 250).toLocaleString() + ' kcal';
+  document.getElementById('gain-normal').textContent = (tdee + 500).toLocaleString() + ' kcal';
+
+  // Macros at maintenance: 30% protein, 45% carbs, 25% fat
+  document.getElementById('p-g').textContent = Math.round((tdee * 0.30) / 4);
+  document.getElementById('c-g').textContent = Math.round((tdee * 0.45) / 4);
+  document.getElementById('f-g').textContent = Math.round((tdee * 0.25) / 9);
+
+  document.getElementById('result-card').classList.add('visible');
+  document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function toggleFaq(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+</script>
+
 </Base>

@@ -383,4 +383,150 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   </svg>
 </div>
 
+<script is:inline>
+// CDC BMI-for-age reference values (kg/m^2) at [5th,10th,25th,50th,75th,85th,90th,95th]
+// percentiles, by exact age in years. Source: CDC "Data Table of BMI-for-age Charts"
+// (2000 CDC growth charts, ages 2-20y), sampled at the half-month row nearest each
+// whole year (e.g. age 3 uses the 36.5-month row). Ages 16-17 for girls are linearly
+// extrapolated from the 180.5/182.5-month rows since the published table's public
+// HTML view truncates before then — close to, but not guaranteed identical to, the
+// official spreadsheet at those two points. Verify against CDC's bmiagerev.csv
+// (https://www.cdc.gov/growthcharts/data/zscore/bmiagerev.csv) if exact accuracy at
+// ages 16-17 for girls matters for your use case.
+const bmiRef = {
+  boy: {
+    2:[14.73732,15.09033,15.74164,16.57503,17.55719,18.16219,18.60948,19.33801],
+    3:[14.35767,14.69142,15.29379,16.03876,16.87907,17.37639,17.73414,18.29895],
+    4:[14.03296,14.34695,14.91694,15.62817,16.4397,16.92501,17.27661,17.83614],
+    5:[13.83855,14.1378,14.69504,15.41914,16.29148,16.84076,17.25344,17.93893],
+    6:[13.73624,14.03772,14.6112,15.38353,16.36346,17.01418,17.52335,18.41421],
+    7:[13.72113,14.04216,14.66082,15.51287,16.63112,17.40122,18.02183,19.15236],
+    8:[13.79575,14.14712,14.82965,15.78231,17.05799,17.95575,18.69225,20.06793],
+    9:[13.96212,14.34903,15.10433,16.16712,17.60683,18.63222,19.48149,21.08893],
+    10:[14.21866,14.6426,15.4727,16.64614,18.24521,19.39041,20.3427,22.15409],
+    11:[14.56001,15.02022,15.92268,17.20089,18.94588,20.19667,21.23679,23.21358],
+    12:[14.97745,15.47187,16.44158,17.81463,19.68614,21.02386,22.1329,24.22985],
+    13:[15.45918,15.9852,17.01583,18.4718,20.44731,21.85104,23.00842,25.17811],
+    14:[15.99065,16.54568,17.63086,19.15759,21.21433,22.66325,23.84887,26.04662],
+    15:[16.55481,17.1367,18.27093,19.85766,21.97532,23.45117,24.64778,26.83688],
+    16:[17.1325,17.73974,18.919,20.55765,22.72115,24.21087,25.40668,27.56393],
+    17:[17.70284,18.33444,19.55629,21.24248,23.4449,24.94362,26.13515,28.25676]
+  },
+  girl: {
+    2:[14.39787,14.80134,15.52808,16.4234,17.42746,18.01821,18.44139,19.10624],
+    3:[14.00209,14.32806,14.9295,15.69924,16.60687,17.16634,17.58019,18.25475],
+    4:[13.71472,14.00895,14.56345,15.29855,16.20988,16.80058,17.25417,18.02851],
+    5:[13.52091,13.81726,14.38345,15.15188,16.13843,16.80197,17.32657,18.25738],
+    6:[13.42587,13.74694,14.36552,15.2169,16.33273,17.09974,17.71678,18.83778],
+    7:[13.43276,13.7919,14.48765,15.45357,16.73462,17.62557,18.34873,19.67794],
+    8:[13.5405,13.94445,14.73005,15.827,17.29206,18.31718,19.15262,20.69525],
+    9:[13.74413,14.19478,15.07378,16.30609,17.95912,19.11937,20.06647,21.81725],
+    10:[14.03535,14.531,15.49992,16.86231,18.6952,19.984,21.03669,22.98258],
+    11:[14.4029,14.93913,15.98919,17.46907,19.46462,20.86984,22.01829,24.14141],
+    12:[14.83262,15.40311,16.52179,18.10149,20.23648,21.74263,22.97493,25.25564],
+    13:[15.30749,15.90476,17.07738,18.73643,20.98472,22.57506,23.87895,26.2988],
+    14:[15.80753,16.42378,17.63509,19.35257,21.68819,23.34689,24.71141,27.25597],
+    15:[16.30974,16.93767,18.1736,19.93057,22.3309,24.04503,25.46204,28.12369],
+    16:[16.8024,17.43837,18.69176,20.47885,22.93318,24.69705,26.16362,28.94155],
+    17:[17.29506,17.93907,19.20992,21.02713,23.53546,25.34907,26.8652,29.75941]
+  }
+};
+const pctRanks = [5,10,25,50,75,85,90,95];
+
+let sex = 'boy';
+let unit = 'metric';
+
+function setSex(s) {
+  sex = s;
+  document.getElementById('btn-boy').classList.toggle('active', s === 'boy');
+  document.getElementById('btn-girl').classList.toggle('active', s === 'girl');
+}
+
+function setUnit(u) {
+  unit = u;
+  document.querySelectorAll('.unit-toggle button').forEach((b,i) => b.classList.toggle('active', (u==='metric'&&i===0)||(u==='imperial'&&i===1)));
+  document.getElementById('metric-inputs').style.display = u === 'metric' ? '' : 'none';
+  document.getElementById('imperial-inputs').style.display = u === 'imperial' ? '' : 'none';
+}
+
+function calculate() {
+  const years = parseFloat(document.getElementById('age-years').value);
+  const months = parseFloat(document.getElementById('age-months').value) || 0;
+  let w, h;
+
+  if (unit === 'metric') {
+    w = parseFloat(document.getElementById('weight-kg').value);
+    h = parseFloat(document.getElementById('height-cm').value) / 100;
+  } else {
+    const lb = parseFloat(document.getElementById('weight-lb').value);
+    const ft = parseFloat(document.getElementById('height-ft').value) || 0;
+    const inch = parseFloat(document.getElementById('height-in').value) || 0;
+    w = lb * 0.453592;
+    h = (ft * 12 + inch) * 0.0254;
+  }
+
+  if (!years || years < 2 || years > 17 || !w || !h) {
+    alert('Please enter a valid age (2-17), weight, and height.');
+    return;
+  }
+
+  const bmi = w / (h * h);
+  const bmiRound = Math.round(bmi * 10) / 10;
+  const ageFrac = Math.min(years + months / 12, 17);
+
+  // Interpolate the 8 reference percentile values for this exact age
+  const yLo = Math.max(2, Math.floor(ageFrac));
+  const yHi = Math.min(17, Math.ceil(ageFrac));
+  const frac = yHi > yLo ? (ageFrac - yLo) / (yHi - yLo) : 0;
+  const refLo = bmiRef[sex][yLo], refHi = bmiRef[sex][yHi];
+  const ref = refLo.map((v, i) => v + (refHi[i] - v) * frac);
+
+  // Interpolate percentile rank from BMI against the reference curve
+  let percentile;
+  if (bmi <= ref[0]) {
+    percentile = Math.max(1, Math.round(5 * (bmi / ref[0])));
+  } else if (bmi >= ref[7]) {
+    percentile = Math.min(99, Math.round(95 + (bmi - ref[7]) / (ref[7] - ref[6]) * 4));
+  } else {
+    let i = 0;
+    while (i < ref.length - 1 && bmi > ref[i + 1]) i++;
+    const segFrac = (bmi - ref[i]) / (ref[i + 1] - ref[i]);
+    percentile = Math.round(pctRanks[i] + segFrac * (pctRanks[i + 1] - pctRanks[i]));
+  }
+  percentile = Math.max(1, Math.min(99, percentile));
+
+  const suffix = (p => (p % 10 === 1 && p !== 11) ? 'st' : (p % 10 === 2 && p !== 12) ? 'nd' : (p % 10 === 3 && p !== 13) ? 'rd' : 'th')(percentile);
+  let cat, tip;
+  if (percentile < 5) {
+    cat = 'Underweight';
+    tip = "This BMI percentile is below the 5th — the CDC classifies this as underweight for the child's age and sex. Speak with your paediatrician; they can check for underlying causes and guide safe steps to support healthy growth.";
+  } else if (percentile < 85) {
+    cat = 'Healthy weight';
+    tip = "This BMI percentile falls within the healthy range (5th–84th) for the child's age and sex. Keep up balanced meals and regular active play.";
+  } else if (percentile < 95) {
+    cat = 'Overweight';
+    tip = "This BMI percentile is in the overweight range (85th–94th). The usual goal for children is to slow the rate of weight gain while they continue growing in height, not rapid weight loss — discuss with your paediatrician for guidance tailored to your child.";
+  } else {
+    cat = 'Obese';
+    tip = "This BMI percentile is at or above the 95th, which the CDC classifies as obese for the child's age and sex. We'd recommend discussing this with your child's paediatrician, who can advise on next steps for your family.";
+  }
+
+  document.getElementById('pct-number').firstChild.textContent = percentile;
+  document.getElementById('pct-sup').textContent = suffix;
+  document.getElementById('bmi-raw').textContent = 'BMI: ' + bmiRound;
+  document.getElementById('bmi-category').textContent = cat;
+  document.getElementById('pct-pointer').style.left = Math.min(Math.max(percentile, 2), 98) + '%';
+  document.getElementById('bmi-display').textContent = bmiRound;
+  document.getElementById('peers-text').textContent = 'Higher than ' + percentile + '% of ' + (sex === 'boy' ? 'boys' : 'girls') + ' this age';
+  document.getElementById('health-tip').innerHTML = tip;
+  document.getElementById('result-card').classList.add('visible');
+  document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function toggleFaq(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+</script>
+
 </Base>

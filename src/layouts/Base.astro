@@ -110,10 +110,22 @@ const {
   </div>
 </footer>
 
-<script>
+<script is:inline>
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('nav');
   toggle?.addEventListener('click', () => nav?.classList.toggle('open'));
+
+  // Shared FAQ accordion toggle. Pages with their own toggleFaq (calculator
+  // pages with bespoke result logic) define it locally after this script runs,
+  // which safely overrides this one in the global scope. This fallback exists
+  // because most content/article pages ship faq-item markup with no script of
+  // their own at all.
+  if (typeof window.toggleFaq !== 'function') {
+    window.toggleFaq = function (btn) {
+      btn.classList.toggle('open');
+      btn.nextElementSibling.classList.toggle('open');
+    };
+  }
 </script>
 
 </body>

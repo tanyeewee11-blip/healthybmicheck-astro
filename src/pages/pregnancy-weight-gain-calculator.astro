@@ -308,7 +308,7 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
   </div>
 </div>
 
-<script>
+<script is:inline>
 let unit = 'metric';
 let babies = 1;
 
@@ -423,10 +423,8 @@ function calculate() {
 }
 
 function toggleFaq(btn) {
-  const item = btn.closest('.faq-item');
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
 }
 </script>
 

@@ -460,4 +460,100 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   </svg>
 </div>
 
+<script is:inline>
+let sex = 'male';
+let unit = 'metric';
+let speed = 'moderate';
+const speedRates = { slow: 0.25, moderate: 0.5, fast: 1 }; // kg/week
+
+function setSex(s, btn) {
+  sex = s;
+  document.querySelectorAll('#btn-male, #btn-female').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + s).classList.add('active');
+}
+
+function setUnit(u) {
+  unit = u;
+  document.querySelectorAll('#units-toggle button').forEach((b,i) => b.classList.toggle('active', (u==='metric'&&i===0)||(u==='imperial'&&i===1)));
+  document.getElementById('metric-height-group').style.display = u === 'metric' ? '' : 'none';
+  document.getElementById('imperial-height-group').style.display = u === 'imperial' ? '' : 'none';
+  document.getElementById('weight-unit').textContent = u === 'metric' ? 'kg' : 'lb';
+  document.getElementById('goal-unit').textContent = u === 'metric' ? 'kg' : 'lb';
+  const fmt = (kg, per) => u === 'metric' ? kg + ' kg/wk' : (kg / 0.453592).toFixed(1) + ' lb/wk';
+  document.getElementById('slow-rate').textContent = fmt(0.25);
+  document.getElementById('mod-rate').textContent = fmt(0.5);
+  document.getElementById('fast-rate').textContent = fmt(1);
+}
+
+function setSpeed(s) {
+  speed = s;
+  document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('speed-' + s).classList.add('active');
+}
+
+function calculate() {
+  const age = parseFloat(document.getElementById('age').value);
+  const activity = parseFloat(document.getElementById('activity').value);
+  const weightInput = parseFloat(document.getElementById('weight').value);
+  const goalInput = parseFloat(document.getElementById('goal-weight').value);
+  let weightKg, goalKg, heightCm;
+
+  if (unit === 'metric') {
+    weightKg = weightInput;
+    goalKg = goalInput;
+    heightCm = parseFloat(document.getElementById('height-cm').value);
+  } else {
+    weightKg = weightInput * 0.453592;
+    goalKg = goalInput * 0.453592;
+    const ft = parseFloat(document.getElementById('height-ft').value) || 0;
+    const inch = parseFloat(document.getElementById('height-in').value) || 0;
+    heightCm = (ft * 12 + inch) * 2.54;
+  }
+
+  if (!age || !weightKg || !heightCm || !goalKg) {
+    alert('Please fill in all fields with valid values.');
+    return;
+  }
+
+  let bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
+  bmr += sex === 'male' ? 5 : -161;
+  const tdee = Math.round(bmr * activity);
+
+  const rateKgWeek = speedRates[speed];
+  const deficit = Math.round(rateKgWeek * 7700 / 7);
+  const target = Math.max(tdee - deficit, sex === 'male' ? 1500 : 1200);
+
+  const toLoseKg = Math.max(weightKg - goalKg, 0);
+  const weeks = rateKgWeek > 0 ? Math.ceil(toLoseKg / rateKgWeek) : 0;
+  const goalDate = new Date();
+  goalDate.setDate(goalDate.getDate() + weeks * 7);
+
+  const fmtWeight = kg => unit === 'metric' ? kg.toFixed(1) + ' kg' : (kg / 0.453592).toFixed(1) + ' lb';
+
+  document.getElementById('r-calories').textContent = target.toLocaleString();
+  document.getElementById('r-deficit').textContent = deficit.toLocaleString();
+  document.getElementById('r-tdee').textContent = tdee.toLocaleString() + ' kcal';
+  document.getElementById('r-to-lose').textContent = fmtWeight(toLoseKg);
+  document.getElementById('r-weeks').textContent = weeks + ' week' + (weeks === 1 ? '' : 's');
+  document.getElementById('r-date').textContent = goalDate.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+
+  document.getElementById('m-start').textContent = fmtWeight(weightKg);
+  document.getElementById('m-25').textContent = fmtWeight(weightKg - toLoseKg * 0.25);
+  document.getElementById('m-50').textContent = fmtWeight(weightKg - toLoseKg * 0.5);
+  document.getElementById('m-goal').textContent = fmtWeight(goalKg);
+
+  document.getElementById('health-tip').innerHTML = deficit > 1000
+    ? "A deficit this large risks muscle loss and is not recommended long-term without medical supervision. Consider choosing a slower rate of loss."
+    : "This target combines your TDEE with your chosen rate of loss. Reassess every 2–4 weeks and adjust as your weight changes.";
+
+  document.getElementById('result-card').classList.add('visible');
+  document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function toggleFaq(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+</script>
+
 </Base>

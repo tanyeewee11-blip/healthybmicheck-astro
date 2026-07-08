@@ -11,6 +11,103 @@
 /guides/ /guides.html 301
 /guides /guides.html 301
 
+# Regular content/tool pages. astro.config.mjs uses build.format: 'file', so
+# every page's real output is /page-name.html, and every canonical tag in
+# Base.astro already points at the .html URL. Cloudflare Pages happens to also
+# serve the same content at the extension-less path with a 200 (not a redirect),
+# so Google was crawling and indexing BOTH /page-name and /page-name.html as
+# separate URLs, splitting impressions/ranking signal between them (confirmed
+# in GSC Pages.csv — e.g. /water-intake and /water-intake.html both indexed
+# with separate impression counts). These 301s consolidate everything onto the
+# single canonical .html URL, matching what canonical tags + internal nav links
+# already say. Generated from the top-level src/pages/*.astro list, minus
+# index/404 and the deprecated age/height pages already handled below.
+/about /about.html 301
+/alcohol-and-weight /alcohol-and-weight.html 301
+/asian-bmi-calculator /asian-bmi-calculator.html 301
+/average-bmi-by-country /average-bmi-by-country.html 301
+/average-weight-55-year-old-woman /average-weight-55-year-old-woman.html 301
+/best-diet-for-weight-loss /best-diet-for-weight-loss.html 301
+/best-exercises-to-lose-weight /best-exercises-to-lose-weight.html 301
+/bmi-and-calorie-calculator /bmi-and-calorie-calculator.html 301
+/bmi-and-diabetes-risk /bmi-and-diabetes-risk.html 301
+/bmi-and-muscle-mass /bmi-and-muscle-mass.html 301
+/bmi-calculator /bmi-calculator.html 301
+/bmi-calculator-kids /bmi-calculator-kids.html 301
+/bmi-calculator-not-accurate /bmi-calculator-not-accurate.html 301
+/bmi-chart-by-age /bmi-chart-by-age.html 301
+/bmi-chart-men-over-60 /bmi-chart-men-over-60.html 301
+/bmi-for-women-over-65 /bmi-for-women-over-65.html 301
+/bmi-vs-body-fat /bmi-vs-body-fat.html 301
+/bmr-calculator /bmr-calculator.html 301
+/body-fat /body-fat.html 301
+/calorie-calculator /calorie-calculator.html 301
+/calorie-deficit-calculator /calorie-deficit-calculator.html 301
+/calorie-density-foods /calorie-density-foods.html 301
+/calories-burned-calculator /calories-burned-calculator.html 301
+/calories-to-lose-weight /calories-to-lose-weight.html 301
+/cardio-vs-weights /cardio-vs-weights.html 301
+/coffee-and-weight-loss /coffee-and-weight-loss.html 301
+/contact /contact.html 301
+/does-water-help-lose-weight /does-water-help-lose-weight.html 301
+/electrolytes-explained /electrolytes-explained.html 301
+/fibre-foods /fibre-foods.html 301
+/health-profile /health-profile.html 301
+/healthy-bmi-asian-women /healthy-bmi-asian-women.html 301
+/healthy-bmi-by-age /healthy-bmi-by-age.html 301
+/healthy-bmi-for-women /healthy-bmi-for-women.html 301
+/healthy-bmi-over-50 /healthy-bmi-over-50.html 301
+/healthy-fats-foods /healthy-fats-foods.html 301
+/healthy-weight-by-height /healthy-weight-by-height.html 301
+/healthy-weight-for-seniors /healthy-weight-for-seniors.html 301
+/healthy-weight-maintenance /healthy-weight-maintenance.html 301
+/high-protein-diet-plan /high-protein-diet-plan.html 301
+/high-protein-foods /high-protein-foods.html 301
+/how-long-to-lose-10kg /how-long-to-lose-10kg.html 301
+/how-many-calories-per-day /how-many-calories-per-day.html 301
+/how-many-steps-per-day /how-many-steps-per-day.html 301
+/how-much-water-per-day /how-much-water-per-day.html 301
+/how-much-water-per-day-by-weight /how-much-water-per-day-by-weight.html 301
+/how-to-count-calories /how-to-count-calories.html 301
+/how-to-lose-5kg /how-to-lose-5kg.html 301
+/how-to-lose-belly-fat /how-to-lose-belly-fat.html 301
+/how-to-lose-weight-fast-safely /how-to-lose-weight-fast-safely.html 301
+/how-to-lower-bmi /how-to-lower-bmi.html 301
+/how-to-start-exercising /how-to-start-exercising.html 301
+/ideal-weight /ideal-weight.html 301
+/intermittent-fasting /intermittent-fasting.html 301
+/intermittent-fasting-for-weight-loss /intermittent-fasting-for-weight-loss.html 301
+/lean-body-mass /lean-body-mass.html 301
+/macro-calculator /macro-calculator.html 301
+/meal-prep-for-weight-loss /meal-prep-for-weight-loss.html 301
+/mediterranean-diet-for-weight-loss /mediterranean-diet-for-weight-loss.html 301
+/metabolism-facts /metabolism-facts.html 301
+/muscle-vs-fat /muscle-vs-fat.html 301
+/normal-bmi-for-men /normal-bmi-for-men.html 301
+/normal-bmi-for-women /normal-bmi-for-women.html 301
+/ozempic-weight-loss /ozempic-weight-loss.html 301
+/pregnancy-weight-gain-calculator /pregnancy-weight-gain-calculator.html 301
+/privacy /privacy.html 301
+/protein-calculator /protein-calculator.html 301
+/protein-for-weight-loss /protein-for-weight-loss.html 301
+/signs-of-dehydration /signs-of-dehydration.html 301
+/sleep-and-weight-loss /sleep-and-weight-loss.html 301
+/strength-training-beginners /strength-training-beginners.html 301
+/stress-and-weight-gain /stress-and-weight-gain.html 301
+/sugar-and-weight-gain /sugar-and-weight-gain.html 301
+/visceral-fat /visceral-fat.html 301
+/waist-circumference-health /waist-circumference-health.html 301
+/waist-to-height-ratio /waist-to-height-ratio.html 301
+/waist-to-hip-ratio /waist-to-hip-ratio.html 301
+/walking-for-weight-loss /walking-for-weight-loss.html 301
+/water-intake /water-intake.html 301
+/weight-loss-plateau /weight-loss-plateau.html 301
+/what-is-bmi /what-is-bmi.html 301
+/what-is-body-composition /what-is-body-composition.html 301
+/what-is-tdee /what-is-tdee.html 301
+/what-to-eat-to-lose-weight /what-to-eat-to-lose-weight.html 301
+/why-am-i-not-losing-weight /why-am-i-not-losing-weight.html 301
+
 # Deprecated age/height-specific template pages, consolidated into hub pages.
 # These used to be handled via robots.txt Disallow + canonical tag, but that
 # combo doesn't work: Google can't read a canonical tag on a page it's blocked

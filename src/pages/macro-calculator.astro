@@ -492,4 +492,116 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
   </div>
 
+<script is:inline>
+let goal = 'maintain';
+let sex = 'male';
+let unit = 'metric';
+
+const goalConfig = {
+  lose:     { adj: 0.80, split: { p: 0.35, c: 0.35, f: 0.30 } },
+  maintain: { adj: 1.00, split: { p: 0.30, c: 0.40, f: 0.30 } },
+  gain:     { adj: 1.15, split: { p: 0.30, c: 0.45, f: 0.25 } },
+};
+
+function setGoal(g) {
+  goal = g;
+  document.querySelectorAll('.goal-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('goal-' + g).classList.add('active');
+}
+
+function setSex(s) {
+  sex = s;
+  document.querySelectorAll('#btn-male, #btn-female').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + s).classList.add('active');
+}
+
+function setUnit(u) {
+  unit = u;
+  document.querySelectorAll('.unit-toggle button').forEach((b,i) => b.classList.toggle('active', (u==='metric'&&i===0)||(u==='imperial'&&i===1)));
+  document.getElementById('metric-height-group').style.display = u === 'metric' ? '' : 'none';
+  document.getElementById('imperial-height-group').style.display = u === 'imperial' ? '' : 'none';
+  document.getElementById('weight-unit').textContent = u === 'metric' ? 'kg' : 'lb';
+}
+
+function calculate() {
+  const age = parseFloat(document.getElementById('age').value);
+  const activity = parseFloat(document.getElementById('activity').value);
+  const weightInput = parseFloat(document.getElementById('weight').value);
+  let weightKg, heightCm;
+
+  if (unit === 'metric') {
+    weightKg = weightInput;
+    heightCm = parseFloat(document.getElementById('height-cm').value);
+  } else {
+    weightKg = weightInput * 0.453592;
+    const ft = parseFloat(document.getElementById('height-ft').value) || 0;
+    const inch = parseFloat(document.getElementById('height-in').value) || 0;
+    heightCm = (ft * 12 + inch) * 2.54;
+  }
+
+  if (!age || !weightKg || !heightCm) {
+    alert('Please fill in all fields with valid values.');
+    return;
+  }
+
+  let bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
+  bmr += sex === 'male' ? 5 : -161;
+  const tdee = bmr * activity;
+
+  const cfg = goalConfig[goal];
+  const calories = Math.round(tdee * cfg.adj);
+  const proteinG = Math.round((calories * cfg.split.p) / 4);
+  const carbsG = Math.round((calories * cfg.split.c) / 4);
+  const fatG = Math.round((calories * cfg.split.f) / 9);
+  const proteinKcal = proteinG * 4, carbsKcal = carbsG * 4, fatKcal = fatG * 9;
+
+  document.getElementById('result-calories').textContent = calories.toLocaleString();
+  document.getElementById('protein-g').textContent = proteinG + 'g';
+  document.getElementById('carbs-g').textContent = carbsG + 'g';
+  document.getElementById('fat-g').textContent = fatG + 'g';
+  document.getElementById('protein-pct').textContent = Math.round(cfg.split.p * 100) + '%';
+  document.getElementById('carbs-pct').textContent = Math.round(cfg.split.c * 100) + '%';
+  document.getElementById('fat-pct').textContent = Math.round(cfg.split.f * 100) + '%';
+
+  document.getElementById('protein-bar-g').textContent = proteinG + 'g protein';
+  document.getElementById('carbs-bar-g').textContent = carbsG + 'g carbs';
+  document.getElementById('fat-bar-g').textContent = fatG + 'g fat';
+  document.getElementById('protein-kcal').textContent = ' (' + proteinKcal.toLocaleString() + ' kcal)';
+  document.getElementById('carbs-kcal').textContent = ' (' + carbsKcal.toLocaleString() + ' kcal)';
+  document.getElementById('fat-kcal').textContent = ' (' + fatKcal.toLocaleString() + ' kcal)';
+  document.getElementById('protein-bar').style.width = Math.round(cfg.split.p * 100) + '%';
+  document.getElementById('carbs-bar').style.width = Math.round(cfg.split.c * 100) + '%';
+  document.getElementById('fat-bar').style.width = Math.round(cfg.split.f * 100) + '%';
+
+  // Donut chart (circumference = 2*pi*48 ≈ 301.6)
+  const circ = 301.6;
+  const pLen = circ * cfg.split.p, cLen = circ * cfg.split.c, fLen = circ * cfg.split.f;
+  document.getElementById('donut-protein').setAttribute('stroke-dasharray', pLen.toFixed(1) + ' ' + circ);
+  document.getElementById('donut-carbs').setAttribute('stroke-dasharray', cLen.toFixed(1) + ' ' + circ);
+  document.getElementById('donut-carbs').setAttribute('stroke-dashoffset', (-pLen).toFixed(1));
+  document.getElementById('donut-fat').setAttribute('stroke-dasharray', fLen.toFixed(1) + ' ' + circ);
+  document.getElementById('donut-fat').setAttribute('stroke-dashoffset', (-(pLen + cLen)).toFixed(1));
+  document.getElementById('donut-label').textContent = calories.toLocaleString();
+
+  document.getElementById('legend-protein').textContent = 'Protein ' + Math.round(cfg.split.p * 100) + '%';
+  document.getElementById('legend-carbs').textContent = 'Carbs ' + Math.round(cfg.split.c * 100) + '%';
+  document.getElementById('legend-fat').textContent = 'Fat ' + Math.round(cfg.split.f * 100) + '%';
+
+  const tips = {
+    lose: "This target uses a moderate 20% calorie deficit with a higher protein share to help preserve muscle while losing fat.",
+    maintain: "This target keeps you at your estimated maintenance calories (TDEE) with a balanced macro split.",
+    gain: "This target uses a moderate 15% calorie surplus with extra carbs to fuel training and support muscle growth."
+  };
+  document.getElementById('health-tip').innerHTML = tips[goal] || '';
+
+  document.getElementById('result-card').classList.add('visible');
+  document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function toggleFaq(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+</script>
+
 </Base>
