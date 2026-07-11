@@ -2660,7 +2660,7 @@ tr:nth-child(even) td {
   box-shadow:var(--shadow);
 }
 
-.guide-card h3 {
+.guide-card h2 {
   font-size:.9rem;
   font-weight:600;
   color:var(--ink);
