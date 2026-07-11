@@ -4,12 +4,13 @@
 # consolidate ranking signals onto a single canonical URL.
 
 # guides/index.astro builds to /guides.html (build.format: 'file' in astro.config.mjs
-# outputs foo/index.astro as foo.html, not a foo/ directory). /guides/ was never a
-# real path - the two rules that used to live here (/guides -> /guides/ and
-# /guides.html -> /guides/) redirected working URLs to a 404. Fixed: redirect the
-# non-existent /guides/ to the real page instead.
-/guides/ /guides.html 301
-/guides /guides.html 301
+# outputs foo/index.astro as foo.html, not a foo/ directory). Cloudflare Pages'
+# html_handling (auto-trailing-slash) already auto-redirects /guides.html -> /guides
+# at the platform level — adding our own /guides -> /guides.html rule here fights
+# that and creates an infinite redirect loop (this caused the ERR_TOO_MANY_REDIRECTS
+# outage earlier; same root cause, just never caught in this specific pre-existing
+# rule since it predates that incident). No rule needed: Cloudflare serves /guides
+# correctly on its own.
 
 # Deprecated age/height-specific template pages, consolidated into hub pages.
 # These used to be handled via robots.txt Disallow + canonical tag, but that
