@@ -51,5 +51,14 @@
 /robots.txt
   Cache-Control: public, max-age=86400
 
+# Stylesheet — short cache with revalidation. No rule existed here before,
+# which meant /style.css fell through to Cloudflare Pages' default
+# near-permanent caching for static assets with no version hash in the
+# filename — CSS updates were silently invisible to anyone with a cached
+# copy, for up to a year. Matches the .html cache policy so future CSS
+# deploys propagate within the hour instead of not at all.
+/*.css
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400
+
 /ads.txt
   Cache-Control: public, max-age=86400
