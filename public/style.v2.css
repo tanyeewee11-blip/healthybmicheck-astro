@@ -836,7 +836,7 @@ footer a:hover {
   padding:24px 28px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:center;
   gap:16px;
   flex-wrap:wrap;
   margin-top:32px;
