@@ -151,7 +151,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
 
     <div class="input-group">
-      <label>Waist Circumference</label>
+      <label for="waist-cm">Waist Circumference</label>
       <div class="input-wrap">
         <input type="number" id="waist-cm" placeholder="80" min="40" max="200">
         <span class="unit-badge" id="waist-unit">cm</span>
@@ -160,7 +160,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
 
     <div class="input-group" id="metric-height-group">
-      <label>Height</label>
+      <label for="height-cm">Height</label>
       <div class="input-wrap">
         <input type="number" id="height-cm" placeholder="170" min="100" max="250">
         <span class="unit-badge">cm</span>
@@ -171,11 +171,11 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
       <label>Height</label>
       <div class="input-row">
         <div class="input-wrap">
-          <input type="number" id="height-ft" placeholder="5" min="3" max="8">
+          <input type="number" id="height-ft" placeholder="5" min="3" max="8" aria-label="Height (feet)">
           <span class="unit-badge">ft</span>
         </div>
         <div class="input-wrap">
-          <input type="number" id="height-in" placeholder="7" min="0" max="11">
+          <input type="number" id="height-in" placeholder="7" min="0" max="11" aria-label="Height (inches)">
           <span class="unit-badge">in</span>
         </div>
       </div>

@@ -73,7 +73,7 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
     </div>
 
     <div class="input-group">
-      <label>Age</label>
+      <label for="age">Age</label>
       <div class="input-wrap">
         <input type="number" id="age" placeholder="30" min="15" max="100">
         <span class="unit-badge">yrs</span>
@@ -81,14 +81,14 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
     </div>
 
     <div class="input-group" id="metric-weight-wrap">
-      <label>Weight</label>
+      <label for="weight-kg">Weight</label>
       <div class="input-wrap">
         <input type="number" id="weight-kg" placeholder="70" min="20" max="300">
         <span class="unit-badge">kg</span>
       </div>
     </div>
     <div class="input-group" id="imperial-weight-wrap" style="display:none">
-      <label>Weight</label>
+      <label for="weight-lb">Weight</label>
       <div class="input-wrap">
         <input type="number" id="weight-lb" placeholder="154" min="44" max="660">
         <span class="unit-badge">lb</span>
@@ -96,7 +96,7 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
     </div>
 
     <div class="input-group" id="metric-height-wrap">
-      <label>Height</label>
+      <label for="height-cm">Height</label>
       <div class="input-wrap">
         <input type="number" id="height-cm" placeholder="170" min="100" max="250">
         <span class="unit-badge">cm</span>
@@ -106,11 +106,11 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
       <label>Height</label>
       <div class="input-row">
         <div class="input-wrap">
-          <input type="number" id="height-ft" placeholder="5" min="3" max="8">
+          <input type="number" id="height-ft" placeholder="5" min="3" max="8" aria-label="Height (feet)">
           <span class="unit-badge">ft</span>
         </div>
         <div class="input-wrap">
-          <input type="number" id="height-in" placeholder="7" min="0" max="11">
+          <input type="number" id="height-in" placeholder="7" min="0" max="11" aria-label="Height (inches)">
           <span class="unit-badge">in</span>
         </div>
       </div>

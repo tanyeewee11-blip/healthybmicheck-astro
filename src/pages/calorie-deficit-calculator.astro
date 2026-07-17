@@ -161,14 +161,14 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     <!-- Body stats -->
     <div class="input-row">
       <div class="input-group" style="margin-bottom:0">
-        <label>Age</label>
+        <label for="age">Age</label>
         <div class="input-wrap">
           <input type="number" id="age" placeholder="30" min="15" max="80">
           <span class="unit-badge">yrs</span>
         </div>
       </div>
       <div class="input-group" style="margin-bottom:0">
-        <label>Current weight</label>
+        <label for="weight">Current weight</label>
         <div class="input-wrap">
           <input type="number" id="weight" placeholder="75">
           <span class="unit-badge" id="weight-unit">kg</span>
@@ -177,7 +177,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
 
     <div class="input-group" id="metric-height-group" style="margin-bottom:16px;">
-      <label>Height</label>
+      <label for="height-cm">Height</label>
       <div class="input-wrap">
         <input type="number" id="height-cm" placeholder="170">
         <span class="unit-badge">cm</span>
@@ -187,18 +187,18 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
       <label>Height</label>
       <div class="input-row" style="margin-bottom:0">
         <div class="input-wrap">
-          <input type="number" id="height-ft" placeholder="5">
+          <input type="number" id="height-ft" placeholder="5" aria-label="Height (feet)">
           <span class="unit-badge">ft</span>
         </div>
         <div class="input-wrap">
-          <input type="number" id="height-in" placeholder="7">
+          <input type="number" id="height-in" placeholder="7" aria-label="Height (inches)">
           <span class="unit-badge">in</span>
         </div>
       </div>
     </div>
 
     <div class="input-group">
-      <label>Goal weight</label>
+      <label for="goal-weight">Goal weight</label>
       <div class="input-wrap">
         <input type="number" id="goal-weight" placeholder="65">
         <span class="unit-badge" id="goal-unit">kg</span>

@@ -66,6 +66,22 @@ const schemaJson = JSON.stringify({
             "@type": "Answer",
             "text": "This calculator already accounts for your activity level, so you generally do not need to eat back exercise calories for planned workouts. For unexpectedly intense sessions, eating back 50% of the estimated burn is a reasonable approach — fitness trackers tend to overestimate by 20–30%."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my calorie result different from other calculators?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Different calculators use different formulas. Common ones include Mifflin-St Jeor, Harris-Benedict, and Katch-McArdle (which requires body fat percentage). Research shows Mifflin-St Jeor is the most accurate for the general population. Small differences between calculators (±100–150 kcal) are normal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do common Malaysian dishes fit into my daily calorie target?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Popular Malaysian dishes vary widely in calorie density. Nasi lemak with sambal, egg, and anchovies runs roughly 400–650 kcal depending on portion and sides; char kway teow is typically 600–750 kcal; roti canai with dhal is around 300 kcal per piece. Once you know your daily target, these fit into your day the same way as any other meal."
+          }
         }
       ]
     },
@@ -166,7 +182,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
 
     <div class="input-group">
-      <label>Age</label>
+      <label for="age">Age</label>
       <div class="input-wrap">
         <input type="number" id="age" placeholder="30" min="15" max="100">
         <span class="unit-badge">yrs</span>
@@ -174,14 +190,14 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
 
     <div class="input-group" id="metric-weight-wrap">
-      <label>Weight</label>
+      <label for="weight-kg">Weight</label>
       <div class="input-wrap">
         <input type="number" id="weight-kg" placeholder="70" min="20" max="300">
         <span class="unit-badge">kg</span>
       </div>
     </div>
     <div class="input-group" id="imperial-weight-wrap" style="display:none">
-      <label>Weight</label>
+      <label for="weight-lb">Weight</label>
       <div class="input-wrap">
         <input type="number" id="weight-lb" placeholder="154" min="44" max="660">
         <span class="unit-badge">lb</span>
@@ -189,7 +205,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
 
     <div class="input-group" id="metric-height-wrap">
-      <label>Height</label>
+      <label for="height-cm">Height</label>
       <div class="input-wrap">
         <input type="number" id="height-cm" placeholder="170" min="100" max="250">
         <span class="unit-badge">cm</span>
@@ -199,11 +215,11 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
       <label>Height</label>
       <div class="input-row">
         <div class="input-wrap">
-          <input type="number" id="height-ft" placeholder="5" min="3" max="8">
+          <input type="number" id="height-ft" placeholder="5" min="3" max="8" aria-label="Height (feet)">
           <span class="unit-badge">ft</span>
         </div>
         <div class="input-wrap">
-          <input type="number" id="height-in" placeholder="7" min="0" max="11">
+          <input type="number" id="height-in" placeholder="7" min="0" max="11" aria-label="Height (inches)">
           <span class="unit-badge">in</span>
         </div>
       </div>
@@ -354,6 +370,10 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">Why is my calorie result different from other calculators?</button>
       <div class="faq-a">Different calculators use different formulas. Common ones include Mifflin-St Jeor, Harris-Benedict (1919 and 1984 revisions), and Katch-McArdle (which requires body fat percentage). Research shows Mifflin-St Jeor is the most accurate for the general population. Small differences between calculators (±100–150 kcal) are normal.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How do common Malaysian dishes fit into my daily calorie target?</button>
+      <div class="faq-a">Popular Malaysian dishes vary widely in calorie density. A plate of nasi lemak with sambal, egg, and anchovies runs roughly 400–650 kcal depending on portion and sides; a bowl of char kway teow is typically 600–750 kcal due to the oil content; roti canai with dhal is around 300 kcal per piece. Once you know your daily target from this calculator, you can fit these into your day the same way as any other meal — the total calories matter more than the specific dish. See our <a href="calorie-density-foods.html">low calorie density foods guide</a> for lighter alternatives.</div>
     </div>
   </div>
 

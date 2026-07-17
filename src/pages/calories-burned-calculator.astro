@@ -9,8 +9,8 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
 <Base
   breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
-  title="Calories Burned Calculator — 40+ Activities | HealthyBMICheck"
-  description="Calculate calories burned walking, running, cycling, swimming and 40+ other activities. Enter your weight and duration for an instant estimate based on MET values."
+  title="Calories Burned Calculator — 40+ Activities | HealthyBMI"
+  description="Calculate calories burned walking, running, cycling, swimming and 40+ activities. Enter your weight and duration for an instant MET-based estimate."
   canonical="https://healthybmicheck.com/calories-burned-calculator.html"
 >
 
@@ -32,14 +32,14 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
     </div>
 
     <div class="input-group" id="kg-wrap">
-      <label>Your Weight</label>
+      <label for="weight-kg">Your Weight</label>
       <div class="input-wrap">
         <input type="number" id="weight-kg" placeholder="70" min="20" max="300">
         <span class="unit-badge">kg</span>
       </div>
     </div>
     <div class="input-group" id="lb-wrap" style="display:none">
-      <label>Your Weight</label>
+      <label for="weight-lb">Your Weight</label>
       <div class="input-wrap">
         <input type="number" id="weight-lb" placeholder="154" min="44" max="660">
         <span class="unit-badge">lb</span>
@@ -47,7 +47,7 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
     </div>
 
     <div class="input-group">
-      <label>Duration</label>
+      <label for="duration-min">Duration</label>
       <div class="input-row">
         <div class="input-wrap">
           <input type="number" id="duration-min" placeholder="30" min="1" max="600">

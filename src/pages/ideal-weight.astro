@@ -143,7 +143,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
       </div>
     </div>
     <div class="input-group" id="metric-h">
-      <label>Height</label>
+      <label for="height-cm">Height</label>
       <div class="input-wrap">
         <input type="number" id="height-cm" placeholder="170" min="100" max="250">
         <span class="unit-badge">cm</span>
@@ -153,11 +153,11 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
       <label>Height</label>
       <div class="input-row">
         <div class="input-wrap">
-          <input type="number" id="height-ft" placeholder="5" min="3" max="8">
+          <input type="number" id="height-ft" placeholder="5" min="3" max="8" aria-label="Height (feet)">
           <span class="unit-badge">ft</span>
         </div>
         <div class="input-wrap">
-          <input type="number" id="height-in" placeholder="7" min="0" max="11">
+          <input type="number" id="height-in" placeholder="7" min="0" max="11" aria-label="Height (inches)">
           <span class="unit-badge">in</span>
         </div>
       </div>
@@ -282,7 +282,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     <p>These formulas were developed primarily from studies of hospitalised or military populations and may not represent the general public accurately. Key limitations include:</p>
     <ul>
       <li><strong>They do not account for body composition.</strong> A highly muscular person may significantly exceed the ideal weight estimate while having excellent health. An older adult who has lost muscle may fall within range while having a high body fat percentage.</li>
-      <li><strong>They do not account for ethnicity.</strong> Research suggests that people of Asian descent may have higher health risks at lower body weights, while some other groups may have different healthy weight ranges from what these formulas suggest.</li>
+      <li><strong>They do not account for ethnicity.</strong> Research suggests that people of Asian descent — including in Malaysia — may have higher health risks at lower body weights than these formulas (developed mostly on Western populations) assume. If this applies to you, our <a href="asian-bmi-calculator.html">Asian BMI Calculator</a> uses the lower, more relevant thresholds.</li>
       <li><strong>They treat all heights the same.</strong> The linear inch-based increments in these formulas may overestimate ideal weight for very tall individuals and underestimate it for shorter individuals.</li>
       <li><strong>They were designed for adults.</strong> These formulas should not be applied to children, teenagers, or pregnant women.</li>
     </ul>

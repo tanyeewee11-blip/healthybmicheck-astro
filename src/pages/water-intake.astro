@@ -125,7 +125,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
 <Base
   breadcrumbJson={breadcrumbJson}
   schemaJson={schemaJson}
-  title="Water Intake Calculator — Daily Water Needs by Weight | HealthyBMICheck"
+  title="Water Intake Calculator — Daily Needs by Weight | HealthyBMI"
   description="Free daily water intake calculator. Find out exactly how much water to drink per day based on your weight, activity, and climate. Instant results."
   canonical="https://healthybmicheck.com/water-intake.html"
 >
@@ -144,13 +144,13 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
       <button onclick="setUnit('imperial')">Imperial (lb)</button>
     </div>
     <div class="input-group">
-      <label>Weight</label>
+      <label for="weight-kg">Weight</label>
       <div class="input-wrap" id="metric-w">
         <input type="number" id="weight-kg" placeholder="70" min="1" max="500">
         <span class="unit-badge">kg</span>
       </div>
       <div class="input-wrap" id="imperial-w" style="display:none">
-        <input type="number" id="weight-lb" placeholder="154" min="1" max="1100">
+        <input type="number" id="weight-lb" placeholder="154" min="1" max="1100" aria-label="Weight (lb)">
         <span class="unit-badge">lb</span>
       </div>
     </div>
@@ -268,7 +268,10 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
       <strong>References</strong><br>
       European Food Safety Authority. Dietary Reference Values for water. <em>EFSA Journal.</em> 2010;8(3):1459.<br>
       Maughan RJ, Griffin J. Caffeine ingestion and fluid balance: a review. <em>J Hum Nutr Diet.</em> 2003;16(6):411–420.<br>
-      Armstrong LE. Hydration assessment techniques. <em>Nutr Rev.</em> 2005;63(S1):S40–S54.
+      Armstrong LE. Hydration assessment techniques. <em>Nutr Rev.</em> 2005;63(S1):S40–S54.<br>
+      Popkin BM, D'Anci KE, Rosenberg IH. Water, hydration and health. <em>Nutr Rev.</em> 2010;68(8):439–458.<br>
+      National Academies of Sciences, Engineering, and Medicine. Dietary Reference Intakes for Water. <em>The National Academies Press.</em> 2005.<br>
+      Manz F. Hydration and disease. <em>J Am Coll Nutr.</em> 2007;26(5 Suppl):535S–541S.
     </div>
   </div>
 </div>
@@ -298,13 +301,6 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
   </div>
     
-
-  <div class="sources" style="margin: 32px 0 8px; padding: 20px 0; border-top: 1px solid #E5E0D8; font-size: 0.82rem; color: #A09A94; line-height: 1.8;">
-    <strong style="color:#6B6560">References:</strong><br>
-    Popkin BM, D'Anci KE, Rosenberg IH. Water, hydration and health. <em>Nutr Rev.</em> 2010;68(8):439–458.<br>
-    National Academies of Sciences, Engineering, and Medicine. Dietary Reference Intakes for Water. <em>The National Academies Press.</em> 2005.<br>
-    Manz F. Hydration and disease. <em>J Am Coll Nutr.</em> 2007;26(5 Suppl):535S–541S.
-  </div>
 
   <div class="related">
     <h3>Related Articles &amp; Tools</h3>

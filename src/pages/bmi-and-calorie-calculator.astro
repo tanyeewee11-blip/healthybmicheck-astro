@@ -2,10 +2,39 @@
 import Base from '../layouts/Base.astro';
 
 const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI and Calorie Calculator — How They Work Together", "item": "https://healthybmicheck.com/bmi-and-calorie-calculator.html"}]});
+
+// NOTE: datePublished below is an estimate matching sibling pages created in the
+// same batch — please correct it if you know the real publish date of this page.
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "BMI and Calorie Calculator — How They Work Together",
+      "description": "How BMI and calorie calculators work together to help you reach a healthy weight. Includes formulas, examples, and how to use both to set realistic goals.",
+      "author": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      },
+      "datePublished": "2025-05-10",
+      "dateModified": "2026-07-16",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://healthybmicheck.com/bmi-and-calorie-calculator.html"
+      }
+    }
+  ]
+});
 ---
 
 <Base
   breadcrumbJson={breadcrumbJson}
+  schemaJson={schemaJson}
   title="BMI and Calorie Calculator — How They Work Together"
   description="How BMI and calorie calculators work together to help you reach a healthy weight. Includes formulas, examples, and how to use both to set realistic goals."
   canonical="https://healthybmicheck.com/bmi-and-calorie-calculator.html"
