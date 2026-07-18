@@ -21,7 +21,7 @@ const schemaJson = JSON.stringify({
       "dateModified": "2026-06-17",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://healthybmicheck.com/what-is-bmi.html"
+        "@id": "https://healthybmicheck.com/what-is-bmi"
       }
     },
     {
@@ -67,12 +67,29 @@ const schemaJson = JSON.stringify({
             "text": "The formula and WHO ranges are identical for adult men and women. However, women naturally carry a higher percentage of body fat than men at the same BMI value, which is worth noting when interpreting results."
           }
         }
+      ,
+        {
+          "@type": "Question",
+          "name": "What is a good BMI for my age?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For adults aged 18–65, the standard WHO healthy range of 18.5–24.9 applies. For adults over 65, some evidence suggests a slightly higher BMI (around 22–27) may be associated with better outcomes, as low BMI in older adults can indicate muscle loss or underlying illness. See our BMI Chart by Age for a full breakdown."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can BMI be used during pregnancy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMI is not appropriate during pregnancy, as weight gain is expected and necessary. Pregnant women should follow the guidance of their midwife or doctor regarding healthy weight gain targets."
+          }
+        }
       ]
     }
   ]
 });
 
-const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "What is BMI? Body Mass Index Explained — HealthyBMICheck", "item": "https://healthybmicheck.com/what-is-bmi.html"}]});
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "What is BMI? Body Mass Index Explained — HealthyBMICheck", "item": "https://healthybmicheck.com/what-is-bmi"}]});
 ---
 
 <Base
@@ -80,7 +97,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   schemaJson={schemaJson}
   title="What is BMI? Body Mass Index Explained — HealthyBMICheck"
   description="Learn what BMI (Body Mass Index) is, how it is calculated, what the ranges mean, and the limitations of using BMI as a health indicator."
-  canonical="https://healthybmicheck.com/what-is-bmi.html"
+  canonical="https://healthybmicheck.com/what-is-bmi"
 >
 <div class="article-wrap">
 

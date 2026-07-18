@@ -21,7 +21,7 @@ const schemaJson = JSON.stringify({
       "dateModified": "2026-06-17",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://healthybmicheck.com/bmi-calculator-kids.html"
+        "@id": "https://healthybmicheck.com/bmi-calculator-kids"
       }
     },
     {
@@ -66,6 +66,14 @@ const schemaJson = JSON.stringify({
             "@type": "Answer",
             "text": "This calculator uses CDC growth charts developed primarily from US population data. Research suggests that children of Asian descent may have higher body fat at lower BMI values, similar to Asian adults. If your child is of Asian, South Asian, or Southeast Asian descent, discuss this with your paediatrician who can provide ethnicity-appropriate guidance. For adult BMI, see our Asian BMI Calculator."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Malaysia use the same growth charts as this calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This calculator uses CDC growth charts, the US standard. The Ministry of Health Malaysia (KKM), like most countries outside the US, uses the WHO Child Growth Standards for children under 5 and the WHO Growth Reference for ages 5-19. Categories are broadly similar but exact percentile cut-offs can differ slightly by age."
+          }
         }
       ]
     },
@@ -101,7 +109,7 @@ const schemaJson = JSON.stringify({
   ]
 });
 
-const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI Calculator for Kids — Child BMI by Age & Percentile", "item": "https://healthybmicheck.com/bmi-calculator-kids.html"}]});
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "BMI Calculator for Kids — Child BMI by Age & Percentile", "item": "https://healthybmicheck.com/bmi-calculator-kids"}]});
 ---
 
 <Base
@@ -109,7 +117,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   schemaJson={schemaJson}
   title="BMI Calculator for Kids — Child BMI by Age & Percentile"
   description="Free BMI calculator for children and teens aged 2–17. Uses CDC BMI-for-age percentile method to assess healthy weight. Instant results for boys and girls."
-  canonical="https://healthybmicheck.com/bmi-calculator-kids.html"
+  canonical="https://healthybmicheck.com/bmi-calculator-kids"
 >
 <div class="hero">
     <div class="breadcrumb"><a href="index.html" class="breadcrumb-link">Home</a> › BMI Calculator for Kids</div>
@@ -282,6 +290,11 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   <!-- FAQ -->
   <div class="faq-section" id="faq">
     <h2 class="section-title">Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Does Malaysia use the same growth charts as this calculator?</button>
+      <div class="faq-a">This calculator uses CDC growth charts, which are the standard in the United States. The Ministry of Health Malaysia (KKM), like most countries outside the US, uses the WHO Child Growth Standards for children under 5 and the WHO Growth Reference for ages 5–19. The percentile categories (underweight, healthy weight, overweight, obese) are broadly similar between CDC and WHO systems, but the exact percentile cut-offs can differ slightly by a few percentile points at certain ages. For a result very close to what a Malaysian clinic or school health screening would report, the WHO-based classification is the more directly comparable reference — but this calculator's CDC-based result still gives a reliable general indication of your child's growth pattern.</div>
+    </div>
 
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">How is BMI calculated for children?</button>

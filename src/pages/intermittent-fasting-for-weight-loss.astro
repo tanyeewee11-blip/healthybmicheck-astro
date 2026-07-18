@@ -12,7 +12,7 @@ const schemaJson = JSON.stringify({
       "publisher": { "@type": "Organization", "name": "HealthyBMICheck.com", "url": "https://healthybmicheck.com" },
       "datePublished": "2026-06-28",
       "dateModified": "2026-06-28",
-      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://healthybmicheck.com/intermittent-fasting-for-weight-loss.html" }
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://healthybmicheck.com/intermittent-fasting-for-weight-loss" }
     },
     {
       "@type": "FAQPage",
@@ -47,7 +47,7 @@ const breadcrumbJson = JSON.stringify({
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Intermittent Fasting for Weight Loss", "item": "https://healthybmicheck.com/intermittent-fasting-for-weight-loss.html" }
+    { "@type": "ListItem", "position": 2, "name": "Intermittent Fasting for Weight Loss", "item": "https://healthybmicheck.com/intermittent-fasting-for-weight-loss" }
   ]
 });
 ---
@@ -57,7 +57,7 @@ const breadcrumbJson = JSON.stringify({
   schemaJson={schemaJson}
   title="Intermittent Fasting for Weight Loss — HealthyBMICheck"
   description="The honest science on intermittent fasting — which protocols work, how much weight to expect, who should avoid it, and how to avoid losing muscle."
-  canonical="https://healthybmicheck.com/intermittent-fasting-for-weight-loss.html"
+  canonical="https://healthybmicheck.com/intermittent-fasting-for-weight-loss"
 >
 <div class="article-wrap">
 
@@ -219,6 +219,26 @@ const breadcrumbJson = JSON.stringify({
 
   <div class="callout">
     <p><strong>Quick summary:</strong> Intermittent fasting is a proven, sustainable approach to weight loss for many people — but it works through calorie reduction, not metabolic magic. Choose a protocol that fits your lifestyle, hit your protein target within the eating window, and add resistance training to preserve muscle. The best fasting approach is the one you can maintain consistently for months.</p>
+  </div>
+
+  <div class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Does intermittent fasting work for weight loss?</button>
+      <div class="faq-a">Yes — but primarily because it reduces total calorie intake, not because of any metabolic magic. Multiple randomised controlled trials show that intermittent fasting produces similar weight loss to continuous calorie restriction when total calorie intake is matched. Its main advantage is that some people find it easier to maintain than counting calories every day.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Which intermittent fasting method is best for weight loss?</button>
+      <div class="faq-a">16:8 (eating within an 8-hour window, fasting for 16 hours) is the most studied and most sustainable protocol for most people. 5:2 (eating normally 5 days, restricting to 500–600 kcal on 2 non-consecutive days) is effective for those who prefer not to fast daily. OMAD (one meal a day) and alternate-day fasting tend to produce greater muscle loss and are harder to maintain.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Who should not try intermittent fasting?</button>
+      <div class="faq-a">Intermittent fasting is not appropriate for: people with a history of eating disorders, pregnant or breastfeeding women, people with type 1 diabetes or who take insulin, children and teenagers, people who are underweight, or anyone with a medical condition that requires regular food intake. Speak with a doctor before starting if you take any regular medication.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Will intermittent fasting cause muscle loss?</button>
+      <div class="faq-a">It can, if protein intake is insufficient and resistance training is absent. Studies show that 16:8 fasting preserves muscle mass reasonably well when protein intake is adequate (1.6–2.0 g per kg of body weight) and resistance training is maintained. Longer fasting windows and very low calorie intake on fasting days increase muscle loss risk.</div>
+    </div>
   </div>
 
   <div class="cta-strip">

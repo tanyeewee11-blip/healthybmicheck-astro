@@ -12,7 +12,7 @@ const schemaJson = JSON.stringify({
       "publisher": { "@type": "Organization", "name": "HealthyBMICheck.com", "url": "https://healthybmicheck.com" },
       "datePublished": "2026-06-28",
       "dateModified": "2026-06-28",
-      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://healthybmicheck.com/normal-bmi-for-women.html" }
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://healthybmicheck.com/normal-bmi-for-women" }
     },
     {
       "@type": "FAQPage",
@@ -47,7 +47,7 @@ const breadcrumbJson = JSON.stringify({
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Normal BMI for Women", "item": "https://healthybmicheck.com/normal-bmi-for-women.html" }
+    { "@type": "ListItem", "position": 2, "name": "Normal BMI for Women", "item": "https://healthybmicheck.com/normal-bmi-for-women" }
   ]
 });
 ---
@@ -57,7 +57,7 @@ const breadcrumbJson = JSON.stringify({
   schemaJson={schemaJson}
   title="Normal BMI for Women: Healthy Ranges by Age — HealthyBMI"
   description="What is a normal BMI for women? Healthy ranges by age group, how female body composition affects BMI, Asian thresholds, and what to do if outside range."
-  canonical="https://healthybmicheck.com/normal-bmi-for-women.html"
+  canonical="https://healthybmicheck.com/normal-bmi-for-women"
 >
 <div class="article-wrap">
 
@@ -207,6 +207,26 @@ const breadcrumbJson = JSON.stringify({
 
   <h3>Does BMI work for muscular women?</h3>
   <p>Not well. A woman who lifts weights regularly may have a BMI in the overweight range (25–27) despite having low body fat and high muscle mass. In this case, BMI overestimates health risk. Body fat percentage measurement is more informative for muscular individuals — a body fat percentage of 21–28% is generally considered healthy for women aged 20–50.</p>
+
+  <div class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is a normal BMI for women?</button>
+      <div class="faq-a">The WHO defines a normal BMI as 18.5 to 24.9 for all adults, regardless of sex. However, women naturally carry more body fat than men at the same BMI — typically 5–8% more — due to hormonal differences and reproductive function. A BMI within the 21–23 range is often cited as optimal for women in terms of minimising chronic disease risk.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Does normal BMI change for women after menopause?</button>
+      <div class="faq-a">The BMI categories remain the same, but body composition shifts after menopause. Oestrogen decline causes fat to redistribute from the hips and thighs to the abdomen — a higher-risk pattern. Waist circumference (above 80cm is considered elevated for women) becomes increasingly important alongside BMI after age 50.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is a healthy BMI for Asian women?</button>
+      <div class="faq-a">For women of Asian descent, the WHO recommends lower thresholds: overweight starts at BMI 23.0 (not 25.0) and obese at 27.5 (not 30.0). This is because Asian populations tend to have higher body fat percentages and greater cardiometabolic risk at the same BMI compared to Caucasian populations. These are also the thresholds used by the Ministry of Health Malaysia (KKM).</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can you have a normal BMI but still be unhealthy?</button>
+      <div class="faq-a">Yes. A condition called "normal weight obesity" or "skinny fat" occurs when a person has a normal BMI (18.5–24.9) but an elevated body fat percentage and low muscle mass. This carries similar metabolic risks to obesity. Body fat percentage measurement and waist circumference provide a more complete picture than BMI alone.</div>
+    </div>
+  </div>
 
   <div class="cta-strip">
     <div class="cta-inner">

@@ -163,3 +163,33 @@
 /healthy-weight-6ft4in-female.html /healthy-weight-by-height.html 301
 /healthy-weight-6ft4in-male /healthy-weight-by-height.html 301
 /healthy-weight-6ft4in-male.html /healthy-weight-by-height.html 301
+
+# ============================================================================
+# CATCH-ALL: strip .html for all regular content pages
+# ============================================================================
+# GSC data (2026-07-17 Coverage + Performance export) confirmed that every
+# regular content page — not just the deprecated ones above — is being
+# served at BOTH /page and /page.html with a 200 status, and Google is
+# indexing both as separate URLs and splitting ranking signal between them
+# (e.g. /bmi-calculator-kids and /bmi-calculator-kids.html both show
+# meaningful separate impression counts in Search Console). Canonical tags
+# have been fixed in the same patch to point at the clean URL (matching what
+# the sitemap already outputs), but a canonical tag is only a hint — Google
+# can still choose to index both. This explicit redirect is what actually
+# forces resolution to one URL.
+#
+# Placed at the END of this file (after the specific deprecated-page rules
+# above) so Cloudflare Pages' first-match-wins rule order lets those more
+# specific rules fire first; this generic rule only catches everything else.
+#
+# ⚠️ IMPORTANT — TEST BEFORE MERGING TO PRODUCTION:
+# A rule in the OPPOSITE direction (/guides -> /guides.html) previously
+# caused an ERR_TOO_MANY_REDIRECTS outage on this site by fighting against
+# Cloudflare Pages' own platform-level html_handling behavior. This new rule
+# goes the SAME direction as that platform behavior (both strip .html), so
+# it should be additive rather than conflicting — but given the site's prior
+# history with exactly this class of bug, deploy this to a Cloudflare Pages
+# preview branch first and manually check a few URLs (including /guides and
+# /guides.html) resolve correctly with no redirect loop before merging to
+# the production branch.
+/*.html /:splat 301

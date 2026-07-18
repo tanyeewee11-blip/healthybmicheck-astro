@@ -21,7 +21,7 @@ const schemaJson = JSON.stringify({
       "dateModified": "2026-06-17",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://healthybmicheck.com/health-profile.html"
+        "@id": "https://healthybmicheck.com/health-profile"
       }
     },
     {
@@ -67,6 +67,15 @@ const schemaJson = JSON.stringify({
             "text": "The ideal weight range reflects four different clinical formulas (Devine, Robinson, Miller, Hamwi) that each define 'ideal' slightly differently based on height and sex. The range represents the consensus across these formulas. Research shows body composition (muscle-to-fat ratio) matters more than hitting a specific weight within this range."
           }
         }
+      ,
+        {
+          "@type": "Question",
+          "name": "Can I use this calculator if I am pregnant or breastfeeding?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — pregnancy and breastfeeding significantly alter calorie needs, body composition, and appropriate weight ranges. BMI and TDEE calculations are not appropriate during pregnancy. Consult your midwife or doctor for personalised guidance on nutrition and weight management during and after pregnancy."
+          }
+        }
       ]
     },
     {
@@ -110,7 +119,7 @@ const schemaJson = JSON.stringify({
   ]
 });
 
-const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Health Profile Calculator — All Your Metrics at Once", "item": "https://healthybmicheck.com/health-profile.html"}]});
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Health Profile Calculator — All Your Metrics at Once", "item": "https://healthybmicheck.com/health-profile"}]});
 ---
 
 <Base
@@ -118,7 +127,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   schemaJson={schemaJson}
   title="Health Profile Calculator — All Your Metrics at Once"
   description="Enter your details once and instantly get your BMI, daily calorie needs, ideal weight, body fat percentage, and water intake — all in one place."
-  canonical="https://healthybmicheck.com/health-profile.html"
+  canonical="https://healthybmicheck.com/health-profile"
 >
 <div class="hero">
     <div class="breadcrumb"><a href="index.html" class="breadcrumb-link">Home</a> › Health Profile Calculator</div>

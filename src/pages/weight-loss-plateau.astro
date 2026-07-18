@@ -21,7 +21,7 @@ const schemaJson = JSON.stringify({
       "dateModified": "2026-06-17",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://healthybmicheck.com/weight-loss-plateau.html"
+        "@id": "https://healthybmicheck.com/weight-loss-plateau"
       }
     },
     {
@@ -67,12 +67,21 @@ const schemaJson = JSON.stringify({
             "text": "Modifying exercise can help, but dramatically increasing cardio often raises cortisol and increases hunger, which can offset the extra calories burned. A better approach is adding or varying resistance training (which improves insulin sensitivity and metabolic rate), increasing daily step count, and recalculating your TDEE at your new weight."
           }
         }
+      ,
+        {
+          "@type": "Question",
+          "name": "How do I know if my plateau is from calorie creep or metabolic adaptation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Audit carefully: weigh and measure all food for one week with a food scale. Research shows people underestimate calorie intake by 20–40% over time. If your tracking is accurate and you are still in a genuine deficit, metabolic adaptation is more likely — and a diet break or TDEE recalculation is the appropriate response."
+          }
+        }
       ]
     }
   ]
 });
 
-const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Why You've Hit a Weight Loss Plateau", "item": "https://healthybmicheck.com/weight-loss-plateau.html"}]});
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Why You've Hit a Weight Loss Plateau", "item": "https://healthybmicheck.com/weight-loss-plateau"}]});
 ---
 
 <Base
@@ -80,7 +89,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   schemaJson={schemaJson}
   title="Why You've Hit a Weight Loss Plateau | HealthyBMICheck"
   description="A weight loss plateau is normal — it doesn't mean your diet has stopped working. Learn why plateaus happen and how to break through one."
-  canonical="https://healthybmicheck.com/weight-loss-plateau.html"
+  canonical="https://healthybmicheck.com/weight-loss-plateau"
 >
 <div class="article-wrap">
   <div class="breadcrumb"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Why You've Hit a Weight Loss Plateau</div>

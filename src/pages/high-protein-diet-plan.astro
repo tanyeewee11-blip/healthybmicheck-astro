@@ -12,7 +12,7 @@ const schemaJson = JSON.stringify({
       "publisher": { "@type": "Organization", "name": "HealthyBMICheck.com", "url": "https://healthybmicheck.com" },
       "datePublished": "2026-06-28",
       "dateModified": "2026-06-28",
-      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://healthybmicheck.com/high-protein-diet-plan.html" }
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://healthybmicheck.com/high-protein-diet-plan" }
     },
     {
       "@type": "FAQPage",
@@ -47,7 +47,7 @@ const breadcrumbJson = JSON.stringify({
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/" },
-    { "@type": "ListItem", "position": 2, "name": "High-Protein Diet Plan", "item": "https://healthybmicheck.com/high-protein-diet-plan.html" }
+    { "@type": "ListItem", "position": 2, "name": "High-Protein Diet Plan", "item": "https://healthybmicheck.com/high-protein-diet-plan" }
   ]
 });
 ---
@@ -57,7 +57,7 @@ const breadcrumbJson = JSON.stringify({
   schemaJson={schemaJson}
   title="High-Protein Diet Plan for Weight Loss — HealthyBMICheck"
   description="Exact protein targets by body weight, the 20 best high-protein foods, and a 3-day meal plan to hit your numbers on any diet — including plant-based."
-  canonical="https://healthybmicheck.com/high-protein-diet-plan.html"
+  canonical="https://healthybmicheck.com/high-protein-diet-plan"
 >
 <div class="article-wrap">
 
@@ -218,6 +218,26 @@ const breadcrumbJson = JSON.stringify({
   <p>In healthy individuals, intakes up to 2.2 g/kg/day are well-supported by the evidence as safe. Multiple systematic reviews and meta-analyses have found no evidence of kidney damage, bone loss, or other adverse effects from high protein diets in people with normal kidney function.</p>
   <p><strong>Important exception:</strong> People with existing chronic kidney disease (CKD) should follow a <em>lower</em> protein diet as advised by their nephrologist — high protein intake accelerates decline in already-compromised kidneys. If you have CKD, do not follow the targets in this article without medical guidance.</p>
   <p>Adequate hydration is important on a high-protein diet — aim for the water intake calculated by our <a href="water-intake.html">Water Intake Calculator</a>, adjusted upward slightly if protein intake is very high.</p>
+
+  <div class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How much protein per day to lose weight?</button>
+      <div class="faq-a">For weight loss while preserving muscle, aim for 1.6–2.2 g of protein per kg of body weight per day. A 70 kg person should target roughly 112–154 g of protein daily. This is significantly higher than general population recommendations (0.8 g/kg) because the body's protein requirements increase during a calorie deficit to protect muscle tissue.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is a high-protein diet safe for kidneys?</button>
+      <div class="faq-a">In healthy individuals with no pre-existing kidney disease, high protein intake (up to 2.2 g/kg/day) has not been shown to cause kidney damage in multiple systematic reviews. However, people with existing kidney disease or reduced kidney function should follow a lower-protein diet as advised by their nephrologist, as elevated protein can accelerate kidney decline in those with compromised function.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What are the best high-protein foods for weight loss?</button>
+      <div class="faq-a">The best protein sources for weight loss are those that provide high protein per calorie: egg whites, chicken breast, canned tuna, low-fat cottage cheese, Greek yoghurt, tofu, tempeh, lentils, and white fish. These provide 15–30 g of protein per 100 g with relatively low calorie counts, making it easier to hit protein targets without exceeding calorie goals.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I get enough protein without eating meat?</button>
+      <div class="faq-a">Yes. Complete or near-complete plant protein sources include tofu, tempeh, edamame, quinoa, seitan (wheat gluten), and soy milk. Combining legumes with whole grains (rice and lentils, for example) provides all essential amino acids. Lacto-ovo vegetarians have an even easier time with eggs and dairy products. Hitting 1.6 g/kg on a plant-based diet requires planning but is very achievable.</div>
+    </div>
+  </div>
 
   <div class="cta-strip">
     <div class="cta-inner">

@@ -21,7 +21,7 @@ const schemaJson = JSON.stringify({
       "dateModified": "2026-06-17",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://healthybmicheck.com/asian-bmi-calculator.html"
+        "@id": "https://healthybmicheck.com/asian-bmi-calculator"
       }
     },
     {
@@ -67,12 +67,29 @@ const schemaJson = JSON.stringify({
             "text": "China's National Health Commission (NHC WS/T 428-2013) uses its own research-based thresholds: overweight starts at BMI 24.0 and obese at BMI 28.0. These are slightly higher than the general WHO Asian guideline but still lower than the global WHO cutoffs of 25 and 30. China's cutoffs reflect the Working Group on Obesity in China (WGOC) findings specific to the Han Chinese population."
           }
         }
+      ,
+        {
+          "@type": "Question",
+          "name": "Is BMI 23 overweight for Asians?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — for most Asian countries including Malaysia, Singapore, India, South Korea, and the general WHO Asian guideline, BMI 23.0 marks the start of overweight. This does not mean you are unhealthy, but it does indicate elevated metabolic risk compared to someone with BMI below 23. Pair your BMI with a body fat assessment for a fuller picture."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use Asian or standard BMI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you are of East or Southeast Asian, South Asian, or Malay descent, the Asian BMI cutoffs give a more accurate health risk picture. If you are of European, African, or Latin American descent, use the standard BMI calculator. If you are of mixed ethnicity, discuss with your doctor which guideline to apply."
+          }
+        }
       ]
     },
     {
       "@type": "WebApplication",
       "name": "Asian BMI Calculator",
-      "url": "https://healthybmicheck.com/asian-bmi-calculator.html",
+      "url": "https://healthybmicheck.com/asian-bmi-calculator",
       "description": "Calculate BMI using lower WHO thresholds for Asian adults.",
       "applicationCategory": "HealthApplication",
       "operatingSystem": "Web Browser",
@@ -119,7 +136,7 @@ const schemaJson = JSON.stringify({
   ]
 });
 
-const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Asian BMI Calculator — Country-Specific Cutoffs", "item": "https://healthybmicheck.com/asian-bmi-calculator.html"}]});
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Asian BMI Calculator — Country-Specific Cutoffs", "item": "https://healthybmicheck.com/asian-bmi-calculator"}]});
 ---
 
 <Base
@@ -127,7 +144,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   schemaJson={schemaJson}
   title="Asian BMI Calculator — Country-Specific Cutoffs"
   description="Free Asian BMI calculator with country-specific cutoffs for Malaysia, Singapore, India, China, Japan &amp; Korea. Results under your country's standard."
-  canonical="https://healthybmicheck.com/asian-bmi-calculator.html"
+  canonical="https://healthybmicheck.com/asian-bmi-calculator"
 >
 <div class="hero" style="padding-bottom: 16px;">
   <div class="breadcrumb"><a href="index.html" class="breadcrumb-link">Home</a> › Asian BMI Calculator</div>

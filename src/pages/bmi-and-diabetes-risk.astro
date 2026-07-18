@@ -12,7 +12,7 @@ const schemaJson = JSON.stringify({
       "publisher": { "@type": "Organization", "name": "HealthyBMICheck.com", "url": "https://healthybmicheck.com" },
       "datePublished": "2026-06-28",
       "dateModified": "2026-06-28",
-      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://healthybmicheck.com/bmi-and-diabetes-risk.html" }
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://healthybmicheck.com/bmi-and-diabetes-risk" }
     },
     {
       "@type": "FAQPage",
@@ -42,7 +42,7 @@ const breadcrumbJson = JSON.stringify({
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/" },
-    { "@type": "ListItem", "position": 2, "name": "BMI and Diabetes Risk", "item": "https://healthybmicheck.com/bmi-and-diabetes-risk.html" }
+    { "@type": "ListItem", "position": 2, "name": "BMI and Diabetes Risk", "item": "https://healthybmicheck.com/bmi-and-diabetes-risk" }
   ]
 });
 ---
@@ -52,7 +52,7 @@ const breadcrumbJson = JSON.stringify({
   schemaJson={schemaJson}
   title="BMI and Diabetes Risk: What Research Shows — HealthyBMI"
   description="How BMI affects type 2 diabetes risk, at what BMI risk rises, why Asian populations face higher risk at lower BMI, and what reduces risk most."
-  canonical="https://healthybmicheck.com/bmi-and-diabetes-risk.html"
+  canonical="https://healthybmicheck.com/bmi-and-diabetes-risk"
 >
 <div class="article-wrap">
 
@@ -182,6 +182,22 @@ const breadcrumbJson = JSON.stringify({
 
   <div class="callout">
     <p><strong>Key takeaway:</strong> Type 2 diabetes is largely preventable, even in high-risk individuals. A modest reduction in body weight — 5 to 7% of your starting weight — combined with regular moderate exercise reduces diabetes onset by more than half, according to multiple landmark trials. You don't need a perfect BMI to meaningfully reduce your risk. You just need to start.</p>
+  </div>
+
+  <div class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">At what BMI does diabetes risk increase?</button>
+      <div class="faq-a">Type 2 diabetes risk rises meaningfully from a BMI of around 25 and increases substantially above 30. For Asian populations, risk begins to rise from a BMI of approximately 23 due to a tendency toward greater visceral fat at lower BMI values. However, BMI alone is not a perfect predictor — someone with a BMI of 27 can develop diabetes while someone with a BMI of 32 may not, depending on other risk factors.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can you get type 2 diabetes with a normal BMI?</button>
+      <div class="faq-a">Yes. Approximately 10–15% of type 2 diabetes cases occur in people with a BMI below 25 — a condition sometimes called lean diabetes. This is particularly common in South and East Asian populations. Risk factors beyond BMI include family history, inactivity, poor diet quality, visceral fat distribution, and age.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Does losing weight reduce diabetes risk?</button>
+      <div class="faq-a">Yes, significantly. The landmark Diabetes Prevention Program showed that a 5–7% reduction in body weight (roughly 4–6 kg for most people) combined with 150 minutes of moderate exercise per week reduced the development of type 2 diabetes in high-risk individuals by 58%. Even modest weight loss has a meaningful protective effect.</div>
+    </div>
   </div>
 
   <div class="cta-strip">

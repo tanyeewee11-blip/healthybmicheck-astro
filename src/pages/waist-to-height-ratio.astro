@@ -21,7 +21,7 @@ const schemaJson = JSON.stringify({
       "dateModified": "2026-06-17",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://healthybmicheck.com/waist-to-height-ratio.html"
+        "@id": "https://healthybmicheck.com/waist-to-height-ratio"
       }
     },
     {
@@ -67,12 +67,21 @@ const schemaJson = JSON.stringify({
             "text": "WHtR is simply your waist circumference divided by your height, both in the same unit (both in cm, or both in inches):WHtR = Waist (cm) ÷ Height (cm)For example, a person with a 80 cm waist and 170 cm height has a WHtR of 80 ÷ 170 = 0.47 — in the healthy range."
           }
         }
+      ,
+        {
+          "@type": "Question",
+          "name": "Can I reduce my waist-to-height ratio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Reducing abdominal fat — which directly lowers your waist circumference — is achievable through a sustained calorie deficit, regular aerobic exercise (particularly moderate-intensity cardio), strength training to preserve muscle, and improving sleep quality. Check our guides on how to lose belly fat and how many calories to lose weight for practical steps."
+          }
+        }
       ]
     },
     {
       "@type": "WebApplication",
       "name": "Waist-to-Height Ratio Calculator",
-      "url": "https://healthybmicheck.com/waist-to-height-ratio.html",
+      "url": "https://healthybmicheck.com/waist-to-height-ratio",
       "description": "Calculate waist-to-height ratio and metabolic health risk.",
       "applicationCategory": "HealthApplication",
       "operatingSystem": "Web Browser",
@@ -123,7 +132,7 @@ const schemaJson = JSON.stringify({
   ]
 });
 
-const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Waist-to-Height Ratio Calculator — Better Than BMI?", "item": "https://healthybmicheck.com/waist-to-height-ratio.html"}]});
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Waist-to-Height Ratio Calculator — Better Than BMI?", "item": "https://healthybmicheck.com/waist-to-height-ratio"}]});
 ---
 
 <Base
@@ -131,7 +140,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   schemaJson={schemaJson}
   title="Waist-to-Height Ratio Calculator — Better Than BMI?"
   description="Free waist-to-height ratio calculator. WHtR is a more accurate predictor of metabolic health risk than BMI. Instant results with risk category and healthy."
-  canonical="https://healthybmicheck.com/waist-to-height-ratio.html"
+  canonical="https://healthybmicheck.com/waist-to-height-ratio"
 >
 <div class="hero">
     <div class="breadcrumb"><a href="index.html" class="breadcrumb-link">Home</a> › Waist-to-Height Ratio Calculator</div>
@@ -327,6 +336,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     <p>The "keep your waist to less than half your height" message was deliberately designed to be memorable and universally applicable — no age or sex adjustments needed, no complex calculations, no charts to look up.</p>
 
     <div class="callout"><p>💡 <strong>Simple rule:</strong> WHtR &lt; 0.5 means your waist is less than half your height — this is the target for lowest metabolic risk at any age, for any ethnicity, for men and women.</p></div>
+    <p>This makes WHtR particularly useful in a multi-ethnic population like Malaysia's, where BMI and waist circumference both require separate ethnicity-specific thresholds (the Ministry of Health Malaysia uses lower Asian-specific cut-offs for both) — WHtR's single 0.5 target applies consistently regardless of ethnic background.</p>
 
     <h2>How to Lower Your WHtR</h2>
     <p>Since WHtR is driven by waist circumference, the goal is to reduce abdominal fat. The most effective strategies are:</p>

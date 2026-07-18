@@ -21,7 +21,7 @@ const schemaJson = JSON.stringify({
       "dateModified": "2026-06-17",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://healthybmicheck.com/why-am-i-not-losing-weight.html"
+        "@id": "https://healthybmicheck.com/why-am-i-not-losing-weight"
       }
     },
     {
@@ -67,12 +67,21 @@ const schemaJson = JSON.stringify({
             "text": "The most common reasons are underestimating calorie intake (research shows 20–40% underestimation is typical), reduced TDEE from weight loss itself, water retention masking fat loss, insufficient sleep, elevated stress (cortisol), or inadequate protein intake. Audit these factors systematically before concluding there is a medical issue."
           }
         }
+      ,
+        {
+          "@type": "Question",
+          "name": "How much protein should I eat if my weight loss has stalled?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Aim for 1.6–2.2 g per kg of body weight. Inadequate protein leads to muscle loss during a deficit, which lowers resting metabolic rate. Protein also has the strongest satiety effect of any macronutrient — increasing protein intake often naturally reduces total calorie intake without deliberate restriction."
+          }
+        }
       ]
     }
   ]
 });
 
-const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Why Am I Not Losing Weight? 8 Common Reasons", "item": "https://healthybmicheck.com/why-am-i-not-losing-weight.html"}]});
+const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Why Am I Not Losing Weight? 8 Common Reasons", "item": "https://healthybmicheck.com/why-am-i-not-losing-weight"}]});
 ---
 
 <Base
@@ -80,7 +89,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
   schemaJson={schemaJson}
   title="Why Am I Not Losing Weight? 8 Common Reasons | HealthyBMI"
   description="Eating well and exercising but the scale won't move? These 8 evidence-based reasons explain why weight loss stalls — and what to do about each one."
-  canonical="https://healthybmicheck.com/why-am-i-not-losing-weight.html"
+  canonical="https://healthybmicheck.com/why-am-i-not-losing-weight"
 >
 <div class="article-wrap">
   <div class="breadcrumb" style="font-size:.8rem;color:var(--ink3);margin-bottom:16px;"><a href="index.html" style="color:var(--ink3);text-decoration:none;">Home</a> › Why Am I Not Losing Weight? 8 Common Reasons</div>
