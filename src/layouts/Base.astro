@@ -35,6 +35,20 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-7723301737736770">
 
+  <!-- Preconnect to 3rd-party origins used below (ads/analytics/consent),
+       so the browser opens these connections in parallel with HTML parsing
+       instead of waiting until the script tags are reached. -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="preconnect" href="https://fundingchoicesmessages.google.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+
+  <!-- Self-hosted fonts + stylesheet: moved ahead of 3rd-party scripts so the
+       CSSOM/critical render path is discovered and prioritized before ads/GTM. -->
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-400.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-serif-display-400.woff2" crossorigin>
+  <link rel="stylesheet" href="/style.v2.css">
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HNT40MVZPK"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -63,12 +77,6 @@ const {
   <meta name="twitter:image" content="https://healthybmicheck.com/og-image.png">
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7723301737736770" crossorigin="anonymous"></script>
-
-  <!-- Self-hosted fonts: eliminates render-blocking + CLS from Google Fonts -->
-  <!-- DM Sans: preload critical weights (400 normal used for body text) -->
-  <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-400.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-serif-display-400.woff2" crossorigin>
-  <link rel="stylesheet" href="/style.v2.css">
 </head>
 <body>
 
