@@ -2086,6 +2086,78 @@ select:focus {
   line-height:1.7;
 }
 
+.save-track-panel {
+  margin-top:16px;
+  border-top:1px solid var(--border);
+  padding-top:16px;
+}
+
+.save-track-toggle {
+  width:100%;
+  background:var(--accent-light);
+  color:var(--accent);
+  border:1px dashed var(--accent);
+  border-radius:12px;
+  padding:12px;
+  font-family:inherit;
+  font-size:.9rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:opacity .2s;
+}
+
+.save-track-toggle:hover {
+  opacity:.85;
+}
+
+.save-track-label {
+  font-size:.85rem;
+  color:var(--ink);
+  margin-bottom:10px;
+}
+
+.save-track-input {
+  width:100%;
+  padding:11px 14px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  font-size:.9rem;
+  font-family:inherit;
+  margin-bottom:12px;
+  box-sizing:border-box;
+}
+
+.save-track-checkbox {
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  font-size:.8rem;
+  color:var(--ink);
+  margin-bottom:10px;
+  line-height:1.4;
+  cursor:pointer;
+}
+
+.save-track-checkbox input {
+  margin-top:3px;
+  flex-shrink:0;
+}
+
+.save-track-status {
+  margin-top:10px;
+  font-size:.82rem;
+  text-align:center;
+  min-height:1.2em;
+}
+
+.save-track-status.success {
+  color:#2e7d32;
+}
+
+.save-track-status.error {
+  color:#c62828;
+}
+
 .s-rate {
   font-size:.9rem;
   font-weight:700;

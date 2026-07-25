@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Login Link Expired — HealthyBMICheck.com"
+  description="Your login link has expired or was already used. Request a new one below."
+  canonical="https://healthybmicheck.com/login-error"
+  noIndex={true}
+>
+
+<style>
+  .le-wrap { max-width: 480px; margin: 0 auto; padding: 60px 20px; text-align: center; }
+  .le-wrap h1 { font-size: 1.5rem; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+  .le-wrap p { font-size: .9rem; color: var(--ink3); line-height: 1.6; margin-bottom: 24px; }
+  .le-form { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: left; }
+  .le-input { width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 10px; font-size: .9rem; font-family: inherit; margin-bottom: 12px; box-sizing: border-box; }
+  .le-checkbox { display: flex; align-items: flex-start; gap: 8px; font-size: .8rem; color: var(--ink); margin-bottom: 10px; line-height: 1.4; cursor: pointer; }
+  .le-checkbox input { margin-top: 3px; flex-shrink: 0; }
+  .le-status { margin-top: 10px; font-size: .82rem; text-align: center; min-height: 1.2em; }
+  .le-status.success { color: #2e7d32; }
+  .le-status.error { color: #c62828; }
+</style>
+
+<div class="le-wrap">
+  <h1>That link doesn't work anymore</h1>
+  <p>Login links expire after 15 minutes and can only be used once, for your security. Request a new one below and we'll send it right away.</p>
+
+  <div class="le-form">
+    <input type="email" id="le-email" class="le-input" placeholder="you@example.com" aria-label="Email address">
+    <label class="le-checkbox">
+      <input type="checkbox" id="le-consent-save" checked>
+      <span>Save my BMI history so I can track changes over time (required)</span>
+    </label>
+    <label class="le-checkbox">
+      <input type="checkbox" id="le-consent-marketing">
+      <span>Also send me occasional progress reminders and tips by email (optional)</span>
+    </label>
+    <button type="button" class="calc-btn" id="le-submit" onclick="leSubmit()">Email me a new login link →</button>
+    <div class="le-status" id="le-status"></div>
+  </div>
+</div>
+
+<script is:inline>
+  async function leSubmit() {
+    const statusEl = document.getElementById('le-status');
+    const email = document.getElementById('le-email').value.trim();
+    const consentSave = document.getElementById('le-consent-save').checked;
+    const consentMarketing = document.getElementById('le-consent-marketing').checked;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!emailOk) {
+      statusEl.textContent = 'Please enter a valid email address.';
+      statusEl.className = 'le-status error';
+      return;
+    }
+    if (!consentSave) {
+      statusEl.textContent = 'Please check the box to save your history — it\'s required.';
+      statusEl.className = 'le-status error';
+      return;
+    }
+
+    const btn = document.getElementById('le-submit');
+    btn.disabled = true;
+    statusEl.textContent = 'Sending...';
+    statusEl.className = 'le-status';
+
+    try {
+      const resp = await fetch('/api/auth/request-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          purpose: 'login',
+          consent_save_records: consentSave,
+          consent_marketing_email: consentMarketing
+        })
+      });
+      if (!resp.ok) throw new Error('request_failed');
+      statusEl.textContent = '✓ Check your email for the new link.';
+      statusEl.className = 'le-status success';
+    } catch (e) {
+      statusEl.textContent = 'Something went wrong. Please try again in a moment.';
+      statusEl.className = 'le-status error';
+      btn.disabled = false;
+    }
+  }
+</script>
+
+</Base>

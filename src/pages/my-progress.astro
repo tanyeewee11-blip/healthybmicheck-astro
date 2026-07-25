@@ -1,0 +1,203 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="My Progress — HealthyBMICheck.com"
+  description="Track your BMI and weight history over time."
+  canonical="https://healthybmicheck.com/my-progress"
+  noIndex={true}
+>
+
+<style>
+  .mp-wrap { max-width: 640px; margin: 0 auto; padding: 40px 20px 60px; }
+  .mp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .mp-header h1 { font-size: 1.4rem; font-weight: 500; color: var(--ink); }
+  .mp-logout { background: none; border: 1px solid var(--border); border-radius: 8px; padding: 7px 14px; font-size: .8rem; color: var(--ink3); cursor: pointer; font-family: inherit; }
+  .mp-loading, .mp-empty { text-align: center; padding: 60px 20px; color: var(--ink3); font-size: .9rem; }
+  .mp-chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 20px; }
+  .mp-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  .mp-table th { text-align: left; padding: 8px 10px; color: var(--ink3); font-weight: 600; border-bottom: 1px solid var(--border); }
+  .mp-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); color: var(--ink); }
+  .mp-login-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; max-width: 420px; margin: 40px auto; }
+  .mp-login-card p { font-size: .9rem; color: var(--ink3); line-height: 1.6; margin-bottom: 18px; }
+  .mp-input { width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 10px; font-size: .9rem; font-family: inherit; margin-bottom: 12px; box-sizing: border-box; }
+  .mp-checkbox { display: flex; align-items: flex-start; gap: 8px; font-size: .8rem; color: var(--ink); margin-bottom: 10px; line-height: 1.4; cursor: pointer; }
+  .mp-checkbox input { margin-top: 3px; flex-shrink: 0; }
+  .mp-status { margin-top: 10px; font-size: .82rem; text-align: center; min-height: 1.2em; }
+  .mp-status.success { color: #2e7d32; }
+  .mp-status.error { color: #c62828; }
+</style>
+
+<div class="mp-wrap" id="mp-wrap">
+  <div class="mp-loading" id="mp-loading">Loading your progress…</div>
+</div>
+
+<script is:inline>
+  function fmtDate(iso) {
+    const d = new Date(iso.replace(' ', 'T') + 'Z');
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+
+  function renderChart(records) {
+    if (records.length < 2) return '';
+    const w = 560, h = 180, pad = 30;
+    const bmis = records.map(r => r.bmi);
+    const min = Math.min(...bmis) - 1, max = Math.max(...bmis) + 1;
+    const pts = records.map((r, i) => {
+      const x = pad + (i / (records.length - 1)) * (w - pad * 2);
+      const y = h - pad - ((r.bmi - min) / (max - min)) * (h - pad * 2);
+      return `${x},${y}`;
+    });
+    const circles = records.map((r, i) => {
+      const [x, y] = pts[i].split(',');
+      return `<circle cx="${x}" cy="${y}" r="4" fill="var(--accent)" />`;
+    }).join('');
+    return `
+      <svg viewBox="0 0 ${w} ${h}" style="width:100%;height:auto;">
+        <polyline points="${pts.join(' ')}" fill="none" stroke="var(--accent)" stroke-width="2.5" />
+        ${circles}
+      </svg>`;
+  }
+
+  function renderApp(records) {
+    const wrap = document.getElementById('mp-wrap');
+    const chart = renderChart(records);
+    const rows = records.slice().reverse().map(r => `
+      <tr>
+        <td>${fmtDate(r.recorded_at)}</td>
+        <td>${r.bmi}</td>
+        <td>${r.bmi_category}</td>
+        <td>${r.weight_kg} kg</td>
+      </tr>`).join('');
+
+    wrap.innerHTML = `
+      <div class="mp-header">
+        <h1>My Progress</h1>
+        <button class="mp-logout" onclick="doLogout()">Log out</button>
+      </div>
+      ${records.length === 0 ? `
+        <div class="mp-empty">No records yet. Save a result from the <a href="/bmi-calculator">BMI Calculator</a> to start tracking.</div>
+      ` : `
+        <div class="mp-chart-card">
+          ${chart || '<p style="text-align:center;color:var(--ink3);font-size:.85rem;">Save one more result to see your trend chart.</p>'}
+        </div>
+        <table class="mp-table">
+          <thead><tr><th>Date</th><th>BMI</th><th>Category</th><th>Weight</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      `}
+    `;
+  }
+
+  function renderLoginForm() {
+    const wrap = document.getElementById('mp-wrap');
+    wrap.innerHTML = `
+      <div class="mp-login-card">
+        <h1 style="font-size:1.2rem;font-weight:500;color:var(--ink);margin-bottom:10px;">Sign in to see your progress</h1>
+        <p>Enter your email and we'll send you a login link — no password needed.</p>
+        <input type="email" id="mp-email" class="mp-input" placeholder="you@example.com" aria-label="Email address">
+        <label class="mp-checkbox">
+          <input type="checkbox" id="mp-consent-save" checked>
+          <span>Save my BMI history so I can track changes over time (required)</span>
+        </label>
+        <label class="mp-checkbox">
+          <input type="checkbox" id="mp-consent-marketing">
+          <span>Also send me occasional progress reminders and tips by email (optional)</span>
+        </label>
+        <button type="button" class="calc-btn" id="mp-submit" onclick="mpSubmitLogin()">Email me a login link →</button>
+        <div class="mp-status" id="mp-status"></div>
+      </div>
+    `;
+  }
+
+  async function mpSubmitLogin() {
+    const statusEl = document.getElementById('mp-status');
+    const email = document.getElementById('mp-email').value.trim();
+    const consentSave = document.getElementById('mp-consent-save').checked;
+    const consentMarketing = document.getElementById('mp-consent-marketing').checked;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!emailOk) {
+      statusEl.textContent = 'Please enter a valid email address.';
+      statusEl.className = 'mp-status error';
+      return;
+    }
+    if (!consentSave) {
+      statusEl.textContent = 'Please check the box to save your history — it\'s required.';
+      statusEl.className = 'mp-status error';
+      return;
+    }
+
+    const btn = document.getElementById('mp-submit');
+    btn.disabled = true;
+    statusEl.textContent = 'Sending...';
+    statusEl.className = 'mp-status';
+
+    try {
+      const resp = await fetch('/api/auth/request-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          purpose: 'login',
+          consent_save_records: consentSave,
+          consent_marketing_email: consentMarketing
+        })
+      });
+      if (!resp.ok) throw new Error('request_failed');
+      statusEl.textContent = '✓ Check your email for the login link.';
+      statusEl.className = 'mp-status success';
+    } catch (e) {
+      statusEl.textContent = 'Something went wrong. Please try again in a moment.';
+      statusEl.className = 'mp-status error';
+      btn.disabled = false;
+    }
+  }
+
+  async function doLogout() {
+    await fetch('/api/auth/logout', { method: 'POST' });
+    window.location.reload();
+  }
+
+  async function loadProgress() {
+    let listResp;
+    try {
+      listResp = await fetch('/api/records/list');
+    } catch (e) {
+      document.getElementById('mp-wrap').innerHTML = '<div class="mp-empty">Something went wrong loading your progress. Please refresh.</div>';
+      return;
+    }
+
+    if (listResp.status === 401) {
+      renderLoginForm();
+      return;
+    }
+    if (!listResp.ok) {
+      document.getElementById('mp-wrap').innerHTML = '<div class="mp-empty">Something went wrong loading your progress. Please refresh.</div>';
+      return;
+    }
+
+    // Logged in. If there's a pending calculator result waiting to be saved
+    // (from clicking "Save & Track" before verifying the login link), save
+    // it now, then refresh the list.
+    const pending = localStorage.getItem('pendingHealthRecord');
+    if (pending) {
+      try {
+        await fetch('/api/records/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: pending
+        });
+      } catch (e) { /* non-fatal — record just won't appear this time */ }
+      localStorage.removeItem('pendingHealthRecord');
+      listResp = await fetch('/api/records/list');
+    }
+
+    const data = await listResp.json();
+    renderApp(data.records || []);
+  }
+
+  loadProgress();
+</script>
+
+</Base>

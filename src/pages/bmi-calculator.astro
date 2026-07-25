@@ -203,6 +203,28 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
 
     <div class="health-tip" id="health-tip"></div>
+
+    <div class="save-track-panel" id="save-track-panel">
+      <div class="save-track-collapsed" id="save-track-collapsed">
+        <button type="button" class="save-track-toggle" onclick="showSaveTrack()">
+          📈 Save this result &amp; track my progress over time
+        </button>
+      </div>
+      <div class="save-track-form" id="save-track-form" style="display:none">
+        <p class="save-track-label">Get a login link by email — no password needed.</p>
+        <input type="email" id="save-track-email" class="save-track-input" placeholder="you@example.com" aria-label="Email address">
+        <label class="save-track-checkbox">
+          <input type="checkbox" id="consent-save" checked>
+          <span>Save my BMI history so I can track changes over time (required)</span>
+        </label>
+        <label class="save-track-checkbox">
+          <input type="checkbox" id="consent-marketing">
+          <span>Also send me occasional progress reminders and tips by email (optional)</span>
+        </label>
+        <button type="button" class="calc-btn" id="save-track-submit" onclick="submitSaveTrack()">Email me a login link →</button>
+        <div class="save-track-status" id="save-track-status"></div>
+      </div>
+    </div>
   </div>
 
   <div class="table-section" id="table">
@@ -364,6 +386,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
 
 <script is:inline>
   let unit = 'metric';
+  let lastResult = null;
 
   function setUnit(u) {
     unit = u;
@@ -417,12 +440,86 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     document.getElementById('healthy-range').textContent = unit === 'metric'
       ? lo + '–' + hi + ' kg'
       : (lo/0.453592).toFixed(1) + '–' + (hi/0.453592).toFixed(1) + ' lb';
-    // Ideal weight (Devine)
+    // Ideal weight (Devine formula). This page has no sex/gender input,
+    // so we use the midpoint of the male/female Devine formulas rather
+    // than referencing an undefined variable (previous bug: `gender` was
+    // never declared anywhere on this page, which threw a ReferenceError
+    // on every calculation and silently broke this field).
     const inOver = (h / 0.0254) - 60;
-    const devine = gender === 'male' ? 50 + 2.3 * inOver : 45.5 + 2.3 * inOver;
+    const devine = 47.75 + 2.3 * inOver;
     document.getElementById('ideal-weight').textContent = unit === 'metric'
       ? devine.toFixed(1) + ' kg (Devine)'
       : (devine / 0.453592).toFixed(1) + ' lb (Devine)';
+
+    // Keep the raw metric values around so "Save & Track" can submit them
+    // regardless of which unit system the user entered in.
+    lastResult = {
+      weight_kg: Math.round(w * 10) / 10,
+      height_cm: Math.round(h * 100 * 10) / 10,
+      bmi: bmiRound,
+      bmi_category: cat,
+      standard: 'who'
+    };
+  }
+
+  function showSaveTrack() {
+    document.getElementById('save-track-collapsed').style.display = 'none';
+    document.getElementById('save-track-form').style.display = 'block';
+  }
+
+  async function submitSaveTrack() {
+    const statusEl = document.getElementById('save-track-status');
+    const email = document.getElementById('save-track-email').value.trim();
+    const consentSave = document.getElementById('consent-save').checked;
+    const consentMarketing = document.getElementById('consent-marketing').checked;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!emailOk) {
+      statusEl.textContent = 'Please enter a valid email address.';
+      statusEl.className = 'save-track-status error';
+      return;
+    }
+    if (!consentSave) {
+      statusEl.textContent = 'Please check the box to save your history — it\'s required to track progress.';
+      statusEl.className = 'save-track-status error';
+      return;
+    }
+    if (!lastResult) {
+      statusEl.textContent = 'Please calculate your BMI first.';
+      statusEl.className = 'save-track-status error';
+      return;
+    }
+
+    const btn = document.getElementById('save-track-submit');
+    btn.disabled = true;
+    statusEl.textContent = 'Sending...';
+    statusEl.className = 'save-track-status';
+
+    try {
+      const resp = await fetch('/api/auth/request-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          purpose: 'login',
+          consent_save_records: consentSave,
+          consent_marketing_email: consentMarketing
+        })
+      });
+
+      if (!resp.ok) throw new Error('request_failed');
+
+      // Stash this calculation locally so /my-progress can save it
+      // automatically once the user clicks the email link and logs in.
+      localStorage.setItem('pendingHealthRecord', JSON.stringify(lastResult));
+
+      statusEl.textContent = '✓ Check your email — click the link we sent to save this result.';
+      statusEl.className = 'save-track-status success';
+    } catch (e) {
+      statusEl.textContent = 'Something went wrong. Please try again in a moment.';
+      statusEl.className = 'save-track-status error';
+      btn.disabled = false;
+    }
   }
 
   function toggleFaq(btn) {

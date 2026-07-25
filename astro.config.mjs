@@ -47,6 +47,10 @@ export default defineConfig({
         if (page.includes('pinterest')) return false;
         if (/healthy-bmi-\d+-year-old-(female|male)/.test(page)) return false;
         if (/healthy-weight-(\d+cm|\d+ft(\d+in)?)-(female|male)/.test(page)) return false;
+        // Account utility pages: not content, and /my-progress is personalized
+        // per-user — shouldn't be submitted to Google as indexable pages.
+        if (page.includes('my-progress')) return false;
+        if (page.includes('login-error')) return false;
         return true;
       },
       changefreq: 'weekly',
