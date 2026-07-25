@@ -70,11 +70,54 @@ export async function onRequestPost({ request, env }) {
     body: JSON.stringify({
       from: 'HealthyBMICheck <no-reply@healthybmicheck.com>',
       to: [email],
-      subject: '确认您的登录链接 / Confirm your sign-in link',
+      subject: 'Confirm your sign-in to HealthyBMICheck',
       html: `
-        <p>点击下面的链接即可登录 HealthyBMICheck，链接 15 分钟内有效：</p>
-        <p><a href="${verifyUrl}">${verifyUrl}</a></p>
-        <p>如果这不是您本人的请求，请忽略这封邮件。</p>
+        <div style="background-color:#F7F4EF;padding:32px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px;margin:0 auto;background-color:#FFFFFF;border-radius:16px;overflow:hidden;border:1px solid #E5E0D8;">
+            <tr>
+              <td style="padding:32px 32px 24px;text-align:center;">
+                <div style="font-size:20px;font-weight:700;color:#1A1714;">
+                  healthy<span style="color:#2D6A4F;">bmicheck</span>.com
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 32px;">
+                <h1 style="font-size:18px;font-weight:600;color:#1A1714;margin:0 0 12px;text-align:center;">
+                  Confirm your sign-in
+                </h1>
+                <p style="font-size:14px;line-height:1.6;color:#6B6560;margin:0 0 24px;text-align:center;">
+                  Click the button below to securely sign in to your account.
+                  This link expires in 15 minutes and can only be used once.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 32px 32px;text-align:center;">
+                <a href="${verifyUrl}"
+                   style="display:inline-block;background-color:#1A1714;color:#FFFFFF;font-size:15px;font-weight:600;text-decoration:none;padding:14px 32px;border-radius:10px;">
+                  Sign in to HealthyBMICheck
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 32px 32px;">
+                <p style="font-size:12px;line-height:1.6;color:#918B85;margin:0;text-align:center;">
+                  If the button doesn't work, copy and paste this link into your browser:<br>
+                  <a href="${verifyUrl}" style="color:#2D6A4F;word-break:break-all;">${verifyUrl}</a>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:20px 32px;background-color:#F7F4EF;border-top:1px solid #E5E0D8;">
+                <p style="font-size:12px;line-height:1.6;color:#918B85;margin:0;text-align:center;">
+                  If you didn't request this, you can safely ignore this email —
+                  no account changes will be made.
+                </p>
+              </td>
+            </tr>
+          </table>
+        </div>
       `,
     }),
   });
