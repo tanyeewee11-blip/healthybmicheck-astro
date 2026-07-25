@@ -18,6 +18,9 @@ export async function onRequestGet({ request, env }) {
 
   return new Response(JSON.stringify({ records: results }), {
     status: 200,
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-store',
+    },
   });
 }

@@ -62,3 +62,13 @@
 
 /ads.txt
   Cache-Control: public, max-age=86400
+
+# API routes — dynamic, per-user data. Must never be cached by the browser
+# or Cloudflare's edge. Without this, GET requests (e.g. /api/records/list)
+# have no explicit Cache-Control, so the browser falls back to HTTP
+# heuristic freshness and silently serves a stale cached response instead
+# of hitting the Function again — which is exactly what happened during
+# testing: a logged-in user's /my-progress kept showing "No records yet"
+# because the browser served a 2-hour-old cached response from disk cache.
+/api/*
+  Cache-Control: no-store
