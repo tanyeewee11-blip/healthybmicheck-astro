@@ -177,22 +177,6 @@ import Base from '../layouts/Base.astro';
       return;
     }
 
-    // Logged in. If there's a pending calculator result waiting to be saved
-    // (from clicking "Save & Track" before verifying the login link), save
-    // it now, then refresh the list.
-    const pending = localStorage.getItem('pendingHealthRecord');
-    if (pending) {
-      try {
-        await fetch('/api/records/save', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: pending
-        });
-      } catch (e) { /* non-fatal — record just won't appear this time */ }
-      localStorage.removeItem('pendingHealthRecord');
-      listResp = await fetch('/api/records/list');
-    }
-
     const data = await listResp.json();
     renderApp(data.records || []);
   }

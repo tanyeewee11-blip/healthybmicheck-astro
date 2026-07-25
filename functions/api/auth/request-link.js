@@ -30,13 +30,34 @@ export async function onRequestPost({ request, env }) {
     return new Response(JSON.stringify({ error: 'consent_required' }), { status: 400 });
   }
 
+  // 可选：如果这次请求是从计算器结果页发起的（带着一条待保存的记录），
+  // 就把它跟 token 一起存进数据库，而不是让浏览器用 localStorage 传递——
+  // 这样不管用户在哪个设备/浏览器点开邮件链接，这条记录都能正确落地。
+  const record = body.pending_record;
+  const hasRecord = record &&
+    typeof record.weight_kg === 'number' &&
+    typeof record.height_cm === 'number' &&
+    typeof record.bmi === 'number' &&
+    typeof record.bmi_category === 'string';
+
   const token = randomToken();
   const expiresAt = new Date(Date.now() + 15 * 60 * 1000).toISOString(); // 15分钟有效
 
   await env.DB.prepare(
-    `INSERT INTO magic_links (email, token, purpose, consent_save_records, consent_marketing_email, expires_at)
-     VALUES (?, ?, ?, ?, ?, ?)`
-  ).bind(email, token, purpose, consentSave, consentMarketing, expiresAt).run();
+    `INSERT INTO magic_links
+       (email, token, purpose, consent_save_records, consent_marketing_email,
+        pending_weight_kg, pending_height_cm, pending_bmi, pending_bmi_category, pending_standard,
+        expires_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+  ).bind(
+    email, token, purpose, consentSave, consentMarketing,
+    hasRecord ? record.weight_kg : null,
+    hasRecord ? record.height_cm : null,
+    hasRecord ? record.bmi : null,
+    hasRecord ? record.bmi_category : null,
+    hasRecord ? (record.standard === 'asian' ? 'asian' : 'who') : null,
+    expiresAt
+  ).run();
 
   const verifyUrl = `https://healthybmicheck.com/api/auth/verify?token=${token}`;
 

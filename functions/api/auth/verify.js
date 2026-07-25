@@ -57,6 +57,23 @@ export async function onRequestGet({ request, env }) {
     `INSERT INTO sessions (user_id, session_token, expires_at) VALUES (?, ?, ?)`
   ).bind(user.id, sessionToken, sessionExpiresAt).run();
 
+  // 如果这条 magic link 是从计算器结果页发起的、带着一条待保存的记录，
+  // 现在登录验证成功了，直接把它存进 health_records——完全在服务器端完成，
+  // 不依赖浏览器 localStorage，所以用户在哪个设备/浏览器点开邮件链接都没问题。
+  if (link.pending_bmi !== null && link.pending_weight_kg !== null) {
+    await env.DB.prepare(
+      `INSERT INTO health_records (user_id, weight_kg, height_cm, bmi, bmi_category, standard)
+       VALUES (?, ?, ?, ?, ?, ?)`
+    ).bind(
+      user.id,
+      link.pending_weight_kg,
+      link.pending_height_cm,
+      link.pending_bmi,
+      link.pending_bmi_category,
+      link.pending_standard || 'who'
+    ).run();
+  }
+
   const headers = new Headers();
   headers.set('Location', 'https://healthybmicheck.com/my-progress');
   headers.append(

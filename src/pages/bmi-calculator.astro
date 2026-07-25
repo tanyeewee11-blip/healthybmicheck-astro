@@ -503,15 +503,18 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
           email,
           purpose: 'login',
           consent_save_records: consentSave,
-          consent_marketing_email: consentMarketing
+          consent_marketing_email: consentMarketing,
+          pending_record: lastResult
         })
       });
 
       if (!resp.ok) throw new Error('request_failed');
 
-      // Stash this calculation locally so /my-progress can save it
-      // automatically once the user clicks the email link and logs in.
-      localStorage.setItem('pendingHealthRecord', JSON.stringify(lastResult));
+      // The result is now attached server-side to this login link (see
+      // /api/auth/request-link) and will be saved automatically once the
+      // user verifies — no reliance on localStorage, so it works even if
+      // the email link is opened on a different device/browser/incognito
+      // window than the one used here.
 
       statusEl.textContent = '✓ Check your email — click the link we sent to save this result.';
       statusEl.className = 'save-track-status success';
