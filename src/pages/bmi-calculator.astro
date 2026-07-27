@@ -498,6 +498,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     try {
       const resp = await fetch('/api/auth/request-link', {
         method: 'POST',
+        cache: 'no-store',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,

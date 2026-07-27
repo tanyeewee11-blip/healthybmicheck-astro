@@ -136,6 +136,7 @@ import Base from '../layouts/Base.astro';
     try {
       const resp = await fetch('/api/auth/request-link', {
         method: 'POST',
+        cache: 'no-store',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
@@ -155,14 +156,14 @@ import Base from '../layouts/Base.astro';
   }
 
   async function doLogout() {
-    await fetch('/api/auth/logout', { method: 'POST' });
+    await fetch('/api/auth/logout', { method: 'POST', cache: 'no-store' });
     window.location.reload();
   }
 
   async function loadProgress() {
     let listResp;
     try {
-      listResp = await fetch('/api/records/list');
+      listResp = await fetch('/api/records/list', { cache: 'no-store' });
     } catch (e) {
       document.getElementById('mp-wrap').innerHTML = '<div class="mp-empty">Something went wrong loading your progress. Please refresh.</div>';
       return;

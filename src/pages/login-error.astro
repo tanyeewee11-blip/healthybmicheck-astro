@@ -67,6 +67,7 @@ import Base from '../layouts/Base.astro';
     try {
       const resp = await fetch('/api/auth/request-link', {
         method: 'POST',
+        cache: 'no-store',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
