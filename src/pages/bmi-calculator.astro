@@ -525,6 +525,7 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
 
       statusEl.textContent = '✓ Check your email — click the link we sent to save this result.';
       statusEl.className = 'save-track-status success';
+      btn.disabled = false;
     } catch (e) {
       statusEl.textContent = 'Something went wrong. Please try again in a moment.';
       statusEl.className = 'save-track-status error';

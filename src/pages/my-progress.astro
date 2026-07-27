@@ -154,6 +154,7 @@ import Base from '../layouts/Base.astro';
       if (!resp.ok) throw new Error('request_failed');
       statusEl.textContent = '✓ Check your email for the login link.';
       statusEl.className = 'mp-status success';
+      btn.disabled = false;
     } catch (e) {
       statusEl.textContent = 'Something went wrong. Please try again in a moment.';
       statusEl.className = 'mp-status error';
