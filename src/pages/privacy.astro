@@ -4,17 +4,30 @@ import Base from '../layouts/Base.astro';
 
 <Base
   title="Privacy Policy — HealthyBMICheck.com"
-  description="Privacy policy for HealthyBMICheck.com. No personal data is collected or stored. All health calculations run locally in your browser."
+  description="Privacy policy for HealthyBMICheck.com. Calculators run locally in your browser by default; an optional Save & Track account feature is available for users who want to track their history."
   canonical="https://healthybmicheck.com/privacy"
 >
 <div class="content">
   <h1>Privacy Policy</h1>
-  <p class="date">Last updated: May 2026</p>
+  <p class="date">Last updated: July 2026</p>
 
   <p>HealthyBMICheck.com ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard information when you visit our website.</p>
 
   <h2>Information We Collect</h2>
-  <p>HealthyBMICheck.com does not collect or store any personal health data you enter into the calculator. All calculations are performed locally in your browser. We do not transmit your height, weight, or BMI results to any server.</p>
+  <p>By default, HealthyBMICheck.com does not collect or store any personal health data you enter into our calculators. All calculations are performed locally in your browser, and your height, weight, and results are never transmitted to or stored by us — unless you choose to use the optional "Save & Track" feature described below.</p>
+
+  <h2>Optional Account Feature: Save &amp; Track</h2>
+  <p>Some calculators (currently the BMI Calculator and Asian BMI Calculator) offer an optional "Save this result &amp; track my progress" feature. This is entirely opt-in — if you don't use it, no account is created and no health data ever leaves your browser.</p>
+  <p>If you choose to use this feature, here is exactly what happens:</p>
+  <ul style="color:var(--ink2);font-size:.95rem;line-height:1.8;margin:8px 0 14px 20px;">
+    <li><strong>No passwords.</strong> You sign in with a one-time "magic link" sent to your email. We never ask for or store a password.</li>
+    <li><strong>What we store:</strong> your email address, and — only if you tick the box to save your history — the weight, height, BMI, and category from the result you chose to save, along with the date it was recorded.</li>
+    <li><strong>Two separate consent choices:</strong> saving your history is required to use this feature; receiving occasional email reminders/tips is a completely separate, optional choice. Ticking one does not tick the other.</li>
+    <li><strong>Where it's stored:</strong> in a Cloudflare D1 database associated with this website. Login links are single-use and expire after 15 minutes.</li>
+    <li><strong>Session cookie:</strong> once you sign in, we set a strictly-necessary cookie (<code>session</code>) to keep you signed in for up to 30 days. This cookie is only used for authentication — not for advertising or tracking.</li>
+  </ul>
+  <p><strong>Deleting your data:</strong> you can request deletion of your account and all saved health records at any time by emailing <a href="mailto:hello@healthybmicheck.com">hello@healthybmicheck.com</a> from the email address associated with your account. We will delete your data within a reasonable timeframe and confirm once done.</p>
+  <p>This feature is intended for adult users tracking their own health data. It is not currently offered on our children's/teen BMI calculator.</p>
 
   <h2>Cookies and Analytics</h2>
   <p>We may use cookies and similar tracking technologies to analyse website traffic and improve your experience. This may include Google Analytics, which collects anonymised usage data such as pages visited and time on site.</p>
@@ -27,13 +40,14 @@ import Base from '../layouts/Base.astro';
   <p>Most web browsers allow you to control cookies through their settings. You can choose to block or delete cookies, though doing so may affect your experience on this and other websites. For more information, visit <a href="https://www.allaboutcookies.org" target="_blank" rel="noopener">allaboutcookies.org</a>.</p>
 
   <h2>Data Retention</h2>
-  <p>We do not store any personal data on our servers. Calculator inputs (height, weight, age) are processed entirely in your browser and are never transmitted to or stored by us. Analytics data collected by Google Analytics is retained according to Google's own data retention policies.</p>
+  <p>For visitors who do not use the optional Save &amp; Track feature: calculator inputs (height, weight, age) are processed entirely in your browser and are never transmitted to or stored by us.</p>
+  <p>For users who opt into Save &amp; Track: your email address and saved health records are retained until you request deletion (see above), or until your account has been inactive for an extended period, at which point we may delete it as part of routine data minimisation. Analytics data collected by Google Analytics is retained according to Google's own data retention policies.</p>
 
   <h2>Third-Party Links</h2>
   <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices of those sites and encourage you to review their privacy policies.</p>
 
   <h2>Children's Privacy</h2>
-  <p>Our website is not directed at children under the age of 13. We do not knowingly collect personal information from children.</p>
+  <p>Our website is not directed at children under the age of 13. We do not knowingly collect personal information from children. Our optional Save &amp; Track account feature is intended for adult users only and is not offered on our children's/teen BMI calculator.</p>
 
   <h2>Cookies We Use</h2>
   <p>This website uses the following types of cookies:</p>
@@ -41,6 +55,7 @@ import Base from '../layouts/Base.astro';
     <li><strong>Google Analytics cookies</strong> — Used to analyse how visitors use our site. Data is anonymised and aggregated. Opt out via <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out</a>.</li>
     <li><strong>Google AdSense cookies</strong> — Used to serve relevant advertisements. Manage ad personalisation at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ad Settings</a>.</li>
     <li><strong>Functional cookies</strong> — Session cookies that remember your unit preferences (metric/imperial). These expire when you close your browser.</li>
+    <li><strong>Authentication cookie</strong> — If you use the optional Save &amp; Track feature, a strictly-necessary <code>session</code> cookie keeps you signed in for up to 30 days. Not used for advertising.</li>
   </ul>
 
   <h2>Your Rights (GDPR &amp; CCPA)</h2>
@@ -53,7 +68,8 @@ import Base from '../layouts/Base.astro';
     <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Analytics Privacy Policy</a></li>
     <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google AdSense Privacy Policy</a></li>
     <li><a href="https://web3forms.com/privacy" target="_blank" rel="noopener">Web3Forms Privacy Policy</a> (contact form processing)</li>
-    <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a> (website hosting)</li>
+    <li><a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resend Privacy Policy</a> (sends the login-link emails for users who opt into Save &amp; Track)</li>
+    <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a> (website hosting, and database storage for users who opt into Save &amp; Track)</li>
   </ul>
 
   <h2>Changes to This Policy</h2>

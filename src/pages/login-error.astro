@@ -76,6 +76,12 @@ import Base from '../layouts/Base.astro';
           consent_marketing_email: consentMarketing
         })
       });
+      if (resp.status === 429) {
+        statusEl.textContent = 'You just requested a link — please check your email, or wait a minute before trying again.';
+        statusEl.className = 'le-status error';
+        btn.disabled = false;
+        return;
+      }
       if (!resp.ok) throw new Error('request_failed');
       statusEl.textContent = '✓ Check your email for the new link.';
       statusEl.className = 'le-status success';

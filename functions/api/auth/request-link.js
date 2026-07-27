@@ -21,6 +21,29 @@ export async function onRequestPost({ request, env }) {
   }
 
   const email = body.email.trim().toLowerCase();
+
+  // --- Rate limiting (Cloudflare KV) ---
+  // Without this, anyone can hammer this endpoint to spam an email address
+  // with login-link emails, or burn through the Resend sending quota.
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+
+  const emailKey = `rl:email:${email}`;
+  const lastEmailRequest = await env.RATE_LIMIT_KV.get(emailKey);
+  if (lastEmailRequest) {
+    return new Response(JSON.stringify({ error: 'rate_limited', retry_after: 60 }), { status: 429 });
+  }
+
+  const ipKey = `rl:ip:${ip}`;
+  const ipCount = parseInt(await env.RATE_LIMIT_KV.get(ipKey) || '0', 10);
+  if (ipCount >= 5) {
+    return new Response(JSON.stringify({ error: 'rate_limited', retry_after: 600 }), { status: 429 });
+  }
+
+  // Reserve both limits before doing any work, so concurrent requests
+  // can't slip through while the email is being sent.
+  await env.RATE_LIMIT_KV.put(emailKey, '1', { expirationTtl: 60 });        // 1 request / email / 60s
+  await env.RATE_LIMIT_KV.put(ipKey, String(ipCount + 1), { expirationTtl: 600 }); // 5 requests / IP / 10min
+
   const purpose = body.purpose === 'signup' ? 'signup' : 'login';
   const consentSave = body.consent_save_records ? 1 : 0;
   const consentMarketing = body.consent_marketing_email ? 1 : 0;

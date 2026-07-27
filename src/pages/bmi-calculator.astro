@@ -509,6 +509,12 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
         })
       });
 
+      if (resp.status === 429) {
+        statusEl.textContent = 'You just requested a link — please check your email, or wait a minute before trying again.';
+        statusEl.className = 'save-track-status error';
+        btn.disabled = false;
+        return;
+      }
       if (!resp.ok) throw new Error('request_failed');
 
       // The result is now attached server-side to this login link (see
