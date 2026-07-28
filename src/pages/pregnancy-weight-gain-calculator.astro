@@ -105,10 +105,10 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
     </div>
 
     <div class="input-group">
-      <label>Pregnancy type</label>
-      <div class="gender-toggle">
-        <button class="gender-btn active" onclick="setMulti(1,this)">Singleton</button>
-        <button class="gender-btn" onclick="setMulti(2,this)">Twins</button>
+      <label id="preg-type-label">Pregnancy type</label>
+      <div class="gender-toggle" role="group" aria-labelledby="preg-type-label">
+        <button class="gender-btn active" aria-pressed="true" onclick="setMulti(1,this)">Singleton</button>
+        <button class="gender-btn" aria-pressed="false" onclick="setMulti(2,this)">Twins</button>
       </div>
     </div>
 
@@ -320,8 +320,12 @@ function setUnit(u) {
 
 function setMulti(n, btn) {
   babies = n;
-  document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.gender-btn').forEach(b => {
+    b.classList.remove('active');
+    b.setAttribute('aria-pressed', 'false');
+  });
   btn.classList.add('active');
+  btn.setAttribute('aria-pressed', 'true');
 }
 
 function fmtKg(kg) {

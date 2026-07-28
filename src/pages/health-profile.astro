@@ -151,11 +151,12 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
 
     <!-- Sex -->
-    <div class="gender-row">
-      <button class="gender-btn active" onclick="setGender('male',this)">
+    <label id="sex-label" class="sr-only-label">Sex</label>
+    <div class="gender-row" role="group" aria-labelledby="sex-label">
+      <button class="gender-btn active" aria-pressed="true" onclick="setGender('male',this)">
         <span class="g-icon">♂</span>Male
       </button>
-      <button class="gender-btn" onclick="setGender('female',this)">
+      <button class="gender-btn" aria-pressed="false" onclick="setGender('female',this)">
         <span class="g-icon">♀</span>Female
       </button>
     </div>
@@ -391,8 +392,12 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
 
   function setGender(g, btn) {
     gender = g;
-    document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.gender-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
     document.getElementById('hip-field').style.display = g==='female'?'':'none';
   }
 

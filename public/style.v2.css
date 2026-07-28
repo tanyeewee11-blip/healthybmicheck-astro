@@ -71,6 +71,7 @@
     --ink2:#A8A29C;
     --ink3:#918B85;
     --accent:#5DB88A;
+    --accent-rgb:93,184,138;
     --accent-light:#1A3329;
     --warn:#E09A50;
     --warn-light:#2C1E0A;
@@ -193,6 +194,7 @@
   --ink2:#6B6560;
   --ink3:#736D67;
   --accent:#2D6A4F;
+  --accent-rgb:45,106,79;
   --accent-light:#D8EFE4;
   --warn:#9A5E1C;
   --warn-light:#FBF0DC;
@@ -907,6 +909,7 @@ label {
 
 .input-wrap input:focus {
   border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(var(--accent-rgb),.25);
 }
 
 .unit-badge {
@@ -1056,6 +1059,7 @@ select {
 
 select:focus {
   border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(var(--accent-rgb),.25);
 }
 
 .ideal-label {
@@ -2074,6 +2078,18 @@ select:focus {
   font-size:.85rem;
   font-weight:600;
   color:var(--ink);
+}
+
+.sr-only-label {
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
 }
 
 .health-tip {

@@ -174,10 +174,10 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
 
     <div class="input-group">
-      <label>Sex</label>
-      <div class="gender-toggle">
-        <button class="gender-btn active" onclick="setGender('male', this)">♂ Male</button>
-        <button class="gender-btn" onclick="setGender('female', this)">♀ Female</button>
+      <label id="sex-label">Sex</label>
+      <div class="gender-toggle" role="group" aria-labelledby="sex-label">
+        <button class="gender-btn active" aria-pressed="true" onclick="setGender('male', this)">♂ Male</button>
+        <button class="gender-btn" aria-pressed="false" onclick="setGender('female', this)">♀ Female</button>
       </div>
     </div>
 
@@ -464,8 +464,12 @@ function setUnit(u) {
 
 function setGender(g, btn) {
   gender = g;
-  document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.gender-btn').forEach(b => {
+    b.classList.remove('active');
+    b.setAttribute('aria-pressed', 'false');
+  });
   btn.classList.add('active');
+  btn.setAttribute('aria-pressed', 'true');
 }
 
 function calculate() {
