@@ -79,6 +79,16 @@
     --danger-light:#2C1010;
     --underweight:#6BA3D9;
     --underweight-light:#0E1E35;
+    /* Fixed (non-adaptive) colors for white-text badges — the mode-
+       adaptive --accent/--warn/--danger/--underweight above are tuned
+       light/vivid for dot & line visibility on a dark page background,
+       which fails WCAG contrast when used as a solid badge fill behind
+       white text. These stay the same in both modes and are verified
+       to hold ≥4.5:1 with white text. */
+    --badge-underweight:#2563A8;
+    --badge-normal:#2D6A4F;
+    --badge-overweight:#9A5E1C;
+    --badge-obese:#B83232;
     --border:#2E2A26;
     --shadow:0 2px 16px rgba(0,0,0,0.35);
   }
@@ -202,6 +212,10 @@
   --danger-light:#FADFDF;
   --underweight:#2563A8;
   --underweight-light:#DCE9F8;
+  --badge-underweight:#2563A8;
+  --badge-normal:#2D6A4F;
+  --badge-overweight:#9A5E1C;
+  --badge-obese:#B83232;
   --border:#E5E0D8;
   --radius:16px;
   --shadow:0 2px 16px rgba(26,23,20,0.07);

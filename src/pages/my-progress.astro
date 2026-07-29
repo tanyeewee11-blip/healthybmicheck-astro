@@ -9,23 +9,71 @@ import Base from '../layouts/Base.astro';
 >
 
 <style>
-  .mp-wrap { max-width: 640px; margin: 0 auto; padding: 40px 20px 60px; }
-  .mp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-  .mp-header h1 { font-size: 1.4rem; font-weight: 500; color: var(--ink); }
-  .mp-logout { background: none; border: 1px solid var(--border); border-radius: 8px; padding: 7px 14px; font-size: .8rem; color: var(--ink3); cursor: pointer; font-family: inherit; }
-  .mp-loading, .mp-empty { text-align: center; padding: 60px 20px; color: var(--ink3); font-size: .9rem; }
-  .mp-chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 20px; }
+  .mp-wrap { max-width: 760px; margin: 0 auto; padding: 48px 20px 70px; }
+
+  .mp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; gap: 16px; }
+  .mp-header h1 { font-family: 'DM Serif Display', serif; font-size: 2rem; font-weight: 400; color: var(--ink); line-height: 1.1; margin-bottom: 6px; }
+  .mp-header p { font-size: .9rem; color: var(--ink3); }
+  .mp-logout { background: none; border: 1px solid var(--border); border-radius: 100px; padding: 8px 16px; font-size: .8rem; color: var(--ink3); cursor: pointer; font-family: inherit; white-space: nowrap; transition: border-color .15s, color .15s; }
+  .mp-logout:hover { border-color: var(--accent); color: var(--accent); }
+
+  .mp-loading { text-align: center; padding: 80px 20px; color: var(--ink3); font-size: .9rem; }
+
+  /* Stats strip */
+  .mp-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .mp-stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+  .mp-stat-label { font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--ink3); margin-bottom: 6px; }
+  .mp-stat-value { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--ink); display: flex; align-items: baseline; gap: 6px; }
+  .mp-stat-value .unit { font-family: 'DM Sans', sans-serif; font-size: .8rem; color: var(--ink3); font-weight: 500; }
+  .mp-stat-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; flex-shrink: 0; }
+  .mp-stat-sub { font-size: .78rem; margin-top: 4px; font-weight: 600; }
+  .mp-stat-sub.up { color: var(--danger); }
+  .mp-stat-sub.down { color: var(--accent); }
+  .mp-stat-sub.flat { color: var(--ink3); }
+
+  /* Chart card */
+  .mp-chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 20px 16px; margin-bottom: 20px; }
+  .mp-chart-title { font-size: .85rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .mp-chart-sub { font-size: .78rem; color: var(--ink3); margin-bottom: 16px; }
+  .mp-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+  .mp-legend-item { display: flex; align-items: center; gap: 6px; font-size: .74rem; color: var(--ink3); }
+  .mp-legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+  /* History table */
+  .mp-table-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .mp-table-title { font-size: .85rem; font-weight: 600; color: var(--ink); padding: 18px 20px 12px; }
   .mp-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
-  .mp-table th { text-align: left; padding: 8px 10px; color: var(--ink3); font-weight: 600; border-bottom: 1px solid var(--border); }
-  .mp-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); color: var(--ink); }
-  .mp-login-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; max-width: 420px; margin: 40px auto; }
-  .mp-login-card p { font-size: .9rem; color: var(--ink3); line-height: 1.6; margin-bottom: 18px; }
-  .mp-input { width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 10px; font-size: .9rem; font-family: inherit; margin-bottom: 12px; box-sizing: border-box; }
-  .mp-checkbox { display: flex; align-items: flex-start; gap: 8px; font-size: .8rem; color: var(--ink); margin-bottom: 10px; line-height: 1.4; cursor: pointer; }
+  .mp-table th { text-align: left; padding: 10px 20px; color: var(--ink3); font-weight: 600; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--border); }
+  .mp-table td { padding: 12px 20px; border-bottom: 1px solid var(--border); color: var(--ink); }
+  .mp-table tr:last-child td { border-bottom: none; }
+  .mp-table tr:hover td { background: var(--accent-light); }
+  .mp-cat-badge { display: inline-block; padding: 3px 11px; border-radius: 100px; font-size: .72rem; font-weight: 600; color: #fff; }
+  .mp-delta { font-size: .78rem; margin-left: 6px; font-weight: 600; }
+  .mp-delta.up { color: var(--danger); }
+  .mp-delta.down { color: var(--accent); }
+
+  /* Empty state */
+  .mp-empty-card { background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius); padding: 48px 32px; text-align: center; }
+  .mp-empty-icon { font-size: 2.2rem; margin-bottom: 12px; }
+  .mp-empty-card h2 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; font-weight: 400; color: var(--ink); margin-bottom: 8px; }
+  .mp-empty-card p { font-size: .88rem; color: var(--ink3); margin-bottom: 20px; max-width: 360px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+
+  /* Login card */
+  .mp-login-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 28px; max-width: 420px; margin: 40px auto; text-align: center; }
+  .mp-login-icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .mp-login-card h1 { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-weight: 400; color: var(--ink); margin-bottom: 8px; }
+  .mp-login-card p { font-size: .88rem; color: var(--ink3); line-height: 1.6; margin-bottom: 18px; text-align: left; }
+  .mp-input { width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 10px; font-size: .9rem; font-family: inherit; margin-bottom: 12px; box-sizing: border-box; background: var(--bg); color: var(--ink); }
+  .mp-checkbox { display: flex; align-items: flex-start; gap: 8px; font-size: .8rem; color: var(--ink); margin-bottom: 10px; line-height: 1.4; cursor: pointer; text-align: left; }
   .mp-checkbox input { margin-top: 3px; flex-shrink: 0; }
   .mp-status { margin-top: 10px; font-size: .82rem; text-align: center; min-height: 1.2em; }
-  .mp-status.success { color: #2e7d32; }
-  .mp-status.error { color: #c62828; }
+  .mp-status.success { color: var(--accent); }
+  .mp-status.error { color: var(--danger); }
+
+  @media (max-width: 560px) {
+    .mp-stats { grid-template-columns: 1fr; }
+    .mp-header { flex-direction: column; }
+  }
 </style>
 
 <div class="mp-wrap" id="mp-wrap">
@@ -33,67 +81,201 @@ import Base from '../layouts/Base.astro';
 </div>
 
 <script is:inline>
-  function fmtDate(iso) {
+  // BMI category thresholds + colors, matching the scale used on the
+  // calculator pages themselves — this page reuses the same visual
+  // language rather than inventing a generic dashboard palette.
+  const BMI_BANDS = [
+    { max: 18.5, key: 'underweight', label: 'Underweight', color: 'var(--underweight)', badgeColor: 'var(--badge-underweight)' },
+    { max: 25,   key: 'normal',      label: 'Normal',       color: 'var(--accent)',      badgeColor: 'var(--badge-normal)' },
+    { max: 30,   key: 'overweight',  label: 'Overweight',   color: 'var(--warn)',        badgeColor: 'var(--badge-overweight)' },
+    { max: Infinity, key: 'obese',   label: 'Obese',        color: 'var(--danger)',      badgeColor: 'var(--badge-obese)' },
+  ];
+
+  function bandFor(bmi) {
+    return BMI_BANDS.find(b => bmi < b.max) || BMI_BANDS[BMI_BANDS.length - 1];
+  }
+
+  function fmtDate(iso, short) {
     const d = new Date(iso.replace(' ', 'T') + 'Z');
-    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    return d.toLocaleDateString('en-GB', short
+      ? { day: 'numeric', month: 'short' }
+      : { day: 'numeric', month: 'short', year: 'numeric' });
   }
 
   function renderChart(records) {
-    if (records.length < 2) return '';
-    const w = 560, h = 180, pad = 30;
+    const w = 640, h = 260;
+    const padL = 34, padR = 14, padT = 16, padB = 34;
+    const chartW = w - padL - padR, chartH = h - padT - padB;
+
     const bmis = records.map(r => r.bmi);
-    const min = Math.min(...bmis) - 1, max = Math.max(...bmis) + 1;
-    const pts = records.map((r, i) => {
-      const x = pad + (i / (records.length - 1)) * (w - pad * 2);
-      const y = h - pad - ((r.bmi - min) / (max - min)) * (h - pad * 2);
-      return `${x},${y}`;
-    });
-    const circles = records.map((r, i) => {
-      const [x, y] = pts[i].split(',');
-      return `<circle cx="${x}" cy="${y}" r="4" fill="var(--accent)" />`;
+    const yMin = Math.min(15, Math.min(...bmis) - 2);
+    const yMax = Math.max(33, Math.max(...bmis) + 2);
+
+    const yOf = (bmi) => padT + (1 - (bmi - yMin) / (yMax - yMin)) * chartH;
+    const xOf = (i) => records.length === 1
+      ? padL + chartW / 2
+      : padL + (i / (records.length - 1)) * chartW;
+
+    // Background category bands, clipped to the chart's y-range
+    const bandEdges = [yMin, 18.5, 25, 30, yMax];
+    const bands = BMI_BANDS.map((b, i) => {
+      const top = Math.max(bandEdges[i], yMin);
+      const bottom = Math.min(bandEdges[i + 1], yMax);
+      if (bottom <= top) return '';
+      const y1 = yOf(bottom), y2 = yOf(top);
+      return `<rect x="${padL}" y="${y1}" width="${chartW}" height="${y2 - y1}" fill="${b.color}" opacity="0.08" />`;
     }).join('');
+
+    // Y-axis gridlines at the two clinical cutoffs plus min/max
+    const gridVals = [18.5, 25, 30].filter(v => v > yMin && v < yMax);
+    const gridlines = gridVals.map(v => {
+      const y = yOf(v);
+      return `<line x1="${padL}" y1="${y}" x2="${w - padR}" y2="${y}" stroke="var(--border)" stroke-width="1" stroke-dasharray="3,3" />
+              <text x="${padL - 6}" y="${y + 3}" text-anchor="end" font-size="9" fill="var(--ink3)">${v}</text>`;
+    }).join('');
+
+    const pts = records.map((r, i) => [xOf(i), yOf(r.bmi)]);
+    const linePath = pts.map((p, i) => (i === 0 ? 'M' : 'L') + p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+
+    const circles = records.map((r, i) => {
+      const [x, y] = pts[i];
+      const isLast = i === records.length - 1;
+      const color = bandFor(r.bmi).color;
+      const r_ = isLast ? 6 : 4;
+      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r_}" fill="${color}" stroke="var(--surface)" stroke-width="2">
+                <title>${fmtDate(r.recorded_at)} — BMI ${r.bmi} (${r.bmi_category})</title>
+              </circle>`;
+    }).join('');
+
+    // Date labels: first, last, and middle (if room)
+    const labelIdxs = records.length <= 2 ? [0, records.length - 1] : [0, Math.round((records.length - 1) / 2), records.length - 1];
+    const dateLabels = [...new Set(labelIdxs)].map(i => {
+      const x = xOf(i);
+      return `<text x="${x}" y="${h - padB + 18}" text-anchor="middle" font-size="9" fill="var(--ink3)">${fmtDate(records[i].recorded_at, true)}</text>`;
+    }).join('');
+
+    const lastPt = pts[pts.length - 1];
+    const lastLabel = `<text x="${lastPt[0]}" y="${lastPt[1] - 12}" text-anchor="middle" font-size="11" font-weight="600" fill="var(--ink)">${records[records.length - 1].bmi}</text>`;
+
     return `
-      <svg viewBox="0 0 ${w} ${h}" style="width:100%;height:auto;">
-        <polyline points="${pts.join(' ')}" fill="none" stroke="var(--accent)" stroke-width="2.5" />
+      <svg viewBox="0 0 ${w} ${h}" style="width:100%;height:auto;display:block;" role="img" aria-label="BMI trend chart">
+        ${bands}
+        ${gridlines}
+        ${records.length > 1 ? `<path d="${linePath}" fill="none" stroke="var(--ink2)" stroke-width="2" />` : ''}
         ${circles}
+        ${records.length > 1 ? dateLabels : ''}
+        ${lastLabel}
       </svg>`;
+  }
+
+  function renderStats(records) {
+    const latest = records[records.length - 1];
+    const first = records[0];
+    const band = bandFor(latest.bmi);
+    const delta = Math.round((latest.bmi - first.bmi) * 10) / 10;
+    const deltaClass = delta > 0 ? 'up' : delta < 0 ? 'down' : 'flat';
+    const deltaArrow = delta > 0 ? '▲' : delta < 0 ? '▼' : '—';
+    const deltaText = records.length > 1
+      ? `${deltaArrow} ${Math.abs(delta)} since ${fmtDate(first.recorded_at, true)}`
+      : 'Log another result to see your trend';
+
+    return `
+      <div class="mp-stats">
+        <div class="mp-stat-card">
+          <div class="mp-stat-label">Latest BMI</div>
+          <div class="mp-stat-value"><span class="mp-stat-dot" style="background:${band.color}"></span>${latest.bmi}</div>
+          <div class="mp-stat-sub" style="color:${band.color}">${latest.bmi_category}</div>
+        </div>
+        <div class="mp-stat-card">
+          <div class="mp-stat-label">Change</div>
+          <div class="mp-stat-value">${records.length > 1 ? Math.abs(delta) : '—'}<span class="unit">BMI pts</span></div>
+          <div class="mp-stat-sub ${deltaClass}">${deltaText}</div>
+        </div>
+        <div class="mp-stat-card">
+          <div class="mp-stat-label">Entries logged</div>
+          <div class="mp-stat-value">${records.length}</div>
+          <div class="mp-stat-sub flat">Since ${fmtDate(first.recorded_at, true)}</div>
+        </div>
+      </div>`;
   }
 
   function renderApp(records) {
     const wrap = document.getElementById('mp-wrap');
-    const chart = renderChart(records);
-    const rows = records.slice().reverse().map(r => `
+
+    if (records.length === 0) {
+      wrap.innerHTML = `
+        <div class="mp-header">
+          <div>
+            <h1>My Progress</h1>
+            <p>Your BMI history, tracked over time.</p>
+          </div>
+          <button class="mp-logout" onclick="doLogout()">Log out</button>
+        </div>
+        <div class="mp-empty-card">
+          <div class="mp-empty-icon">📈</div>
+          <h2>Nothing logged yet</h2>
+          <p>Save a result from the BMI Calculator to start building your trend line.</p>
+          <a href="/bmi-calculator" class="calc-btn" style="display:inline-block;text-decoration:none;">Go to BMI Calculator →</a>
+        </div>`;
+      return;
+    }
+
+    const rows = records.slice().reverse().map((r, idx, arr) => {
+      const prev = arr[idx + 1];
+      const band = bandFor(r.bmi);
+      let delta = '';
+      if (prev) {
+        const d = Math.round((r.weight_kg - prev.weight_kg) * 10) / 10;
+        if (d !== 0) {
+          const cls = d > 0 ? 'up' : 'down';
+          const arrow = d > 0 ? '▲' : '▼';
+          delta = `<span class="mp-delta ${cls}">${arrow} ${Math.abs(d)}kg</span>`;
+        }
+      }
+      return `
       <tr>
         <td>${fmtDate(r.recorded_at)}</td>
         <td>${r.bmi}</td>
-        <td>${r.bmi_category}</td>
-        <td>${r.weight_kg} kg</td>
-      </tr>`).join('');
+        <td><span class="mp-cat-badge" style="background:${band.badgeColor}">${r.bmi_category}</span></td>
+        <td>${r.weight_kg} kg${delta}</td>
+      </tr>`;
+    }).join('');
 
     wrap.innerHTML = `
       <div class="mp-header">
-        <h1>My Progress</h1>
+        <div>
+          <h1>My Progress</h1>
+          <p>Your BMI history, tracked over time.</p>
+        </div>
         <button class="mp-logout" onclick="doLogout()">Log out</button>
       </div>
-      ${records.length === 0 ? `
-        <div class="mp-empty">No records yet. Save a result from the <a href="/bmi-calculator">BMI Calculator</a> to start tracking.</div>
-      ` : `
-        <div class="mp-chart-card">
-          ${chart || '<p style="text-align:center;color:var(--ink3);font-size:.85rem;">Save one more result to see your trend chart.</p>'}
+
+      ${renderStats(records)}
+
+      <div class="mp-chart-card">
+        <div class="mp-chart-title">BMI trend</div>
+        <div class="mp-chart-sub">${records.length > 1 ? 'Hover a point for the exact date and value.' : 'Save one more result to see a trend line.'}</div>
+        ${renderChart(records)}
+        <div class="mp-legend">
+          ${BMI_BANDS.map(b => `<div class="mp-legend-item"><span class="mp-legend-dot" style="background:${b.color}"></span>${b.label}</div>`).join('')}
         </div>
+      </div>
+
+      <div class="mp-table-card">
+        <div class="mp-table-title">History</div>
         <table class="mp-table">
           <thead><tr><th>Date</th><th>BMI</th><th>Category</th><th>Weight</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
-      `}
-    `;
+      </div>`;
   }
 
   function renderLoginForm() {
     const wrap = document.getElementById('mp-wrap');
     wrap.innerHTML = `
       <div class="mp-login-card">
-        <h1 style="font-size:1.2rem;font-weight:500;color:var(--ink);margin-bottom:10px;">Sign in to see your progress</h1>
+        <div class="mp-login-icon">📈</div>
+        <h1>Sign in to see your progress</h1>
         <p>Enter your email and we'll send you a login link — no password needed.</p>
         <input type="email" id="mp-email" class="mp-input" placeholder="you@example.com" aria-label="Email address">
         <label class="mp-checkbox">
@@ -104,7 +286,7 @@ import Base from '../layouts/Base.astro';
           <input type="checkbox" id="mp-consent-marketing">
           <span>Also send me occasional progress reminders and tips by email (optional)</span>
         </label>
-        <button type="button" class="calc-btn" id="mp-submit" onclick="mpSubmitLogin()">Email me a login link →</button>
+        <button type="button" class="calc-btn" id="mp-submit" onclick="mpSubmitLogin()" style="width:100%;">Email me a login link →</button>
         <div class="mp-status" id="mp-status"></div>
       </div>
     `;
@@ -172,7 +354,7 @@ import Base from '../layouts/Base.astro';
     try {
       listResp = await fetch('/api/records/list', { cache: 'no-store' });
     } catch (e) {
-      document.getElementById('mp-wrap').innerHTML = '<div class="mp-empty">Something went wrong loading your progress. Please refresh.</div>';
+      document.getElementById('mp-wrap').innerHTML = '<div class="mp-empty-card"><p>Something went wrong loading your progress. Please refresh.</p></div>';
       return;
     }
 
@@ -181,7 +363,7 @@ import Base from '../layouts/Base.astro';
       return;
     }
     if (!listResp.ok) {
-      document.getElementById('mp-wrap').innerHTML = '<div class="mp-empty">Something went wrong loading your progress. Please refresh.</div>';
+      document.getElementById('mp-wrap').innerHTML = '<div class="mp-empty-card"><p>Something went wrong loading your progress. Please refresh.</p></div>';
       return;
     }
 
