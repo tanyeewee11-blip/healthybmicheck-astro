@@ -63,6 +63,14 @@ export async function onRequestPost({ request, env }) {
     typeof record.bmi === 'number' &&
     typeof record.bmi_category === 'string';
 
+  // 同样的思路，但用于BMI以外的其他计算器（卡路里/BMR/体脂率等）——
+  // 存进通用的 tool_results 表，而不是 BMI 专用的 health_records。
+  const toolResult = body.pending_tool_result;
+  const hasToolResult = toolResult &&
+    typeof toolResult.tool === 'string' &&
+    typeof toolResult.summary_label === 'string' &&
+    toolResult.data && typeof toolResult.data === 'object';
+
   const token = randomToken();
   const expiresAt = new Date(Date.now() + 15 * 60 * 1000).toISOString(); // 15分钟有效
 
@@ -70,8 +78,9 @@ export async function onRequestPost({ request, env }) {
     `INSERT INTO magic_links
        (email, token, purpose, consent_save_records, consent_marketing_email,
         pending_weight_kg, pending_height_cm, pending_bmi, pending_bmi_category, pending_standard,
+        pending_tool, pending_summary_label, pending_summary_value, pending_tool_data,
         expires_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   ).bind(
     email, token, purpose, consentSave, consentMarketing,
     hasRecord ? record.weight_kg : null,
@@ -79,6 +88,10 @@ export async function onRequestPost({ request, env }) {
     hasRecord ? record.bmi : null,
     hasRecord ? record.bmi_category : null,
     hasRecord ? (record.standard === 'asian' ? 'asian' : 'who') : null,
+    hasToolResult ? toolResult.tool : null,
+    hasToolResult ? toolResult.summary_label : null,
+    hasToolResult && typeof toolResult.summary_value === 'number' ? toolResult.summary_value : null,
+    hasToolResult ? JSON.stringify(toolResult.data) : null,
     expiresAt
   ).run();
 

@@ -74,6 +74,20 @@ export async function onRequestGet({ request, env }) {
     ).run();
   }
 
+  // 同样的思路，但用于BMI以外的其他计算器结果（存进通用的 tool_results 表）。
+  if (link.pending_tool !== null && link.pending_summary_label !== null) {
+    await env.DB.prepare(
+      `INSERT INTO tool_results (user_id, tool, summary_label, summary_value, data)
+       VALUES (?, ?, ?, ?, ?)`
+    ).bind(
+      user.id,
+      link.pending_tool,
+      link.pending_summary_label,
+      link.pending_summary_value,
+      link.pending_tool_data || '{}'
+    ).run();
+  }
+
   const headers = new Headers();
   headers.set('Location', 'https://healthybmicheck.com/my-progress');
   headers.append(

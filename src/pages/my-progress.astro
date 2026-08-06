@@ -52,6 +52,13 @@ import Base from '../layouts/Base.astro';
   .mp-delta.up { color: var(--danger); }
   .mp-delta.down { color: var(--accent); }
 
+  .mp-table-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px 12px; }
+  .mp-delete-all { background: none; border: none; font-size: .78rem; color: var(--ink3); cursor: pointer; font-family: inherit; padding: 4px 0; }
+  .mp-delete-all:hover { color: var(--danger); text-decoration: underline; }
+  .mp-row-delete { background: none; border: none; cursor: pointer; color: var(--ink3); font-size: .95rem; padding: 4px 6px; border-radius: 6px; line-height: 1; }
+  .mp-row-delete:hover { color: var(--danger); background: var(--danger-light); }
+  .mp-table td.mp-actions { text-align: right; width: 1%; white-space: nowrap; }
+
   /* Empty state */
   .mp-empty-card { background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius); padding: 48px 32px; text-align: center; }
   .mp-empty-icon { font-size: 2.2rem; margin-bottom: 12px; }
@@ -90,6 +97,14 @@ import Base from '../layouts/Base.astro';
     { max: 30,   key: 'overweight',  label: 'Overweight',   color: 'var(--warn)',        badgeColor: 'var(--badge-overweight)' },
     { max: Infinity, key: 'obese',   label: 'Obese',        color: 'var(--danger)',      badgeColor: 'var(--badge-obese)' },
   ];
+
+  // Metadata for the generic tool_results-backed sections. Add an entry
+  // here (and give the calculator's own "Save & Track" panel a matching
+  // `tool` value) to extend progress-tracking to another calculator —
+  // no new backend endpoints or DB migration needed per tool.
+  const TOOL_META = {
+    'calorie-calculator': { title: 'Calorie Calculator', icon: '🔥', unit: 'kcal/day', href: '/calorie-calculator' },
+  };
 
   function bandFor(bmi) {
     return BMI_BANDS.find(b => bmi < b.max) || BMI_BANDS[BMI_BANDS.length - 1];
@@ -199,24 +214,99 @@ import Base from '../layouts/Base.astro';
       </div>`;
   }
 
-  function renderApp(records) {
+  // --- Generic tool-history rendering (calorie calculator, and any
+  // future calculator wired up via TOOL_META + /api/tools/*) ---
+
+  function renderToolChart(records) {
+    const w = 640, h = 180;
+    const padL = 40, padR = 14, padT = 14, padB = 30;
+    const chartW = w - padL - padR, chartH = h - padT - padB;
+
+    const vals = records.map(r => r.summary_value).filter(v => typeof v === 'number');
+    if (vals.length === 0) return '';
+    const yMin = Math.min(...vals) * 0.9;
+    const yMax = Math.max(...vals) * 1.1;
+    const yOf = (v) => padT + (1 - (v - yMin) / ((yMax - yMin) || 1)) * chartH;
+    const xOf = (i) => records.length === 1 ? padL + chartW / 2 : padL + (i / (records.length - 1)) * chartW;
+
+    const pts = records.map((r, i) => [xOf(i), yOf(r.summary_value)]);
+    const linePath = pts.map((p, i) => (i === 0 ? 'M' : 'L') + p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+    const circles = records.map((r, i) => {
+      const [x, y] = pts[i];
+      const isLast = i === records.length - 1;
+      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${isLast ? 6 : 4}" fill="var(--accent)" stroke="var(--surface)" stroke-width="2">
+                <title>${fmtDate(r.recorded_at)} — ${r.summary_label}</title>
+              </circle>`;
+    }).join('');
+
+    const labelIdxs = records.length <= 2 ? [0, records.length - 1] : [0, Math.round((records.length - 1) / 2), records.length - 1];
+    const dateLabels = [...new Set(labelIdxs)].map(i => {
+      return `<text x="${xOf(i)}" y="${h - padB + 16}" text-anchor="middle" font-size="9" fill="var(--ink3)">${fmtDate(records[i].recorded_at, true)}</text>`;
+    }).join('');
+
+    return `
+      <svg viewBox="0 0 ${w} ${h}" style="width:100%;height:auto;display:block;" role="img" aria-label="Trend chart">
+        ${records.length > 1 ? `<path d="${linePath}" fill="none" stroke="var(--ink2)" stroke-width="2" />` : ''}
+        ${circles}
+        ${records.length > 1 ? dateLabels : ''}
+      </svg>`;
+  }
+
+  function renderToolSection(tool, records) {
+    const meta = TOOL_META[tool] || { title: tool, icon: '📊', href: '/' };
+    if (!records || records.length === 0) return '';
+
+    const latest = records[records.length - 1];
+    const rows = records.slice().reverse().map(r => `
+      <tr>
+        <td>${fmtDate(r.recorded_at)}</td>
+        <td>${r.summary_label}</td>
+        <td class="mp-actions"><button class="mp-row-delete" onclick="deleteToolRecord(${r.id})" aria-label="Delete this entry" title="Delete this entry">✕</button></td>
+      </tr>`).join('');
+
+    return `
+      <div class="mp-chart-card">
+        <div class="mp-chart-title">${meta.icon} ${meta.title}</div>
+        <div class="mp-chart-sub">Latest: ${latest.summary_label}${records.length > 1 ? ' · Hover a point for details.' : ''}</div>
+        ${renderToolChart(records)}
+      </div>
+      <div class="mp-table-card" style="margin-bottom:20px;">
+        <div class="mp-table-header">
+          <div class="mp-table-title" style="padding:0;">${meta.title} history</div>
+          <button class="mp-delete-all" onclick="deleteAllToolHistory('${tool}')">Delete all history</button>
+        </div>
+        <table class="mp-table">
+          <thead><tr><th>Date</th><th>Result</th><th></th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>`;
+  }
+
+  function renderApp(records, toolRecordsByTool) {
     const wrap = document.getElementById('mp-wrap');
+    toolRecordsByTool = toolRecordsByTool || {};
+    const toolSectionsHtml = Object.keys(TOOL_META)
+      .map(tool => renderToolSection(tool, toolRecordsByTool[tool]))
+      .join('');
+
+    const header = `
+      <div class="mp-header">
+        <div>
+          <h1>My Progress</h1>
+          <p>Your health calculator history, tracked over time.</p>
+        </div>
+        <button class="mp-logout" onclick="doLogout()">Log out</button>
+      </div>`;
 
     if (records.length === 0) {
-      wrap.innerHTML = `
-        <div class="mp-header">
-          <div>
-            <h1>My Progress</h1>
-            <p>Your BMI history, tracked over time.</p>
-          </div>
-          <button class="mp-logout" onclick="doLogout()">Log out</button>
-        </div>
-        <div class="mp-empty-card">
+      wrap.innerHTML = header + `
+        <div class="mp-empty-card" style="margin-bottom:20px;">
           <div class="mp-empty-icon">📈</div>
-          <h2>Nothing logged yet</h2>
+          <h2>No BMI history yet</h2>
           <p>Save a result from the BMI Calculator to start building your trend line.</p>
           <a href="/bmi-calculator" class="calc-btn" style="display:inline-block;text-decoration:none;">Go to BMI Calculator →</a>
-        </div>`;
+        </div>
+        ${toolSectionsHtml}`;
       return;
     }
 
@@ -238,18 +328,11 @@ import Base from '../layouts/Base.astro';
         <td>${r.bmi}</td>
         <td><span class="mp-cat-badge" style="background:${band.badgeColor}">${r.bmi_category}</span></td>
         <td>${r.weight_kg} kg${delta}</td>
+        <td class="mp-actions"><button class="mp-row-delete" onclick="deleteRecord(${r.id})" aria-label="Delete this entry" title="Delete this entry">✕</button></td>
       </tr>`;
     }).join('');
 
-    wrap.innerHTML = `
-      <div class="mp-header">
-        <div>
-          <h1>My Progress</h1>
-          <p>Your BMI history, tracked over time.</p>
-        </div>
-        <button class="mp-logout" onclick="doLogout()">Log out</button>
-      </div>
-
+    wrap.innerHTML = header + `
       ${renderStats(records)}
 
       <div class="mp-chart-card">
@@ -261,13 +344,17 @@ import Base from '../layouts/Base.astro';
         </div>
       </div>
 
-      <div class="mp-table-card">
-        <div class="mp-table-title">History</div>
+      <div class="mp-table-card" style="margin-bottom:20px;">
+        <div class="mp-table-header">
+          <div class="mp-table-title" style="padding:0;">BMI history</div>
+          <button class="mp-delete-all" onclick="deleteAllHistory()">Delete all history</button>
+        </div>
         <table class="mp-table">
-          <thead><tr><th>Date</th><th>BMI</th><th>Category</th><th>Weight</th></tr></thead>
+          <thead><tr><th>Date</th><th>BMI</th><th>Category</th><th>Weight</th><th></th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
-      </div>`;
+      </div>
+      ${toolSectionsHtml}`;
   }
 
   function renderLoginForm() {
@@ -344,6 +431,65 @@ import Base from '../layouts/Base.astro';
     }
   }
 
+  async function deleteRecord(id) {
+    if (!confirm('Delete this entry? This can\'t be undone.')) return;
+    try {
+      const resp = await fetch('/api/records/delete', {
+        method: 'POST',
+        cache: 'no-store',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id })
+      });
+      if (!resp.ok) throw new Error('delete_failed');
+      loadProgress();
+    } catch (e) {
+      alert('Could not delete this entry. Please try again.');
+    }
+  }
+
+  async function deleteAllHistory() {
+    if (!confirm('Delete your entire BMI history? This can\'t be undone.')) return;
+    try {
+      const resp = await fetch('/api/records/delete-all', { method: 'POST', cache: 'no-store' });
+      if (!resp.ok) throw new Error('delete_failed');
+      loadProgress();
+    } catch (e) {
+      alert('Could not delete your history. Please try again.');
+    }
+  }
+
+  async function deleteToolRecord(id) {
+    if (!confirm('Delete this entry? This can\'t be undone.')) return;
+    try {
+      const resp = await fetch('/api/tools/delete', {
+        method: 'POST',
+        cache: 'no-store',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id })
+      });
+      if (!resp.ok) throw new Error('delete_failed');
+      loadProgress();
+    } catch (e) {
+      alert('Could not delete this entry. Please try again.');
+    }
+  }
+
+  async function deleteAllToolHistory(tool) {
+    if (!confirm('Delete this entire history? This can\'t be undone.')) return;
+    try {
+      const resp = await fetch('/api/tools/delete-all', {
+        method: 'POST',
+        cache: 'no-store',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tool })
+      });
+      if (!resp.ok) throw new Error('delete_failed');
+      loadProgress();
+    } catch (e) {
+      alert('Could not delete your history. Please try again.');
+    }
+  }
+
   async function doLogout() {
     await fetch('/api/auth/logout', { method: 'POST', cache: 'no-store' });
     window.location.reload();
@@ -368,7 +514,22 @@ import Base from '../layouts/Base.astro';
     }
 
     const data = await listResp.json();
-    renderApp(data.records || []);
+
+    // Fetch the generic tool_results too (calorie calculator, and any
+    // future calculator wired up via TOOL_META). Non-fatal if it fails —
+    // the BMI section above still renders fine on its own.
+    let toolRecordsByTool = {};
+    try {
+      const toolResp = await fetch('/api/tools/list', { cache: 'no-store' });
+      if (toolResp.ok) {
+        const toolData = await toolResp.json();
+        (toolData.records || []).forEach(r => {
+          (toolRecordsByTool[r.tool] = toolRecordsByTool[r.tool] || []).push(r);
+        });
+      }
+    } catch (e) { /* non-fatal */ }
+
+    renderApp(data.records || [], toolRecordsByTool);
   }
 
   loadProgress();
