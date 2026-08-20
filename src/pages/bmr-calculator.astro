@@ -168,6 +168,28 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
       <a href="/calorie-deficit-calculator" class="text-accent-bold">Calorie Deficit Calculator</a> ·
       <a href="/macro-calculator" class="text-accent-bold">Macro Calculator</a>
     </div>
+
+    <div class="save-track-panel" id="save-track-panel">
+      <div class="save-track-collapsed" id="save-track-collapsed">
+        <button type="button" class="save-track-toggle" onclick="showSaveTrack()">
+          📈 Save this result &amp; track my progress over time
+        </button>
+      </div>
+      <div class="save-track-form" id="save-track-form" style="display:none">
+        <p class="save-track-label">Get a login link by email — no password needed.</p>
+        <input type="email" id="save-track-email" class="save-track-input" placeholder="you@example.com" aria-label="Email address">
+        <label class="save-track-checkbox">
+          <input type="checkbox" id="consent-save" checked>
+          <span>Save my results so I can track changes over time (required)</span>
+        </label>
+        <label class="save-track-checkbox">
+          <input type="checkbox" id="consent-marketing">
+          <span>Also send me occasional progress reminders and tips by email (optional)</span>
+        </label>
+        <button type="button" class="calc-btn" id="save-track-submit" onclick="submitSaveTrack()">Email me a login link →</button>
+        <div class="save-track-status" id="save-track-status"></div>
+      </div>
+    </div>
   </div>
 
   <!-- Article content -->
@@ -297,6 +319,7 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
 <script is:inline>
 let gender = 'male';
 let unit = 'metric';
+let lastResult = null;
 
 function setUnit(u) {
   unit = u;
@@ -376,6 +399,78 @@ function calculate() {
   document.getElementById('formula-breakdown').style.display = '';
   document.getElementById('tdee-section').style.display = '';
   document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  lastResult = {
+    tool: 'bmr-calculator',
+    summary_label: bmr.toLocaleString() + ' kcal/day (BMR)',
+    summary_value: bmr,
+    data: { bmr, age, gender, weight_kg: Math.round(weightKg * 10) / 10, height_cm: Math.round(heightCm * 10) / 10 }
+  };
+}
+
+function showSaveTrack() {
+  document.getElementById('save-track-collapsed').style.display = 'none';
+  document.getElementById('save-track-form').style.display = 'block';
+}
+
+async function submitSaveTrack() {
+  const statusEl = document.getElementById('save-track-status');
+  const email = document.getElementById('save-track-email').value.trim();
+  const consentSave = document.getElementById('consent-save').checked;
+  const consentMarketing = document.getElementById('consent-marketing').checked;
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if (!emailOk) {
+    statusEl.textContent = 'Please enter a valid email address.';
+    statusEl.className = 'save-track-status error';
+    return;
+  }
+  if (!consentSave) {
+    statusEl.textContent = 'Please check the box to save your history — it\'s required to track progress.';
+    statusEl.className = 'save-track-status error';
+    return;
+  }
+  if (!lastResult) {
+    statusEl.textContent = 'Please calculate a result first.';
+    statusEl.className = 'save-track-status error';
+    return;
+  }
+
+  const btn = document.getElementById('save-track-submit');
+  btn.disabled = true;
+  statusEl.textContent = 'Sending...';
+  statusEl.className = 'save-track-status';
+
+  try {
+    const resp = await fetch('/api/auth/request-link', {
+      method: 'POST',
+      cache: 'no-store',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        purpose: 'login',
+        consent_save_records: consentSave,
+        consent_marketing_email: consentMarketing,
+        pending_tool_result: lastResult
+      })
+    });
+
+    if (resp.status === 429) {
+      statusEl.textContent = 'You just requested a link — please check your email, or wait a minute before trying again.';
+      statusEl.className = 'save-track-status error';
+      btn.disabled = false;
+      return;
+    }
+    if (!resp.ok) throw new Error('request_failed');
+
+    statusEl.textContent = '✓ Check your email — click the link we sent to save this result.';
+    statusEl.className = 'save-track-status success';
+    btn.disabled = false;
+  } catch (e) {
+    statusEl.textContent = 'Something went wrong. Please try again in a moment.';
+    statusEl.className = 'save-track-status error';
+    btn.disabled = false;
+  }
 }
 
 function toggleFaq(btn) {

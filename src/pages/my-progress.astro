@@ -103,7 +103,20 @@ import Base from '../layouts/Base.astro';
   // `tool` value) to extend progress-tracking to another calculator —
   // no new backend endpoints or DB migration needed per tool.
   const TOOL_META = {
-    'calorie-calculator': { title: 'Calorie Calculator', icon: '🔥', unit: 'kcal/day', href: '/calorie-calculator' },
+    'calorie-calculator': { title: 'Calorie Calculator', icon: '🔥', href: '/calorie-calculator' },
+    'bmr-calculator': { title: 'BMR Calculator', icon: '⚡', href: '/bmr-calculator' },
+    'body-fat': { title: 'Body Fat Calculator', icon: '📊', href: '/body-fat' },
+    'calorie-deficit-calculator': { title: 'Calorie Deficit Calculator', icon: '📉', href: '/calorie-deficit-calculator' },
+    'calories-burned-calculator': { title: 'Calories Burned Calculator', icon: '🏃', href: '/calories-burned-calculator' },
+    'ideal-weight': { title: 'Ideal Weight Calculator', icon: '🎯', href: '/ideal-weight' },
+    'lean-body-mass': { title: 'Lean Body Mass Calculator', icon: '💪', href: '/lean-body-mass' },
+    'macro-calculator': { title: 'Macro Calculator', icon: '🍽️', href: '/macro-calculator' },
+    'pregnancy-weight-gain-calculator': { title: 'Pregnancy Weight Gain Calculator', icon: '🤰', href: '/pregnancy-weight-gain-calculator' },
+    'protein-calculator': { title: 'Protein Calculator', icon: '🍗', href: '/protein-calculator' },
+    'waist-to-height-ratio': { title: 'Waist-to-Height Ratio', icon: '📏', href: '/waist-to-height-ratio' },
+    'waist-to-hip-ratio': { title: 'Waist-to-Hip Ratio', icon: '📐', href: '/waist-to-hip-ratio' },
+    'water-intake': { title: 'Water Intake Calculator', icon: '💧', href: '/water-intake' },
+    'health-profile': { title: 'Health Profile', icon: '👤', href: '/health-profile' },
   };
 
   function bandFor(bmi) {
