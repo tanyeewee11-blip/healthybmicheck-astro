@@ -243,6 +243,29 @@ const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type"
     </div>
 
     <div class="health-tip" id="health-tip"></div>
+
+    <div class="save-track-panel" id="save-track-panel">
+      <div class="save-track-collapsed" id="save-track-collapsed">
+        <button type="button" class="save-track-toggle" onclick="showSaveTrack()">
+          📈 Save this result &amp; track your child's growth over time
+        </button>
+      </div>
+      <div class="save-track-form" id="save-track-form" style="display:none">
+        <p class="save-track-label">This saves your child's growth result to your own account, using your email. Your child never needs their own account.</p>
+        <input type="email" id="save-track-email" class="save-track-input" placeholder="your-email@example.com" aria-label="Your email address">
+        <input type="text" id="child-label" class="save-track-input" placeholder="Nickname for this child (optional, e.g. 'Aiden')" aria-label="Nickname for this child" maxlength="40">
+        <label class="save-track-checkbox">
+          <input type="checkbox" id="consent-save" checked>
+          <span><strong>I am the parent or legal guardian of this child</strong>, and I consent to saving their growth result so I can track it over time (required)</span>
+        </label>
+        <label class="save-track-checkbox">
+          <input type="checkbox" id="consent-marketing">
+          <span>Also send me (the parent) occasional tips about children's growth and nutrition by email (optional)</span>
+        </label>
+        <button type="button" class="calc-btn" id="save-track-submit" onclick="submitSaveTrack()">Email me a login link →</button>
+        <div class="save-track-status" id="save-track-status"></div>
+      </div>
+    </div>
   </div>
 
   <!-- Percentile table -->
@@ -446,6 +469,7 @@ const pctRanks = [5,10,25,50,75,85,90,95];
 
 let sex = 'boy';
 let unit = 'metric';
+let lastResult = null;
 
 function setSex(s) {
   sex = s;
@@ -532,6 +556,89 @@ function calculate() {
   document.getElementById('health-tip').innerHTML = tip;
   document.getElementById('result-card').classList.add('visible');
   document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  lastResult = {
+    bmi: bmiRound,
+    percentile,
+    category: cat,
+    sex,
+    age_years: years,
+    age_months: months
+  };
+}
+
+function showSaveTrack() {
+  document.getElementById('save-track-collapsed').style.display = 'none';
+  document.getElementById('save-track-form').style.display = 'block';
+}
+
+async function submitSaveTrack() {
+  const statusEl = document.getElementById('save-track-status');
+  const email = document.getElementById('save-track-email').value.trim();
+  const childLabel = document.getElementById('child-label').value.trim().slice(0, 40);
+  const consentSave = document.getElementById('consent-save').checked;
+  const consentMarketing = document.getElementById('consent-marketing').checked;
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if (!emailOk) {
+    statusEl.textContent = 'Please enter a valid email address.';
+    statusEl.className = 'save-track-status error';
+    return;
+  }
+  if (!consentSave) {
+    statusEl.textContent = 'Please confirm you are the parent/guardian and consent to saving this — it\'s required to track progress.';
+    statusEl.className = 'save-track-status error';
+    return;
+  }
+  if (!lastResult) {
+    statusEl.textContent = 'Please calculate a result first.';
+    statusEl.className = 'save-track-status error';
+    return;
+  }
+
+  const btn = document.getElementById('save-track-submit');
+  btn.disabled = true;
+  statusEl.textContent = 'Sending...';
+  statusEl.className = 'save-track-status';
+
+  const label = childLabel || 'Child';
+  const pending_tool_result = {
+    tool: 'bmi-calculator-kids',
+    summary_label: label + ': ' + lastResult.percentile + 'th percentile (' + lastResult.category + ')',
+    summary_value: lastResult.percentile,
+    data: { ...lastResult, child_label: childLabel || null }
+  };
+
+  try {
+    const resp = await fetch('/api/auth/request-link', {
+      method: 'POST',
+      cache: 'no-store',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        purpose: 'login',
+        consent_save_records: consentSave,
+        consent_marketing_email: consentMarketing,
+        pending_tool_result
+      })
+    });
+
+    if (resp.status === 429) {
+      statusEl.textContent = 'You just requested a link — please check your email, or wait a minute before trying again.';
+      statusEl.className = 'save-track-status error';
+      btn.disabled = false;
+      return;
+    }
+    if (!resp.ok) throw new Error('request_failed');
+
+    statusEl.textContent = '✓ Check your email — click the link we sent to save this result.';
+    statusEl.className = 'save-track-status success';
+    btn.disabled = false;
+  } catch (e) {
+    statusEl.textContent = 'Something went wrong. Please try again in a moment.';
+    statusEl.className = 'save-track-status error';
+    btn.disabled = false;
+  }
 }
 
 function toggleFaq(btn) {
