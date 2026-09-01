@@ -45,8 +45,8 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
   .ab-member { display: flex; gap: 12px; align-items: flex-start; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--border); }
   .ab-member:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: none; }
   .ab-av { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 500; flex-shrink: 0; }
-  .av-teal { background: #9FE1CB; color: #085041; }
-  .av-blue { background: #B5D4F4; color: #0C447C; }
+  .av-teal { background: var(--accent-light); color: var(--accent); }
+  .av-blue { background: var(--accent-light); color: var(--accent); }
   .ab-mname { font-size: .9rem; font-weight: 500; color: var(--ink1); }
   .ab-mrole { font-size: .8rem; color: var(--ink3); margin-top: 3px; line-height: 1.5; }
 
@@ -182,33 +182,26 @@ const breadcrumbJson = JSON.stringify({"@context":"https://schema.org","@type":"
 
   <!-- Content team -->
   <div style="margin-bottom:28px;">
-    <div class="ab-lbl">Editorial standards &amp; content team</div>
+    <div class="ab-lbl">Who's behind this site</div>
     <div class="ab-card" style="margin-bottom:10px;">
-      <p>All content is researched, written, and reviewed by individuals with backgrounds in health sciences, nutrition, and clinical dietetics. Every article and calculator is checked for accuracy against current clinical guidelines before publication and updated regularly.</p>
+      <p>HealthyBMICheck.com is built and maintained by a single founder — not a clinical team. Every calculator and article is based directly on formulas and guidelines published by WHO, CDC, and NIH, cited throughout the site, rather than on personal medical expertise. This site is for general information only; always check with a qualified healthcare professional for advice specific to you.</p>
     </div>
     <div class="ab-team-card">
       <div class="ab-member">
-        <div class="ab-av av-teal">SM</div>
+        <div class="ab-av" style="overflow:hidden;padding:0;"><img src="/images/authors/tan-yee-wee.jpg" alt="Tan Yee Wee" width="40" height="40" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
         <div>
-          <div class="ab-mname">Sarah Mitchell, BSc Nutrition &amp; Dietetics</div>
-          <div class="ab-mrole">Lead health writer &nbsp;&middot;&nbsp; 8 years clinical nutrition communication &nbsp;&middot;&nbsp; formerly NHS dietetics support team</div>
-        </div>
-      </div>
-      <div class="ab-member">
-        <div class="ab-av av-blue">JO</div>
-        <div>
-          <div class="ab-mname">James Okafor, MSc Public Health</div>
-          <div class="ab-mrole">Research &amp; fact-checking &nbsp;&middot;&nbsp; epidemiology and health metrics</div>
+          <div class="ab-mname"><a href="/authors/tan-yee-wee" style="color:inherit;text-decoration:underline;">Tan Yee Wee</a></div>
+          <div class="ab-mrole">Founder &amp; developer &nbsp;&middot;&nbsp; builds and maintains every calculator on this site</div>
         </div>
       </div>
     </div>
     <div class="ab-card" style="margin-top:10px;">
-      <div class="ab-lbl" style="margin-bottom:12px;">Review process</div>
+      <div class="ab-lbl" style="margin-bottom:12px;">How content is put together</div>
       <div class="ab-steps">
-        <div class="ab-step"><div class="ab-snum">1</div><div class="ab-stxt">All claims sourced to peer-reviewed literature or clinical guidelines before publication</div></div>
-        <div class="ab-step"><div class="ab-snum">2</div><div class="ab-stxt">Calculator formulas verified against original research (Mifflin-St Jeor, Devine, Katch-McArdle, etc.)</div></div>
-        <div class="ab-step"><div class="ab-snum">3</div><div class="ab-stxt">Content reviewed and updated when guidelines change &mdash; each page shows its last-updated date</div></div>
-        <div class="ab-step"><div class="ab-snum">4</div><div class="ab-stxt">Medical disclaimer on every page; we do not provide personalised medical advice</div></div>
+        <div class="ab-step"><div class="ab-snum">1</div><div class="ab-stxt">Every claim is sourced directly to WHO, CDC, NIH, or published clinical guidelines — linked where relevant</div></div>
+        <div class="ab-step"><div class="ab-snum">2</div><div class="ab-stxt">Calculator formulas are verified against the original published research (Mifflin-St Jeor, Devine, Katch-McArdle, etc.)</div></div>
+        <div class="ab-step"><div class="ab-snum">3</div><div class="ab-stxt">Pages are revisited and updated when the underlying guidelines change — each page shows its last-updated date</div></div>
+        <div class="ab-step"><div class="ab-snum">4</div><div class="ab-stxt">A medical disclaimer appears on every page; nothing here is personalised medical advice</div></div>
       </div>
     </div>
     <div class="ab-card" style="margin-top:10px;">

@@ -1,0 +1,133 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "name": "Tan Yee Wee — HealthyBMICheck.com",
+      "url": "https://healthybmicheck.com/authors/tan-yee-wee"
+    },
+    {
+      "@type": "Person",
+      "name": "Tan Yee Wee",
+      "jobTitle": "Founder, HealthyBMICheck.com",
+      "url": "https://healthybmicheck.com/authors/tan-yee-wee",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "HealthyBMICheck.com",
+        "url": "https://healthybmicheck.com"
+      }
+      // [OPTIONAL] Add "sameAs": ["https://www.linkedin.com/in/..."] once/if
+      // you're comfortable linking a real, verifiable profile.
+    }
+  ]
+});
+
+const breadcrumbJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/" },
+    { "@type": "ListItem", "position": 2, "name": "About", "item": "https://healthybmicheck.com/about" },
+    { "@type": "ListItem", "position": 3, "name": "Tan Yee Wee", "item": "https://healthybmicheck.com/authors/tan-yee-wee" }
+  ]
+});
+---
+<Base
+  schemaJson={schemaJson}
+  breadcrumbJson={breadcrumbJson}
+  title="Tan Yee Wee — Founder of HealthyBMICheck.com"
+  description="Tan Yee Wee is the founder and developer of HealthyBMICheck.com. Read why he built the site and how its calculators and content are put together."
+  canonical="https://healthybmicheck.com/authors/tan-yee-wee"
+>
+
+<style>
+  .au { max-width: 720px; margin: 0 auto; padding: 0 20px 60px; }
+  .au-bc { font-size: .82rem; color: var(--ink3); margin: 18px 0 24px; }
+  .au-bc a { color: var(--ink3); }
+  .au-head { display: flex; gap: 20px; align-items: center; padding: 8px 0 28px; border-bottom: 1px solid var(--border); }
+  .au-photo {
+    width: 96px; height: 96px; border-radius: 50%; flex-shrink: 0;
+    background: var(--accent-light); color: var(--accent); display: flex; align-items: center;
+    justify-content: center; font-size: 1.6rem; font-weight: 600; overflow: hidden;
+  }
+  .au-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .au-name { font-size: 1.5rem; font-weight: 500; color: var(--ink1); margin-bottom: 4px; }
+  .au-role { font-size: .95rem; color: var(--accent); font-weight: 500; margin-bottom: 6px; }
+  .au-meta { font-size: .85rem; color: var(--ink3); }
+  .au-section { margin-top: 32px; }
+  .au-section h2 { font-size: 1.1rem; font-weight: 600; color: var(--ink1); margin-bottom: 10px; }
+  .au-section p { font-size: .92rem; line-height: 1.75; color: var(--ink2); margin-bottom: 12px; }
+  .au-articles { display: grid; gap: 10px; margin-top: 8px; }
+  .au-articles a {
+    display: block; padding: 12px 16px; border: 1px solid var(--border); border-radius: 10px;
+    font-size: .9rem; color: var(--ink1); text-decoration: none;
+  }
+  .au-articles a:hover { border-color: var(--accent); }
+</style>
+
+<div class="au">
+  <div class="au-bc"><a href="/">Home</a> › <a href="/about">About</a> › Tan Yee Wee</div>
+
+  <div class="au-head">
+    <div class="au-photo"><img src="/images/authors/tan-yee-wee.jpg" alt="Tan Yee Wee, founder of HealthyBMICheck.com" width="96" height="96" loading="eager"></div>
+    <div>
+      <div class="au-name">Tan Yee Wee</div>
+      <div class="au-role">Founder &amp; Developer, HealthyBMICheck.com</div>
+      <div class="au-meta">Not a health professional — every number and guideline on this site is sourced directly to WHO, CDC, or NIH</div>
+    </div>
+  </div>
+
+  <div class="au-section">
+    <h2>Why I built this site</h2>
+    <p>
+      I've always been passionate about sports and staying active. Over time I
+      noticed that most people understand why exercise matters, but far fewer
+      know how to actually measure their own body metrics accurately, or how
+      to use those numbers to guide their exercise and lifestyle decisions.
+    </p>
+    <p>
+      That's where this project started — with a simple BMI calculator. From
+      there I kept adding more calculators, each one covering a different
+      part of health and fitness, and the BMI Calculator ended up being the
+      starting point for everything else on this site.
+    </p>
+    <p>
+      My goal is to make these tools accessible to as many people as
+      possible, and to build something people keep coming back to at
+      different stages of life — not just for themselves, but for their
+      children, parents, and friends too. I hope these simple tools help
+      people understand their own bodies a little better, make more informed
+      decisions, and gradually become healthier versions of themselves.
+    </p>
+  </div>
+
+  <div class="au-section">
+    <h2>How the content here is put together</h2>
+    <p>
+      I'm not a doctor, dietitian, or nutritionist, and nothing on this site
+      is personalised medical advice. Every calculator formula and every BMI
+      or health category shown here is taken directly from published
+      standards — the World Health Organization (WHO), the Centers for
+      Disease Control and Prevention (CDC), and the National Institutes of
+      Health (NIH) — with sources cited on each page. If you have questions
+      about your own health, please check with a qualified healthcare
+      professional.
+    </p>
+  </div>
+
+  <div class="au-section">
+    <h2>Tools I've built</h2>
+    <div class="au-articles">
+      <a href="/bmi-calculator">BMI Calculator</a>
+      <a href="/calorie-calculator">Calorie Calculator</a>
+      <a href="/bmi-calculator-kids">BMI Calculator for Kids</a>
+      <a href="/">See all 13 calculators →</a>
+    </div>
+  </div>
+
+</div>
+
+</Base>
