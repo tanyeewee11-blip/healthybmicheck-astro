@@ -164,6 +164,12 @@
 /healthy-weight-6ft4in-male /healthy-weight-by-height 301
 /healthy-weight-6ft4in-male.html /healthy-weight-by-height 301
 
+# @astrojs/sitemap generates sitemap-index.xml, not a literal sitemap.xml.
+# This redirect catches anything still pointing at the old (wrong, never
+# actually existed) /sitemap.xml path — old GSC submissions, bookmarked
+# tools, etc. — so it 301s to the real file instead of 404ing.
+/sitemap.xml /sitemap-index.xml 301
+
 # ============================================================================
 # CATCH-ALL: strip .html for all regular content pages
 # ============================================================================
