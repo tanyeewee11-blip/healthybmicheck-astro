@@ -28,12 +28,12 @@ import Base from '../../layouts/Base.astro';
 
   <!-- Filter tabs -->
   <div class="filters">
-    <button class="filter-btn active" onclick="filterCards('all',this)" id="tab-all">All <span style="background:rgba(255,255,255,0.25);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;">59</span></button>
-    <button class="filter-btn" onclick="filterCards('BMI',this)">BMI <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">14</span></button>
-    <button class="filter-btn" onclick="filterCards('Calories',this)">Calories <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">14</span></button>
-    <button class="filter-btn" onclick="filterCards('Nutrition',this)">Nutrition <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">11</span></button>
+    <button class="filter-btn active" onclick="filterCards('all',this)" id="tab-all">All <span style="background:rgba(255,255,255,0.25);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;">66</span></button>
+    <button class="filter-btn" onclick="filterCards('BMI',this)">BMI <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">21</span></button>
+    <button class="filter-btn" onclick="filterCards('Calories',this)">Calories <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">16</span></button>
+    <button class="filter-btn" onclick="filterCards('Nutrition',this)">Nutrition <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">15</span></button>
     <button class="filter-btn" onclick="filterCards('Exercise',this)">Exercise <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">7</span></button>
-    <button class="filter-btn" onclick="filterCards('Hydration',this)">Hydration <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">4</span></button>
+    <button class="filter-btn" onclick="filterCards('Hydration',this)">Hydration <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">5</span></button>
     <button class="filter-btn" onclick="filterCards('By Height',this)">By Height <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">1</span></button>
     <button class="filter-btn" onclick="filterCards('By Age',this)">By Age <span style="background:rgba(45,106,79,0.15);border-radius:100px;padding:1px 7px;font-size:.75rem;margin-left:4px;color:var(--accent);">1</span></button>
   </div>
@@ -399,18 +399,88 @@ import Base from '../../layouts/Base.astro';
       <div class="card-arrow">Read guide →</div>
     </a>
 
+    <!-- Added: guides that were previously unreachable from the hub -->
+    <a class="guide-card" href="/bmi-and-diabetes-risk" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">🩺</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>BMI and Diabetes Risk: What the Research Shows</h2>
+      <p>How BMI relates to type 2 diabetes risk, why Asian populations face higher risk at lower BMI, and what reduces risk most.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="/normal-bmi-for-women" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">👩</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>Normal BMI for Women: Healthy Ranges by Age</h2>
+      <p>Healthy BMI ranges for women by age group, how female body composition affects BMI, and Asian thresholds.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="/average-bmi-by-country" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">🌏</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>Average BMI by Country</h2>
+      <p>Average BMI for men and women worldwide using WHO and NCD-RisC data, with the highest and lowest countries.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="/average-weight-55-year-old-woman" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">📊</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>Average Weight for a 55-Year-Old Woman</h2>
+      <p>Average and healthy weight by height in your mid-50s, and what affects weight at this stage of life.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="/bmi-chart-men-over-60" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">🧓</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>BMI Chart for Men Over 60</h2>
+      <p>Healthy BMI ranges and averages for men in their 60s, and what the numbers mean for older men.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="/bmi-for-women-over-65" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">🗓️</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>Healthy BMI for Women Over 65</h2>
+      <p>Healthy weight ranges by height for women over 65, and why BMI is read differently at this age.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="/healthy-weight-for-seniors" data-tag="BMI">
+      <div class="card-top"><div class="card-icon">🌿</div><div><div class="card-tag">BMI</div></div></div>
+      <h2>Healthy Weight for Seniors</h2>
+      <p>BMI ranges and average weight by height for men and women over 60, and what matters most for health after 60.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="/bmi-and-calorie-calculator" data-tag="Calories">
+      <div class="card-top"><div class="card-icon">🔗</div><div><div class="card-tag">Calories</div></div></div>
+      <h2>How BMI and Calorie Calculators Work Together</h2>
+      <p>Formulas, worked examples, and how to combine both tools to set a realistic weight goal.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="/ozempic-weight-loss" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">💊</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>Ozempic and Weight Loss: What the Research Shows</h2>
+      <p>How much weight people lose on GLP-1 medications, the side effects, and who qualifies. An evidence-based overview.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="/high-protein-diet-plan" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">🍗</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>High-Protein Diet Plan for Weight Loss</h2>
+      <p>Protein targets by body weight, the best high-protein foods, and a 3-day meal plan, including plant-based options.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="/intermittent-fasting-for-weight-loss" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">⏱️</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>Intermittent Fasting for Weight Loss</h2>
+      <p>Which fasting protocols work, how much weight to expect, who should avoid it, and how to protect muscle.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="/mediterranean-diet-for-weight-loss" data-tag="Nutrition">
+      <div class="card-top"><div class="card-icon">🫒</div><div><div class="card-tag">Nutrition</div></div></div>
+      <h2>Mediterranean Diet for Weight Loss</h2>
+      <p>What to eat, a 7-day meal plan, calorie targets, and what the research shows about weight loss.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+    <a class="guide-card" href="/how-much-water-per-day-by-weight" data-tag="Hydration">
+      <div class="card-top"><div class="card-icon">💧</div><div><div class="card-tag">Hydration</div></div></div>
+      <h2>How Much Water Per Day by Body Weight</h2>
+      <p>A simple formula and chart by weight, with adjustments for activity and climate.</p>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
   </div>
 
-  <!-- Load More -->
-  <div id="load-more-wrap" style="text-align:center;padding:8px 0 40px;">
-    <button id="load-more-btn" onclick="loadMore()"
-      style="background:var(--surface);border:1.5px solid var(--border);border-radius:100px;padding:10px 28px;font-family:inherit;font-size:.875rem;color:var(--ink2);cursor:pointer;transition:all .2s;"
-      onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'"
-      onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--ink2)'">
-      Load more guides
-    </button>
-    <p id="load-more-count" style="font-size:.78rem;color:var(--ink3);margin-top:8px;"></p>
-  </div>
 
   <!-- CTA strip -->
   <div class="cta-strip">
@@ -429,4 +499,28 @@ import Base from '../../layouts/Base.astro';
   </div>
 
 </main>
+
+<script is:inline>
+  // Category filter + search for the guides grid. (These handlers are referenced
+  // by the buttons/search box above; every card is already in the HTML.)
+  function applyGuideFilter() {
+    var tag = window.__guideTag || 'all';
+    var q = (window.__guideQuery || '').trim().toLowerCase();
+    document.querySelectorAll('#guides-grid .guide-card').forEach(function (c) {
+      var okTag = tag === 'all' || c.getAttribute('data-tag') === tag;
+      var okQ = !q || c.textContent.toLowerCase().indexOf(q) !== -1;
+      c.style.display = okTag && okQ ? '' : 'none';
+    });
+  }
+  function filterCards(tag, btn) {
+    window.__guideTag = tag;
+    document.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    applyGuideFilter();
+  }
+  function searchGuides(value) {
+    window.__guideQuery = value;
+    applyGuideFilter();
+  }
+</script>
 </Base>
