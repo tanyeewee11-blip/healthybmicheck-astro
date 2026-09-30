@@ -769,7 +769,7 @@ const schemaJson = JSON.stringify({
 
   function hwUpdateLink() {
     var slug = document.getElementById('hw-height-select').value;
-    document.getElementById('hw-go-btn').href = 'healthy-weight-by-height.html?height=' + slug + '&unit=' + hwUnit + '&gender=' + hwGender;
+    document.getElementById('hw-go-btn').href = '/healthy-weight-by-height?height=' + slug + '&unit=' + hwUnit + '&gender=' + hwGender;
   }
 
   function hwSetUnit(u) {
@@ -800,7 +800,7 @@ const schemaJson = JSON.stringify({
 
   function baUpdateLink() {
     var age = document.getElementById('ba-age-select').value;
-    document.getElementById('ba-go-btn').href = 'healthy-bmi-by-age.html?age=' + age + '&gender=' + baGender;
+    document.getElementById('ba-go-btn').href = '/healthy-bmi-by-age?age=' + age + '&gender=' + baGender;
   }
 
   function baSetGender(g) {
@@ -830,24 +830,24 @@ const schemaJson = JSON.stringify({
   var quizAnswers = {};
   var quizToolMap = {
     lose: [
-      { icon: '📉', title: 'Calorie Deficit Calculator', href: 'calorie-deficit-calculator.html' },
-      { icon: '🥗', title: 'Macro Calculator', href: 'macro-calculator.html' },
-      { icon: '📊', title: 'Body Fat Calculator', href: 'body-fat.html' }
+      { icon: '📉', title: 'Calorie Deficit Calculator', href: '/calorie-deficit-calculator' },
+      { icon: '🥗', title: 'Macro Calculator', href: '/macro-calculator' },
+      { icon: '📊', title: 'Body Fat Calculator', href: '/body-fat' }
     ],
     muscle: [
-      { icon: '🥗', title: 'Macro Calculator', href: 'macro-calculator.html' },
-      { icon: '🍗', title: 'Protein Calculator', href: 'protein-calculator.html' },
-      { icon: '⚡', title: 'BMR Calculator', href: 'bmr-calculator.html' }
+      { icon: '🥗', title: 'Macro Calculator', href: '/macro-calculator' },
+      { icon: '🍗', title: 'Protein Calculator', href: '/protein-calculator' },
+      { icon: '⚡', title: 'BMR Calculator', href: '/bmr-calculator' }
     ],
     health: [
-      { icon: '⚖️', title: 'BMI Calculator', href: 'bmi-calculator.html' },
-      { icon: '📏', title: 'Waist-to-Height Ratio', href: 'waist-to-height-ratio.html' },
-      { icon: '👤', title: 'Full Health Profile', href: 'health-profile.html' }
+      { icon: '⚖️', title: 'BMI Calculator', href: '/bmi-calculator' },
+      { icon: '📏', title: 'Waist-to-Height Ratio', href: '/waist-to-height-ratio' },
+      { icon: '👤', title: 'Full Health Profile', href: '/health-profile' }
     ],
     understand: [
-      { icon: '👤', title: 'Full Health Profile', href: 'health-profile.html' },
-      { icon: '⚖️', title: 'BMI Calculator', href: 'bmi-calculator.html' },
-      { icon: '📊', title: 'Body Fat Calculator', href: 'body-fat.html' }
+      { icon: '👤', title: 'Full Health Profile', href: '/health-profile' },
+      { icon: '⚖️', title: 'BMI Calculator', href: '/bmi-calculator' },
+      { icon: '📊', title: 'Body Fat Calculator', href: '/body-fat' }
     ]
   };
 
@@ -868,7 +868,7 @@ const schemaJson = JSON.stringify({
       var goal = quizAnswers[1] || 'health';
       var tools = quizToolMap[goal] || quizToolMap.health;
       if (quizAnswers[2] === 'asian' && goal === 'health') {
-        tools = [{ icon: '🌏', title: 'Asian BMI Calculator', href: 'asian-bmi-calculator.html' }].concat(tools.slice(0, 2));
+        tools = [{ icon: '🌏', title: 'Asian BMI Calculator', href: 'asian-/bmi-calculator' }].concat(tools.slice(0, 2));
       }
       var container = document.getElementById('quiz-result-tools');
       container.innerHTML = tools.map(function (t) {
