@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 const breadcrumbJson = JSON.stringify({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://healthybmicheck.com/"}, {"@type": "ListItem", "position": 2, "name": "Healthy BMI for a 45-Year-Old Woman — What's Normal?", "item": "https://healthybmicheck.com/healthy-bmi-by-age"}]});
 ---
 
-<Base
+<Base`n  noIndex={true}
   breadcrumbJson={breadcrumbJson}
   title="Healthy BMI for a 45-Year-Old Woman — What's Normal?"
   description="What is a healthy BMI for a 45-year-old woman? The healthy BMI range is 18.5–24.9. Average BMI at this age is 27.6. See age-specific health tips and risk."
